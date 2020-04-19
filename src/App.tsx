@@ -9,27 +9,14 @@
  */
 
 import React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-// common components
-import { Button } from './components';
+import ButtonExample from './examples/ButtonExample';
+
 
 const App = () => (
   <View style={styles.container}>
-    <View style={styles.buttonContainer}>
-      <Button type="primary">
-        <Text>VINIT</Text>
-      </Button>
-      <Button type="secondary">
-        <Text>VINIT</Text>
-      </Button>
-      <Button type="tertiary">
-        <Text>VINIT</Text>
-      </Button>
-      <Button type="link">
-        <Text>VINIT</Text>
-      </Button>
-    </View>
+    <ButtonExample />
   </View>
 );
 
@@ -37,6 +24,7 @@ const styles = StyleSheet.create({
   // define styles
   container: {
     // flex: 1,
+    margin: 20,
     // backgroundColor: 'grey'
   },
   buttonContainer: {
