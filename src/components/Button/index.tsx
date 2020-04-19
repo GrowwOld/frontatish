@@ -1,19 +1,27 @@
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { getBgColorByType } from '../../utils';
+import { getBtnBgColorByType, getBtnTextColorByType, getBtnBorderStyles } from '../../utils';
 import { Colors, Fonts } from '../../styles';
 
 const Button = (props: any) => {
   const { onPress, value, type } = props;
-  const btnBgColor = getBgColorByType(type);
+  const btnBgColor: string = getBtnBgColorByType(type);
+  const btnTextColor: string = getBtnTextColorByType(type);
+  const btnBorderStyle: any = getBtnBorderStyles(type);
+
   return (
     <TouchableOpacity
       onPress={onPress}
       style={[styles.btnContainer, {
-        backgroundColor: btnBgColor
+        ...btnBorderStyle,
+        backgroundColor: btnBgColor,
       }]}
     >
-      <Text>
+      <Text
+        style={[styles.btnText, {
+          color: btnTextColor
+        }]}
+      >
         {value}
       </Text>
     </TouchableOpacity>
@@ -33,9 +41,8 @@ const styles = StyleSheet.create({
   },
   btnText: {
     fontFamily: Fonts.type.gotham_medium,
-    fontSize: Fonts.size.h1,
-    color: Colors.WHITE,
-    fontWeight: '500'
+    fontSize: Fonts.size.regular_16,
+    fontWeight: 'bold',
   }
 });
 
