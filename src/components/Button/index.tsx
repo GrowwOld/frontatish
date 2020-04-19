@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { getBtnBgColorByType, getBtnTextColorByType, getBtnBorderStyles } from '../../utils';
-import { Colors, Fonts } from '../../styles';
+import { Fonts } from '../../styles';
 
 const Button = (props: any) => {
   const { onPress, value, type } = props;
