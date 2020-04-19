@@ -16,17 +16,30 @@ import { Button } from './components';
 
 const App = () => (
   <View style={styles.container}>
-    <Button>
-      <Text>VINIT</Text>
-    </Button>
+    <View style={styles.buttonContainer}>
+      <Button type="primary">
+        <Text>VINIT</Text>
+      </Button>
+      <Button type="secondary">
+        <Text>VINIT</Text>
+      </Button>
+      <Button type="tertiary">
+        <Text>VINIT</Text>
+      </Button>
+      <Button type="link">
+        <Text>VINIT</Text>
+      </Button>
+    </View>
   </View>
 );
 
 const styles = StyleSheet.create({
   // define styles
   container: {
-    flex: 1,
+    // flex: 1,
     // backgroundColor: 'grey'
+  },
+  buttonContainer: {
   }
 });
 
