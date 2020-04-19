@@ -1,10 +1,22 @@
 {
   "docs": {
     "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "Components": [
+      "icon",
+      "button",
+      "popup",
+      "calendar",
+      "loader",
+      "emptyView",
+      "errorView",
+      "tables",
+      "list",
+      "radioButtons",
+      "checkBox",
+      "ticker",
+      "charts",
+      "numberPad"
+
+    ]
   }
 }
