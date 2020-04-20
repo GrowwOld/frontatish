@@ -1,4 +1,0 @@
----
-id: loader
-title: Loader
----

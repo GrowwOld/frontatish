@@ -1,4 +1,0 @@
----
-id: icon
-title: Icons
----

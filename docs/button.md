@@ -1,4 +1,0 @@
----
-id: button
-title: Button
----

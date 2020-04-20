@@ -1,4 +1,0 @@
----
-id: calendar
-title: Calendar
----
