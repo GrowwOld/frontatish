@@ -1,29 +1,344 @@
 ---
 id: doc1
-title: Latin-ish
-sidebar_label: Example Page
+title: Button
+sidebar_label: Button
+---
+Buttons are touchable elements used to interact with the screen. They may
+display text, icons, or both. Buttons can be styled with several props to look a
+specific way.
+
+<div class="component-preview">
+  <figure>
+    <img src="/react-native-elements/img/button/button--solid.jpg" alt="Solid Button" />
+    <figcaption>Solid</figcaption>
+  </figure>
+  <figure>
+  <img src="/react-native-elements/img/button/button--clear.jpg" alt="Clear Button" />
+    <figcaption>Clear</figcaption>
+  </figure>
+  <figure>
+  <img src="/react-native-elements/img/button/button--outline.jpg" alt="Outline Button" />
+    <figcaption>Outline</figcaption>
+  </figure>
+</div>
+
+## Usage
+
+```js
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
+<Button
+  title="Solid Button"
+/>
+
+<Button
+  title="Outline button"
+  type="outline"
+/>
+
+<Button
+  title="Clear button"
+  type="clear"
+/>
+
+<Button
+  icon={
+    <Icon
+      name="arrow-right"
+      size={15}
+      color="white"
+    />
+  }
+  title="Button with icon component"
+/>
+
+<Button
+  icon={{
+    name: "arrow-right",
+    size: 15,
+    color: "white"
+  }}
+  title="Button with icon object"
+/>
+
+<Button
+  icon={
+    <Icon
+      name="arrow-right"
+      size={15}
+      color="white"
+    />
+  }
+  iconRight
+  title="Button with right icon"
+/>
+
+<Button
+  title="Loading button"
+  loading
+/>
+```
+
 ---
 
-Check the [documentation](https://docusaurus.io) for how to use Docusaurus.
+## Props
 
-## Lorem
+> Also receives all
+> [TouchableNativeFeedback](http://facebook.github.io/react-native/docs/touchablenativefeedback.html#props)
+> (Android) or
+> [TouchableOpacity](http://facebook.github.io/react-native/docs/touchableopacity.html#props)
+> (iOS) props
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.
+- [`buttonStyle`](#buttonstyle)
+- [`containerStyle`](#containerstyle)
+- [`disabled`](#disabled)
+- [`disabledStyle`](#disabledstyle)
+- [`disabledTitleStyle`](#disabledtitlestyle)
+- [`icon`](#icon)
+- [`iconContainerStyle`](#iconcontainerstyle)
+- [`iconRight`](#iconright)
+- [`linearGradientProps`](#lineargradientprops)
+- [`loading`](#loading)
+- [`loadingProps`](#loadingprops)
+- [`loadingStyle`](#loadingstyle)
+- [`onPress`](#onpress)
+- [`raised`](#raised)
+- [`title`](#title)
+- [`titleProps`](#titleprops)
+- [`titleStyle`](#titlestyle)
+- [`type`](#type)
+- [`TouchableComponent`](#touchablecomponent)
+- [`ViewComponent`](#viewcomponent)
 
-## Mauris In Code
+---
 
+## Reference
+
+### `buttonStyle`
+
+add additional styling for button component (optional)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) |  none   |
+
+---
+
+### `containerStyle`
+
+styling for Component container
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) |  none   |
+
+---
+
+### `disabled`
+
+disables user interaction
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
+
+---
+
+### `disabledStyle`
+
+style of the button when disabled
+
+|        Type         |    Default     |
+| :-----------------: | :------------: |
+| View style (object) | Internal Style |
+
+---
+
+### `disabledTitleStyle`
+
+style of the title when disabled
+
+|        Type         |    Default     |
+| :-----------------: | :------------: |
+| Text style (object) | Internal Style |
+
+---
+
+### `icon`
+
+displays a centered icon (when no title) or to the left (with text). (can be
+used along with iconRight as well). Can be an object or a custom component.
+
+|                            Type                            | Default |
+| :--------------------------------------------------------: | :-----: |
+| {[...Icon props](icon.md#props)}<br/>**OR**<br/> component |  none   |
+
+---
+
+### `iconContainerStyle`
+
+styling for Icon Component container
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| View style (object) |  none   |
+
+---
+
+### `iconRight`
+
+displays Icon to the right of title. Needs to be used along with `icon` prop
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
+
+---
+
+### `linearGradientProps`
+
+displays a linear gradient. See [usage](#lineargradient-usage).
+
+|                                                      Type                                                      | Default |
+| :------------------------------------------------------------------------------------------------------------: | :-----: |
+| {[...Gradient props](https://github.com/react-native-community/react-native-linear-gradient#additional-props)} |  none   |
+
+---
+
+### `loading`
+
+prop to display a loading spinner (optional)
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
+
+---
+
+### `loadingProps`
+
+add additional props for ActivityIndicator component (optional)
+
+|                                                 Type                                                 |     Default     |
+| :--------------------------------------------------------------------------------------------------: | :-------------: |
+| {[...ActivityIndicator props](https://facebook.github.io/react-native/docs/activityindicator#props)} | Internal object |
+
+---
+
+### `loadingStyle`
+
+add additional styling for loading component (optional)
+
+|        Type         |    Default     |
+| :-----------------: | :------------: |
+| View style (object) | Internal Style |
+
+---
+
+### `onPress`
+
+onPress method (optional)
+
+|   Type   | Default |
+| :------: | :-----: |
+| function |  none   |
+
+---
+
+### `raised`
+
+Add raised button styling (optional). Has no effect if `type="clear"`.
+
+|  Type   | Default |
+| :-----: | :-----: |
+| boolean |  false  |
+
+---
+
+### `title`
+
+button title (optional)
+
+|  Type  | Default |
+| :----: | :-----: |
+| string |  none   |
+
+---
+
+### `titleProps`
+
+add additional props for Text component (optional)
+
+|                                    Type                                    | Default |
+| :------------------------------------------------------------------------: | :-----: |
+| {[...Text props](https://facebook.github.io/react-native/docs/text#props)} |  none   |
+
+---
+
+### `titleStyle`
+
+add additional styling for title component (optional)
+
+|        Type         | Default |
+| :-----------------: | :-----: |
+| Text style (object) |  none   |
+
+---
+
+### `type`
+
+Type of button (optional)
+
+|            Type             | Default |
+| :-------------------------: | :-----: |
+| `solid`, `clear`, `outline` |  solid  |
+
+---
+
+### `TouchableComponent`
+
+component for user interaction
+
+|        Type         |                           Default                           |
+| :-----------------: | :---------------------------------------------------------: |
+| Touchable Component | TouchableOpacity (ios) or TouchableNativeFeedback (android) |
+
+---
+
+### `ViewComponent`
+
+component for container
+
+|          Type          | Default |
+| :--------------------: | :-----: |
+| React Native Component |  View   |
+
+---
+
+## LinearGradient Usage
+
+Using LinearGradient in React Native Elements is supported through the
+[react-native-linear-gradient](https://github.com/react-native-community/react-native-linear-gradient)
+package. If you're using expo or create-react-native-app then you can use
+`linearGradientProps` prop right out the box with no additional setup.
+
+For react-native-cli users, make sure to follow the
+[installation instructions](https://github.com/react-native-community/react-native-linear-gradient#add-it-to-your-project)
+and use it like this:
+
+```jsx
+import { Button } from 'react-native-elements';
+import LinearGradient from 'react-native-linear-gradient';
+
+...
+
+<Button
+  ViewComponent={LinearGradient} // Don't forget this!
+  linearGradientProps={{
+    colors: ['red', 'pink'],
+    start: { x: 0, y: 0.5 },
+    end: { x: 1, y: 0.5 },
+  }}
+/>
 ```
-Mauris vestibulum ullamcorper nibh, ut semper purus pulvinar ut. Donec volutpat orci sit amet mauris malesuada, non pulvinar augue aliquam. Vestibulum ultricies at urna ut suscipit. Morbi iaculis, erat at imperdiet semper, ipsum nulla sodales erat, eget tincidunt justo dui quis justo. Pellentesque dictum bibendum diam at aliquet. Sed pulvinar, dolor quis finibus ornare, eros odio facilisis erat, eu rhoncus nunc dui sed ex. Nunc gravida dui massa, sed ornare arcu tincidunt sit amet. Maecenas efficitur sapien neque, a laoreet libero feugiat ut.
-```
-
-## Nulla
-
-Nulla facilisi. Maecenas sodales nec purus eget posuere. Sed sapien quam, pretium a risus in, porttitor dapibus erat. Sed sit amet fringilla ipsum, eget iaculis augue. Integer sollicitudin tortor quis ultricies aliquam. Suspendisse fringilla nunc in tellus cursus, at placerat tellus scelerisque. Sed tempus elit a sollicitudin rhoncus. Nulla facilisi. Morbi nec dolor dolor. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras et aliquet lectus. Pellentesque sit amet eros nisi. Quisque ac sapien in sapien congue accumsan. Nullam in posuere ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin lacinia leo a nibh fringilla pharetra.
-
-## Orci
-
-Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin venenatis lectus dui, vel ultrices ante bibendum hendrerit. Aenean egestas feugiat dui id hendrerit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur in tellus laoreet, eleifend nunc id, viverra leo. Proin vulputate non dolor vel vulputate. Curabitur pretium lobortis felis, sit amet finibus lorem suscipit ut. Sed non mollis risus. Duis sagittis, mi in euismod tincidunt, nunc mauris vestibulum urna, at euismod est elit quis erat. Phasellus accumsan vitae neque eu placerat. In elementum arcu nec tellus imperdiet, eget maximus nulla sodales. Curabitur eu sapien eget nisl sodales fermentum.
-
-## Phasellus
-
-Phasellus pulvinar ex id commodo imperdiet. Praesent odio nibh, sollicitudin sit amet faucibus id, placerat at metus. Donec vitae eros vitae tortor hendrerit finibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Quisque vitae purus dolor. Duis suscipit ac nulla et finibus. Phasellus ac sem sed dui dictum gravida. Phasellus eleifend vestibulum facilisis. Integer pharetra nec enim vitae mattis. Duis auctor, lectus quis condimentum bibendum, nunc dolor aliquam massa, id bibendum orci velit quis magna. Ut volutpat nulla nunc, sed interdum magna condimentum non. Sed urna metus, scelerisque vitae consectetur a, feugiat quis magna. Donec dignissim ornare nisl, eget tempor risus malesuada quis.

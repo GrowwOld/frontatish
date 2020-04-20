@@ -7,3 +7,18 @@ import App from './src/App';
 import { name as appName } from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
+
+
+// "button",
+// // "popup",
+// // "calendar",
+// // "loader",
+// // "emptyView",
+// // "errorView",
+// // "tables",
+// // "list",
+// // "radioButtons",
+// // "checkBox",
+// // "ticker",
+// // "charts",
+// // "numberPad"

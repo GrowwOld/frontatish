@@ -1,0 +1,4 @@
+---
+id: tables
+title: Tables
+---
