@@ -23,7 +23,7 @@ const users = [
 const siteConfig = {
   title: 'Test Site', // Title for your website.
   tagline: 'A website for testing',
-  url: 'https://<orgname>.github.io', // Your website URL
+  url: 'https://groww.github.io', // Your website URL
   baseUrl: '/uikit/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
