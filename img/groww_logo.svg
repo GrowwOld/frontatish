@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <ellipse id="prefix__a" cx="11.5" cy="12" rx="11.5" ry="12"/>
+        <ellipse id="prefix__c" cx="11.5" cy="12" rx="11.5" ry="12"/>
+        <ellipse id="prefix__e" cx="11.5" cy="12" rx="11.5" ry="12"/>
+        <ellipse id="prefix__g" cx="11.832" cy="11.966" rx="11.832" ry="11.966"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <ellipse cx="11.5" cy="12" fill="#5367FF" fill-rule="nonzero" rx="11.5" ry="12"/>
+        <mask id="prefix__b" fill="#fff">
+            <use xlink:href="#prefix__a"/>
+        </mask>
+        <path fill="#00FFC4" fill-rule="nonzero" d="M-0.664 16.037L6.501 11.239 13.447 13.96 22.455 4.908 25.433 25.729 1.548 28.037z" mask="url(#prefix__b)"/>
+        <mask id="prefix__d" fill="#fff">
+            <use xlink:href="#prefix__c"/>
+        </mask>
+        <path fill="#000" fill-rule="nonzero" d="M-0.109 18.35L7.055 13.553 14.001 16.273 23.009 7.222 25.988 28.042 2.102 30.35z" mask="url(#prefix__d)" opacity=".078"/>
+        <g>
+            <mask id="prefix__f" fill="#fff">
+                <use xlink:href="#prefix__e"/>
+            </mask>
+            <path fill="#000" fill-rule="nonzero" d="M-0.109 21.242L7.055 16.445 14.001 19.165 23.009 10.114 25.988 30.934 2.102 33.242z" mask="url(#prefix__f)" opacity=".078"/>
+        </g>
+        <g>
+            <mask id="prefix__h" fill="#fff">
+                <use xlink:href="#prefix__g"/>
+            </mask>
+            <path fill="#000" fill-rule="nonzero" d="M-0.112 24.065L7.259 19.281 14.406 21.993 23.674 12.967 26.739 33.729 2.163 36.03z" mask="url(#prefix__h)" opacity=".078"/>
+        </g>
+    </g>
+</svg>
