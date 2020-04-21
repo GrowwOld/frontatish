@@ -2,7 +2,7 @@ module.exports = {
   title: 'uikit',
   tagline: 'The tagline of my site',
   url: 'https://groww.github.io',
-  baseUrl: '/utikit/',
+  baseUrl: '/uikit/',
   favicon: 'img/favicon.ico',
   organizationName: 'Groww', // Usually your GitHub org/user name.
   projectName: 'uikit', // Usually your repo name.
