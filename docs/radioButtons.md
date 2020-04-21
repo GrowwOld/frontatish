@@ -1,4 +1,0 @@
----
-id: radioButtons
-title: RadioButton
----

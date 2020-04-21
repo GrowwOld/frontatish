@@ -1,4 +1,0 @@
----
-id: checkbox
-title: CheckBox
----

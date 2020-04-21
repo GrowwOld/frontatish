@@ -1,4 +1,0 @@
----
-id: tables
-title: Tables
----
