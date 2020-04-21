@@ -1,20 +1,42 @@
 // base and lib imports
 import * as React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { ProgressBarAndroid } from '@react-native-community/progress-bar-android';
 import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
-import { getBtnBgColorByType, getBtnTextColorByType, getBtnBorderStyles } from '../../common/utils';
+import {
+  getBtnBgColorByType,
+  getBtnTextColorByType,
+  getBtnBorderStyles
+} from './helper';
 import { ButtonProps } from './types';
 
 // styles and themes
-import { Fonts } from '../../styles';
+import { Fonts, Colors } from '../../styles';
 
 const Button = (props: ButtonProps) => {
-  const { onPress, label, type } = props;
+  const { onPress, label, type, loading } = props;
   const btnBgColor: string = getBtnBgColorByType(type);
   const btnTextColor: string = getBtnTextColorByType(type);
   const btnBorderStyle: any = getBtnBorderStyles(type);
+
+  const renderProgressBar = () => {
+    if (loading) {
+      return (
+        <View style={{ position: 'absolute', width: '100%', top: -6, zIndex: 1 }}>
+          <ProgressBarAndroid
+            indeterminate
+            styleAttr="Horizontal"
+            color={Colors.WHITE}
+          />
+        </View>
+
+
+      );
+    }
+    return null;
+  };
 
   return (
     <Ripple
@@ -24,11 +46,8 @@ const Button = (props: ButtonProps) => {
         backgroundColor: btnBgColor,
       }]}
     >
-      <Text
-        style={[styles.btnText, {
-          color: btnTextColor
-        }]}
-      >
+      {loading && renderProgressBar()}
+      <Text style={[styles.btnText, { color: btnTextColor }]}>
         {label}
       </Text>
     </Ripple>
@@ -38,13 +57,11 @@ const Button = (props: ButtonProps) => {
 const styles = StyleSheet.create({
   // define styles
   btnContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    backgroundColor: 'red',
     height: 50,
     marginVertical: 20,
     borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   btnText: {
     fontFamily: Fonts.type.gotham_medium,
@@ -57,7 +74,8 @@ Button.defaultProps = {
   onPress: null,
   children: null,
   type: 'primary',
-  label: ''
+  label: '',
+  loading: true
 };
 
 export default Button;

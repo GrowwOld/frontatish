@@ -9,9 +9,12 @@ import { ReactNode } from 'react';
 // Button component props type
 export interface ButtonProps {
   label: string,
-  // need to change
+  // can be changed
   type: string,
   onPress?: () => void,
+  // to show some loading state
+  // inside the button its self
+  loading?: boolean,
   disabled?: boolean,
   children?: ReactNode,
 }
