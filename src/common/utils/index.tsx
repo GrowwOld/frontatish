@@ -1,4 +1,4 @@
-import { BaseStyles, Colors } from '../styles';
+import { BaseStyles, Colors } from '../../styles';
 
 export const getBtnBgColorByType = (btnType: string): string => {
   const colorMapForBtn: any = {
@@ -25,6 +25,4 @@ export const getBtnBorderStyles = (btnType: string): any => {
     tertiary: BaseStyles.borderTertiary
   };
   return borderStyleMapForBtn[btnType];
-}
-
-export const dummfunct = () => {};
+};
