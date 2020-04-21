@@ -1,16 +1,23 @@
+// base and lib imports
 import * as React from 'react';
-import { StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { getBtnBgColorByType, getBtnTextColorByType, getBtnBorderStyles } from '../../utils';
+import { StyleSheet, Text } from 'react-native';
+import Ripple from 'react-native-material-ripple';
+
+// utils and helpers
+import { getBtnBgColorByType, getBtnTextColorByType, getBtnBorderStyles } from '../../common/utils';
+import { ButtonProps } from './types';
+
+// styles and themes
 import { Fonts } from '../../styles';
 
-const Button = (props: any) => {
-  const { onPress, value, type } = props;
+const Button = (props: ButtonProps) => {
+  const { onPress, label, type } = props;
   const btnBgColor: string = getBtnBgColorByType(type);
   const btnTextColor: string = getBtnTextColorByType(type);
   const btnBorderStyle: any = getBtnBorderStyles(type);
 
   return (
-    <TouchableOpacity
+    <Ripple
       onPress={onPress}
       style={[styles.btnContainer, {
         ...btnBorderStyle,
@@ -22,9 +29,9 @@ const Button = (props: any) => {
           color: btnTextColor
         }]}
       >
-        {value}
+        {label}
       </Text>
-    </TouchableOpacity>
+    </Ripple>
   );
 };
 
@@ -49,7 +56,8 @@ const styles = StyleSheet.create({
 Button.defaultProps = {
   onPress: null,
   children: null,
-  type: 'primary'
+  type: 'primary',
+  label: ''
 };
 
 export default Button;

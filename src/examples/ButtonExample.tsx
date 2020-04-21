@@ -8,17 +8,17 @@ const ButtonExample = () => (
     <Button
       type="primary"
       onPress={null}
-      value="Primary Button"
+      label="Primary Button"
     />
     <Button
       type="secondary"
       onPress={null}
-      value="Secondary Button"
+      label="Secondary Button"
     />
     <Button
       type="tertiary"
       onPress={null}
-      value="Tertiary Button"
+      label="Tertiary Button"
     />
   </View>
 );
