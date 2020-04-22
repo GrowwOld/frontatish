@@ -1,4 +1,4 @@
-const colors = {
+const defualtColors = {
   background: '#1F0808',
   StatusBarColor: '#fff',
   StatusBarContentColor: 'dark-content',
@@ -60,7 +60,6 @@ const colors = {
   EMERALD_GREEN: '#3fcc43',
   WHITE: '#ffffff',
   IRON: '#d2d5d8',
-  ROYAL_BLUE: '#5768E9',
   ELECTRIC_VIOLET: 'rgb(144, 134, 250)',
   WILD_SAND: '#F5F5F5',
   SWAMP: '#00161f',
@@ -193,101 +192,109 @@ const colors = {
   MINT: '#F5FDFB',
   LIGHT_YELLOW: 'rgba(255, 182, 27, 0.1)',
   LIGHT_RED: '#FFF8F7',
-  // insight graph colors
   YELLOW_SEA: '#ffae00',
   PERSIAN_BLUE: '#2621d7',
   TURQUOISE: '#46cdcf',
   GORSE: '#fee94e',
-  DARK_SILVER: '#e6e7e8', // need to add correponding black color
+  DARK_SILVER: '#e6e7e8',
   DODGER_BLUE: '#4285f4',
   BLUR_BLUE: '#dce1ff',
   LIGHTEST_GREEN: '#E6FBF6',
   CONSTANT_GRAY: '#80868Bb3'
 
 };
-export default colors;
 
-// export const Colors = new Theme.Colors({
-//   DEFAULT_THEME: {
-//     ...colors
-//   },
-//   NIGHT_MODE: {
-//     ...colors,
-//     StatusBarColor: '#000',
-//     StatusBarContentColor: 'light-content',
-//     Ripple_Color: '#CCCCCC',
-//     Button_Ripple_Color: '#000',
-//     snow: '#222731',
-//     WHITE: '#222731',
-//     WHITE_O: '#1b1f27',
-//     WHITE_40: '#1b1f27',
-//     WHITE_1: '#222731',
-//     REGENT_GRAY: '#323944',
-//     Icon_Color: '#80868b',
-//     Icon_Color_1: '#ffffff',
-//     SLATE_GREY: '#80868b',
-//     NEW_GREY: '#FFFFFF',
-//     LIGHTER_GREY: 'rgba(255, 255, 255, 0.5)',
-//     BG_GREEN: '#00d09c11',
-//     charcoal: '#80868b',
-//     CHARCOAL_CONSTANT: '#80868b',
-//     charcoal1: 'rgba(255, 255, 255, 0.7)',
-//     coal: 'rgba(255, 255, 255, 0.7)',
-//     PALE_GREY: '#80868b',
-//     PALE_GREY_0: '#1b1f27',
-//     PALE_GREY_TWO: 'rgba(248, 248, 248, 0.1)',
-//     WHITE_10: '#1b1f27',
-//     WHITE_20: '#000',
-//     placeholderText: '#878787',
-//     WHITE_30: 'rgba(255, 255, 255, 0.2)',
-//     BLACK: 'rgba(255, 255, 255, 0.7)', // 'rgba(255, 255, 255, 0.7)',
-//     CONSTANT_BLACK: '#44475B',
-//     BATTLESHIP_GREY: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_20: 'rgba(255, 255, 255, 0.7)',
-//     silver: 'rgba(248,248,248, 0.1)',
-//     SILVER: 'rgba(248,248,248, 0.1)',
-//     SILVER_1: '#1b1f27',
-//     SILVER_10: 'rgba(255, 255, 255, 0.7)',
-//     ricePaper: '#1b1f27',
-//     ALABASTER: '#1b1f27',
-//     BLACK_10: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_21: 'rgba(255, 255, 255, 0.9)',
-//     BLACK_30: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_40: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_50: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_60: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_70: 'rgba(255, 255, 255, 0.7)', // bold text
-//     BLACK_80: '#ffffff', // heading
-//     BLACK_90: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_DARK: 'rgba(255, 255, 255, 0.7)',
-//     BLACK_TWO: 'rgba(255, 255, 255, 0.7)',
-//     GREYISH_BROWN: '#80868b',
-//     STEEL_GREY_1: 'rgba(255, 255, 255, 0.7)',
-//     LIGHT_ROYAL_BLUE: '#00d09c',
-//     GROWW_LOGO_BLLUE: '#00d09c',
-//     Orchid: '#625eeb',
-//     ROYAL_BLUE: '#00d09c',
-//     ROYAL_BLUE_1: '#00d09c',
-//     INDIGO: '#00d09c',
-//     CLEAR_BLUE: '#00d09c',
-//     DUCK_EGG_BLUE: '#6aa899',
-//     TRANSPARENT: '#2D333C',
-//     WILD_SAND: 'rgba(248,248,248, 0.1)',
-//     EBONY_CLAY: 'rgba(255, 255, 255, 0.7)',
-//     PICKLED_BLUEWOOD: 'rgba(255, 255, 255, 0.5)',
-//     steel: 'rgba(255, 255, 255, 0.5)',
-//     PINKY_RED: '#C82121',
-//     LOBLOLLY: '#80868b',
-//     RANDOM_STATUS: '#ffb28c',
-//     CONSTANT_WHITE: '#fff',
-//     CHARCOAL_10: 'rgba(255, 255, 255, 0.7)',
-//     GREEN_BLUE_0_05: '#323944',
-//     GREEN_BLUE_10: '#323944',
-//     MINT: '#1b1f27',
-//     STRIP_COLOR_80: 'rgba(0, 208, 156, 0.18)',
-//     ORCHID_10: 'rgba(0, 208, 156,0.1)',
-//     BLUR_BLUE: 'rgba(255, 255, 255, 0.5)',
-//     LIGHTEST_GREEN: '#222731',
-//     CONSTANT_GRAY: '#80868Bb3'
-//   }
-// });
+
+const Colors = {
+  LIGHT_MODE: { ...defualtColors },
+  DARK_MODE: {
+    ...defualtColors,
+    StatusBarColor: '#000',
+    StatusBarContentColor: 'light-content',
+    Ripple_Color: '#CCCCCC',
+    Button_Ripple_Color: '#000',
+    snow: '#222731',
+    WHITE: '#222731',
+    WHITE_O: '#1b1f27',
+    WHITE_40: '#1b1f27',
+    WHITE_1: '#222731',
+    REGENT_GRAY: '#323944',
+    Icon_Color: '#80868b',
+    Icon_Color_1: '#ffffff',
+    SLATE_GREY: '#80868b',
+    NEW_GREY: '#FFFFFF',
+    LIGHTER_GREY: 'rgba(255, 255, 255, 0.5)',
+    BG_GREEN: '#00d09c11',
+    charcoal: '#80868b',
+    CHARCOAL_CONSTANT: '#80868b',
+    charcoal1: 'rgba(255, 255, 255, 0.7)',
+    coal: 'rgba(255, 255, 255, 0.7)',
+    PALE_GREY: '#80868b',
+    PALE_GREY_0: '#1b1f27',
+    PALE_GREY_TWO: 'rgba(248, 248, 248, 0.1)',
+    WHITE_10: '#1b1f27',
+    WHITE_20: '#000',
+    placeholderText: '#878787',
+    WHITE_30: 'rgba(255, 255, 255, 0.2)',
+    BLACK: 'rgba(255, 255, 255, 0.7)', // 'rgba(255, 255, 255, 0.7)',
+    CONSTANT_BLACK: '#44475B',
+    BATTLESHIP_GREY: 'rgba(255, 255, 255, 0.7)',
+    BLACK_20: 'rgba(255, 255, 255, 0.7)',
+    silver: 'rgba(248,248,248, 0.1)',
+    SILVER: 'rgba(248,248,248, 0.1)',
+    SILVER_1: '#1b1f27',
+    SILVER_10: 'rgba(255, 255, 255, 0.7)',
+    ricePaper: '#1b1f27',
+    ALABASTER: '#1b1f27',
+    BLACK_10: 'rgba(255, 255, 255, 0.7)',
+    BLACK_21: 'rgba(255, 255, 255, 0.9)',
+    BLACK_30: 'rgba(255, 255, 255, 0.7)',
+    BLACK_40: 'rgba(255, 255, 255, 0.7)',
+    BLACK_50: 'rgba(255, 255, 255, 0.7)',
+    BLACK_60: 'rgba(255, 255, 255, 0.7)',
+    BLACK_70: 'rgba(255, 255, 255, 0.7)', // bold text
+    BLACK_80: '#ffffff', // heading
+    BLACK_90: 'rgba(255, 255, 255, 0.7)',
+    BLACK_DARK: 'rgba(255, 255, 255, 0.7)',
+    BLACK_TWO: 'rgba(255, 255, 255, 0.7)',
+    GREYISH_BROWN: '#80868b',
+    STEEL_GREY_1: 'rgba(255, 255, 255, 0.7)',
+    LIGHT_ROYAL_BLUE: '#00d09c',
+    Orchid: '#625eeb',
+    DUCK_EGG_BLUE: '#6aa899',
+    TRANSPARENT: '#2D333C',
+    WILD_SAND: 'rgba(248,248,248, 0.1)',
+    EBONY_CLAY: 'rgba(255, 255, 255, 0.7)',
+    PICKLED_BLUEWOOD: 'rgba(255, 255, 255, 0.5)',
+    steel: 'rgba(255, 255, 255, 0.5)',
+    PINKY_RED: '#C82121',
+    LOBLOLLY: '#80868b',
+    RANDOM_STATUS: '#ffb28c',
+    CONSTANT_WHITE: '#fff',
+    CHARCOAL_10: 'rgba(255, 255, 255, 0.7)',
+    GREEN_BLUE_0_05: '#323944',
+    GREEN_BLUE_10: '#323944',
+    MINT: '#1b1f27',
+    STRIP_COLOR_80: 'rgba(0, 208, 156, 0.18)',
+    ORCHID_10: 'rgba(0, 208, 156,0.1)',
+    BLUR_BLUE: 'rgba(255, 255, 255, 0.5)',
+    LIGHTEST_GREEN: '#222731',
+    CONSTANT_GRAY: '#80868Bb3'
+  }
+};
+
+
+const getColors = (isDark: boolean | undefined | null) => {
+  // this is to handle the dark mode
+  // color in the kit might change the
+  // logic in future
+
+  // if dark mode is active then
+  // return dark mode colors
+  if (isDark) {
+    return Colors.DARK_MODE;
+  }
+  return Colors.LIGHT_MODE;
+};
+
+export default getColors;

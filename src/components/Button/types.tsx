@@ -8,13 +8,21 @@ import { ReactNode } from 'react';
 
 // Button component props type
 export interface ButtonProps {
+  children?: ReactNode,
+  disabled?: boolean,
+  isDark?: boolean | undefined | null,
+  loading?: boolean,
   label: string,
   // can be changed
-  type: string,
+  type: 'primary' | 'secondary' | 'default',
   onPress?: () => void,
   // to show some loading state
   // inside the button its self
-  loading?: boolean,
-  disabled?: boolean,
-  children?: ReactNode,
+}
+
+export interface ButtonStyles {
+  backgroundColor?: string,
+  borderWidth?: number,
+  borderColor?: string,
+  borderRadius?: number
 }

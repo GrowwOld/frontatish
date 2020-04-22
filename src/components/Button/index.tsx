@@ -5,49 +5,49 @@ import { ProgressBarAndroid } from '@react-native-community/progress-bar-android
 import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
-import {
-  getBtnBgColorByType,
-  getBtnTextColorByType,
-  getBtnBorderStyles
-} from './helper';
+import { getBtnStyles } from './helper';
 import { ButtonProps } from './types';
 
 // styles and themes
-import { Fonts, Colors } from '../../styles';
+import { getColors } from '../../styles';
 
 const Button = (props: ButtonProps) => {
-  const { onPress, label, type, loading } = props;
-  const btnBgColor: string = getBtnBgColorByType(type);
-  const btnTextColor: string = getBtnTextColorByType(type);
-  const btnBorderStyle: any = getBtnBorderStyles(type);
-
-  const renderProgressBar = () => {
-    if (loading) {
-      return (
-        <View style={{ position: 'absolute', width: '100%', top: -6, zIndex: 1 }}>
-          <ProgressBarAndroid
-            indeterminate
-            styleAttr="Horizontal"
-            color={Colors.WHITE}
-          />
-        </View>
-
-
-      );
-    }
-    return null;
-  };
+  const { disabled, isDark, label, loading, type, onPress } = props;
+  const Colors = getColors(isDark);
+  // getting base button styles defined
+  // by our guidelines, component also
+  // takes custom styles so that can also
+  // be applied
+  const baseBtnStyles = getBtnStyles(type, Colors);
+  console.log(baseBtnStyles);
+  const renderProgressBar = () => (
+    <View style={{
+      position: 'absolute',
+      width: '100%',
+      top: -6,
+      zIndex: 1
+    }}
+    >
+      <ProgressBarAndroid
+        indeterminate
+        styleAttr="Horizontal"
+        color={Colors.WHITE}
+      />
+    </View>
+  );
 
   return (
     <Ripple
       onPress={onPress}
-      style={[styles.btnContainer, {
-        ...btnBorderStyle,
-        backgroundColor: btnBgColor,
-      }]}
+      disabled={disabled}
+      style={baseBtnStyles}
+      // style={[styles.btnContainer, {
+      //   ...btnBorderStyle,
+      //   backgroundColor: btnBgColor,
+      // }]}
     >
       {loading && renderProgressBar()}
-      <Text style={[styles.btnText, { color: btnTextColor }]}>
+      <Text>
         {label}
       </Text>
     </Ripple>
@@ -56,26 +56,29 @@ const Button = (props: ButtonProps) => {
 
 const styles = StyleSheet.create({
   // define styles
-  btnContainer: {
-    height: 50,
-    marginVertical: 20,
-    borderRadius: 4,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnText: {
-    fontFamily: Fonts.type.gotham_medium,
-    fontSize: Fonts.size.regular_16,
-    fontWeight: 'bold',
-  }
+  // btnContainer: {
+  //   height: 50,
+  //   flex: 1,
+  //   marginVertical: 20,
+  //   borderRadius: 4,
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+  // },
+  // btnText: {
+  //   fontFamily: Fonts.type.gotham_medium,
+  //   fontSize: Fonts.size.regular_16,
+  //   fontWeight: 'bold',
+  // }
 });
 
 Button.defaultProps = {
-  onPress: null,
   children: null,
-  type: 'primary',
+  disabled: false,
+  isDark: false,
   label: '',
-  loading: true
+  loading: false,
+  type: 'primary',
+  onPress: null,
 };
 
 export default Button;
