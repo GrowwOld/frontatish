@@ -9,7 +9,7 @@
 */
 
 import { BaseStyles, getColors } from '../../styles';
-import { ButtonStyles } from './types';
+import { StyleType, ColorType } from '../../common/types';
 
 export const getBtnBgColorByType = (btnType: string, Colors: any)
   : string => {
@@ -40,24 +40,60 @@ export const getBtnBorderStyles = (btnType: string): any => {
   return borderStyleMapForBtn[btnType];
 };
 
-export const getBtnStyles = (btnType: string, Colors: any): ButtonStyles => {
+export const getBtnStyles = (
+  btnType: string,
+  Colors: ColorType,
+  disabled: boolean | null | undefined
+): StyleType => {
   switch (btnType) {
     case 'primary':
       return {
         ...BaseStyles.grwButton,
-        backgroundColor: Colors.GREEN_BLUE,
+        backgroundColor: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+        color: Colors.WHITE,
+        // opacity: disabled ? 0.6 : 1
       };
     case 'secondary':
       return {
         ...BaseStyles.grwButton,
-        borderColor: Colors.GREEN_BLUE,
+        backgroundColor: Colors.WHITE,
+        borderColor: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+        // opacity: disabled ? 0.6 : 1,
         borderWidth: 1,
       };
     case 'default':
       return {
         ...BaseStyles.grwButton,
+        backgroundColor: Colors.WHITE,
         borderColor: Colors.DARK_SILVER,
         borderWidth: 1,
+      };
+    default: {
+      return {};
+    }
+  }
+};
+
+export const getLabelStyles = (
+  btnType: string,
+  Colors: ColorType,
+  disabled: boolean | null | undefined
+): StyleType => {
+  switch (btnType) {
+    case 'primary':
+      return {
+        ...BaseStyles.grwLabel,
+        color: Colors.CONSTANT_WHITE,
+      };
+    case 'secondary':
+      return {
+        ...BaseStyles.grwLabel,
+        color: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+      };
+    case 'default':
+      return {
+        ...BaseStyles.grwLabel,
+        color: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
       };
     default: {
       return {};

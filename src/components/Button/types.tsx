@@ -5,24 +5,20 @@
   mponent.
 */
 import { ReactNode } from 'react';
+import { StyleType } from '../../common/types';
 
 // Button component props type
 export interface ButtonProps {
   children?: ReactNode,
-  disabled?: boolean,
-  isDark?: boolean | undefined | null,
+  disabled?: boolean | null,
+  isDark?: boolean,
   loading?: boolean,
   label: string,
   // can be changed
   type: 'primary' | 'secondary' | 'default',
   onPress?: () => void,
+  customStyles: StyleType,
   // to show some loading state
   // inside the button its self
 }
 
-export interface ButtonStyles {
-  backgroundColor?: string,
-  borderWidth?: number,
-  borderColor?: string,
-  borderRadius?: number
-}

@@ -17,19 +17,17 @@ import { Button } from './components';
 
 
 const App = () => {
-
   const [darkMode, setDarkMode] = useState(false);
   const Colors = getColors(darkMode);
   return (
     <View style={[styles.container, { backgroundColor: Colors.WHITE }]}>
-      <View style={{ }}>
-        <Button
-          label="Change Theme"
-          isDark={darkMode}
-          onPress={() => setDarkMode(!darkMode)}
-        />
-      </View>
+
       <ButtonExample isDark={darkMode} />
+      <Button
+        label="Change Theme"
+        isDark={darkMode}
+        onPress={() => setDarkMode(!darkMode)}
+      />
     </View>
   );
 };

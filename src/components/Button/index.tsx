@@ -5,21 +5,28 @@ import { ProgressBarAndroid } from '@react-native-community/progress-bar-android
 import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
-import { getBtnStyles } from './helper';
+import { StyleType } from '../../common/types';
 import { ButtonProps } from './types';
+import { getBtnStyles, getLabelStyles } from './helper';
 
 // styles and themes
 import { getColors } from '../../styles';
 
 const Button = (props: ButtonProps) => {
-  const { disabled, isDark, label, loading, type, onPress } = props;
+  const { customStyles, disabled, isDark, label, loading, type, onPress } = props;
+  // getting the suitable color based on the theme
+  // activated inside the app
   const Colors = getColors(isDark);
   // getting base button styles defined
-  // by our guidelines, component also
-  // takes custom styles so that can also
+  // by our design guidelines, component
+  // also takes custom styles so that can also
   // be applied
-  const baseBtnStyles = getBtnStyles(type, Colors);
-  console.log(baseBtnStyles);
+  const baseBtnStyles: StyleType = getBtnStyles(type, Colors, disabled);
+  const mainBtnStyles: StyleType = {
+    ...baseBtnStyles,
+    ...customStyles
+  };
+  const baseLabelStyles: StyleType = getLabelStyles(type, Colors, disabled);
   const renderProgressBar = () => (
     <View style={{
       position: 'absolute',
@@ -31,7 +38,7 @@ const Button = (props: ButtonProps) => {
       <ProgressBarAndroid
         indeterminate
         styleAttr="Horizontal"
-        color={Colors.WHITE}
+        color={Colors.CONSTANT_WHITE}
       />
     </View>
   );
@@ -40,36 +47,36 @@ const Button = (props: ButtonProps) => {
     <Ripple
       onPress={onPress}
       disabled={disabled}
-      style={baseBtnStyles}
+      style={mainBtnStyles}
       // style={[styles.btnContainer, {
       //   ...btnBorderStyle,
       //   backgroundColor: btnBgColor,
       // }]}
     >
       {loading && renderProgressBar()}
-      <Text>
+      <Text style={baseLabelStyles}>
         {label}
       </Text>
     </Ripple>
   );
 };
 
-const styles = StyleSheet.create({
-  // define styles
-  // btnContainer: {
-  //   height: 50,
-  //   flex: 1,
-  //   marginVertical: 20,
-  //   borderRadius: 4,
-  //   alignItems: 'center',
-  //   justifyContent: 'center',
-  // },
-  // btnText: {
-  //   fontFamily: Fonts.type.gotham_medium,
-  //   fontSize: Fonts.size.regular_16,
-  //   fontWeight: 'bold',
-  // }
-});
+// const styles = StyleSheet.create({
+//   // define styles
+//   // btnContainer: {
+//   //   height: 50,
+//   //   flex: 1,
+//   //   marginVertical: 20,
+//   //   borderRadius: 4,
+//   //   alignItems: 'center',
+//   //   justifyContent: 'center',
+//   // },
+//   // btnText: {
+//   //   fontFamily: Fonts.type.gotham_medium,
+//   //   fontSize: Fonts.size.regular_16,
+//   //   fontWeight: 'bold',
+//   // }
+// });
 
 Button.defaultProps = {
   children: null,
@@ -79,6 +86,7 @@ Button.defaultProps = {
   loading: false,
   type: 'primary',
   onPress: null,
+  customStyles: {},
 };
 
 export default Button;

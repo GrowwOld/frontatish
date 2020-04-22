@@ -16,18 +16,20 @@ const ButtonExample = (props: ButtonExampleProps) => {
   };
   return (
     <ScrollView contentContainerStyle={styles.exampleBtnContainer}>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row', margin: 20 }}>
         <Button
           type="primary"
           onPress={handlePress}
           label="Primary Button"
           isDark={isDark}
+          customStyles={{ flex: 1, marginRight: 20 }}
         />
         <Button
           type="secondary"
           onPress={handlePress}
           label="Secondary Button"
           isDark={isDark}
+          customStyles={{ flex: 1 }}
         />
       </View>
       <Button
@@ -57,7 +59,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
 const styles = StyleSheet.create({
   exampleBtnContainer: {
     flex: 1,
-    justifyContent: 'space-between'
+    justifyContent: 'space-evenly'
   },
   exampleBtnText: {}
 });
