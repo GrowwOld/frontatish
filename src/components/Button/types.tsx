@@ -21,4 +21,3 @@ export interface ButtonProps {
   // to show some loading state
   // inside the button its self
 }
-
