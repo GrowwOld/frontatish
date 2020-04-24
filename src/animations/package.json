@@ -1,0 +1,9 @@
+{
+  "name": "@growwsuper/animations",
+  "version": "0.0.1",
+  "description": "general animations wrappers",
+  "main": "index.js",
+  "repository": "https://github.com/groww/uikit",
+  "author": "groww_devs",
+  "license": "MIT"
+}
