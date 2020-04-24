@@ -2,8 +2,10 @@
   "name": "@growwsuper/components",
   "version": "0.0.1",
   "description": "general ui components",
-  "main": "index.js",
   "repository": "http://github.com/groww/uikit/",
   "author": "groww_devs",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react-native-material-ripple": "^0.9.1"
+  }
 }
