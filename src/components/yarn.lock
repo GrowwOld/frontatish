@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@react-native-community/progress-bar-android@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.1.tgz#0cf4b256040ce503d313a1199ec192f89cbe85dd"
+  integrity sha512-ujZX1JGFh58KlC28pzIIlltkcRnmP5C6cuGwsLHFb3RKxB1LbgsPRFupCelaPWYCQeKiqr2AjCUv3tcX2f7QYQ==
+
+"@react-native-community/progress-view@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-view/-/progress-view-1.0.2.tgz#41c5823e2797140d77b07949121cebb65f30e19c"
+  integrity sha512-E5KQ2OQ3ET7ABs4tgE5Byv7nPoUEA9su9/gY6PdyP4rjs+Q9F4Gmma+0pXJV7GIK7oBu0d1eU9fevC6hisRVtQ==
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

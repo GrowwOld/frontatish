@@ -10,7 +10,6 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@react-native-community/progress-bar-android": "^1.0.1",
     "react": "16.11.0",
     "react-native": "0.62.2"
   },
