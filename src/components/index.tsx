@@ -1,4 +1,4 @@
 import Button from './Button';
-import NumberPad from './NumberPad';
+import NumPad from './NumPad';
 
-export { Button, NumberPad };
+export { Button, NumPad };

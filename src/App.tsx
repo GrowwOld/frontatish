@@ -9,9 +9,10 @@
  */
 
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 
 import ButtonExample from './examples/ButtonExample';
+import NumPadExample from './examples/NumPadExample';
 import { getColors } from './styles';
 import { Button } from './components';
 
@@ -23,6 +24,7 @@ const App = () => {
     <View style={[styles.container, { backgroundColor: Colors.WHITE }]}>
 
       <ButtonExample isDark={darkMode} />
+      <NumPadExample isDark={darkMode} />
       <Button
         label="Change Theme"
         isDark={darkMode}

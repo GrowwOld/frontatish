@@ -1,6 +1,6 @@
 // example usage of button component
 import * as React from 'react';
-import { Alert, ScrollView, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { Button } from '../components';
 
 interface ButtonExampleProps {
@@ -15,7 +15,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
     );
   };
   return (
-    <ScrollView contentContainerStyle={styles.exampleBtnContainer}>
+    <View style={styles.exampleBtnContainer}>
       <View style={{ flexDirection: 'row', margin: 20 }}>
         <Button
           type="primary"
@@ -52,7 +52,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
         isDark={isDark}
         disabled
       />
-    </ScrollView>
+    </View>
   );
 };
 
