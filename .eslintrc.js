@@ -21,6 +21,11 @@ module.exports = {
         "tsx": "never"
       }
    ],
+   "import/no-extraneous-dependencies": [
+    "error", {
+       "packageDir": ['./','./src/components']
+    }
+  ],
    "no-unused-vars": "off",
   "@typescript-eslint/no-unused-vars": "error",
   "object-curly-newline": ["error", { "multiline": true }]

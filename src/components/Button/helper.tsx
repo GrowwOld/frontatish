@@ -8,7 +8,7 @@
   then it should written in commonHelpers.
 */
 
-import { BaseStyles, getColors } from '../../styles';
+import { BaseStyles } from '../../styles';
 import { StyleType, ColorType } from '../../common/types';
 
 export const getBtnBgColorByType = (btnType: string, Colors: any)
