@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import ButtonExample from './examples/ButtonExample';
+import PopupExample from './examples/PopupExample';
 import { getColors } from './styles';
 import { Button } from './components';
 
@@ -23,6 +24,7 @@ const App = () => {
     <View style={[styles.container, { backgroundColor: Colors.WHITE }]}>
 
       <ButtonExample isDark={darkMode} />
+      <PopupExample />
       <Button
         label="Change Theme"
         isDark={darkMode}
