@@ -9,7 +9,7 @@
  */
 
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, SafeAreaView } from 'react-native';
 
 import ButtonExample from './examples/ButtonExample';
 import PopupExample from './examples/PopupExample';
@@ -21,7 +21,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(false);
   const Colors = getColors(darkMode);
   return (
-    <View style={[styles.container, { backgroundColor: Colors.WHITE }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
 
       <ButtonExample isDark={darkMode} />
       <PopupExample />
@@ -30,7 +30,7 @@ const App = () => {
         isDark={darkMode}
         onPress={() => setDarkMode(!darkMode)}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

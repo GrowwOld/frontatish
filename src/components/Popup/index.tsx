@@ -1,90 +1,102 @@
-import React, { Component, useState } from "react";
-import {
-  Alert,
-  Modal,
-  StyleSheet,
-  Text,
-  TouchableHighlight,
-  View
-} from "react-native";
+import React, { Component } from 'react';
+import { Button, Text, View, StyleSheet, SafeAreaView, Dimensions, Animated, Easing } from 'react-native';
+import Modal from 'react-native-modal';
 
-const App = () => {
-  const [modalVisible, setModalVisible] = useState(false);
-  return (
-    <View style={styles.centeredView}>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          Alert.alert("Modal has been closed.");
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <Text style={styles.modalText}>Hello World!</Text>
+const { height: screenHeight } = Dimensions.get('window');
+export default class ModalTester extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpen: false,
+      fake: false,
+      fullScreen: false,
+      pan: new Animated.ValueXY({ x: 0, y: 50 })
+    };
+  }
 
-            <TouchableHighlight
-              style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <Text style={styles.textStyle}>Hide Modal</Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </Modal>
+  toggleModal = () => {
+    this.setState({ isOpen: !this.state.isOpen });
+  };
 
-      <TouchableHighlight
-        style={styles.openButton}
-        onPress={() => {
-          setModalVisible(true);
-        }}
-      >
-        <Text style={styles.textStyle}>Show Modal</Text>
-      </TouchableHighlight>
-    </View>
-  );
-};
+  toggleFake = () => {
+    this.setState({
+      fake: !this.state.fake
+    });
+  }
+
+  onSwipeComplete = ({ swipingDirection }) => {
+    if (swipingDirection === 'down') {
+      this.setState({ isOpen: false });
+      this.setState({ fullScreen: false });
+    }
+    else {
+      const TIMING_CONFIG = { duration: 300, easing: Easing.inOut(Easing.ease) };
+      Animated.timing(this.state.pan, {
+        ...TIMING_CONFIG,
+        toValue: { x: 0, y: screenHeight },
+        useNativeDriver: true,
+      }).start();
+    }
+  }
+
+  // onSwipeMove = (percentageShown) => {
+  //   console.log("precentage show", percentageShown);
+  // }
+
+  render() {
+    const { isOpen, fake, fullScreen } = this.state;
+    console.log(this.state.pan.y);
+    return (
+      <View style={{ flex: 1 }}>
+        <Button title="Show modal" onPress={this.toggleModal} />
+        <Modal
+          isVisible={isOpen}
+          swipeDirection={['up', 'down']}
+          // scrollOffset={30}
+          swipeThreshold={30}
+          onSwipeComplete={this.onSwipeComplete}
+          // onSwipeMove={this.onSwipeMove}
+          style={{ margin: 0 }}
+          // hideModalContentWhileAnimating
+        >
+          {/* <SafeAreaView> */}
+            <Animated.View style={[styles.bottomFixed, { height: this.state.pan.height}]}>
+              <Text>Hello!</Text>
+              <Button title="Hide modal" onPress={this.toggleModal} />
+              <Button title="Fake output" onPress={this.toggleFake} />
+              {fake && (
+                <View>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                  <Text>Vinit</Text>
+                </View>
+              )}
+            </Animated.View>
+          {/* </SafeAreaView> */}
+        </Modal>
+      </View>
+    );
+  }
+}
+
 
 const styles = StyleSheet.create({
-  centeredView: {
+  fullScreen: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
+    backgroundColor: '#fff'
   },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5
-  },
-  openButton: {
-    backgroundColor: "#F194FF",
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
+  bottomFixed: {
+    // flex: 1,
+    // backgroundColor: '#fff'
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    backgroundColor: '#fff'
   }
 });
-
-export default App;
