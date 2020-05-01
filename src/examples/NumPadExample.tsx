@@ -3,11 +3,13 @@ import { View, Text } from 'react-native';
 
 import { NumPad } from '../components';
 
+import { Fonts } from '../styles';
+
 interface NumPadExampleState {
-  input: string
+  input: string;
 }
 interface NumPadExampleProps {
-  isDark: boolean
+  isDark: boolean;
 }
 class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   constructor(props: NumPadExampleProps) {
@@ -26,14 +28,14 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   onDeleteItem = () => {
     const { input } = this.state;
     this.setState({ input: input.substring(0, input.length - 1) });
-  }
+  };
 
   render() {
     const { input } = this.state;
     const { isDark } = this.props;
     return (
       <View>
-        <Text>{input}</Text>
+        <Text style={Fonts.style.h3}>{input}</Text>
         <NumPad
           onItemClick={this.onItemClick}
           onDeleteItem={this.onDeleteItem}

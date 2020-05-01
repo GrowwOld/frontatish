@@ -4,15 +4,14 @@ import { Alert, StyleSheet, View } from 'react-native';
 import { Button } from '../components';
 
 interface ButtonExampleProps {
-  isDark: boolean
+  isDark: boolean;
+  openPopup: () => void;
 }
 
 const ButtonExample = (props: ButtonExampleProps) => {
-  const { isDark } = props;
+  const { isDark, openPopup } = props;
   const handlePress = () => {
-    Alert.alert(
-      'Just checking onPress',
-    );
+    Alert.alert('Just checking onPress');
   };
   return (
     <View style={styles.exampleBtnContainer}>
@@ -26,7 +25,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
         />
         <Button
           type="secondary"
-          onPress={handlePress}
+          onPress={openPopup}
           label="Secondary Button"
           isDark={isDark}
           customStyles={{ flex: 1 }}
@@ -59,9 +58,9 @@ const ButtonExample = (props: ButtonExampleProps) => {
 const styles = StyleSheet.create({
   exampleBtnContainer: {
     flex: 1,
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
-  exampleBtnText: {}
+  exampleBtnText: {},
 });
 
 export default ButtonExample;
