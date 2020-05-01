@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
-import { Popup } from '../components';
-import { getColors } from '../styles';
+import { Text, View } from 'react-native';
+import { Popup, Button } from '../components';
+import { getColors, Fonts } from '../styles';
 
 interface PopupExampleProps {
   isDark: boolean;
   isOpen: boolean;
+  children: React.ReactNode;
   closePopup: () => void;
 }
 const PopupExample = (props: PopupExampleProps) => {
   const [show, setShow] = useState(false);
-  const { isDark, isOpen, closePopup } = props;
+  const { isDark, isOpen, closePopup, children } = props;
 
   // to handle dynamic content inside popup
   // which is needed to be shown inside the
@@ -28,22 +29,22 @@ const PopupExample = (props: PopupExampleProps) => {
         swipeThreshold={10}
         childrenContainerStyle={{ backgroundColor: Colors.WHITE }}
       >
-        <View>
-          <Text>Hello!</Text>
-          <Button title="Fake output" onPress={handleShowClick} />
-          {show && (
-            <View>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-              <Text>Vinit</Text>
-            </View>
-          )}
+        <View style={{ padding: 20 }}>
+          <Text
+            style={[
+              Fonts.style.h5,
+              { marginVertical: 20, color: Colors.BLACK },
+            ]}
+          >
+            This popup contains the custom keypad component
+          </Text>
+          <Button
+            isDark={isDark}
+            label={!show ? 'Show Numpad' : 'Hide Numpad'}
+            onPress={handleShowClick}
+            type="secondary"
+          />
+          {show && children}
         </View>
       </Popup>
     </View>

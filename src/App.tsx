@@ -27,8 +27,9 @@ const App = () => {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
       <ButtonExample isDark={darkMode} openPopup={openPopup} />
-      <NumPadExample isDark={darkMode} />
-      <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen} />
+      <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen}>
+        <NumPadExample isDark={darkMode} />
+      </PopupExample>
       <Button
         label="Change Theme"
         isDark={darkMode}
