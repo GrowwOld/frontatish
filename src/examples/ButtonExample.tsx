@@ -1,7 +1,8 @@
 // example usage of button component
 import * as React from 'react';
-import { Alert, StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View, Text } from 'react-native';
 import { Button } from '../components';
+import { Fonts } from '../styles';
 
 interface ButtonExampleProps {
   isDark: boolean;
@@ -15,7 +16,8 @@ const ButtonExample = (props: ButtonExampleProps) => {
   };
   return (
     <View style={styles.exampleBtnContainer}>
-      <View style={{ flexDirection: 'row' }}>
+      <Text style={[Fonts.style.h4]}>Button Examples</Text>
+      <View style={{ flexDirection: 'row', marginVertical: 20 }}>
         <Button
           type="primary"
           onPress={handlePress}
@@ -31,26 +33,32 @@ const ButtonExample = (props: ButtonExampleProps) => {
           customStyles={{ flex: 1 }}
         />
       </View>
-      <Button
-        type="default"
-        onPress={handlePress}
-        label="Default Button"
-        isDark={isDark}
-      />
-      <Button
-        type="primary"
-        onPress={handlePress}
-        label="Loading Button"
-        isDark={isDark}
-        loading
-      />
-      <Button
-        type="primary"
-        onPress={handlePress}
-        label="Disabled button"
-        isDark={isDark}
-        disabled
-      />
+      <View style={{ marginVertical: 20 }}>
+        <Button
+          type="default"
+          onPress={handlePress}
+          label="Default Button"
+          isDark={isDark}
+        />
+      </View>
+      <View style={{ marginVertical: 20 }}>
+        <Button
+          type="primary"
+          onPress={handlePress}
+          label="Loading Button"
+          isDark={isDark}
+          loading
+        />
+      </View>
+      <View style={{ marginVertical: 20 }}>
+        <Button
+          type="primary"
+          onPress={handlePress}
+          label="Disabled button"
+          isDark={isDark}
+          disabled
+        />
+      </View>
     </View>
   );
 };
@@ -58,7 +66,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
 const styles = StyleSheet.create({
   exampleBtnContainer: {
     flex: 1,
-    justifyContent: 'space-evenly',
+    // justifyContent: 'space-evenly',
     margin: 20,
   },
   exampleBtnText: {},
