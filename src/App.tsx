@@ -12,6 +12,7 @@ import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 
 import ButtonExample from './examples/ButtonExample';
+import NumPadExample from './examples/NumPadExample';
 import PopupExample from './examples/PopupExample';
 import { getColors } from './styles';
 import { Button } from './components';
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
       <ButtonExample isDark={darkMode} openPopup={openPopup} />
+      <NumPadExample isDark={darkMode} />
       <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen} />
       <Button
         label="Change Theme"

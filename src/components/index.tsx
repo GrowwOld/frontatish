@@ -1,5 +1,5 @@
 import Button from './Button';
-import NumberPad from './NumberPad';
+import NumPad from './NumPad';
 import Popup from './Popup';
 
-export { Button, NumberPad, Popup };
+export { Button, NumPad, Popup };
