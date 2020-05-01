@@ -1,15 +1,19 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { View, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
-import { PopupProps, PopupState } from './types';
+import { PopupProps } from './types';
 import { AlignTypes } from '../../common/types';
 import { getColors } from '../../styles';
 
 let Colors: any;
-export default class Popup extends Component<PopupProps, PopupState> {
-  onSwipeComplete = (siwpeObj: any) => {
+const Popup = (props: PopupProps) => {
+  // constructor(props: PopupProps) {
+  //   super(props);
+  //   this.state = { flexValue: 0 };
+  // }
+  const onSwipeComplete = (siwpeObj: any) => {
     const { swipingDirection } = siwpeObj;
-    const { closePopup } = this.props;
+    const { closePopup } = props;
     if (swipingDirection === 'down') {
       closePopup();
     } else {
@@ -18,10 +22,16 @@ export default class Popup extends Component<PopupProps, PopupState> {
     }
   };
 
-  // onSwipeMove = (percentageShown) => {
-  //   console.log("precentage show", percentageShown);
-  // }
-  getPosition = (position?: string): AlignTypes => {
+  const onSwipeMove = (percentageShown: number) => {
+    const fixedPercentage: number = parseFloat(percentageShown.toFixed(1));
+    const updateFlexValue: number = parseFloat(
+      (1 - fixedPercentage).toFixed(1),
+    );
+    console.log('flexValue', updateFlexValue, 'percentage', fixedPercentage);
+    // this.setState({ flexValue: updateFlexValue });
+  };
+
+  const getPosition = (position?: string): AlignTypes => {
     switch (position) {
       case 'bottom':
         return 'flex-end';
@@ -32,13 +42,13 @@ export default class Popup extends Component<PopupProps, PopupState> {
     }
   };
 
-  renderSwipeIndicator = () => (
+  const renderSwipeIndicator = () => (
     <View style={{ alignItems: 'center' }}>
       <View
         style={{
           marginTop: 10,
           marginBottom: 20,
-          backgroundColor: Colors.SILVER,
+          backgroundColor: Colors.LIGHTER_GREY,
           height: 4,
           width: 60,
           borderRadius: 4,
@@ -46,45 +56,111 @@ export default class Popup extends Component<PopupProps, PopupState> {
       />
     </View>
   );
+  const {
+    animationIn,
+    animationInTiming,
+    animationOut,
+    animationOutTiming,
+    avoidKeyboard,
+    coverScreen,
+    hasBackdrop,
+    backdropColor,
+    backdropOpacity,
+    backdropTransitionInTiming,
+    backdropTransitionOutTiming,
+    children,
+    childrenContainerStyle,
+    customBackdrop,
+    deviceHeight: deviceHeightProp,
+    deviceWidth: deviceWidthProp,
+    // custom props for opening and hanling dark mode
+    isOpen,
+    isDark,
+    onModalShow,
+    // custom props for positioning
+    position,
+    closePopup,
+    swipeDirection,
+    scrollOffset,
+    swipeThreshold,
+  } = props;
+  Colors = getColors(isDark);
+  // console.log('flexVAlue is', flexValue);
+  return (
+    <Modal
+      animationIn={animationIn}
+      animationInTiming={animationInTiming}
+      animationOut={animationOut}
+      animationOutTiming={animationOutTiming}
+      avoidKeyboard={avoidKeyboard}
+      coverScreen={coverScreen}
+      hasBackdrop={hasBackdrop}
+      backdropColor={backdropColor}
+      backdropOpacity={backdropOpacity}
+      backdropTransitionInTiming={backdropTransitionInTiming}
+      backdropTransitionOutTiming={backdropTransitionOutTiming}
+      customBackdrop={customBackdrop}
+      // children={children}
+      deviceHeight={deviceHeightProp}
+      deviceWidth={deviceWidthProp}
+      isVisible={isOpen}
+      onModalShow={onModalShow}
+      onBackdropPress={closePopup}
+      onBackButtonPress={closePopup}
+      onSwipeComplete={onSwipeComplete}
+      onSwipeMove={onSwipeMove}
+      swipeDirection={swipeDirection}
+      scrollOffset={scrollOffset}
+      swipeThreshold={swipeThreshold}
+      style={{
+        margin: 0,
+        // flex: 1,
+        justifyContent: getPosition(position),
+      }}
+      // hideModalContentWhileAnimating
+    >
+      <SafeAreaView style={childrenContainerStyle}>
+        {swipeDirection && renderSwipeIndicator()}
+        {children}
+      </SafeAreaView>
+    </Modal>
+  );
+};
 
-  render() {
-    const {
-      isOpen,
-      isDark,
-      position,
-      closePopup,
-      children,
-      swipeDirection,
-    } = this.props;
-    Colors = getColors(isDark);
-    const childrenContainerStyle = { backgroundColor: Colors.WHITE };
-    return (
-      <View style={{ flex: 1 }}>
-        <Modal
-          isVisible={isOpen}
-          swipeDirection={swipeDirection}
-          onBackdropPress={closePopup}
-          onBackButtonPress={closePopup}
-          // scrollOffset={30}
-          swipeThreshold={30}
-          onSwipeComplete={this.onSwipeComplete}
-          // onSwipeMove={this.onSwipeMove}
-          style={{
-            margin: 0,
-            justifyContent: this.getPosition(position),
-          }}
-          // hideModalContentWhileAnimating
-        >
-          <SafeAreaView style={childrenContainerStyle}>
-            {swipeDirection && this.renderSwipeIndicator()}
-            {children}
-          </SafeAreaView>
-        </Modal>
-      </View>
-    );
-  }
-}
+Popup.defaultProps = {
+  animationIn: 'slideInUp',
+  animationInTiming: 300,
+  animationOut: 'slideOutDown',
+  animationOutTiming: 300,
+  avoidKeyboard: false,
+  coverScreen: true,
+  hasBackdrop: true,
+  backdropColor: 'black',
+  backdropOpacity: 0.7,
+  backdropTransitionInTiming: 300,
+  backdropTransitionOutTiming: 300,
+  customBackdrop: null,
+  useNativeDriver: false,
+  deviceHeight: null,
+  deviceWidth: null,
+  hideModalContentWhileAnimating: false,
+  propagateSwipe: false,
+  isVisible: false,
+  onModalShow: () => null,
+  onModalWillShow: () => null,
+  onModalHide: () => null,
+  onModalWillHide: () => null,
+  onBackdropPress: () => null,
+  onBackButtonPress: () => null,
+  swipeThreshold: 100,
+  scrollTo: null,
+  scrollOffset: 0,
+  scrollOffsetMax: 0,
+  scrollHorizontal: false,
+  supportedOrientations: ['portrait', 'landscape'],
+};
 
+export default Popup;
 // const styles = StyleSheet.create({
 //   fullScreen: {
 //     flex: 1,

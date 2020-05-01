@@ -1,18 +1,17 @@
 /*
   Types related to popup component
 */
-import { ReactNode } from 'react';
-import { Direction } from 'react-native-modal';
+import { ModalProps } from 'react-native-modal';
+import { ViewStyle } from 'react-native';
 
-export interface PopupProps {
-  children: ReactNode;
+export interface PopupProps extends ModalProps {
   closePopup: () => void;
   isDark?: boolean;
   isOpen: boolean;
   position?: 'bottom' | 'top' | 'center';
-  swipeDirection: Direction | Direction[];
+  childrenContainerStyle: ViewStyle;
 }
 
 export interface PopupState {
-  fake: boolean;
+  flexValue: number;
 }

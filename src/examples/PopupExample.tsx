@@ -1,29 +1,32 @@
 import React, { useState } from 'react';
 import { Button, Text, View } from 'react-native';
 import { Popup } from '../components';
+import { getColors } from '../styles';
 
 interface PopupExampleProps {
   isDark: boolean;
+  isOpen: boolean;
+  closePopup: () => void;
 }
 const PopupExample = (props: PopupExampleProps) => {
-  const [isOpen, setIsOpen] = useState(false);
   const [show, setShow] = useState(false);
-  const { isDark } = props;
-  // to close the popup
-  const closePopup = () => setIsOpen(false);
+  const { isDark, isOpen, closePopup } = props;
+
   // to handle dynamic content inside popup
   // which is needed to be shown inside the
   // popup on some user action
   const handleShowClick = () => setShow(!show);
+  const Colors = getColors(isDark);
   return (
     <View>
-      <Button onPress={() => setIsOpen(true)} title="Show modal" />
       <Popup
         isOpen={isOpen}
         isDark={isDark}
         position="bottom"
         closePopup={closePopup}
-        swipeDirection={['down', 'up']}
+        swipeDirection="down"
+        swipeThreshold={10}
+        childrenContainerStyle={{ backgroundColor: Colors.WHITE }}
       >
         <View>
           <Text>Hello!</Text>

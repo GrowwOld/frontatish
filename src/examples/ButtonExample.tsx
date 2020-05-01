@@ -5,10 +5,11 @@ import { Button } from '../components';
 
 interface ButtonExampleProps {
   isDark: boolean;
+  openPopup: () => void;
 }
 
 const ButtonExample = (props: ButtonExampleProps) => {
-  const { isDark } = props;
+  const { isDark, openPopup } = props;
   const handlePress = () => {
     Alert.alert('Just checking onPress');
   };
@@ -24,7 +25,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
         />
         <Button
           type="secondary"
-          onPress={handlePress}
+          onPress={openPopup}
           label="Secondary Button"
           isDark={isDark}
           customStyles={{ flex: 1 }}

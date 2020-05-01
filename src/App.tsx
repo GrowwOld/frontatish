@@ -18,11 +18,15 @@ import { Button } from './components';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  // to close the popup
+  const closePopup = () => setIsOpen(false);
+  const openPopup = () => setIsOpen(true);
   const Colors = getColors(darkMode);
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
-      <ButtonExample isDark={darkMode} />
-      <PopupExample isDark={darkMode} />
+      <ButtonExample isDark={darkMode} openPopup={openPopup} />
+      <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen} />
       <Button
         label="Change Theme"
         isDark={darkMode}
