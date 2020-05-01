@@ -15,7 +15,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
   };
   return (
     <View style={styles.exampleBtnContainer}>
-      <View style={{ flexDirection: 'row', margin: 20 }}>
+      <View style={{ flexDirection: 'row' }}>
         <Button
           type="primary"
           onPress={handlePress}
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   exampleBtnContainer: {
     flex: 1,
     justifyContent: 'space-evenly',
+    margin: 20,
   },
   exampleBtnText: {},
 });

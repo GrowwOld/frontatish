@@ -140,7 +140,7 @@ Popup.defaultProps = {
   backdropTransitionInTiming: 300,
   backdropTransitionOutTiming: 300,
   customBackdrop: null,
-  useNativeDriver: false,
+  useNativeDriver: true,
   deviceHeight: null,
   deviceWidth: null,
   hideModalContentWhileAnimating: false,
