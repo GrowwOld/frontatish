@@ -1,109 +1,100 @@
 import React, { Component } from 'react';
-import {
-  Button,
-  Text,
-  View,
-  StyleSheet,
-  Dimensions,
-  Animated,
-  Easing,
-} from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import Modal from 'react-native-modal';
 import { PopupProps, PopupState } from './types';
+import { AlignTypes } from '../../common/types';
+import { getColors } from '../../styles';
 
-const { height: screenHeight } = Dimensions.get('window');
-export default class ModalTester extends Component<PopupProps, PopupState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      isOpen: false,
-      fake: false,
-      pan: new Animated.ValueXY({ x: 0, y: 50 }),
-    };
-  }
-
-  toggleModal = () => {
-    this.setState((prevState) => ({ isOpen: !prevState.isOpen }));
-  };
-
-  toggleFake = () => {
-    this.setState((prevState) => ({ fake: !prevState.fake }));
-  };
-
+let Colors: any;
+export default class Popup extends Component<PopupProps, PopupState> {
   onSwipeComplete = (siwpeObj: any) => {
     const { swipingDirection } = siwpeObj;
-    const { pan } = this.state;
+    const { closePopup } = this.props;
     if (swipingDirection === 'down') {
-      this.setState({ isOpen: false });
+      closePopup();
     } else {
-      const TIMING_CONFIG = {
-        duration: 300,
-        easing: Easing.inOut(Easing.ease),
-      };
-      Animated.timing(pan, {
-        ...TIMING_CONFIG,
-        toValue: { x: 0, y: screenHeight },
-        useNativeDriver: true,
-      }).start();
+      // need to do something on scroll
+      // up
     }
   };
 
   // onSwipeMove = (percentageShown) => {
   //   console.log("precentage show", percentageShown);
   // }
+  getPosition = (position?: string): AlignTypes => {
+    switch (position) {
+      case 'bottom':
+        return 'flex-end';
+      case 'top':
+        return 'flex-start';
+      default:
+        return 'center';
+    }
+  };
+
+  renderSwipeIndicator = () => (
+    <View style={{ alignItems: 'center' }}>
+      <View
+        style={{
+          marginTop: 10,
+          marginBottom: 20,
+          backgroundColor: Colors.SILVER,
+          height: 4,
+          width: 60,
+          borderRadius: 4,
+        }}
+      />
+    </View>
+  );
 
   render() {
-    const { isOpen, fake, pan } = this.state;
+    const {
+      isOpen,
+      isDark,
+      position,
+      closePopup,
+      children,
+      swipeDirection,
+    } = this.props;
+    Colors = getColors(isDark);
+    const childrenContainerStyle = { backgroundColor: Colors.WHITE };
     return (
       <View style={{ flex: 1 }}>
-        <Button title="Show modal" onPress={this.toggleModal} />
         <Modal
           isVisible={isOpen}
-          swipeDirection={['up', 'down']}
+          swipeDirection={swipeDirection}
+          onBackdropPress={closePopup}
+          onBackButtonPress={closePopup}
           // scrollOffset={30}
           swipeThreshold={30}
           onSwipeComplete={this.onSwipeComplete}
           // onSwipeMove={this.onSwipeMove}
-          style={{ margin: 0 }}
+          style={{
+            margin: 0,
+            justifyContent: this.getPosition(position),
+          }}
           // hideModalContentWhileAnimating
         >
-          {/* <SafeAreaView> */}
-          <Animated.View style={[styles.bottomFixed, { height: pan.height }]}>
-            <Text>Hello!</Text>
-            <Button title="Hide modal" onPress={this.toggleModal} />
-            <Button title="Fake output" onPress={this.toggleFake} />
-            {fake && (
-              <View>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-                <Text>Vinit</Text>
-              </View>
-            )}
-          </Animated.View>
-          {/* </SafeAreaView> */}
+          <SafeAreaView style={childrenContainerStyle}>
+            {swipeDirection && this.renderSwipeIndicator()}
+            {children}
+          </SafeAreaView>
         </Modal>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  fullScreen: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-  bottomFixed: {
-    // flex: 1,
-    // backgroundColor: '#fff'
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    backgroundColor: '#fff',
-  },
-});
+// const styles = StyleSheet.create({
+//   fullScreen: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//   },
+//   bottomFixed: {
+//     // backgroundColor: '#fff'
+//     // position: 'absolute',
+//     // bottom: 0,
+//     // width: '100%',
+//     backgroundColor: '#fff',
+//   },
+// });

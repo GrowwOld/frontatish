@@ -1,6 +1,6 @@
 // base and lib imports
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { ProgressBarAndroid } from '@react-native-community/progress-bar-android';
 import Ripple from 'react-native-material-ripple';
 
@@ -13,7 +13,15 @@ import { getBtnStyles, getLabelStyles } from './helper';
 import { getColors } from '../../styles';
 
 const Button = (props: ButtonProps) => {
-  const { customStyles, disabled, isDark, label, loading, type, onPress } = props;
+  const {
+    customStyles,
+    disabled,
+    isDark,
+    label,
+    loading,
+    type,
+    onPress,
+  } = props;
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = getColors(isDark);
@@ -24,16 +32,17 @@ const Button = (props: ButtonProps) => {
   const baseBtnStyles: StyleType = getBtnStyles(type, Colors, disabled);
   const mainBtnStyles: StyleType = {
     ...baseBtnStyles,
-    ...customStyles
+    ...customStyles,
   };
   const baseLabelStyles: StyleType = getLabelStyles(type, Colors, disabled);
   const renderProgressBar = () => (
-    <View style={{
-      position: 'absolute',
-      width: '100%',
-      top: -6,
-      zIndex: 1
-    }}
+    <View
+      style={{
+        position: 'absolute',
+        width: '100%',
+        top: -6,
+        zIndex: 1,
+      }}
     >
       <ProgressBarAndroid
         indeterminate
@@ -54,9 +63,7 @@ const Button = (props: ButtonProps) => {
       // }]}
     >
       {loading && renderProgressBar()}
-      <Text style={baseLabelStyles}>
-        {label}
-      </Text>
+      <Text style={baseLabelStyles}>{label}</Text>
     </Ripple>
   );
 };

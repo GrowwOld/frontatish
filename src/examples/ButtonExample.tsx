@@ -4,15 +4,13 @@ import { Alert, ScrollView, StyleSheet, View } from 'react-native';
 import { Button } from '../components';
 
 interface ButtonExampleProps {
-  isDark: boolean
+  isDark: boolean;
 }
 
 const ButtonExample = (props: ButtonExampleProps) => {
   const { isDark } = props;
   const handlePress = () => {
-    Alert.alert(
-      'Just checking onPress',
-    );
+    Alert.alert('Just checking onPress');
   };
   return (
     <ScrollView contentContainerStyle={styles.exampleBtnContainer}>
@@ -59,9 +57,9 @@ const ButtonExample = (props: ButtonExampleProps) => {
 const styles = StyleSheet.create({
   exampleBtnContainer: {
     flex: 1,
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-evenly',
   },
-  exampleBtnText: {}
+  exampleBtnText: {},
 });
 
 export default ButtonExample;
