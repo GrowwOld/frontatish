@@ -65,7 +65,7 @@ const style = {
     fontSize: size.h5,
   },
   h6: {
-    fontFamily: type.notoserif,
+    fontFamily: type.base,
     fontSize: size.h6,
   },
   normal: {

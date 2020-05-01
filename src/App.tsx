@@ -9,11 +9,12 @@
  */
 
 import React, { useState } from 'react';
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 
 import ButtonExample from './examples/ButtonExample';
 import NumPadExample from './examples/NumPadExample';
 import PopupExample from './examples/PopupExample';
+import RadioButtonExample from './examples/RadioButtonExample';
 import { getColors } from './styles';
 import { Button } from './components';
 
@@ -26,10 +27,13 @@ const App = () => {
   const Colors = getColors(darkMode);
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
-      <ButtonExample isDark={darkMode} openPopup={openPopup} />
-      <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen}>
-        <NumPadExample isDark={darkMode} />
-      </PopupExample>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ButtonExample isDark={darkMode} openPopup={openPopup} />
+        <RadioButtonExample isDark={darkMode} />
+        <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen}>
+          <NumPadExample isDark={darkMode} />
+        </PopupExample>
+      </ScrollView>
       <Button
         label="Change Theme"
         isDark={darkMode}
