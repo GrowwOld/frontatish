@@ -3,5 +3,11 @@
 */
 
 export interface PopupProps {
-  isOpen: boolean,
+  isOpen: boolean;
+}
+
+export interface PopupState {
+  isOpen: boolean;
+  fake: boolean;
+  pan: any;
 }
