@@ -88,7 +88,6 @@ const Button = (props: ButtonProps) => {
 Button.defaultProps = {
   children: null,
   disabled: false,
-  isDark: false,
   label: '',
   loading: false,
   type: 'primary',

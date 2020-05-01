@@ -9,7 +9,7 @@
 
 // NumPad component props type
 export interface NumPadProps {
-  onItemClick: (input:string) => void,
-  onDeleteItem: () => void,
-  isDark: boolean,
+  onItemClick: (input: string) => void;
+  onDeleteItem: () => void;
+  isDark: boolean;
 }

@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 
 import { NumPad } from '../components';
 
-import { Fonts } from '../styles';
+import { Fonts, getColors } from '../styles';
 
 interface NumPadExampleState {
   input: string;
@@ -33,9 +33,10 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   render() {
     const { input } = this.state;
     const { isDark } = this.props;
+    const Colors = getColors(isDark);
     return (
       <View>
-        <Text style={Fonts.style.h3}>{input}</Text>
+        <Text style={[Fonts.style.h3, { color: Colors.BLACK }]}>{input}</Text>
         <NumPad
           onItemClick={this.onItemClick}
           onDeleteItem={this.onDeleteItem}
