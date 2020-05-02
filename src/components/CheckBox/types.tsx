@@ -1,5 +1,10 @@
+import { ViewStyle } from 'react-native';
+
 export interface CheckBoxProps {
-  checked: boolean;
+  checkColor?: string;
+  checked?: boolean;
+  disabled?: boolean;
   isDark: boolean;
-  onPress: () => void;
+  onPress?: () => void;
+  containerStyle?: ViewStyle;
 }

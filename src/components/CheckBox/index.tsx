@@ -5,23 +5,32 @@ import { getColors } from '../../styles';
 import { CheckBoxProps } from './types';
 
 const Checkbox = (props: CheckBoxProps) => {
-  const { checked, isDark, onPress } = props;
+  const { checked, containerStyle, disabled, isDark, onPress } = props;
   const Colors = getColors(isDark);
-  const borderColor = Colors.GREEN_BLUE;
-  const backgroundColor = checked ? Colors.GREEN_BLUE : Colors.CONSTANT_WHITE;
-  const iconColor = checked ? Colors.CONSTANT_WHITE : '';
+  const getRequiredColor = () => {
+    if (disabled) {
+      return [Colors.SILVER, Colors.SLATE_GREY, Colors.SLATE_GREY];
+    }
+    if (!disabled && checked) {
+      return [Colors.GREEN_BLUE, Colors.GREEN_BLUE, Colors.CONSTANT_WHITE];
+    }
+    return [Colors.CONSTANT_WHITE, Colors.GREEN_BLUE];
+  };
+  const [backgroundColor, borderColor, iconColor] = getRequiredColor();
+  const mainContainerStyle = {
+    ...styles.boxContainer,
+    backgroundColor,
+    borderColor,
+    // giving preference to custom styles
+    ...containerStyle,
+  };
   return (
     <TouchableOpacity
-      style={[
-        styles.boxContainer,
-        {
-          borderColor,
-          backgroundColor,
-        },
-      ]}
+      disabled={disabled}
+      style={mainContainerStyle}
       onPress={onPress}
     >
-      {checked && <Icon name="check" size={16} color={iconColor} />}
+      {checked && <Icon name="check" size={13} color={iconColor} />}
     </TouchableOpacity>
   );
 };

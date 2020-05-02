@@ -200,10 +200,8 @@ const defualtColors = {
   DODGER_BLUE: '#4285f4',
   BLUR_BLUE: '#dce1ff',
   LIGHTEST_GREEN: '#E6FBF6',
-  CONSTANT_GRAY: '#80868Bb3'
-
+  CONSTANT_GRAY: '#80868Bb3',
 };
-
 
 const Colors = {
   LIGHT_MODE: { ...defualtColors },
@@ -279,10 +277,9 @@ const Colors = {
     ORCHID_10: 'rgba(0, 208, 156,0.1)',
     BLUR_BLUE: 'rgba(255, 255, 255, 0.5)',
     LIGHTEST_GREEN: '#222731',
-    CONSTANT_GRAY: '#80868Bb3'
-  }
+    CONSTANT_GRAY: '#80868Bb3',
+  },
 };
-
 
 const getColors = (isDark: boolean | undefined | null) => {
   // this is to handle the dark mode
