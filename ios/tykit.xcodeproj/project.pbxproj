@@ -12,20 +12,20 @@
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1C6243A2867B4AF89C66796D /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF46DFA65274459084095E12 /* roboto.bold.ttf */; };
+		2608CB27F4D94237B5E07230 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60ADFA49772E417C94F8AE8E /* GothamBold.ttf */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* tykitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* tykitTests.m */; };
+		3C43BAEDBD4B4C33AD20B132 /* roboto.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F497E520E3B946959C616792 /* roboto.regular.ttf */; };
+		3F8ECA3ABEC9400B955A6215 /* roboto.medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 244B616056894D70BF18EE61 /* roboto.medium.ttf */; };
+		6C45BF36C681488E8FDECD8B /* GothamMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6384804960D8435693C8FDDA /* GothamMedium.ttf */; };
+		8FF02F410CA34F8E9163F504 /* GothamBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */; };
 		C0942EB8EC84D67F389E918E /* libPods-tykit-tykitTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F459F6E9069D3B008D08A7BB /* libPods-tykit-tykitTests.a */; };
 		C9C72DE41DC7B3EBF039EB81 /* libPods-tykit-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F14B03EF750950BBBB97F02C /* libPods-tykit-tvOS.a */; };
 		DDE0FA004C062A8819BC8FB1 /* libPods-tykit-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9BFA3A936249999AF9FB472 /* libPods-tykit-tvOSTests.a */; };
 		EF00AD244AAE7E92A81EED95 /* libPods-tykit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D1AFB0A3F80C229438E5123C /* libPods-tykit.a */; };
-		2608CB27F4D94237B5E07230 /* GothamBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 60ADFA49772E417C94F8AE8E /* GothamBold.ttf */; };
-		8FF02F410CA34F8E9163F504 /* GothamBook.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */; };
-		6C45BF36C681488E8FDECD8B /* GothamMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6384804960D8435693C8FDDA /* GothamMedium.ttf */; };
-		1C6243A2867B4AF89C66796D /* roboto.bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF46DFA65274459084095E12 /* roboto.bold.ttf */; };
-		3F8ECA3ABEC9400B955A6215 /* roboto.medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 244B616056894D70BF18EE61 /* roboto.medium.ttf */; };
-		3C43BAEDBD4B4C33AD20B132 /* roboto.regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F497E520E3B946959C616792 /* roboto.regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,30 +55,30 @@
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = tykit/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = tykit/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = tykit/Info.plist; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = /Users/vinitraj/github/growwsuper/ios/tykit/Info.plist; sourceTree = "<absolute>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = tykit/main.m; sourceTree = "<group>"; };
+		244B616056894D70BF18EE61 /* roboto.medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = roboto.medium.ttf; path = ../assets/fonts/roboto.medium.ttf; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* tykit-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tykit-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* tykit-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "tykit-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3370844129DA16E1B7E76598 /* Pods-tykit-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tvOS.release.xcconfig"; path = "Target Support Files/Pods-tykit-tvOS/Pods-tykit-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		36644620DD513380563A94F9 /* Pods-tykit-tykitTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tykitTests.debug.xcconfig"; path = "Target Support Files/Pods-tykit-tykitTests/Pods-tykit-tykitTests.debug.xcconfig"; sourceTree = "<group>"; };
 		57AB669E44FC126E0C03D0EC /* Pods-tykit-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-tykit-tvOSTests/Pods-tykit-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		60ADFA49772E417C94F8AE8E /* GothamBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = GothamBold.ttf; path = ../assets/fonts/GothamBold.ttf; sourceTree = "<group>"; };
+		6384804960D8435693C8FDDA /* GothamMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = GothamMedium.ttf; path = ../assets/fonts/GothamMedium.ttf; sourceTree = "<group>"; };
 		79968CA39AF7B65D809D806E /* Pods-tykit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit.release.xcconfig"; path = "Target Support Files/Pods-tykit/Pods-tykit.release.xcconfig"; sourceTree = "<group>"; };
+		8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = GothamBook.ttf; path = ../assets/fonts/GothamBook.ttf; sourceTree = "<group>"; };
 		90E3572C2DE8B477B329FFC5 /* Pods-tykit-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-tykit-tvOS/Pods-tykit-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		91C40D4ABA360AE0DB3C1D6C /* Pods-tykit-tykitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tykitTests.release.xcconfig"; path = "Target Support Files/Pods-tykit-tykitTests/Pods-tykit-tykitTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA46CE881F809A108CC829E9 /* Pods-tykit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit.debug.xcconfig"; path = "Target Support Files/Pods-tykit/Pods-tykit.debug.xcconfig"; sourceTree = "<group>"; };
 		C40790A6927439EAABA04EB9 /* Pods-tykit-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tykit-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-tykit-tvOSTests/Pods-tykit-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF46DFA65274459084095E12 /* roboto.bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = roboto.bold.ttf; path = ../assets/fonts/roboto.bold.ttf; sourceTree = "<group>"; };
 		D1AFB0A3F80C229438E5123C /* libPods-tykit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tykit.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9BFA3A936249999AF9FB472 /* libPods-tykit-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tykit-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		F14B03EF750950BBBB97F02C /* libPods-tykit-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tykit-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F459F6E9069D3B008D08A7BB /* libPods-tykit-tykitTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tykit-tykitTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		60ADFA49772E417C94F8AE8E /* GothamBold.ttf */ = {isa = PBXFileReference; name = "GothamBold.ttf"; path = "../assets/fonts/GothamBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */ = {isa = PBXFileReference; name = "GothamBook.ttf"; path = "../assets/fonts/GothamBook.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		6384804960D8435693C8FDDA /* GothamMedium.ttf */ = {isa = PBXFileReference; name = "GothamMedium.ttf"; path = "../assets/fonts/GothamMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		CF46DFA65274459084095E12 /* roboto.bold.ttf */ = {isa = PBXFileReference; name = "roboto.bold.ttf"; path = "../assets/fonts/roboto.bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		244B616056894D70BF18EE61 /* roboto.medium.ttf */ = {isa = PBXFileReference; name = "roboto.medium.ttf"; path = "../assets/fonts/roboto.medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		F497E520E3B946959C616792 /* roboto.regular.ttf */ = {isa = PBXFileReference; name = "roboto.regular.ttf"; path = "../assets/fonts/roboto.regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F497E520E3B946959C616792 /* roboto.regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = roboto.regular.ttf; path = ../assets/fonts/roboto.regular.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +148,19 @@
 			name = tykit;
 			sourceTree = "<group>";
 		};
+		29126042B05F4559841E0C6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				60ADFA49772E417C94F8AE8E /* GothamBold.ttf */,
+				8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */,
+				6384804960D8435693C8FDDA /* GothamMedium.ttf */,
+				CF46DFA65274459084095E12 /* roboto.bold.ttf */,
+				244B616056894D70BF18EE61 /* roboto.medium.ttf */,
+				F497E520E3B946959C616792 /* roboto.regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,23 +220,8 @@
 				36644620DD513380563A94F9 /* Pods-tykit-tykitTests.debug.xcconfig */,
 				91C40D4ABA360AE0DB3C1D6C /* Pods-tykit-tykitTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
-		};
-		29126042B05F4559841E0C6C /* Resources */ = {
-			isa = "PBXGroup";
-			children = (
-				60ADFA49772E417C94F8AE8E /* GothamBold.ttf */,
-				8FB2B7FA1982491B99CB3A72 /* GothamBook.ttf */,
-				6384804960D8435693C8FDDA /* GothamMedium.ttf */,
-				CF46DFA65274459084095E12 /* roboto.bold.ttf */,
-				244B616056894D70BF18EE61 /* roboto.medium.ttf */,
-				F497E520E3B946959C616792 /* roboto.regular.ttf */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -236,6 +234,7 @@
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
+				2DCFD0652CC463C8022170F8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -257,6 +256,7 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				14D9139E7BF3232CB2E64382 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -408,6 +408,54 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		14D9139E7BF3232CB2E64382 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tykit/Pods-tykit-resources.sh",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tykit/Pods-tykit-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		296E2E21FCB8164E053D5BC9 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -443,6 +491,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		2DCFD0652CC463C8022170F8 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tykit-tykitTests/Pods-tykit-tykitTests-resources.sh",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Feather.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
+				"${PODS_ROOT}/../../src/components/node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tykit-tykitTests/Pods-tykit-tykitTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		8AFDE0FFD7A13E7CA92EB4F7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
