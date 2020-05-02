@@ -23,7 +23,7 @@ const TableExample = (props: TableExampleProps) => {
         style={{ flex: 1, alignItems: 'flex-end', paddingVertical: 16 }}
         onPress={onPress}
       >
-        <Text>{item.marketPrice}</Text>
+        <Text style={{ color: Colors.BLACK_DARK }}>{item.marketPrice}</Text>
         <Text
           style={{
             fontFamily: Fonts.type.gotham_medium,
@@ -39,8 +39,9 @@ const TableExample = (props: TableExampleProps) => {
       </Ripple>
     );
   };
-
-  const customItemComponents = { marketPrice: MrpItem };
+  // key should be exactly the same as option keys
+  // so that it can be correctly mapped
+  const customRightItemComponents = { marketPrice: MrpItem };
   return (
     <View style={{ flex: 1, marginHorizontal: 20 }}>
       <Text style={[Fonts.style.h4, { color: Colors.BLACK }]}>
@@ -53,9 +54,8 @@ const TableExample = (props: TableExampleProps) => {
         option={['marketPrice', 'holding', 'industryName']}
         optionLabel={['Market Price', 'Holding', 'Sector']}
         leftKey="companyName"
-        rightKey="marketPrice"
         flatlistKey="isin"
-        customItemComponents={customItemComponents}
+        customRightItemComponents={customRightItemComponents}
       />
     </View>
   );

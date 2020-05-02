@@ -1,22 +1,33 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TableProps, TableItemProps } from './types';
-import { getColors } from '../../styles';
+import { getColors, Fonts } from '../../styles';
 
 const Table = (props: TableProps) => {
   const [active, setActive] = useState(0);
   const {
-    customItemComponents,
-    title,
-    option,
+    customLeftItemComponents,
+    customRightItemComponents,
     data,
+    flatlistKey,
     isDark,
     leftKey,
-    optionLabel,
-    flatlistKey,
-    rightKeyOnPress,
     leftKeyOnPress,
+    leftItemTextStyle,
+    option,
+    optionTextStyle,
+    optionLabel,
+    rightKeyOnPress,
+    rightItemTextStyle,
+    title,
+    titleTextStyle,
   } = props;
   const Colors = getColors(isDark);
   const TableItem = (itemProps: TableItemProps) => {
@@ -30,34 +41,55 @@ const Table = (props: TableProps) => {
         : null;
     return (
       <View style={[borderStyle, { height: 80, flexDirection: 'row' }]}>
-        <Ripple
-          style={{ flex: 2, paddingVertical: 16 }}
-          onPress={onLeftKeyPress}
-        >
-          <Text style={{ flex: 1 }} numberOfLines={1}>
-            {item[leftKey]}
-          </Text>
-        </Ripple>
-        {renderOptionItem(item)}
+        {renderLeftOptionItem(item)}
+        {renderRightOptionItem(item)}
       </View>
     );
   };
-  const renderOptionItem = (item: any) => {
-    // first check if there exist any customItemComponents
-    // and then also check if customItemComponent exist for
+  // to render the left part of each row of a table
+  const renderLeftOptionItem = (item: any) => {
+    const mainLeftItemTextStyle = {
+      ...styles.leftText,
+      color: Colors.BLACK_DARK,
+      ...leftItemTextStyle,
+    };
+    // first check if there exist any customLeftItemComponents
+    // and then also check if customLeftItemComponent exist for
     // the active option
-    if (customItemComponents && customItemComponents[option[active]]) {
-      const CustomItem = customItemComponents[option[active]];
-      return <CustomItem item={item} onPress={onRightKeyPress} />;
+    if (customLeftItemComponents && customLeftItemComponents[leftKey]) {
+      const CustomLeftItem = customLeftItemComponents[leftKey];
+      return <CustomLeftItem item={item} onPress={onLeftKeyPress} />;
+    }
+    return (
+      <Ripple style={{ flex: 2, paddingVertical: 16 }} onPress={onLeftKeyPress}>
+        <Text style={mainLeftItemTextStyle} numberOfLines={1}>
+          {item[leftKey]}
+        </Text>
+      </Ripple>
+    );
+  };
+  const renderRightOptionItem = (item: any) => {
+    const mainRightItemTextStyle = {
+      ...styles.rightText,
+      color: Colors.BLACK_DARK,
+      ...rightItemTextStyle,
+    };
+    // first check if there exist any customRightItemComponents
+    // and then also check if customRightItemComponent exist for
+    // the active option
+    if (
+      customRightItemComponents &&
+      customRightItemComponents[option[active]]
+    ) {
+      const CustomRightItem = customRightItemComponents[option[active]];
+      return <CustomRightItem item={item} onPress={onRightKeyPress} />;
     }
     return (
       <Ripple
         onPress={onRightKeyPress}
         style={{ flex: 1, paddingVertical: 16 }}
       >
-        <Text style={{ flex: 1, textAlign: 'right' }}>
-          {item[option[active]]}
-        </Text>
+        <Text style={mainRightItemTextStyle}>{item[option[active]]}</Text>
       </Ripple>
     );
   };
@@ -76,11 +108,21 @@ const Table = (props: TableProps) => {
     // then this callback will be passed & called from here
     if (leftKeyOnPress) leftKeyOnPress();
   };
+  const mainTitleTextStyle = {
+    ...styles.titleText,
+    color: Colors.SLATE_GREY,
+    ...titleTextStyle,
+  };
+  const mainOptionTitleTextStyle = {
+    ...styles.titleText,
+    color: Colors.GREEN_BLUE,
+    ...optionTextStyle,
+  };
   return (
     <View>
       <View style={{ flexDirection: 'row' }}>
         <View style={{ flex: 1 }}>
-          <Text>{title}</Text>
+          <Text style={mainTitleTextStyle}>{title}</Text>
         </View>
         <TouchableOpacity
           style={{
@@ -89,7 +131,7 @@ const Table = (props: TableProps) => {
           }}
           onPress={onRightKeyPress}
         >
-          <Text>{optionLabel[active]}</Text>
+          <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
         </TouchableOpacity>
       </View>
       <FlatList
@@ -104,4 +146,24 @@ const Table = (props: TableProps) => {
   );
 };
 
+const styles = StyleSheet.create({
+  leftText: {
+    flex: 1,
+    fontFamily: Fonts.type.gotham_medium,
+    fontSize: Fonts.size.small_13,
+    fontWeight: '800',
+  },
+  rightText: {
+    flex: 1,
+    textAlign: 'right',
+    fontFamily: Fonts.type.gotham_medium,
+    fontSize: Fonts.size.small_13,
+    fontWeight: '800',
+  },
+  titleText: {
+    fontFamily: Fonts.type.gotham_medium,
+    fontSize: Fonts.size.small_13,
+    fontWeight: '800',
+  },
+});
 export default Table;
