@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { RadioButton } from '../components';
-import { Fonts } from '../styles';
+import { Fonts, getColors } from '../styles';
 
 interface RadioButtonExampleProps {
   isDark: boolean;
@@ -14,10 +14,15 @@ const RadioButtonExample = (props: RadioButtonExampleProps) => {
   const radioPress = (value: string) => {
     setChoosen(value);
   };
+  const Colors = getColors(isDark);
   return (
     <View style={{ flex: 1, margin: 20 }}>
-      <Text style={Fonts.style.h4}>RadioButton Examples</Text>
-      <Text>{`Selected Value is ${choosen}`}</Text>
+      <Text style={[Fonts.style.h4, { color: Colors.BLACK }]}>
+        RadioButton Examples
+      </Text>
+      <Text
+        style={[Fonts.style.normal, { color: Colors.BLACK }]}
+      >{`Selected Value is ${choosen}`}</Text>
       <View
         style={{ marginVertical: 20, flexDirection: 'row', flexWrap: 'wrap' }}
       >

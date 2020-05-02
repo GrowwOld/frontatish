@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { Alert, StyleSheet, View, Text } from 'react-native';
 import { Button } from '../components';
-import { Fonts } from '../styles';
+import { Fonts, getColors } from '../styles';
 
 interface ButtonExampleProps {
   isDark: boolean;
@@ -11,12 +11,15 @@ interface ButtonExampleProps {
 
 const ButtonExample = (props: ButtonExampleProps) => {
   const { isDark, openPopup } = props;
+  const Colors = getColors(isDark);
   const handlePress = () => {
     Alert.alert('Just checking onPress');
   };
   return (
     <View style={styles.exampleBtnContainer}>
-      <Text style={[Fonts.style.h4]}>Button Examples</Text>
+      <Text style={[Fonts.style.h4, { color: Colors.BLACK }]}>
+        Button Examples
+      </Text>
       <View style={{ flexDirection: 'row', marginVertical: 20 }}>
         <Button
           type="primary"
