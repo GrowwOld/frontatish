@@ -30,7 +30,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        packageDir: ['./', './src/components'],
+        packageDir: ['./', './src/components', './src/animations'],
       },
     ],
     'no-unused-vars': 'off',

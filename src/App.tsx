@@ -10,7 +10,7 @@
 
 import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
-
+import AnimationExample from './examples/AnimationExample';
 import ButtonExample from './examples/ButtonExample';
 import CheckBoxExample from './examples/CheckBoxExample';
 import NumPadExample from './examples/NumPadExample';
@@ -28,9 +28,10 @@ const App = () => {
   const Colors = getColors(darkMode);
   return (
     <SafeAreaView style={[styles.container, { backgroundColor: Colors.WHITE }]}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ flex: 1 }}>
         <ButtonExample isDark={darkMode} openPopup={openPopup} />
         <CheckBoxExample isDark={darkMode} />
+        <AnimationExample isDark={darkMode} />
         <RadioButtonExample isDark={darkMode} />
         <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen}>
           <NumPadExample isDark={darkMode} />
