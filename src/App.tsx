@@ -16,6 +16,7 @@ import CheckBoxExample from './examples/CheckBoxExample';
 import NumPadExample from './examples/NumPadExample';
 import PopupExample from './examples/PopupExample';
 import RadioButtonExample from './examples/RadioButtonExample';
+import TableExample from './examples/TableExample';
 import { getColors } from './styles';
 import { Button } from './components';
 
@@ -32,6 +33,7 @@ const App = () => {
         <ButtonExample isDark={darkMode} openPopup={openPopup} />
         <CheckBoxExample isDark={darkMode} />
         <RadioButtonExample isDark={darkMode} />
+        <TableExample isDark={darkMode} />
         <PopupExample closePopup={closePopup} isDark={darkMode} isOpen={isOpen}>
           <NumPadExample isDark={darkMode} />
         </PopupExample>
