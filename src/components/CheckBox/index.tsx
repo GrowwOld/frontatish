@@ -14,7 +14,7 @@ const Checkbox = (props: CheckBoxProps) => {
     if (!disabled && checked) {
       return [Colors.GREEN_BLUE, Colors.GREEN_BLUE, Colors.CONSTANT_WHITE];
     }
-    return [Colors.CONSTANT_WHITE, Colors.GREEN_BLUE];
+    return [Colors.WHITE, Colors.GREEN_BLUE];
   };
   const [backgroundColor, borderColor, iconColor] = getRequiredColor();
   const mainContainerStyle = {
