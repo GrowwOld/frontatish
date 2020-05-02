@@ -1,13 +1,17 @@
 import { StyleType } from '../../common/types';
 
 export interface TableProps {
-  isDark: boolean;
-  title: string;
-  option: Array<string> | string;
+  customItemComponents: any;
   data: Array<any>;
-  leftKey: string;
-  rightKey: string;
   flatlistKey: string;
+  isDark: boolean;
+  leftKey: string;
+  leftKeyOnPress?: () => void;
+  option: Array<string> | string;
+  optionLabel: Array<string> | string;
+  rightKey: string;
+  rightKeyOnPress?: () => void;
+  title: string;
 }
 
 export interface TableItemProps {
