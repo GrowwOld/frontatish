@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 
-const Fade = () => <View />;
+const Slide = () => <View />;
 
-export default Fade;
+export default Slide;
