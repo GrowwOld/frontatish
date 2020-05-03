@@ -29,43 +29,43 @@ export default MyComponent;
 
 ## Props
 
-### `onPress`
+### onPress
 | Type | Required |
 |---|---|
 | function | Yes |
 
-### `type`
+### type
 | Type | Required |
 |---|---|
 | enum('primary', 'secondary', 'default'), string | Yes |
-### `label`
+### label
 | Type | Required |
 |---|---|
 | string | Yes |
-### `isDark`
+### isDark
 | Type | Required |
 |---|---|
 | boolean | No |
-### `loading`
+### loading
 | Type | Required |
 |---|---|
 | boolean | No |
-### `children`
+### children
 | Type | Required |
 |---|---|
 | ReactNode | No |
-### `disabled`
+### disabled
 | Type | Required |
 |---|---|
 | boolean | No |
-### `customStyles`
+### customStyles
 | Type | Required |
 |---|---|
 | style object | No |
 
 ---
 
-## Links
+<!-- ## Links
 
 [I'm an inline-style link](https://www.google.com)
 
@@ -97,4 +97,4 @@ Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src
 
 Reference-style: ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2'
+[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2' -->
