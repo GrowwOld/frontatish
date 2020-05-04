@@ -1,16 +1,17 @@
 module.exports = {
-  title: 'uikit',
-  tagline: 'The tagline of my site',
+  title: 'super',
+  tagline:
+    'Groww super is all in one repository of helpers and ui-kit for any react native projects',
   url: 'https://groww.github.io',
-  baseUrl: '/uikit/',
+  baseUrl: '/super/',
   favicon: 'img/favicon.ico',
   organizationName: 'Groww', // Usually your GitHub org/user name.
-  projectName: 'uikit', // Usually your repo name.
+  projectName: 'super', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'uikit',
+      title: 'super',
       logo: {
-        alt: 'uikit',
+        alt: 'super',
         src: 'img/groww_logo.svg',
       },
       links: [
@@ -22,7 +23,7 @@ module.exports = {
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/Groww/uikit',
+          href: 'https://github.com/Groww/super',
           label: 'GitHub',
           position: 'right',
         },
@@ -62,7 +63,7 @@ module.exports = {
           items: [
             {
               label: 'Blog',
-              href:'https://groww.in/blog/',
+              href: 'https://groww.in/blog/',
             },
             {
               label: 'GitHub',
@@ -87,9 +88,7 @@ module.exports = {
           editUrl:
             'https://github.com/facebook/docusaurus/edit/master/website/',
         },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
+        theme: { customCss: require.resolve('./src/css/custom.css') },
       },
     ],
   ],
