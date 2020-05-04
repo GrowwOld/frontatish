@@ -4,97 +4,114 @@ title: Button
 sidebar_label: Button
 ---
 
-You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
+Button components helps to handle all user actions using onPress handlers, the button component has some types defined inside it which display various form of buttons on the basis of that,any time you can customize it by passing the custom styles. On the lower level it uses [react-native-material-ripple](https://www.npmjs.com/package/react-native-material-ripple)
+
+<div className="image-horizontal-preview">
+    <figure>
+      <img src="/static/img/primary-button.png" alt="primary-button" />
+    </figure>
+    <figure>
+      <img src="/static/img/secondary-button.png" alt="secondary-button" />
+    </figure>
+    <figure>
+      <img src="/static/img/default-button.png" alt="default-button" />
+    </figure>
+    <figure>
+      <img src="/static/img/disabled-button.png" alt="disabled-button" />
+    </figure>
+</div>
 
 ## Usage
 
 ```jsx
 // react base imports
 
-import { Button } from '@growwSuper/core/ui'
+import { Button } from 'growwsuper/components';
 
-const MyComponent = () => (
-  <Button
-    label="PRIMARY BUTTON"
-    type="primary"
-    onPress={() => console.log('Pressed')}
-  >
-    Press me
-  </Button>
-);
+// primary button
+<Button
+  type="primary"
+  label="primary button"
+  onPress={() => console.log('Pressed')}
+/>
 
-export default MyComponent;
+// secondary button
+<Button
+  label="secondary button"
+  type="primary"
+  onPress={() => console.log('Pressed')}
+/>
 
 ```
 
 ## Props
 
-### onPress
-| Type | Required |
-|---|---|
-| function | Yes |
+### `onPress`
 
-### type
-| Type | Required |
-|---|---|
-| enum('primary', 'secondary', 'default'), string | Yes |
-### label
-| Type | Required |
-|---|---|
-| string | Yes |
-### isDark
-| Type | Required |
-|---|---|
-| boolean | No |
-### loading
-| Type | Required |
-|---|---|
-| boolean | No |
-### children
-| Type | Required |
-|---|---|
-| ReactNode | No |
-### disabled
-| Type | Required |
-|---|---|
-| boolean | No |
-### customStyles
-| Type | Required |
-|---|---|
-| style object | No |
+Function to be called when user taps on the button
+
+|        Type         |    Default     | Required|
+| :-----------------: | :------------: | :------------:
+| function <img width="500"/> | None<img width="500"/>| Yes <img width="500"/>
 
 ---
 
-<!-- ## Links
+### `label`
 
-[I'm an inline-style link](https://www.google.com)
+Label to display inside the button
 
-[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
+|        Type         |    Default     | Required|
+| :-----------------: | :------------: | :------------:
+| string <img width="500"/> | None <img width="500"/>| Yes <img width="500"/>
 
-[I'm a reference-style link][arbitrary case-insensitive reference text]
-
-[I'm a relative reference to a repository file](../blob/master/LICENSE)
-
-[You can use numbers for reference-style link definitions][1]
-
-Or leave it empty and use the [link text itself].
-
-URLs and URLs in angle brackets will automatically get turned into links. http://www.example.com or <http://www.example.com> and sometimes example.com (but not on Github, for example).
-
-Some text to show that the reference links can follow later.
-
-[arbitrary case-insensitive reference text]: https://www.mozilla.org
-[1]: http://slashdot.org
-[link text itself]: http://www.reddit.com
 
 ---
 
-## Images
+### `type`
 
-Here's our logo (hover to see the title text):
+On the basis of **type** passed to component, it applies the defined style to it
 
-Inline-style: ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 1')
+|        Type         |    Default     |     Values     | Required|
+| :-----------------: | :------------: | :------------:   | :------------:
+| string <img width="500"/> | **primary** <img width="500"/> |  oneOf(primary, secondary, default) <img width="500"/> | No <img width="500"/>
 
-Reference-style: ![alt text][logo]
 
-[logo]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 2' -->
+---
+
+### `isDark`
+
+This flags helps us to handle colors for dark mode changes in the component,if the parent component support theming then this will be useful to handle color visibilty in the dark mode as well.(*we might update this attribute to something else to handle theme in a better way*)
+
+|           Type            |         Default         |        Required        |
+| :-----------------------: | :---------------------: | :--------------------: |
+| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
+
+---
+
+### `loading`
+
+loading ensures that user see some indicator while some action is getting done,it also disables onPress when loading is true so that function call can be atomic.
+
+|        Type         |    Default     | Required|
+| :-----------------: | :------------: | :------------:
+| boolean <img width="500"/> | false <img width="500"/>| No <img width="500"/>
+
+---
+
+### `disabled`
+
+disabled make sure if its true then user won't be able to click it and the onPress would not get called
+
+|        Type         |    Default     | Required
+| :-----------------: | :------------: | :------------:
+| boolean <img width="500"/> | false <img width="500"/>| No <img width="500"/>
+
+
+### `customStyles`
+
+A react native style object which takes care of styling the button component as per your needs
+
+|        Type         |    Default     | Required
+| :-----------------: | :------------: | :------------:
+| ViewStyle <img width="500"/> | none <img width="500"/>| No <img width="500"/>
+
