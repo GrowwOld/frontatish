@@ -8,7 +8,7 @@ Radio buttons helps to implement selection between multiple options, on the low 
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/static/img/radio.png" alt="checkbox" width="300"/>
+      <img src="/super/img/radio.png" alt="checkbox" width="300"/>
     </figure>
 </div>
 

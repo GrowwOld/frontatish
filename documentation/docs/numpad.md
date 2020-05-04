@@ -8,7 +8,7 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 
 <div>
     <figure>
-        <img src="/static/img/numpad.png" alt="NumberPad" height="250"/>
+        <img src="/super/img/numpad.png" alt="NumberPad" height="250"/>
     </figure>
 </div>
 

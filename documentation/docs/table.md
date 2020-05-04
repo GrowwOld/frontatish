@@ -7,7 +7,7 @@ sidebar_label: Table
 Table is used to display the data in tabular format with optional toggle feature in the right hand side to toggle between the values if you want to show more than two columns,so that you don't need to make it horizontal scrollable due to lack of space
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/static/img/table.png" alt="checkbox" width="300"/>
+      <img src="/super/img/table.png" alt="checkbox" width="300"/>
     </figure>
 </div>
 

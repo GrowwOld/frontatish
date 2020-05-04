@@ -9,7 +9,7 @@ At the low level we have used [react-native-modal](https://www.npmjs.com/package
 
 <div>
     <figure>
-      <img src="/static/img/popup.png" alt="popup" height="400"/>
+      <img src="/super/img/popup.png" alt="popup" height="400"/>
     </figure>
 </div>
 

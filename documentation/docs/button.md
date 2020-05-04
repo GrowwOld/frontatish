@@ -8,16 +8,16 @@ Button components helps to handle all user actions using onPress handlers, the b
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/static/img/primary-button.png" alt="primary-button" />
+      <img src="/super/img/primary-button.png" alt="primary-button" />
     </figure>
     <figure>
-      <img src="/static/img/secondary-button.png" alt="secondary-button" />
+      <img src="/super/img/secondary-button.png" alt="secondary-button" />
     </figure>
     <figure>
-      <img src="/static/img/default-button.png" alt="default-button" />
+      <img src="/super/img/default-button.png" alt="default-button" />
     </figure>
     <figure>
-      <img src="/static/img/disabled-button.png" alt="disabled-button" />
+      <img src="/super/img/disabled-button.png" alt="disabled-button" />
     </figure>
 </div>
 
