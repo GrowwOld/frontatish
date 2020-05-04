@@ -55,7 +55,7 @@ class NumPadExample extends Component {
 
 ### `onItemClick`
 
-Callback function which gets called on every number press,you can see the usage to understand better
+Callback function which gets called on every item press in number pad,you can see the usage to understand better
 it will basically append the the value you will press, eventually in the parent state.
 
 |            Type             |        Default         |        Required        |
