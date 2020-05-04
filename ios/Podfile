@@ -77,6 +77,8 @@ target 'tykit' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'RNVectorIcons', :path => "../src/components/node_modules/react-native-vector-icons"
+  pod 'RNReanimated', :path => "../src/animations/node_modules/react-native-reanimated"
+  pod 'RNGestureHandler', :path => "../src/animations/node_modules/react-native-gesture-handler"
 
   target 'tykitTests' do
     inherit! :complete
