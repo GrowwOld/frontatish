@@ -36,12 +36,21 @@ const ButtonExample = (props: ButtonExampleProps) => {
           customStyles={{ flex: 1 }}
         />
       </View>
-      <View style={{ marginVertical: 20 }}>
+      <View style={{ flexDirection: 'row', marginVertical: 20 }}>
         <Button
           type="default"
           onPress={handlePress}
           label="Default Button"
           isDark={isDark}
+          customStyles={{ flex: 1, marginRight: 20 }}
+        />
+        <Button
+          type="primary"
+          onPress={handlePress}
+          label="Disabled button"
+          isDark={isDark}
+          disabled
+          customStyles={{ flex: 1 }}
         />
       </View>
       <View style={{ marginVertical: 20 }}>
@@ -51,15 +60,6 @@ const ButtonExample = (props: ButtonExampleProps) => {
           label="Loading Button"
           isDark={isDark}
           loading
-        />
-      </View>
-      <View style={{ marginVertical: 20 }}>
-        <Button
-          type="primary"
-          onPress={handlePress}
-          label="Disabled button"
-          isDark={isDark}
-          disabled
         />
       </View>
     </View>

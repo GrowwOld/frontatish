@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import classnames from 'classnames';
 import Layout from '@theme/Layout';
@@ -12,8 +13,8 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Groww super is very easy to use,you just need to install this package
+        and you get all amazing react-native ui components out of the box.
       </>
     ),
   },
@@ -22,24 +23,27 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Groww super gives you a great set of common ui components which we often
+        need in our daily development process, so you just have to worry about
+        the business logic of your app rather than worrying about such basic
+        components
       </>
     ),
   },
   {
-    title: <>Powered by React</>,
+    title: <>Powered by React-Native</>,
     imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        All the ui components are extensively built in react native,precisely it
+        best works on <code>iOS</code>, but soon it will get stable for{' '}
+        <code>Android</code>.
       </>
     ),
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
     <div className={classnames('col col--4', styles.feature)}>
@@ -56,11 +60,12 @@ function Feature({imageUrl, title, description}) {
 
 function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Description will go into a meta tag in <head />"
+    >
       <header className={classnames('hero hero--primary', styles.heroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
@@ -71,7 +76,8 @@ function Home() {
                 'button button--outline button--secondary button--lg',
                 styles.getStarted,
               )}
-              to={useBaseUrl('docs/doc1')}>
+              to={useBaseUrl('docs/getting-started')}
+            >
               Get Started
             </Link>
           </div>

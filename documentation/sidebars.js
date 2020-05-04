@@ -1,7 +1,14 @@
 module.exports = {
   someSidebar: {
-    Introduction: ['getting-started', 'concepts'],
-    Components: ['button' /* next_doc_id */],
-    Guides: ['troubleshooting'],
+    Introduction: ['getting-started'],
+    Components: [
+      'button',
+      'checkbox',
+      'numpad',
+      'popup',
+      'radiobutton',
+      'table' /* next_doc_id */,
+    ],
+    // Guides: ['troubleshooting'],
   },
 };
