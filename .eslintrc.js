@@ -27,12 +27,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        packageDir: ['./', './src/components', './src/animations'],
-      },
-    ],
+    // 'import/no-extraneous-dependencies': [
+    //   'error',
+    //   {
+    //     packageDir: ['./', './src/*', './example/*'],
+    //   },
+    // ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     'object-curly-newline': ['error', { multiline: true }],
