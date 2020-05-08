@@ -1,0 +1,12 @@
+{
+  "name": "@growwsuper/animations",
+  "version": "0.0.1",
+  "description": "general animations wrappers",
+  "repository": "https://github.com/groww/uikit",
+  "author": "groww_devs",
+  "license": "MIT",
+  "dependencies": {
+    "react-native-gesture-handler": "^1.6.1",
+    "react-native-reanimated": "^1.8.0"
+  }
+}
