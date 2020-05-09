@@ -4,12 +4,11 @@ import { Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {
-  ButtonScreen,
-  RadioButtonScreen,
-  NumPadScreen,
-  TableScreen,
-} from './Examples';
+import ButtonScreen from './Examples/ButtonExample';
+import RadioButtonScreen from './Examples/RadioButtonExample';
+import NumPadScreen from './Examples/NumPadExample';
+import TableScreen from './Examples/TableExample';
+import PopupScreen from './Examples/PopupExample';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +18,7 @@ const HomeScreen = ({ navigation }: any) => {
     'RadioButtonScreen',
     'NumPadScreen',
     'TableScreen',
+    'PopupScreen',
   ];
   return (
     <SafeAreaView>
@@ -43,6 +43,7 @@ function App() {
         <Stack.Screen name="RadioButtonScreen" component={RadioButtonScreen} />
         <Stack.Screen name="NumPadScreen" component={NumPadScreen} />
         <Stack.Screen name="TableScreen" component={TableScreen} />
+        <Stack.Screen name="PopupScreen" component={PopupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
