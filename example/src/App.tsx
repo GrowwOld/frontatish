@@ -4,11 +4,11 @@ import { Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonScreen from './Examples/ButtonExample';
-import RadioButtonScreen from './Examples/RadioButtonExample';
-import NumPadScreen from './Examples/NumPadExample';
-import TableScreen from './Examples/TableExample';
-import PopupScreen from './Examples/PopupExample';
+import ButtonScreen from './examples/ButtonExample';
+import RadioButtonScreen from './examples/RadioButtonExample';
+import NumPadScreen from './examples/NumPadExample';
+import TableScreen from './examples/TableExample';
+import PopupScreen from './examples/PopupExample';
 
 const Stack = createStackNavigator();
 
