@@ -3,9 +3,9 @@
 
 
 "@react-native-community/progress-bar-android@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.1.tgz#0cf4b256040ce503d313a1199ec192f89cbe85dd"
-  integrity sha512-ujZX1JGFh58KlC28pzIIlltkcRnmP5C6cuGwsLHFb3RKxB1LbgsPRFupCelaPWYCQeKiqr2AjCUv3tcX2f7QYQ==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.2.tgz#70fac5bf8ad92f8d8025db0841d1371c78db1e84"
+  integrity sha512-0RJK+y1CWMWios7evoQeYaX9SjaFafAWECAr6fmbaG0ISgsDTTQMswFT1O6+VITdm0GlS5F+q0vfCrPOkDispQ==
 
 "@react-native-community/progress-view@^1.0.2":
   version "1.0.2"

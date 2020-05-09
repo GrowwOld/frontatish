@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-// import { Button } from 'supergroww';
+import { StyleSheet, View } from 'react-native';
+// eslint-disable-next-line import/no-unresolved
+import { Button } from 'supergroww';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Welcome Example APP</Text>
+      <View>
+        <Button label="Primary" type="primary" />
+      </View>
     </View>
   );
 }
