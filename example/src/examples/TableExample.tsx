@@ -1,11 +1,10 @@
 import React from 'react';
 
 import { View, Text } from 'react-native';
-
 // eslint-disable-next-line import/no-unresolved
 import { Table, Ripple } from 'supergroww';
 // import { Fonts, getColors } from '../styles';
-import { tableData } from './Mockdata';
+import { tableData } from './fixtures';
 
 interface TableExampleProps {
   isDark: boolean;

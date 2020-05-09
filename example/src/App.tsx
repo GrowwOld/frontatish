@@ -13,13 +13,7 @@ import PopupScreen from './Examples/PopupExample';
 const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
-  const screens = [
-    'ButtonScreen',
-    'RadioButtonScreen',
-    'NumPadScreen',
-    'TableScreen',
-    'PopupScreen',
-  ];
+  const screens = ['Button', 'RadioButton', 'NumPad', 'Tables', 'Popup'];
   return (
     <SafeAreaView>
       {screens.map((item) => (
@@ -38,12 +32,12 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        <Stack.Screen name="ButtonScreen" component={ButtonScreen} />
-        <Stack.Screen name="RadioButtonScreen" component={RadioButtonScreen} />
-        <Stack.Screen name="NumPadScreen" component={NumPadScreen} />
-        <Stack.Screen name="TableScreen" component={TableScreen} />
-        <Stack.Screen name="PopupScreen" component={PopupScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Button" component={ButtonScreen} />
+        <Stack.Screen name="RadioButton" component={RadioButtonScreen} />
+        <Stack.Screen name="NumPad" component={NumPadScreen} />
+        <Stack.Screen name="Tables" component={TableScreen} />
+        <Stack.Screen name="Popup" component={PopupScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

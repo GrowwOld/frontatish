@@ -77,6 +77,7 @@ const Table = (props: TableProps) => {
     // first check if there exist any customRightItemComponents
     // and then also check if customRightItemComponent exist for
     // the active option
+
     if (
       customRightItemComponents &&
       customRightItemComponents[option[active]]
