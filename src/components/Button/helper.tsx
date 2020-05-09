@@ -11,18 +11,16 @@
 import { BaseStyles } from '../../styles';
 import { StyleType, ColorType } from '../../common/types';
 
-export const getBtnBgColorByType = (btnType: string, Colors: any)
-  : string => {
+export const getBtnBgColorByType = (btnType: string, Colors: any): string => {
   const colorMapForBtn: any = {
     primary: Colors.GREEN_BLUE,
     secondary: Colors.WHITE,
-    default: Colors.WHITE
+    default: Colors.WHITE,
   };
   return colorMapForBtn[btnType];
 };
 
-export const getBtnTextColorByType = (btnType: string, Colors: any)
-  : string => {
+export const getBtnTextColorByType = (btnType: string, Colors: any): string => {
   const colorMapForTxt: any = {
     primary: Colors.WHITE,
     secondary: Colors.GREEN_BLUE,
@@ -35,7 +33,7 @@ export const getBtnBorderStyles = (btnType: string): any => {
   const borderStyleMapForBtn: any = {
     primary: {},
     secondary: {},
-    default: {}
+    default: {},
   };
   return borderStyleMapForBtn[btnType];
 };
@@ -43,7 +41,7 @@ export const getBtnBorderStyles = (btnType: string): any => {
 export const getBtnStyles = (
   btnType: string,
   Colors: ColorType,
-  disabled: boolean | null | undefined
+  disabled: boolean | null | undefined,
 ): StyleType => {
   switch (btnType) {
     case 'primary':
@@ -77,7 +75,7 @@ export const getBtnStyles = (
 export const getLabelStyles = (
   btnType: string,
   Colors: ColorType,
-  disabled: boolean | null | undefined
+  disabled: boolean | null | undefined,
 ): StyleType => {
   switch (btnType) {
     case 'primary':

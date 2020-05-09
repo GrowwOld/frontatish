@@ -22,14 +22,14 @@ const Popup = (props: PopupProps) => {
     }
   };
 
-  const onSwipeMove = (percentageShown: number) => {
-    const fixedPercentage: number = parseFloat(percentageShown.toFixed(1));
-    const updateFlexValue: number = parseFloat(
-      (1 - fixedPercentage).toFixed(1),
-    );
-    console.log('flexValue', updateFlexValue, 'percentage', fixedPercentage);
-    // this.setState({ flexValue: updateFlexValue });
-  };
+  // const onSwipeMove = (percentageShown: number) => {
+  //   const fixedPercentage: number = parseFloat(percentageShown.toFixed(1));
+  //   const updateFlexValue: number = parseFloat(
+  //     (1 - fixedPercentage).toFixed(1),
+  //   );
+  //   // console.log('flexValue', updateFlexValue, 'percentage', fixedPercentage);
+  //   // this.setState({ flexValue: updateFlexValue });
+  // };
 
   const getPosition = (position?: string): AlignTypes => {
     switch (position) {
@@ -108,7 +108,7 @@ const Popup = (props: PopupProps) => {
       onBackdropPress={closePopup}
       onBackButtonPress={closePopup}
       onSwipeComplete={onSwipeComplete}
-      onSwipeMove={onSwipeMove}
+      // onSwipeMove={onSwipeMove}
       swipeDirection={swipeDirection}
       scrollOffset={scrollOffset}
       swipeThreshold={swipeThreshold}

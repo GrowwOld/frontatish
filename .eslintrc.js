@@ -30,7 +30,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [
       'error',
       {
-        packageDir: ['./', './src/components', './src/animations'],
+        packageDir: ['./', './src/', './example'],
       },
     ],
     'no-unused-vars': 'off',
@@ -43,7 +43,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx', '.ios.tsx' ,'.android.tsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
   },
