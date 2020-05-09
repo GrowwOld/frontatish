@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@react-native-community/progress-bar-android@^1.0.1":
+"@react-native-community/progress-bar-android@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@react-native-community/progress-bar-android/-/progress-bar-android-1.0.2.tgz#70fac5bf8ad92f8d8025db0841d1371c78db1e84"
   integrity sha512-0RJK+y1CWMWios7evoQeYaX9SjaFafAWECAr6fmbaG0ISgsDTTQMswFT1O6+VITdm0GlS5F+q0vfCrPOkDispQ==
