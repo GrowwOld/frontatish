@@ -1,5 +1,3 @@
-**common ui components for React native  project**
-
 ## Disclaimer
 The project is under development,so its not have an installation procedure in a any project for now from `npm` or `yarn` command,you need to add it to your `node_modules` manually to make it work. Please report issue even that not work.
 
@@ -10,18 +8,19 @@ So basically the project contains an example app itself which uses the `supergro
 ## Setup for example project installation
 
 ### Installation
-Installing dependencies of the project
+Follow the given steps accordingly to avoid any failure
+1. Installing dependencies of the project
 ```bash
 $ git clone https://github.com/groww/super
 $ cd super && yarn
 ```
 
-Installing dependencies of example app
+2. Installing dependencies of example app
 ```bash
 $ yarn bootstrap
 ```
 
-Installing dependencies of uikit-library
+3. Installing dependencies of uikit-library
 ```bash
 $ cd src && yarn
 ```
