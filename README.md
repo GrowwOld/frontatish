@@ -3,7 +3,7 @@ The project is under development,so its not have an installation procedure in a 
 
 
 ## Project Structure
-So basically the project contains an example app itself which uses the `supergroww` library,so the main code for the ui-kit resides at src,so all the set of components would be there only. and can be imported from `supergroww` library in the `example` app which resides at `example` folder in the root directory.
+So basically the project contains an example app itself which uses the `supergroww` library,so the main code for the ui-kit resides at `src`,so all the set of components would be there only. and can be imported from `supergroww` library in the `example` app which resides at `example` folder in the root directory.
 
 ## Setup for example project installation
 
