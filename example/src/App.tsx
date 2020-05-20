@@ -1,4 +1,4 @@
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,22 +9,50 @@ import RadioButtonScreen from './examples/RadioButtonExample';
 import NumPadScreen from './examples/NumPadExample';
 import TableScreen from './examples/TableExample';
 import PopupScreen from './examples/PopupExample';
+import FadeScreen from './examples/FadeExample';
 
 const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
-  const screens = ['Button', 'RadioButton', 'NumPad', 'Tables', 'Popup'];
+  const componentScreens = [
+    'Button',
+    'RadioButton',
+    'NumPad',
+    'Tables',
+    'Popup',
+  ];
+  const animatedScreens = ['Fade'];
   return (
     <SafeAreaView>
-      {screens.map((item) => (
-        <TouchableOpacity
-          onPress={() => navigation.navigate(item)}
-          style={styles.navButtonContainer}
-          key={item}
-        >
-          <Text>{item}</Text>
-        </TouchableOpacity>
-      ))}
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ flexGrow: 1 }}
+      >
+        <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
+          UI components
+        </Text>
+        {componentScreens.map((item) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate(item)}
+            style={styles.navButtonContainer}
+            key={item}
+          >
+            <Text>{item}</Text>
+          </TouchableOpacity>
+        ))}
+        <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
+          Animated components
+        </Text>
+        {animatedScreens.map((item) => (
+          <TouchableOpacity
+            onPress={() => navigation.navigate(item)}
+            style={styles.navButtonContainer}
+            key={item}
+          >
+            <Text>{item}</Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -38,6 +66,7 @@ function App() {
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
         <Stack.Screen name="Popup" component={PopupScreen} />
+        <Stack.Screen name="Fade" component={FadeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
