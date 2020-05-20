@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { CheckBox } from 'supergroww';
+import { Checkbox } from 'supergroww';
 
 const CheckboxExample = () => {
   const [tick, setTick] = useState(false);
   return (
-    <CheckBox
+    <Checkbox
+      isDark={false}
       checked={tick}
       onPress={() => setTick(!tick)}
       containerStyle={{ marginRight: 20 }}
