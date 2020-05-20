@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import ButtonScreen from './examples/ButtonExample';
+import ChexboxScreen from './examples/CheckboxExample';
 import RadioButtonScreen from './examples/RadioButtonExample';
 import NumPadScreen from './examples/NumPadExample';
 import TableScreen from './examples/TableExample';
@@ -16,6 +17,7 @@ const Stack = createStackNavigator();
 const HomeScreen = ({ navigation }: any) => {
   const componentScreens = [
     'Button',
+    'CheckBox',
     'RadioButton',
     'NumPad',
     'Tables',
@@ -62,6 +64,7 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Button" component={ButtonScreen} />
+        <Stack.Screen name="CheckBox" component={ChexboxScreen} />
         <Stack.Screen name="RadioButton" component={RadioButtonScreen} />
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
