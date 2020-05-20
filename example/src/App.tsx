@@ -17,8 +17,8 @@ const Stack = createStackNavigator();
 const HomeScreen = ({ navigation }: any) => {
   const componentScreens = [
     'Button',
-    'RadioButton',
     'CheckBox',
+    'RadioButton',
     'NumPad',
     'Tables',
     'Popup',
@@ -64,8 +64,8 @@ function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Button" component={ButtonScreen} />
-        <Stack.Screen name="RadioButton" component={RadioButtonScreen} />
         <Stack.Screen name="CheckBox" component={ChexboxScreen} />
+        <Stack.Screen name="RadioButton" component={RadioButtonScreen} />
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
         <Stack.Screen name="Popup" component={PopupScreen} />
