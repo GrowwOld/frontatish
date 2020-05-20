@@ -1,7 +1,6 @@
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { getColors } from '../../styles';
 import { CheckBoxProps } from './types';
 
@@ -31,7 +30,7 @@ const Checkbox = (props: CheckBoxProps) => {
       style={mainContainerStyle}
       onPress={onPress}
     >
-      {checked && <Icon name="check" size={13} color={iconColor} />}
+      {checked && <View style={{ backgroundColor: iconColor }} />}
     </TouchableOpacity>
   );
 };
