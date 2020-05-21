@@ -20,7 +20,7 @@ const HomeScreen = ({ navigation }: any) => {
     'NumPad',
     'Tables',
     'Popup',
-    'Message Board',
+    'MessageBoard',
   ];
   return (
     <SafeAreaView>
@@ -46,7 +46,7 @@ function App() {
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
         <Stack.Screen name="Popup" component={PopupScreen} />
-        <Stack.Screen name="Message Board" component={MessageBoard} />
+        <Stack.Screen name="MessageBoard" component={MessageBoard} />
       </Stack.Navigator>
     </NavigationContainer>
   );
