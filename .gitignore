@@ -70,3 +70,5 @@ lib/
 
 # CocoaPods
 /ios/Pods/
+
+*.iml
