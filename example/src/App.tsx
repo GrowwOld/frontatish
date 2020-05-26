@@ -4,6 +4,7 @@ import { Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
+// import { EmptyStateGeneric } from '../../src/components/EmptyStates';
 import ButtonScreen from './examples/ButtonExample';
 import ChexboxScreen from './examples/CheckboxExample';
 import RadioButtonScreen from './examples/RadioButtonExample';
@@ -11,8 +12,15 @@ import NumPadScreen from './examples/NumPadExample';
 import TableScreen from './examples/TableExample';
 import PopupScreen from './examples/PopupExample';
 import FadeScreen from './examples/FadeExample';
+import EmptyStates from './examples/EmptyStatesExample';
+// import { EmptyStatesNavigator } from 'supergroww';
+
+// import { EmptyStateGeneric } from 'src/components/EmptyStates';
+
+// import { EmptyStateGeneric } from 'supergroww';
 
 const Stack = createStackNavigator();
+// const EmptyStatesStack = createStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
   const componentScreens = [
@@ -22,6 +30,7 @@ const HomeScreen = ({ navigation }: any) => {
     'NumPad',
     'Tables',
     'Popup',
+    'EmptyStates',
   ];
   const animatedScreens = ['Fade'];
   return (
@@ -58,6 +67,7 @@ const HomeScreen = ({ navigation }: any) => {
     </SafeAreaView>
   );
 };
+
 function App() {
   return (
     <NavigationContainer>
@@ -69,6 +79,11 @@ function App() {
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
         <Stack.Screen name="Popup" component={PopupScreen} />
+        <Stack.Screen
+          name="EmptyStates"
+          component={EmptyStates}
+          options={{ headerShown: false }}
+        />
         <Stack.Screen name="Fade" component={FadeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
