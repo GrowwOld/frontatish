@@ -1,29 +1,19 @@
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import ButtonScreen from './examples/ButtonExample';
-import ChexboxScreen from './examples/CheckboxExample';
-import RadioButtonScreen from './examples/RadioButtonExample';
-import NumPadScreen from './examples/NumPadExample';
-import TableScreen from './examples/TableExample';
-import PopupScreen from './examples/PopupExample';
-import FadeScreen from './examples/FadeExample';
+
+import {
+  COMPONENT_SCREENS,
+  ANIMATED_SCREENS,
+  SCREEN_MAPPING,
+} from './examples/navigation';
 
 const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
-  const componentScreens = [
-    'Button',
-    'CheckBox',
-    'RadioButton',
-    'NumPad',
-    'Tables',
-    'Popup',
-  ];
-  const animatedScreens = ['Fade'];
   return (
     <SafeAreaView>
       <ScrollView
@@ -33,25 +23,25 @@ const HomeScreen = ({ navigation }: any) => {
         <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
           UI components
         </Text>
-        {componentScreens.map((item) => (
+        {Object.keys(COMPONENT_SCREENS).map((item) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate(item)}
+            onPress={() => navigation.navigate(COMPONENT_SCREENS[item])}
             style={styles.navButtonContainer}
             key={item}
           >
-            <Text>{item}</Text>
+            <Text>{COMPONENT_SCREENS[item]}</Text>
           </TouchableOpacity>
         ))}
         <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
           Animated components
         </Text>
-        {animatedScreens.map((item) => (
+        {Object.keys(ANIMATED_SCREENS).map((item) => (
           <TouchableOpacity
-            onPress={() => navigation.navigate(item)}
+            onPress={() => navigation.navigate(ANIMATED_SCREENS[item])}
             style={styles.navButtonContainer}
             key={item}
           >
-            <Text>{item}</Text>
+            <Text>{ANIMATED_SCREENS[item]}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -63,13 +53,13 @@ function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Button" component={ButtonScreen} />
-        <Stack.Screen name="CheckBox" component={ChexboxScreen} />
-        <Stack.Screen name="RadioButton" component={RadioButtonScreen} />
-        <Stack.Screen name="NumPad" component={NumPadScreen} />
-        <Stack.Screen name="Tables" component={TableScreen} />
-        <Stack.Screen name="Popup" component={PopupScreen} />
-        <Stack.Screen name="Fade" component={FadeScreen} />
+        {SCREEN_MAPPING.map((item) => (
+          <Stack.Screen
+            name={item.name}
+            component={item.screen}
+            key={item.name}
+          />
+        ))}
       </Stack.Navigator>
     </NavigationContainer>
   );
