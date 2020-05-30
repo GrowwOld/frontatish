@@ -6,6 +6,7 @@ import TableScreen from '../TableExample';
 import PopupScreen from '../PopupExample';
 import FadeScreen from '../FadeExample';
 import SliderScreen from '../SliderExample';
+import CalendarScreen from '../CalendarExample';
 
 export const COMPONENT_SCREENS = {
   BUTTON: 'Button',
@@ -15,6 +16,7 @@ export const COMPONENT_SCREENS = {
   TABLES: 'Tables',
   POPUP: 'Popup',
   SLIDER: 'Slider',
+  CALENDAR: 'Calendar',
 };
 
 export const ANIMATED_SCREENS = { FADE: 'Fade' };
@@ -28,6 +30,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.TABLES, screen: TableScreen },
   { name: COMPONENT_SCREENS.POPUP, screen: PopupScreen },
   { name: COMPONENT_SCREENS.SLIDER, screen: SliderScreen },
+  { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];

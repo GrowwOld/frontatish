@@ -37,6 +37,7 @@ const NumPad = (props: NumPadProps) => {
       data={numberRange}
       horizontal={false}
       scrollEnabled={false}
+      contentContainerStyle={styles.numPadContainerStyle}
       numColumns={3}
       keyExtractor={(item) => item}
       renderItem={({ item }) => (
@@ -63,6 +64,16 @@ const styles = StyleSheet.create({
   numberText: {
     fontFamily: Fonts.type.gotham_medium,
     fontSize: Fonts.size.h3,
+  },
+  numPadContainerStyle: {
+    backgroundColor: '#fff',
+    // shadowRadius: 2,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: -3,
+    // },
+    // shadowColor: '#000000',
+    // elevation: 4,
   },
 });
 
