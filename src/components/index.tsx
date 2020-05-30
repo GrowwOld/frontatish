@@ -5,5 +5,6 @@ import NumPad from './NumPad';
 import Popup from './Popup';
 import RadioButton from './RadioButton';
 import Table from './Table';
+import Switch from './Switch';
 
-export { Button, Checkbox, NumPad, Popup, RadioButton, Table, Ripple };
+export { Button, Checkbox, NumPad, Popup, RadioButton, Table, Ripple, Switch };

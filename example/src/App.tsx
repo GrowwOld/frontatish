@@ -11,6 +11,7 @@ import NumPadScreen from './examples/NumPadExample';
 import TableScreen from './examples/TableExample';
 import PopupScreen from './examples/PopupExample';
 import FadeScreen from './examples/FadeExample';
+import SwitchScreen from './examples/SwitchExample';
 
 const Stack = createStackNavigator();
 
@@ -22,6 +23,7 @@ const HomeScreen = ({ navigation }: any) => {
     'NumPad',
     'Tables',
     'Popup',
+    'Switch',
   ];
   const animatedScreens = ['Fade'];
   return (
@@ -69,6 +71,7 @@ function App() {
         <Stack.Screen name="NumPad" component={NumPadScreen} />
         <Stack.Screen name="Tables" component={TableScreen} />
         <Stack.Screen name="Popup" component={PopupScreen} />
+        <Stack.Screen name="Switch" component={SwitchScreen} />
         <Stack.Screen name="Fade" component={FadeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
