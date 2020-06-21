@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+// eslint-disable-next-line import/no-unresolved
+import { Themed, Button, ThemeContext, colors } from 'supergroww';
 
 import {
   COMPONENT_SCREENS,
@@ -13,9 +15,17 @@ import {
 
 const Stack = createStackNavigator();
 
-const HomeScreen = ({ navigation }: any) => {
+const HomeScreen = ({ navigation, route }: any) => {
+  const currentTheme = useContext(ThemeContext);
+  const themeColors = colors[currentTheme];
+  const { setTheme } = route.params;
+  const changeThemeClick = () => {
+    if (currentTheme === 'LIGHT') setTheme('DARK');
+    else setTheme('LIGHT');
+  };
+
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.white }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -44,30 +54,39 @@ const HomeScreen = ({ navigation }: any) => {
             <Text>{ANIMATED_SCREENS[item]}</Text>
           </TouchableOpacity>
         ))}
+        <Button
+          onPress={changeThemeClick}
+          label="CHANGE THEME"
+          customStyles={{ margin: 20 }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
 };
 function App() {
+  const [theme, setTheme] = useState('LIGHT');
   return (
     <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{ headerShown: false }}
-          />
-          {SCREEN_MAPPING.map((item) => (
+      <Themed currentTheme={theme}>
+        <NavigationContainer>
+          <Stack.Navigator>
             <Stack.Screen
-              name={item.name}
-              component={item.screen}
-              key={item.name}
+              name="Home"
+              component={HomeScreen}
               options={{ headerShown: false }}
+              initialParams={{ setTheme }}
             />
-          ))}
-        </Stack.Navigator>
-      </NavigationContainer>
+            {SCREEN_MAPPING.map((item) => (
+              <Stack.Screen
+                name={item.name}
+                component={item.screen}
+                key={item.name}
+                options={{ headerShown: false }}
+              />
+            ))}
+          </Stack.Navigator>
+        </NavigationContainer>
+      </Themed>
     </SafeAreaProvider>
   );
 }

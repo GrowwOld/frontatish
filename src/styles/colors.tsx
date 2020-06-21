@@ -1,3 +1,7 @@
+import { useContext } from 'react';
+import ThemeContext from '../components/Themed/ThemeContext';
+import ColorPalette from './colorPalette';
+
 const defualtColors = {
   background: '#1F0808',
   StatusBarColor: '#fff',
@@ -288,6 +292,9 @@ const getColors = (isDark: boolean | undefined | null) => {
 
   // if dark mode is active then
   // return dark mode colors
+
+  const currentTheme = useContext(ThemeContext);
+  console.log(ColorPalette[currentTheme]);
   if (isDark) {
     return Colors.DARK_MODE;
   }
