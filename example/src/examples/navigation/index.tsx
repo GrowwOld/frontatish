@@ -5,6 +5,7 @@ import NumPadScreen from '../NumPadExample';
 import TableScreen from '../TableExample';
 import PopupScreen from '../PopupExample';
 import FadeScreen from '../FadeExample';
+import TickerScreen from '../TickerExample';
 import SliderScreen from '../SliderExample';
 
 export const COMPONENT_SCREENS = {
@@ -17,7 +18,7 @@ export const COMPONENT_SCREENS = {
   SLIDER: 'Slider',
 };
 
-export const ANIMATED_SCREENS = { FADE: 'Fade' };
+export const ANIMATED_SCREENS = { FADE: 'Fade', TICKER: 'Ticker' };
 
 export const SCREEN_MAPPING = [
   // components screen mapping
@@ -30,4 +31,5 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.SLIDER, screen: SliderScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
+  { name: ANIMATED_SCREENS.TICKER, screen: TickerScreen },
 ];
