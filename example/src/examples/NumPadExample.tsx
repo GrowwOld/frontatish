@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
 import { NumPad } from 'supergroww';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { Fonts, getColors } from '../styles';
 
@@ -36,14 +37,14 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
     const { isDark } = this.props;
     // const Colors = getColors(isDark);
     return (
-      <View>
+      <SafeAreaView style={{ flex: 1 }}>
         <Text style={[]}>{input}</Text>
         <NumPad
           onItemClick={this.onItemClick}
           onDeleteItem={this.onDeleteItem}
           isDark={isDark}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }

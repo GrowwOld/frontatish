@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
 import { Table, Ripple } from 'supergroww';
 // import { Fonts, getColors } from '../styles';
@@ -37,7 +38,7 @@ const TableExample = (props: TableExampleProps) => {
   // so that it can be correctly mapped
   const customRightItemComponents = { marketPrice: MrpItem };
   return (
-    <View style={{ flex: 1, marginHorizontal: 20 }}>
+    <SafeAreaView style={{ flex: 1, marginHorizontal: 20 }}>
       <Text>Table Example</Text>
       <Table
         data={tableData}
@@ -49,7 +50,7 @@ const TableExample = (props: TableExampleProps) => {
         flatlistKey="isin"
         customRightItemComponents={customRightItemComponents}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 

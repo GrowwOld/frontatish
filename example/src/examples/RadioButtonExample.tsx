@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
 import { RadioButton } from 'supergroww';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Fonts, getColors } from '../styles';
 
 interface RadioButtonExampleProps {
@@ -18,7 +19,7 @@ const RadioButtonExample = (props: RadioButtonExampleProps) => {
   };
   // const Colors = getColors(isDark);
   return (
-    <View style={{ flex: 1, margin: 20 }}>
+    <SafeAreaView style={{ flex: 1, margin: 20 }}>
       <Text style={[]}>RadioButton Examples</Text>
       <Text style={[]}>{`Selected Value is ${choosen}`}</Text>
       <View
@@ -60,7 +61,7 @@ const RadioButtonExample = (props: RadioButtonExampleProps) => {
         />
         <RadioButton disabled isDark={isDark} value="disable-unselected" />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

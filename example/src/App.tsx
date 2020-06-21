@@ -3,7 +3,7 @@ import { Text, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 import {
   COMPONENT_SCREENS,
@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 
 const HomeScreen = ({ navigation }: any) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -50,18 +50,25 @@ const HomeScreen = ({ navigation }: any) => {
 };
 function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        {SCREEN_MAPPING.map((item) => (
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
           <Stack.Screen
-            name={item.name}
-            component={item.screen}
-            key={item.name}
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
           />
-        ))}
-      </Stack.Navigator>
-    </NavigationContainer>
+          {SCREEN_MAPPING.map((item) => (
+            <Stack.Screen
+              name={item.name}
+              component={item.screen}
+              key={item.name}
+              options={{ headerShown: false }}
+            />
+          ))}
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
