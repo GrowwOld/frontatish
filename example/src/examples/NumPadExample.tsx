@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad } from 'supergroww';
+import { NumPad, withColors } from 'supergroww';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { Fonts, getColors } from '../styles';
@@ -12,6 +12,7 @@ interface NumPadExampleState {
 }
 interface NumPadExampleProps {
   isDark: boolean;
+  Colors: any;
 }
 class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   constructor(props: NumPadExampleProps) {
@@ -34,10 +35,9 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   render() {
     const { input } = this.state;
-    const { isDark } = this.props;
-    // const Colors = getColors(isDark);
+    const { isDark, Colors } = this.props;
     return (
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
         <Text style={[]}>{input}</Text>
         <NumPad
           onItemClick={this.onItemClick}
@@ -49,4 +49,4 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   }
 }
 
-export default NumPadExample;
+export default withColors(NumPadExample);

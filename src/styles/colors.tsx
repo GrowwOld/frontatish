@@ -1,6 +1,6 @@
-// import { useContext } from 'react';
-// import ThemeContext from '../components/Themed/ThemeContext';
-// import ColorPalette from './colorPalette';
+import { useContext } from 'react';
+import { ThemeContext } from '../themes';
+import ColorPalette from './colorPalette';
 
 const defualtColors = {
   background: '#1F0808',
@@ -285,7 +285,7 @@ const Colors = {
   },
 };
 
-const getColors = (isDark: boolean | undefined | null) => {
+export const getColors = (isDark: boolean | undefined | null) => {
   // this is to handle the dark mode
   // color in the kit might change the
   // logic in future
@@ -300,4 +300,7 @@ const getColors = (isDark: boolean | undefined | null) => {
   return Colors.LIGHT_MODE;
 };
 
-export default getColors;
+export const useColors = () => {
+  const currentTheme = useContext(ThemeContext);
+  return ColorPalette[currentTheme];
+};

@@ -10,9 +10,8 @@ import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 const HomeScreen = ({ navigation, route }: any) => {
   const currentTheme = useContext(ThemeContext);
   const themeColors = colors[currentTheme];
-  const { setTheme, incVal } = route.params;
+  const { setTheme } = route.params;
   const changeThemeClick = () => {
-    incVal();
     if (currentTheme === 'LIGHT') {
       setTheme('DARK');
       StatusBar.setBarStyle('light-content', true);
@@ -21,7 +20,6 @@ const HomeScreen = ({ navigation, route }: any) => {
       StatusBar.setBarStyle('default', true);
     }
   };
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.white }}>
       <ScrollView
@@ -38,17 +36,19 @@ const HomeScreen = ({ navigation, route }: any) => {
         >
           UI components
         </Text>
-        {Object.keys(COMPONENT_SCREENS).map((item) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(COMPONENT_SCREENS[item])}
-            style={styles.navButtonContainer}
-            key={item}
-          >
-            <Text style={{ color: themeColors.font_1 }}>
-              {COMPONENT_SCREENS[item]}
-            </Text>
-          </TouchableOpacity>
-        ))}
+        {Object.keys(COMPONENT_SCREENS).map((item) => {
+          return (
+            <TouchableOpacity
+              onPress={() => navigation.navigate(COMPONENT_SCREENS[item])}
+              style={styles.navButtonContainer}
+              key={item}
+            >
+              <Text style={{ color: themeColors.font_1 }}>
+                {COMPONENT_SCREENS[item]}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
         <Text
           style={{
             fontSize: 20,

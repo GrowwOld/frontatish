@@ -6,7 +6,7 @@ interface ThemedProps {
   currentTheme: string;
 }
 
-const Themed = (props: ThemedProps) => {
+const ThemeProvider = (props: ThemedProps) => {
   const { children, currentTheme } = props;
   return (
     <ThemeContext.Provider value={currentTheme}>
@@ -15,4 +15,4 @@ const Themed = (props: ThemedProps) => {
   );
 };
 
-export default Themed;
+export default ThemeProvider;

@@ -3,9 +3,8 @@ import * as React from 'react';
 import { Alert, StyleSheet, View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { Button } from 'supergroww';
+import { Button, useColors } from 'supergroww';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// import { Fonts, getColors } from '../styles';
 
 interface ButtonExampleProps {
   isDark: boolean;
@@ -14,12 +13,12 @@ interface ButtonExampleProps {
 
 const ButtonExample = (props: ButtonExampleProps) => {
   const { isDark, openPopup } = props;
-  // const Colors = getColors(isDark);
+  const Colors = useColors();
   const handlePress = () => {
     Alert.alert('Just checking onPress');
   };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <View style={styles.exampleBtnContainer}>
         <Text style={[]}>Button Examples</Text>
         <View style={{ flexDirection: 'row', marginVertical: 20 }}>
