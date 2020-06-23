@@ -1,70 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Themed, Button, ThemeContext, colors } from 'supergroww';
+import { Themed } from 'supergroww';
 
-import {
-  COMPONENT_SCREENS,
-  ANIMATED_SCREENS,
-  SCREEN_MAPPING,
-} from './examples/navigation';
+import HomeScreen from './examples/HomeScreen';
+import { SCREEN_MAPPING } from './examples/navigation';
 
 const Stack = createStackNavigator();
 
-const HomeScreen = ({ navigation, route }: any) => {
-  const currentTheme = useContext(ThemeContext);
-  const themeColors = colors[currentTheme];
-  const { setTheme } = route.params;
-  const changeThemeClick = () => {
-    if (currentTheme === 'LIGHT') setTheme('DARK');
-    else setTheme('LIGHT');
-  };
-
-  return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.white }}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow: 1 }}
-      >
-        <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
-          UI components
-        </Text>
-        {Object.keys(COMPONENT_SCREENS).map((item) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(COMPONENT_SCREENS[item])}
-            style={styles.navButtonContainer}
-            key={item}
-          >
-            <Text>{COMPONENT_SCREENS[item]}</Text>
-          </TouchableOpacity>
-        ))}
-        <Text style={{ fontSize: 20, margin: 20, fontWeight: 'bold' }}>
-          Animated components
-        </Text>
-        {Object.keys(ANIMATED_SCREENS).map((item) => (
-          <TouchableOpacity
-            onPress={() => navigation.navigate(ANIMATED_SCREENS[item])}
-            style={styles.navButtonContainer}
-            key={item}
-          >
-            <Text>{ANIMATED_SCREENS[item]}</Text>
-          </TouchableOpacity>
-        ))}
-        <Button
-          onPress={changeThemeClick}
-          label="CHANGE THEME"
-          customStyles={{ margin: 20 }}
-        />
-      </ScrollView>
-    </SafeAreaView>
-  );
-};
 function App() {
   const [theme, setTheme] = useState('LIGHT');
+  const [val, setVal] = useState(0);
+  const incVal = () => setVal(val + 1);
   return (
     <SafeAreaProvider>
       <Themed currentTheme={theme}>
@@ -74,7 +23,7 @@ function App() {
               name="Home"
               component={HomeScreen}
               options={{ headerShown: false }}
-              initialParams={{ setTheme }}
+              initialParams={{ setTheme, incVal }}
             />
             {SCREEN_MAPPING.map((item) => (
               <Stack.Screen
@@ -91,11 +40,4 @@ function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  navButtonContainer: {
-    padding: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(191, 191, 191, 0.5)',
-  },
-});
 export default App;

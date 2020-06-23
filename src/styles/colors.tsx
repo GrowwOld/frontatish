@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import ThemeContext from '../components/Themed/ThemeContext';
-import ColorPalette from './colorPalette';
+// import { useContext } from 'react';
+// import ThemeContext from '../components/Themed/ThemeContext';
+// import ColorPalette from './colorPalette';
 
 const defualtColors = {
   background: '#1F0808',
@@ -293,8 +293,7 @@ const getColors = (isDark: boolean | undefined | null) => {
   // if dark mode is active then
   // return dark mode colors
 
-  const currentTheme = useContext(ThemeContext);
-  console.log(ColorPalette[currentTheme]);
+  // const currentTheme = useContext(ThemeContext);
   if (isDark) {
     return Colors.DARK_MODE;
   }
