@@ -5,10 +5,10 @@ import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
 import { NumPadProps } from './types';
-import { Fonts, getColors } from '../../styles';
+import { Fonts, useColors } from '../../styles';
 
 const NumPad = (props: NumPadProps) => {
-  const { onItemClick, onDeleteItem, isDark } = props;
+  const { onItemClick, onDeleteItem } = props;
   const numberRange = [
     '1',
     '2',
@@ -31,7 +31,7 @@ const NumPad = (props: NumPadProps) => {
   //     ))}
   //   </View>
   // );
-  const Colors = getColors(isDark);
+  const Colors = useColors();
   return (
     <FlatList
       data={numberRange}
@@ -51,7 +51,7 @@ const NumPad = (props: NumPadProps) => {
           rippleContainerBorderRadius={20}
           onPress={item === 'X' ? onDeleteItem : () => onItemClick(item)}
         >
-          <Text style={[styles.numberText, { color: Colors.BLACK }]}>
+          <Text style={[styles.numberText, { color: Colors.font_1 }]}>
             {item}
           </Text>
         </Ripple>
