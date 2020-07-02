@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TableProps, TableItemProps } from './types';
-import { getColors, Fonts } from '../../styles';
+import { Fonts, useColors } from '../../styles';
 
 const Table = (props: TableProps) => {
   const [active, setActive] = useState(0);
@@ -17,7 +17,6 @@ const Table = (props: TableProps) => {
     customRightItemComponents,
     data,
     flatlistKey,
-    isDark,
     leftKey,
     leftKeyOnPress,
     leftItemTextStyle,
@@ -29,14 +28,14 @@ const Table = (props: TableProps) => {
     title,
     titleTextStyle,
   } = props;
-  const Colors = getColors(isDark);
+  const Colors = useColors();
   const TableItem = (itemProps: TableItemProps) => {
     const { item, index } = itemProps;
     const borderStyle =
       index !== data.length - 1
         ? {
             borderBottomWidth: 1,
-            borderBottomColor: Colors.SILVER,
+            borderBottomColor: Colors.font_2,
           }
         : null;
     return (
@@ -50,7 +49,7 @@ const Table = (props: TableProps) => {
   const renderLeftOptionItem = (item: any) => {
     const mainLeftItemTextStyle = {
       ...styles.leftText,
-      color: Colors.BLACK_DARK,
+      color: Colors.font_1,
       ...leftItemTextStyle,
     };
     // first check if there exist any customLeftItemComponents
@@ -71,7 +70,7 @@ const Table = (props: TableProps) => {
   const renderRightOptionItem = (item: any) => {
     const mainRightItemTextStyle = {
       ...styles.rightText,
-      color: Colors.BLACK_DARK,
+      color: Colors.font_1,
       ...rightItemTextStyle,
     };
     // first check if there exist any customRightItemComponents
@@ -111,12 +110,12 @@ const Table = (props: TableProps) => {
   };
   const mainTitleTextStyle = {
     ...styles.titleText,
-    color: Colors.SLATE_GREY,
+    color: Colors.font_1,
     ...titleTextStyle,
   };
   const mainOptionTitleTextStyle = {
     ...styles.titleText,
-    color: Colors.GREEN_BLUE,
+    color: Colors.primary,
     ...optionTextStyle,
   };
   return (
