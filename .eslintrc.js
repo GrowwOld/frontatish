@@ -2,7 +2,6 @@ module.exports = {
   root: true,
   extends: [
     'airbnb',
-    'eslint-config-prettier',
     'prettier',
     'prettier/react',
     'plugin:prettier/recommended',
