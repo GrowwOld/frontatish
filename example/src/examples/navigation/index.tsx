@@ -3,7 +3,8 @@ import CheckboxScreen from '../CheckboxExample';
 import RadioButtonScreen from '../RadioButtonExample';
 import NumPadScreen from '../NumPadExample';
 import TableScreen from '../TableExample';
-import PopupScreen from '../PopupExample';
+// removing for now,we can have more customization of it later
+// import PopupScreen from '../PopupExample';
 import FadeScreen from '../FadeExample';
 import TickerScreen from '../TickerExample';
 import SliderScreen from '../SliderExample';
@@ -14,7 +15,7 @@ export const COMPONENT_SCREENS = {
   RADIOBUTTON: 'Radiobutton',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
-  POPUP: 'Popup',
+  // POPUP: 'Popup',
   SLIDER: 'Slider',
 };
 
@@ -27,7 +28,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.RADIOBUTTON, screen: RadioButtonScreen },
   { name: COMPONENT_SCREENS.NUMPAD, screen: NumPadScreen },
   { name: COMPONENT_SCREENS.TABLES, screen: TableScreen },
-  { name: COMPONENT_SCREENS.POPUP, screen: PopupScreen },
+  // { name: COMPONENT_SCREENS.POPUP, screen: PopupScreen },
   { name: COMPONENT_SCREENS.SLIDER, screen: SliderScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },

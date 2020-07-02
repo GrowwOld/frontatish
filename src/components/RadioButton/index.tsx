@@ -1,13 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { Fonts, getColors } from '../../styles';
+import { Fonts, useColors } from '../../styles';
 import { RadioButtonProps } from './types';
 
 const RadioButton = (props: RadioButtonProps) => {
-  const { disabled, isDark, onPress, selected, value } = props;
-  const Colors = getColors(isDark);
+  const { disabled, onPress, selected, value } = props;
+  const Colors = useColors();
   // this color is use for both inner and outer ring of radio
-  const radioColor = disabled ? Colors.GRAY : Colors.GREEN_BLUE;
+  const radioColor = disabled ? Colors.font_1 : Colors.primary;
   return (
     <TouchableOpacity
       style={styles.radioContainer}
@@ -24,7 +24,7 @@ const RadioButton = (props: RadioButtonProps) => {
           style={{
             fontFamily: Fonts.type.gotham_book,
             fontSize: Fonts.size.small_13,
-            color: Colors.BLACK_DARK,
+            color: Colors.font_1,
           }}
         >
           {value}
