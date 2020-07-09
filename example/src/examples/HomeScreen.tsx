@@ -1,48 +1,41 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { Text, StyleSheet, View, StatusBar } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { useColors, useThemeToggle, Switch } from 'supergroww';
+import { useColors, useTheme, useThemeToggle, Switch } from 'supergroww';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const HomeScreen = ({ navigation }: any) => {
   // const currentTheme = useContext(ThemeContext);
-  const themeColors = useColors();
+  const Colors = useColors();
   const toggleTheme = useThemeToggle();
-  // const { setTheme } = route.params;
-  // const changeThemeClick = () => {
-  //   if (currentTheme === 'LIGHT') {
-  //     setTheme('DARK');
-  //     StatusBar.setBarStyle('light-content', true);
-  //   } else {
-  //     setTheme('LIGHT');
-  //     StatusBar.setBarStyle('default', true);
-  //   }
-  // };
+  const activeTheme = useTheme();
   const [isOn, setIsOn] = useState(false);
-  //   <Button
-  //   onPress={changeThemeClick}
-  //   label="CHANGE THEME"
-  //   customStyles={{ margin: 20 }}
-  // />
-
   const onThemeSwitch = () => {
     // dark mode is on
     if (isOn) {
       // console.log(toggleTheme);
       // set theme to light
       toggleTheme('light');
+      StatusBar.setBarStyle('dark-content', true);
     } else {
       // set theme to dark
       // console.log(toggleTheme);
       toggleTheme('dark');
+      StatusBar.setBarStyle('default', true);
+      StatusBar.setBackgroundColor(Colors.white);
     }
     setIsOn(!isOn);
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+      <StatusBar
+        backgroundColor={Colors.white}
+        animated
+        barStyle={activeTheme === 'light' ? 'dark-content' : 'light-content'}
+      />
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -60,7 +53,7 @@ const HomeScreen = ({ navigation }: any) => {
               flex: 1,
               fontSize: 20,
               fontWeight: 'bold',
-              color: themeColors.font_1,
+              color: Colors.font_1,
             }}
           >
             UI components
@@ -81,7 +74,7 @@ const HomeScreen = ({ navigation }: any) => {
               style={styles.navButtonContainer}
               key={item}
             >
-              <Text style={{ color: themeColors.font_1 }}>
+              <Text style={{ color: Colors.font_1 }}>
                 {COMPONENT_SCREENS[item]}
               </Text>
             </TouchableOpacity>
@@ -92,7 +85,7 @@ const HomeScreen = ({ navigation }: any) => {
             fontSize: 20,
             margin: 20,
             fontWeight: 'bold',
-            color: themeColors.font_1,
+            color: Colors.font_1,
           }}
         >
           Animated components
@@ -103,7 +96,7 @@ const HomeScreen = ({ navigation }: any) => {
             style={styles.navButtonContainer}
             key={item}
           >
-            <Text style={{ color: themeColors.font_1 }}>
+            <Text style={{ color: Colors.font_1 }}>
               {ANIMATED_SCREENS[item]}
             </Text>
           </TouchableOpacity>

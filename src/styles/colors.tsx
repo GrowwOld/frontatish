@@ -305,6 +305,10 @@ export const useColors = () => {
   return ColorPalette[contextObj.currentTheme];
 };
 
+export const useTheme = () => {
+  const contextObj = useContext(ThemeContext);
+  return contextObj.currentTheme;
+};
 export const useThemeToggle = () => {
   const contextObj = useContext(ThemeContext);
   return contextObj.toggleTheme;
