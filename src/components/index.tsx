@@ -4,16 +4,18 @@ import Checkbox from './Checkbox';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
+import Switch from './Switch';
 import Slider from './Slider';
 import Calendar from './Calendar';
 
 export {
   Button,
   Checkbox,
+  Calendar,
   NumPad,
   RadioButton,
-  Table,
   Ripple,
   Slider,
-  Calendar,
+  Switch,
+  Table,
 };
