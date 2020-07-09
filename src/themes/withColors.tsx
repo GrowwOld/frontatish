@@ -9,8 +9,15 @@ export default function (ComposedComponent) {
     return (
       <ThemeContext.Consumer>
         {(value) => {
-          const Colors = ColorPalette[value];
-          return <ComposedComponent {...props} Colors={Colors} />;
+          const { currentTheme, toggleTheme } = value;
+          const Colors = ColorPalette[currentTheme];
+          return (
+            <ComposedComponent
+              {...props}
+              Colors={Colors}
+              toggleTheme={toggleTheme}
+            />
+          );
         }}
       </ThemeContext.Consumer>
     );

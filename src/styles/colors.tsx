@@ -301,6 +301,11 @@ export const getColors = (isDark: boolean | undefined | null) => {
 };
 
 export const useColors = () => {
-  const currentTheme = useContext(ThemeContext);
-  return ColorPalette[currentTheme];
+  const contextObj = useContext(ThemeContext);
+  return ColorPalette[contextObj.currentTheme];
+};
+
+export const useThemeToggle = () => {
+  const contextObj = useContext(ThemeContext);
+  return contextObj.toggleTheme;
 };
