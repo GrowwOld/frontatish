@@ -3,13 +3,13 @@ import { Text, StatusBar, StyleSheet } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Button, ThemeContext, colors } from 'supergroww';
+import { Button, ThemeContext, useColors } from 'supergroww';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const HomeScreen = ({ navigation, route }: any) => {
   const currentTheme = useContext(ThemeContext);
-  const themeColors = colors[currentTheme];
+  const Colors = useColors();
   const { setTheme } = route.params;
   const changeThemeClick = () => {
     if (currentTheme === 'LIGHT') {
@@ -21,7 +21,7 @@ const HomeScreen = ({ navigation, route }: any) => {
     }
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: themeColors.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -31,7 +31,7 @@ const HomeScreen = ({ navigation, route }: any) => {
             fontSize: 20,
             margin: 20,
             fontWeight: 'bold',
-            color: themeColors.font_1,
+            color: Colors.font_1,
           }}
         >
           UI components
@@ -43,7 +43,7 @@ const HomeScreen = ({ navigation, route }: any) => {
               style={styles.navButtonContainer}
               key={item}
             >
-              <Text style={{ color: themeColors.font_1 }}>
+              <Text style={{ color: Colors.font_1 }}>
                 {COMPONENT_SCREENS[item]}
               </Text>
             </TouchableOpacity>
@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation, route }: any) => {
             fontSize: 20,
             margin: 20,
             fontWeight: 'bold',
-            color: themeColors.font_1,
+            color: Colors.font_1,
           }}
         >
           Animated components
@@ -65,7 +65,7 @@ const HomeScreen = ({ navigation, route }: any) => {
             style={styles.navButtonContainer}
             key={item}
           >
-            <Text style={{ color: themeColors.font_1 }}>
+            <Text style={{ color: Colors.font_1 }}>
               {ANIMATED_SCREENS[item]}
             </Text>
           </TouchableOpacity>
