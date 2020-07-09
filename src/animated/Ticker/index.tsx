@@ -51,9 +51,9 @@ class Ticker extends Component<TickerProps, TickerState> {
       <View style={styles.container}>
         <View style={[styles.row, wrapStyle]}>
           {text.split('').map((v, i) => {
-            if (isNaN(parseFloat(v, 10))) {
+            if (isNaN(parseFloat(v))) {
               return (
-                <Text key={i} style={styles.text}>
+                <Text key={i.toString()} style={styles.text}>
                   {v}
                 </Text>
               );
@@ -74,7 +74,7 @@ class Ticker extends Component<TickerProps, TickerState> {
   }
 }
 
-const styleSheet = (Colors) =>
+const styleSheet = (Colors: any) =>
   StyleSheet.create({
     container: {
       alignItems: 'flex-start',
