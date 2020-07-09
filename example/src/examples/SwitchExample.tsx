@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
 import { Switch } from 'supergroww';
 // import { Switch as RnSwitch } from 'react-native';
@@ -7,7 +8,7 @@ import { Switch } from 'supergroww';
 const SwitchExample = () => {
   const [isOn, setIsOn] = useState(false);
   return (
-    <>
+    <SafeAreaView style={{ flex: 1 }}>
       <Switch
         isOn={isOn}
         onColor="#00D09C"
@@ -23,7 +24,7 @@ const SwitchExample = () => {
         onValueChange={() => setIsOn(!isOn)}
         value={isOn}
       /> */}
-    </>
+    </SafeAreaView>
   );
 };
 

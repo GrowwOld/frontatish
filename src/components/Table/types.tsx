@@ -5,7 +5,6 @@ export interface TableProps {
   customRightItemComponents?: any;
   data: Array<any>;
   flatlistKey: string;
-  isDark: boolean;
   leftKey: string;
   leftKeyOnPress?: () => void;
   leftItemContainerStyle?: StyleType;
