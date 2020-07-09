@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
 import { ThemeProvider } from 'supergroww';
@@ -16,7 +19,13 @@ function App() {
     <SafeAreaProvider>
       <ThemeProvider currentTheme={theme}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={() => ({
+              headerShown: false,
+              gestureEnabled: true,
+              ...TransitionPresets.SlideFromRightIOS,
+            })}
+          >
             <Stack.Screen
               name="Home"
               component={HomeScreen}
