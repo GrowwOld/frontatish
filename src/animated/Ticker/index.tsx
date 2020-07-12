@@ -91,9 +91,9 @@ const styleSheet = (Colors: any) =>
       fontSize: Fonts.size.h1,
       fontWeight: 'bold',
       fontStyle: 'normal',
-      letterSpacing: -0.29,
+      // letterSpacing: -0.29,
       textAlign: 'left',
-      color: Colors.font_1,
+      color: Colors.primary,
     },
   });
 
