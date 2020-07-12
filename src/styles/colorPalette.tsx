@@ -54,8 +54,8 @@ const DARK_MODE_COLORS = {
 };
 
 const Colors = {
-  LIGHT: { ...LIGHT_MODE_COLORS },
-  DARK: { ...DARK_MODE_COLORS },
+  light: { ...LIGHT_MODE_COLORS },
+  dark: { ...DARK_MODE_COLORS },
 };
 
 export default Colors;

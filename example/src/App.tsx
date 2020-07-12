@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  TransitionPresets,
+} from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
 import { ThemeProvider } from 'supergroww';
@@ -11,17 +14,22 @@ import { SCREEN_MAPPING } from './examples/navigation';
 const Stack = createStackNavigator();
 
 function App() {
-  const [theme, setTheme] = useState('LIGHT');
   return (
     <SafeAreaProvider>
-      <ThemeProvider currentTheme={theme}>
+      <ThemeProvider theme="light">
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator
+            screenOptions={() => ({
+              headerShown: false,
+              gestureEnabled: true,
+              ...TransitionPresets.SlideFromRightIOS,
+            })}
+          >
             <Stack.Screen
               name="Home"
               component={HomeScreen}
               options={{ headerShown: false }}
-              initialParams={{ setTheme }}
+              // initialParams={{ setTheme }}
             />
             {SCREEN_MAPPING.map((item) => (
               <Stack.Screen

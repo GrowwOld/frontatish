@@ -1,6 +1,6 @@
 // base and lib imports
 import React from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { StyleSheet, Text, FlatList, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
@@ -33,29 +33,32 @@ const NumPad = (props: NumPadProps) => {
   // );
   const Colors = useColors();
   return (
-    <FlatList
-      data={numberRange}
-      horizontal={false}
-      scrollEnabled={false}
-      numColumns={3}
-      keyExtractor={(item) => item}
-      renderItem={({ item }) => (
-        <Ripple
-          style={{
-            flex: 1,
-            padding: 20,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          rippleContainerBorderRadius={20}
-          onPress={item === 'X' ? onDeleteItem : () => onItemClick(item)}
-        >
-          <Text style={[styles.numberText, { color: Colors.font_1 }]}>
-            {item}
-          </Text>
-        </Ripple>
-      )}
-    />
+    <View>
+      <FlatList
+        data={numberRange}
+        horizontal={false}
+        // scrollEnabled={false}
+        // contentContainerStyle={styles.numPadContainerStyle}
+        numColumns={3}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => (
+          <Ripple
+            style={{
+              flex: 1,
+              padding: 20,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            rippleContainerBorderRadius={20}
+            onPress={item === 'X' ? onDeleteItem : () => onItemClick(item)}
+          >
+            <Text style={[styles.numberText, { color: Colors.primary }]}>
+              {item}
+            </Text>
+          </Ripple>
+        )}
+      />
+    </View>
   );
 };
 
@@ -64,6 +67,15 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.gotham_medium,
     fontSize: Fonts.size.h3,
   },
+  // numPadContainerStyle: {
+  //   // shadowRadius: 2,
+  //   // shadowOffset: {
+  //   //   width: 0,
+  //   //   height: -3,
+  //   // },
+  //   // shadowColor: '#000000',
+  //   // elevation: 4,
+  // },
 });
 
 export default NumPad;
