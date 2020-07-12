@@ -1,13 +1,23 @@
 import React from 'react';
-import { View } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { Calendar } from 'supergroww';
+import { Calendar, useColors } from 'supergroww';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { View } from 'react-native';
 
 const CalendarExample = () => {
+  const Colors = useColors();
   return (
-    <View style={{ margin: 20 }}>
-      <Calendar />
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: Colors.white,
+      }}
+    >
+      <View style={{ margin: 20 }}>
+        <Calendar />
+      </View>
+    </SafeAreaView>
   );
 };
 

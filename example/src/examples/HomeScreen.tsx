@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, StatusBar } from 'react-native';
+import { Text, StyleSheet, View, StatusBar, Platform } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
@@ -25,7 +25,9 @@ const HomeScreen = ({ navigation }: any) => {
       // console.log(toggleTheme);
       toggleTheme('dark');
       StatusBar.setBarStyle('default', true);
-      StatusBar.setBackgroundColor(Colors.white);
+      if (Platform.OS === 'android') {
+        StatusBar.setBackgroundColor(Colors.white);
+      }
     }
     setIsOn(!isOn);
   };
@@ -38,7 +40,7 @@ const HomeScreen = ({ navigation }: any) => {
       />
       <ScrollView
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{ flexGrow: 1 }}
+        // contentContainerStyle={{ flexGrow: 1 }}
       >
         <View
           style={{

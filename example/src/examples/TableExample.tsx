@@ -34,7 +34,13 @@ const TableExample = () => {
   // so that it can be correctly mapped
   const customRightItemComponents = { marketPrice: MrpItem };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        justifyContent: 'center',
+      }}
+    >
       <View style={{ marginHorizontal: 20 }}>
         <Text style={{ color: Colors.font_1 }}>Table Example</Text>
         <Table

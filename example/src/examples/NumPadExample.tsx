@@ -35,14 +35,24 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   render() {
     const { input } = this.state;
-    const { isDark, Colors } = this.props;
+    const { Colors } = this.props;
     return (
-      <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
-        <Text style={[]}>{input}</Text>
+      <SafeAreaView
+        style={{
+          flex: 1,
+          justifyContent: 'flex-end',
+          backgroundColor: Colors.white,
+        }}
+      >
+        <Text
+          style={{ fontSize: 30, color: Colors.font_1, textAlign: 'center' }}
+        >
+          {input}
+        </Text>
+
         <NumPad
           onItemClick={this.onItemClick}
           onDeleteItem={this.onDeleteItem}
-          isDark={isDark}
         />
       </SafeAreaView>
     );

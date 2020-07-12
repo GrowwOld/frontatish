@@ -4,6 +4,7 @@ import { Button } from 'supergroww';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
+import { useColors } from '../../styles';
 
 const styles = StyleSheet.create({
   calendarContainer: {
@@ -16,7 +17,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
-    backgroundColor: '#fff',
     elevation: 3,
   },
   datePickerContainer: {
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
     width: 247,
     // marginTop: 20,
     // marginBottom: 40,
-    backgroundColor: '#CCF6EB',
   },
 });
 
@@ -48,7 +47,7 @@ const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const Calendar = () => {
   const [activeDate, setActiveDate] = useState(new Date());
-  console.log('active data is', activeDate);
+  const Colors = useColors();
   const changeMonth = (delta) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
     const updatedDate = new Date(newTimeInMS);
@@ -108,9 +107,9 @@ const Calendar = () => {
             height: 18,
             textAlign: 'center',
             // Highlight header
-            backgroundColor: rowIndex === 0 ? '#ddd' : '#fff',
+            // backgroundColor: rowIndex === 0 ? '#ddd' : '#fff',
             // Highlight Sundays
-            color: colIndex === 0 ? '#a00' : '#000',
+            color: colIndex === 0 ? Colors.semantic_red : Colors.font_1,
             // Highlight current date
             fontWeight: item === activeDate.getDate() ? 'bold' : '',
           }}
@@ -135,11 +134,15 @@ const Calendar = () => {
     );
   });
   return (
-    <View style={styles.calendarContainer}>
+    <View
+      style={[styles.calendarContainer, { backgroundColor: Colors.font_6 }]}
+    >
       <View style={{ marginVertical: 24 }}>
-        <Text style={{ textAlign: 'center' }}>Selecting Date</Text>
+        <Text style={{ textAlign: 'center', color: Colors.font_1 }}>
+          Selecting Date
+        </Text>
       </View>
-      <View style={{ alignItems: 'center', backgroundColor: '#F9FAFA' }}>
+      <View style={{ alignItems: 'center' }}>
         <View
           style={{
             height: 40,
@@ -155,11 +158,11 @@ const Calendar = () => {
             <IonIcon
               name="ios-arrow-back"
               size={16}
-              color="#00D09C"
+              color={Colors.primary}
               // style={{ flex: 1, textAlign: 'center' }}
             />
           </Ripple>
-          <Text style={{ marginHorizontal: 90 }}>
+          <Text style={{ marginHorizontal: 90, color: Colors.font_1 }}>
             {months[activeDate.getMonth()]}
           </Text>
           <Ripple
@@ -169,7 +172,7 @@ const Calendar = () => {
             <IonIcon
               name="ios-arrow-forward"
               size={16}
-              color="#00D09C"
+              color={Colors.primary}
               // style={{ flex: 1, textAlign: 'center' }}
             />
           </Ripple>

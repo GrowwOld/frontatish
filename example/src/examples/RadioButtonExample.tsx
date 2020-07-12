@@ -15,14 +15,17 @@ const RadioButtonExample = () => {
   };
   // const Colors = getColors(isDark);
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
-      <Text style={{ color: Colors.font_1 }}>RadioButton Examples</Text>
-      <Text style={{ color: Colors.font_1 }}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        justifyContent: 'center',
+      }}
+    >
+      <Text style={{ color: Colors.font_1, margin: 20 }}>
         {`Selected Value is ${choosen}`}
       </Text>
-      <View
-        style={{ marginVertical: 20, flexDirection: 'row', flexWrap: 'wrap' }}
-      >
+      <View style={{ margin: 20, flexDirection: 'row', flexWrap: 'wrap' }}>
         <RadioButton
           value="selected"
           onPress={radioPress}
