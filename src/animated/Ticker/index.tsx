@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { withColors } from '../../themes';
 import { StyleType } from '../../common/types';
+import { Fonts } from '../../styles';
 import Tick from './Tick';
 
 let styles;
@@ -53,7 +54,7 @@ class Ticker extends Component<TickerProps, TickerState> {
           {text.split('').map((v, i) => {
             if (isNaN(parseFloat(v))) {
               return (
-                <Text key={i.toString()} style={styles.text}>
+                <Text key={i.toString()} style={[styles.text]}>
                   {v}
                 </Text>
               );
@@ -63,7 +64,7 @@ class Ticker extends Component<TickerProps, TickerState> {
         </View>
         {!measured ? (
           <Text
-            style={[textStyle, styles.measure]}
+            style={[styles.text, styles.measure]}
             onLayout={this.handleLayout}
           >
             0
@@ -87,12 +88,12 @@ const styleSheet = (Colors: any) =>
       flexDirection: 'row',
     },
     text: {
-      fontSize: 16,
+      fontSize: Fonts.size.h1,
       fontWeight: 'bold',
       fontStyle: 'normal',
       letterSpacing: -0.29,
       textAlign: 'left',
-      color: Colors.BLACK,
+      color: Colors.font_1,
     },
   });
 
