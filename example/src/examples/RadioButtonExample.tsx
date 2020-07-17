@@ -30,21 +30,25 @@ const RadioButtonExample = () => {
           value="selected"
           onPress={radioPress}
           selected={choosen === 'selected'}
+          size="xs"
         />
         <RadioButton
           value="option-1"
           onPress={radioPress}
           selected={choosen === 'option-1'}
+          size="sm"
         />
         <RadioButton
           value="option-2"
           onPress={radioPress}
           selected={choosen === 'option-2'}
+          size="md"
         />
         <RadioButton
           value="option-3"
           onPress={radioPress}
           selected={choosen === 'option-3'}
+          size="lg"
         />
         {/* just for having a neat example ui display,
             these are not anyway important to the library
