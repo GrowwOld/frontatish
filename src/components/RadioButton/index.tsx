@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -11,10 +11,19 @@ import { Fonts, useColors } from '../../styles';
 import { DimensionType } from '../../common/types';
 
 const RadioButton = (props: RadioButtonProps) => {
-  const animatedZoom = useRef(new Animated.Value(0)).current;
   const { disabled, onPress, selected, value, size } = props;
   const [innerDimen, outerDimen] = getDimen(size);
+  const animatedZoom = useRef(new Animated.Value(selected ? 1 : 0)).current;
   const Colors = useColors();
+  useEffect(() => {
+    if (selected === false) {
+      Animated.timing(animatedZoom, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [selected]);
   // this color is use for both inner and outer ring of radio
   const radioColor = disabled ? Colors.font_1 : Colors.primary;
   const onRadioPress = () => {
