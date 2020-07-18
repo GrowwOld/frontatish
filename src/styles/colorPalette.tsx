@@ -1,5 +1,6 @@
 const LIGHT_MODE_COLORS = {
   white: '#FFFFFF',
+  constant_white: '#FFFFFF',
   primary: '#00D09C',
 
   // attribute colors
@@ -28,6 +29,7 @@ const LIGHT_MODE_COLORS = {
 
 const DARK_MODE_COLORS = {
   white: '#121212',
+  constant_white: '#FFFFFF',
   primary: 'rgba(0, 208, 156, 0.8)',
 
   // attribute colors

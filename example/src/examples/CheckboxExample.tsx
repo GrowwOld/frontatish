@@ -16,7 +16,6 @@ const CheckboxExample = () => {
       }}
     >
       <Checkbox
-        isDark={false}
         checked={tick}
         onPress={() => setTick(!tick)}
         containerStyle={{ marginRight: 20 }}

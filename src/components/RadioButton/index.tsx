@@ -7,12 +7,20 @@ import {
   Animated,
 } from 'react-native';
 import { RadioButtonProps } from './types';
-import { Fonts, useColors } from '../../styles';
+import { useColors } from '../../themes';
 import { DimensionType } from '../../common/types';
 
 const RadioButton = (props: RadioButtonProps) => {
-  const { disabled, onPress, selected, value, size } = props;
-  const [innerDimen, outerDimen] = getDimen(size);
+  const {
+    disabled,
+    onPress,
+    selected,
+    value,
+    size,
+    containerStyle,
+    labelStyle,
+  } = props;
+  const [innerDimen, outerDimen] = getDimen(size!);
   const animatedZoom = useRef(new Animated.Value(selected ? 1 : 0)).current;
   const Colors = useColors();
   useEffect(() => {
@@ -38,12 +46,8 @@ const RadioButton = (props: RadioButtonProps) => {
     }
   };
   return (
-    <TouchableWithoutFeedback
-      style={styles.radioContainer}
-      onPress={onRadioPress}
-      disabled={disabled}
-    >
-      <View style={{ flexDirection: 'row' }}>
+    <TouchableWithoutFeedback onPress={onRadioPress} disabled={disabled}>
+      <View style={[{ flexDirection: 'row' }, containerStyle]}>
         <View
           style={[styles.outerRing, { ...outerDimen, borderColor: radioColor }]}
         >
@@ -59,15 +63,7 @@ const RadioButton = (props: RadioButtonProps) => {
           )}
         </View>
         <View style={styles.labelContainer}>
-          <Text
-            style={{
-              fontFamily: Fonts.type.gotham_book,
-              fontSize: Fonts.size.small_13,
-              color: Colors.font_1,
-            }}
-          >
-            {value}
-          </Text>
+          <Text style={[{ color: Colors.font_1 }, labelStyle]}>{value}</Text>
         </View>
       </View>
     </TouchableWithoutFeedback>
@@ -90,21 +86,21 @@ const getDimen = (size: DimensionType) => {
       return [innerDimen, outerDimen];
     case 'sm':
       innerDimen = {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
+        width: 8,
+        height: 8,
+        borderRadius: 4,
       };
       outerDimen = {
-        width: 18,
-        height: 18,
-        borderRadius: 9,
+        width: 16,
+        height: 16,
+        borderRadius: 8,
       };
       return [innerDimen, outerDimen];
     case 'md':
       innerDimen = {
-        width: 12,
-        height: 12,
-        borderRadius: 6,
+        width: 10,
+        height: 10,
+        borderRadius: 5,
       };
       outerDimen = {
         width: 20,
@@ -114,14 +110,14 @@ const getDimen = (size: DimensionType) => {
       return [innerDimen, outerDimen];
     case 'lg':
       innerDimen = {
-        width: 14,
-        height: 14,
-        borderRadius: 7,
+        width: 12,
+        height: 12,
+        borderRadius: 6,
       };
       outerDimen = {
-        width: 22,
-        height: 22,
-        borderRadius: 11,
+        width: 24,
+        height: 24,
+        borderRadius: 12,
       };
       return [innerDimen, outerDimen];
     default:
@@ -130,10 +126,6 @@ const getDimen = (size: DimensionType) => {
 };
 
 const styles = StyleSheet.create({
-  radioContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   outerRing: {
     // width: 18,
     // height: 18,
@@ -142,6 +134,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  labelContainer: { marginHorizontal: 10, marginTop: -2 },
+  labelContainer: { marginHorizontal: 16 },
 });
 export default RadioButton;

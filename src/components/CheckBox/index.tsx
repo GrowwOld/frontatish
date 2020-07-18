@@ -2,20 +2,20 @@ import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { StyleSheet, TouchableOpacity } from 'react-native';
-import { getColors } from '../../styles';
+import { useColors } from '../../themes';
 import { CheckBoxProps } from './types';
 
 const Checkbox = (props: CheckBoxProps) => {
-  const { checked, containerStyle, disabled, isDark, onPress } = props;
-  const Colors = getColors(isDark);
+  const { checked, containerStyle, disabled, onPress } = props;
+  const Colors = useColors();
   const getRequiredColor = () => {
     if (disabled) {
-      return [Colors.SILVER, Colors.SLATE_GREY, Colors.SLATE_GREY];
+      return [Colors.font_2, Colors.font_3, Colors.font_3];
     }
     if (!disabled && checked) {
-      return [Colors.GREEN_BLUE, Colors.GREEN_BLUE, Colors.CONSTANT_WHITE];
+      return [Colors.primary, Colors.primary, Colors.white];
     }
-    return [Colors.WHITE, Colors.GREEN_BLUE];
+    return [Colors.white, Colors.primary];
   };
   const [backgroundColor, borderColor, iconColor] = getRequiredColor();
   const mainContainerStyle = {
