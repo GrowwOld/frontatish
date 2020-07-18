@@ -1,14 +1,18 @@
-import React, { useRef, useEffect } from 'react';
-import {
-  View,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  Text,
-  Animated,
-} from 'react-native';
+// base and lib imports
+import React from 'react';
+import { View, StyleSheet, TouchableWithoutFeedback, Text } from 'react-native';
+
+// types
 import { RadioButtonProps } from './types';
+
+// utils and helpers
+import { getRadioDmnsn } from '../../common/utils';
+
+// styles and themes
 import { useColors } from '../../themes';
-import { DimensionType } from '../../common/types';
+
+// common components
+import { Scale } from '../../animated';
 
 const RadioButton = (props: RadioButtonProps) => {
   const {
@@ -20,29 +24,14 @@ const RadioButton = (props: RadioButtonProps) => {
     containerStyle,
     labelStyle,
   } = props;
-  const [innerDimen, outerDimen] = getDimen(size!);
-  const animatedZoom = useRef(new Animated.Value(selected ? 1 : 0)).current;
+  const [innerDimen, outerDimen] = getRadioDmnsn(size!);
   const Colors = useColors();
-  useEffect(() => {
-    if (selected === false) {
-      Animated.timing(animatedZoom, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
-    }
-  }, [selected]);
   // this color is use for both inner and outer ring of radio
-  const radioColor = disabled ? Colors.font_1 : Colors.primary;
+  const radioColor = disabled ? Colors.font_3 : Colors.primary;
   const onRadioPress = () => {
     // call onPress passed by user
     if (onPress) {
       onPress(value);
-      Animated.timing(animatedZoom, {
-        toValue: 1,
-        duration: 300,
-        useNativeDriver: true,
-      }).start();
     }
   };
   return (
@@ -52,14 +41,9 @@ const RadioButton = (props: RadioButtonProps) => {
           style={[styles.outerRing, { ...outerDimen, borderColor: radioColor }]}
         >
           {selected && (
-            <Animated.View
-              style={{
-                // opacity: animatedZoom,
-                transform: [{ scale: animatedZoom }],
-              }}
-            >
+            <Scale>
               <View style={[innerDimen, { backgroundColor: radioColor }]} />
-            </Animated.View>
+            </Scale>
           )}
         </View>
         <View style={styles.labelContainer}>
@@ -68,61 +52,6 @@ const RadioButton = (props: RadioButtonProps) => {
       </View>
     </TouchableWithoutFeedback>
   );
-};
-
-const getDimen = (size: DimensionType) => {
-  let outerDimen = {
-    width: 14,
-    height: 14,
-    borderRadius: 7,
-  };
-  let innerDimen = {
-    width: 8,
-    height: 8,
-    borderRadius: 5,
-  };
-  switch (size) {
-    case 'xs':
-      return [innerDimen, outerDimen];
-    case 'sm':
-      innerDimen = {
-        width: 8,
-        height: 8,
-        borderRadius: 4,
-      };
-      outerDimen = {
-        width: 16,
-        height: 16,
-        borderRadius: 8,
-      };
-      return [innerDimen, outerDimen];
-    case 'md':
-      innerDimen = {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
-      };
-      outerDimen = {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
-      };
-      return [innerDimen, outerDimen];
-    case 'lg':
-      innerDimen = {
-        width: 12,
-        height: 12,
-        borderRadius: 6,
-      };
-      outerDimen = {
-        width: 24,
-        height: 24,
-        borderRadius: 12,
-      };
-      return [innerDimen, outerDimen];
-    default:
-      return [innerDimen, outerDimen];
-  }
 };
 
 const styles = StyleSheet.create({
