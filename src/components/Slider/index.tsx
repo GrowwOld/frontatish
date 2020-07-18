@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import { useColors } from '../../styles';
+import { useColors } from '../../themes';
 
 const Slider = () => {
   const Colors = useColors();

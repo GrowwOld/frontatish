@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Button } from 'supergroww';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import { useColors } from '../../styles';
+import Button from '../Button';
+import { useColors } from '../../themes';
 
 const styles = StyleSheet.create({
   calendarContainer: {

@@ -1,9 +1,9 @@
 // example usage of button component
 import * as React from 'react';
-import { Alert, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { Button, useColors } from 'supergroww';
+import { Button, useColors, Fonts } from 'supergroww';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface ButtonExampleProps {
@@ -12,28 +12,28 @@ interface ButtonExampleProps {
 }
 
 const ButtonExample = (props: ButtonExampleProps) => {
-  const { isDark, openPopup } = props;
+  const { openPopup } = props;
   const Colors = useColors();
   const handlePress = () => {
-    Alert.alert('Just checking onPress');
+    // do some action
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <View style={styles.exampleBtnContainer}>
-        <Text style={[]}>Button Examples</Text>
+        <Text style={{ color: Colors.font_1, fontSize: Fonts.size.h3 }}>
+          Button Examples
+        </Text>
         <View style={{ flexDirection: 'row', marginVertical: 20 }}>
           <Button
             type="primary"
             onPress={handlePress}
             label="Primary Button"
-            isDark={isDark}
             customStyles={{ flex: 1, marginRight: 20 }}
           />
           <Button
             type="secondary"
             onPress={openPopup}
             label="Secondary Button"
-            isDark={isDark}
             customStyles={{ flex: 1 }}
           />
         </View>
@@ -42,14 +42,12 @@ const ButtonExample = (props: ButtonExampleProps) => {
             type="default"
             onPress={handlePress}
             label="Default Button"
-            isDark={isDark}
             customStyles={{ flex: 1, marginRight: 20 }}
           />
           <Button
             type="primary"
             onPress={handlePress}
             label="Disabled button"
-            isDark={isDark}
             disabled
             customStyles={{ flex: 1 }}
           />
@@ -59,7 +57,6 @@ const ButtonExample = (props: ButtonExampleProps) => {
             type="primary"
             onPress={handlePress}
             label="Loading Button"
-            isDark={isDark}
             loading
           />
         </View>

@@ -8,7 +8,8 @@ import {
 } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 import { TableProps, TableItemProps } from './types';
-import { Fonts, useColors } from '../../styles';
+import { Fonts } from '../../styles';
+import { useColors } from '../../themes';
 
 const Table = (props: TableProps) => {
   const [active, setActive] = useState(0);
