@@ -16,10 +16,35 @@ const CheckboxExample = () => {
       }}
     >
       <Checkbox
-        isDark={false}
         checked={tick}
         onPress={() => setTick(!tick)}
-        containerStyle={{ marginRight: 20 }}
+        containerStyle={{ marginVertical: 20 }}
+      />
+      <Checkbox
+        checked={tick}
+        onPress={() => setTick(!tick)}
+        containerStyle={{ marginVertical: 20 }}
+        size="md"
+      />
+      <Checkbox
+        checked={tick}
+        onPress={() => setTick(!tick)}
+        containerStyle={{ marginVertical: 20 }}
+        size="lg"
+      />
+      <Checkbox
+        checked
+        disabled
+        onPress={() => setTick(!tick)}
+        containerStyle={{ marginVertical: 20 }}
+        size="lg"
+      />
+      <Checkbox
+        checked={false}
+        disabled
+        onPress={() => setTick(!tick)}
+        containerStyle={{ marginVertical: 20 }}
+        size="lg"
       />
     </SafeAreaView>
   );

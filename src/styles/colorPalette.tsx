@@ -1,6 +1,8 @@
 const LIGHT_MODE_COLORS = {
   white: '#FFFFFF',
+  constant_white: '#FFFFFF',
   primary: '#00D09C',
+  transparent: 'transparent',
 
   // attribute colors
   primary_attr: '#00D09C',
@@ -20,16 +22,17 @@ const LIGHT_MODE_COLORS = {
   // Neutrals and text
   font_1: '#44475B',
   font_2: '#8F919D',
-  font_3: '#B4B5BD',
+  font_3: '#C7C8CE',
   font_4: '#DDDEE1',
   font_5: '#ECEDEF',
-  font_6: '#F6F6F7',
+  font_6: '#F9F9FA',
 };
 
 const DARK_MODE_COLORS = {
   white: '#121212',
-  primary: 'rgba(0, 208, 156, 0.8)',
-
+  constant_white: '#FFFFFF',
+  primary: '#0ABB92',
+  transparent: 'transparent',
   // attribute colors
   primary_attr: '#0ABB92',
   // 40% white of primary color
@@ -48,7 +51,7 @@ const DARK_MODE_COLORS = {
   font_1: '#EBEBF5',
   font_2: '#707074',
   font_3: '#4D4D4D',
-  font_4: '#888888',
+  font_4: '#2A2A2A',
   font_5: '#1D1D1D',
   font_6: '#171717',
 };

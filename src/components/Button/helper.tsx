@@ -11,20 +11,11 @@
 import { BaseStyles } from '../../styles';
 import { StyleType, ColorType } from '../../common/types';
 
-export const getBtnBgColorByType = (btnType: string, Colors: any): string => {
-  const colorMapForBtn: any = {
-    primary: Colors.GREEN_BLUE,
-    secondary: Colors.WHITE,
-    default: Colors.WHITE,
-  };
-  return colorMapForBtn[btnType];
-};
-
 export const getBtnTextColorByType = (btnType: string, Colors: any): string => {
   const colorMapForTxt: any = {
     primary: Colors.WHITE,
-    secondary: Colors.GREEN_BLUE,
-    default: Colors.GREEN_BLUE,
+    secondary: Colors.primary,
+    default: Colors.primary,
   };
   return colorMapForTxt[btnType];
 };
@@ -47,15 +38,15 @@ export const getBtnStyles = (
     case 'primary':
       return {
         ...BaseStyles.grwButton,
-        backgroundColor: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
-        color: Colors.WHITE,
+        backgroundColor: disabled ? Colors.primary_attr_40 : Colors.primary,
+        color: Colors.white,
         // opacity: disabled ? 0.6 : 1
       };
     case 'secondary':
       return {
         ...BaseStyles.grwButton,
         backgroundColor: Colors.WHITE,
-        borderColor: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+        borderColor: disabled ? Colors.primary_attr_40 : Colors.primary,
         // opacity: disabled ? 0.6 : 1,
         borderWidth: 1,
       };
@@ -63,7 +54,7 @@ export const getBtnStyles = (
       return {
         ...BaseStyles.grwButton,
         backgroundColor: Colors.WHITE,
-        borderColor: Colors.DARK_SILVER,
+        borderColor: Colors.font_3,
         borderWidth: 1,
       };
     default: {
@@ -81,17 +72,17 @@ export const getLabelStyles = (
     case 'primary':
       return {
         ...BaseStyles.grwLabel,
-        color: Colors.CONSTANT_WHITE,
+        color: Colors.white,
       };
     case 'secondary':
       return {
         ...BaseStyles.grwLabel,
-        color: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+        color: disabled ? Colors.primary_40 : Colors.primary,
       };
     case 'default':
       return {
         ...BaseStyles.grwLabel,
-        color: disabled ? Colors.DUCK_EGG_BLUE : Colors.GREEN_BLUE,
+        color: disabled ? Colors.primary_40 : Colors.primary,
       };
     default: {
       return {};

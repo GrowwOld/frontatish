@@ -5,7 +5,8 @@ import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
 import { NumPadProps } from './types';
-import { Fonts, useColors } from '../../styles';
+import { Fonts } from '../../styles';
+import { useColors } from '../../themes';
 
 const NumPad = (props: NumPadProps) => {
   const { onItemClick, onDeleteItem } = props;

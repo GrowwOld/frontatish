@@ -13,3 +13,5 @@ export type AlignTypes =
   | 'space-around'
   | 'space-evenly'
   | undefined;
+
+export type DimensionType = 'xs' | 'sm' | 'md' | 'lg';
