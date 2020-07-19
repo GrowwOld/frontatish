@@ -6,6 +6,8 @@ import TableScreen from '../TableExample';
 // removing for now,we can have more customization of it later
 // import PopupScreen from '../PopupExample';
 import FadeScreen from '../FadeExample';
+import SplashScreen from '../SplashExample';
+import TickerScreen from '../TickerExample';
 import SliderScreen from '../SliderExample';
 import CalendarScreen from '../CalendarExample';
 
@@ -21,7 +23,11 @@ export const COMPONENT_SCREENS = {
   CALENDAR: 'Calendar',
 };
 
-export const ANIMATED_SCREENS = { FADE: 'Fade' };
+export const ANIMATED_SCREENS = {
+  FADE: 'Fade',
+  SPLASH: 'Splash',
+  TICKER: 'Ticker',
+};
 
 export const SCREEN_MAPPING = [
   // components screen mapping
@@ -36,4 +42,6 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
+  { name: ANIMATED_SCREENS.SPLASH, screen: SplashScreen },
+  { name: ANIMATED_SCREENS.TICKER, screen: TickerScreen },
 ];

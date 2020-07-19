@@ -2,6 +2,8 @@
 import React from 'react';
 import { StyleSheet, Text, FlatList, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
+// eslint-disable-next-line import/no-unresolved
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // utils and helpers
 import { NumPadProps } from './types';
@@ -53,9 +55,17 @@ const NumPad = (props: NumPadProps) => {
             rippleContainerBorderRadius={20}
             onPress={item === 'X' ? onDeleteItem : () => onItemClick(item)}
           >
-            <Text style={[styles.numberText, { color: Colors.primary }]}>
-              {item}
-            </Text>
+            {item === 'X' ? (
+              <Icon
+                name="backspace"
+                color={Colors.primary}
+                size={Fonts.size.h3}
+              />
+            ) : (
+              <Text style={[styles.numberText, { color: Colors.primary }]}>
+                {item}
+              </Text>
+            )}
           </Ripple>
         )}
       />
