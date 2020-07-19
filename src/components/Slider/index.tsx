@@ -85,9 +85,9 @@ const Slider = (props: SliderProps) => {
       >
         <Animated.View
           style={{
-            height: 20,
-            width: 20,
-            borderRadius: 10,
+            height: 25,
+            width: 25,
+            borderRadius: 25 / 2,
             backgroundColor: Colors.primary,
             transform: [
               {
