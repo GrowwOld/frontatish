@@ -118,6 +118,11 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+println "Enter keystore password"
+def password = System.in.newReader().readLine()
+println "Enter keystore alias"
+def alias = System.in.newReader().readLine()
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -142,11 +147,17 @@ android {
         }
     }
     signingConfigs {
-        debug {
+        clerdebug {
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
+        }
+        release {
+            storeFile file('viserion_release_key')
+            storePassword password
+            keyAlias alias
+            keyPassword password
         }
     }
     buildTypes {
@@ -156,7 +167,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
