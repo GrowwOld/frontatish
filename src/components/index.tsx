@@ -1,6 +1,6 @@
 import Ripple from 'react-native-material-ripple';
 import Button from './Button';
-import Checkbox from './Checkbox';
+import Checkbox from './CheckBox';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
