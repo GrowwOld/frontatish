@@ -5,18 +5,18 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // eslint-disable-next-line import/no-unresolved
-import { EmptyState } from 'supergroww';
+import { EmptyState, useColors } from 'supergroww';
 
 const EmptyStatesGenericWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
     titleText: 'Generic Title Text',
     supplementaryText: 'Generic supplementary text in one line',
     buttonLabel: 'EXPLORE MUTUAL FUNDS >>',
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = { exists: false };
@@ -31,14 +31,14 @@ const EmptyStatesGenericWrapper = () => {
 };
 
 const EmptyStatesMFWatchlistWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
     titleText: 'Not watching any funds',
     supplementaryText: 'Keep a watch on funds of your interest',
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = { exists: false };
@@ -59,14 +59,14 @@ const EmptyStatesMFWatchlistWrapper = () => {
 };
 
 const EmptyStatesStocksWatchlistWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
     titleText: 'Not watching any stocks',
     supplementaryText: 'Keep a watch on stocks of your interest',
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = { exists: false };
@@ -87,15 +87,15 @@ const EmptyStatesStocksWatchlistWrapper = () => {
 };
 
 const EmptyStatesOrdersWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
     titleText: 'No stocks orders placed yet',
     supplementaryText: "It's a good day to start buying companies",
     buttonLabel: 'EXPLORE STOCKS >>',
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = { exists: false };
@@ -110,12 +110,12 @@ const EmptyStatesOrdersWrapper = () => {
 };
 
 const EmptyStatesMFDashboardWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = {
@@ -138,12 +138,12 @@ const EmptyStatesMFDashboardWrapper = () => {
 };
 
 const EmptyStatesStocksDashboardWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = {
@@ -166,14 +166,14 @@ const EmptyStatesStocksDashboardWrapper = () => {
 };
 
 const EmptyStatesCartWrapper = () => {
+  const Colors = useColors();
   const middleSection = {
     exists: true,
     titleText: 'Your cart is empty',
     supplementaryText: "It's a good day to start investing in yourself",
-    backgroundColor: '#ffffff',
+    backgroundColor: Colors.white,
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
-    fontColor: 'black',
-    isDark: false,
+    fontColor: Colors.font_1,
     customStyles: {},
   };
   const topSection = { exists: false };
@@ -197,7 +197,7 @@ const EmptyStatesStack = createStackNavigator();
 
 function EmptyStatesStackNavigator() {
   return (
-    <EmptyStatesStack.Navigator>
+    <EmptyStatesStack.Navigator screenOptions={{ headerShown: false }}>
       <EmptyStatesStack.Screen name="EmptyStatesHome" component={EmptyStates} />
       <EmptyStatesStack.Screen
         name="EmptyStateGeneric"
@@ -241,8 +241,9 @@ const EmptyStates = ({ navigation }: any) => {
     'EmptyStateStocksDashboard',
     'EmptyStateCart',
   ];
+  const Colors = useColors();
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ flexGrow: 1 }}
@@ -250,10 +251,13 @@ const EmptyStates = ({ navigation }: any) => {
         {emptyScreenComponentScreens.map((item) => (
           <TouchableOpacity
             onPress={() => navigation.navigate(item)}
-            style={styles.navButtonContainer}
+            style={[
+              styles.navButtonContainer,
+              { borderBottomColor: Colors.font_3 },
+            ]}
             key={item}
           >
-            <Text>{item}</Text>
+            <Text style={{ color: Colors.font_1 }}>{item}</Text>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -265,7 +269,6 @@ const styles = StyleSheet.create({
   navButtonContainer: {
     padding: 20,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(191, 191, 191, 0.5)',
   },
 });
 

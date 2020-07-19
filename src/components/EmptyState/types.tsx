@@ -9,7 +9,6 @@ export interface topSectionType {
   buttonLabel?: string;
   backgroundColor?: string;
   fontColor?: string;
-  isDark?: boolean;
   customStyles?: StyleType;
 }
 
@@ -21,7 +20,6 @@ export interface middleSectionType {
   backgroundColor?: string;
   splashImageURL?: string;
   fontColor?: string;
-  isDark?: boolean;
   customStyles?: StyleType;
 }
 
@@ -31,7 +29,6 @@ export interface bottomSectionType {
   buttonLabel?: string;
   backgroundColor?: string;
   fontColor?: string;
-  isDark?: boolean;
   customStyles?: StyleType;
 }
 

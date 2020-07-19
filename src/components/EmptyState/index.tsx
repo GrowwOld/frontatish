@@ -9,6 +9,9 @@ import { EmptyStatePropsType } from './types';
 const EmptyState = (props: EmptyStatePropsType) => {
   const { topSection, middleSection, bottomSection } = props;
   const Colors = useColors();
+  const fontColor = middleSection?.fontColor
+    ? middleSection.fontColor
+    : Colors.font_1;
   const styles = StyleSheet.create({
     topSection: {
       marginTop: 30,
@@ -28,13 +31,13 @@ const EmptyState = (props: EmptyStatePropsType) => {
     },
     titleText: {
       fontSize: Fonts.size.h5,
-      color: middleSection?.fontColor,
+      color: fontColor,
       textAlign: 'center',
       fontWeight: 'bold',
     },
     supplementaryText: {
       fontSize: Fonts.size.medium_15,
-      color: middleSection?.fontColor,
+      color: fontColor,
       padding: 10,
       textAlign: 'center',
     },
@@ -69,6 +72,7 @@ const EmptyState = (props: EmptyStatePropsType) => {
       justifyContent: 'flex-start',
       margin: 13,
       fontSize: 15,
+      color: Colors.font_1,
       fontWeight: 'bold',
     },
     bottomRightText: {
@@ -125,7 +129,6 @@ const EmptyState = (props: EmptyStatePropsType) => {
             <Button
               type="secondary"
               label={middleSection?.buttonLabel}
-              isDark
               customStyles={styles.singleButton}
             />
           ) : (
@@ -147,7 +150,6 @@ const EmptyState = (props: EmptyStatePropsType) => {
               <Button
                 type="secondary"
                 label={bottomSection?.buttonLabel}
-                isDark
                 customStyles={styles.bottomButton}
               />
             </View>
@@ -169,7 +171,6 @@ EmptyState.defaultProps = {
     backgroundColor: '#fff',
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
     fontColor: 'black',
-    isDark: false,
     customStyles: {},
   },
   bottomSection: { exists: false },
