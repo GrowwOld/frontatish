@@ -1,17 +1,14 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
-// eslint-disable-next-line import/order
 // eslint-disable-next-line import/no-unresolved
 import { Button } from 'supergroww';
-import { Fonts, getColors } from '../../../styles';
+import { Fonts } from '../../styles';
+import { useColors } from '../../themes';
+import { EmptyStatePropsType } from './types';
 
-import { EmptyStateGenericType } from './types';
-
-const EmptyStateGeneric = (props: EmptyStateGenericType) => {
+const EmptyState = (props: EmptyStatePropsType) => {
   const { topSection, middleSection, bottomSection } = props;
-
-  const Colors = getColors(middleSection?.isDark);
-
+  const Colors = useColors();
   const styles = StyleSheet.create({
     topSection: {
       marginTop: 30,
@@ -163,15 +160,13 @@ const EmptyStateGeneric = (props: EmptyStateGenericType) => {
   );
 };
 
-const TempColors = getColors(false);
-
-EmptyStateGeneric.defaultProps = {
+EmptyState.defaultProps = {
   topSection: { exists: false },
   middleSection: {
     exists: true,
     titleText: 'Generic Title Text',
     supplementaryText: 'Generic supplementary text in one line',
-    backgroundColor: TempColors.WHITE,
+    backgroundColor: '#fff',
     splashImageURL: 'https://i.imgur.com/7LIS2G3.png',
     fontColor: 'black',
     isDark: false,
@@ -180,4 +175,4 @@ EmptyStateGeneric.defaultProps = {
   bottomSection: { exists: false },
 };
 
-export default EmptyStateGeneric;
+export default EmptyState;

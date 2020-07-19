@@ -8,17 +8,19 @@ import TableScreen from '../TableExample';
 import FadeScreen from '../FadeExample';
 import SliderScreen from '../SliderExample';
 import CalendarScreen from '../CalendarExample';
+import EmptyStateScreen from '../EmptyStatesExample';
 
 export const COMPONENT_SCREENS = {
   BUTTON: 'Button',
   CHECKBOX: 'Checkbox',
-  RADIOBUTTON: 'Radiobutton',
+  RADIOBUTTON: 'RadioButton',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
   // SWITCH: 'Switch',
   // POPUP: 'Popup',
   SLIDER: 'Slider',
   CALENDAR: 'Calendar',
+  EMPTYSTATES: 'EmptyStates',
 };
 
 export const ANIMATED_SCREENS = { FADE: 'Fade' };
@@ -34,6 +36,7 @@ export const SCREEN_MAPPING = [
   // { name: COMPONENT_SCREENS.POPUP, screen: PopupScreen },
   { name: COMPONENT_SCREENS.SLIDER, screen: SliderScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  { name: COMPONENT_SCREENS.EMPTYSTATES, screen: EmptyStateScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];

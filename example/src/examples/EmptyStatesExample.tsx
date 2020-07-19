@@ -4,7 +4,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import { EmptyStateGeneric } from '../../../src/components/EmptyStates';
+// eslint-disable-next-line import/no-unresolved
+import { EmptyState } from 'supergroww';
 
 const EmptyStatesGenericWrapper = () => {
   const middleSection = {
@@ -21,7 +22,7 @@ const EmptyStatesGenericWrapper = () => {
   const topSection = { exists: false };
   const bottomSection = { exists: false };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -49,7 +50,7 @@ const EmptyStatesMFWatchlistWrapper = () => {
       'Popular on Groww. \n\n Replace this section with your own components',
   };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -77,7 +78,7 @@ const EmptyStatesStocksWatchlistWrapper = () => {
       'Popular on Groww. \n\n Replace this section with your own components',
   };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -100,7 +101,7 @@ const EmptyStatesOrdersWrapper = () => {
   const topSection = { exists: false };
   const bottomSection = { exists: false };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -128,7 +129,7 @@ const EmptyStatesMFDashboardWrapper = () => {
     buttonLabel: 'SEE ALL FUNDS',
   };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -156,7 +157,7 @@ const EmptyStatesStocksDashboardWrapper = () => {
     buttonLabel: 'SEE ALL STOCKS',
   };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}
@@ -184,7 +185,7 @@ const EmptyStatesCartWrapper = () => {
       'Popular on Groww. \n\n Replace this section with your own components',
   };
   return (
-    <EmptyStateGeneric
+    <EmptyState
       topSection={topSection}
       middleSection={middleSection}
       bottomSection={bottomSection}

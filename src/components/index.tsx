@@ -5,7 +5,7 @@ import Checkbox from './CheckBox';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
-import EmptyStatesNavigator from './EmptyStates';
+import EmptyState from './EmptyState';
 import Switch from './Switch';
 import Slider from './Slider';
 import Calendar from './Calendar';
@@ -14,7 +14,7 @@ export {
   Button,
   Checkbox,
   Calendar,
-  EmptyStatesNavigator,
+  EmptyState,
   NumPad,
   RadioButton,
   Ripple,

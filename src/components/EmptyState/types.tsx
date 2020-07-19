@@ -1,4 +1,4 @@
-import { StyleType } from '../../../common/types';
+import { StyleType } from '../../common/types';
 
 // Message Board component props type
 
@@ -14,7 +14,7 @@ export interface topSectionType {
 }
 
 export interface middleSectionType {
-  exists: true;
+  exists: boolean;
   titleText?: string;
   supplementaryText?: string;
   buttonLabel?: string;
@@ -35,7 +35,7 @@ export interface bottomSectionType {
   customStyles?: StyleType;
 }
 
-export interface EmptyStateGenericType {
+export interface EmptyStatePropsType {
   topSection?: topSectionType;
   middleSection?: middleSectionType;
   bottomSection?: bottomSectionType;
