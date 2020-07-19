@@ -11,5 +11,4 @@
 export interface NumPadProps {
   onItemClick: (input: string) => void;
   onDeleteItem: () => void;
-  isDark: boolean;
 }

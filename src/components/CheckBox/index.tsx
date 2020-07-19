@@ -1,21 +1,36 @@
+// base and lib imports
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import { getColors } from '../../styles';
+import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+
+// types
 import { CheckBoxProps } from './types';
 
+// utils and helpers
+import { getCheckDmnsn } from '../../common/utils';
+
+// common components
+import { Scale } from '../../animated';
+
+// styles and themes
+import { useColors } from '../../themes';
+
 const Checkbox = (props: CheckBoxProps) => {
-  const { checked, containerStyle, disabled, isDark, onPress } = props;
-  const Colors = getColors(isDark);
+  const { checked, containerStyle, disabled, onPress, size } = props;
+  const [height, width, iconSize] = getCheckDmnsn(size!);
+  const Colors = useColors();
   const getRequiredColor = () => {
     if (disabled) {
-      return [Colors.SILVER, Colors.SLATE_GREY, Colors.SLATE_GREY];
+      if (!checked) {
+        return [Colors.white, Colors.font_3, Colors.white];
+      }
+      return [Colors.font_3, Colors.font_3, Colors.white];
     }
     if (!disabled && checked) {
-      return [Colors.GREEN_BLUE, Colors.GREEN_BLUE, Colors.CONSTANT_WHITE];
+      return [Colors.primary, Colors.transparent, Colors.white];
     }
-    return [Colors.WHITE, Colors.GREEN_BLUE];
+    return [Colors.white, Colors.primary];
   };
   const [backgroundColor, borderColor, iconColor] = getRequiredColor();
   const mainContainerStyle = {
@@ -24,22 +39,27 @@ const Checkbox = (props: CheckBoxProps) => {
     borderColor,
     // giving preference to custom styles
     ...containerStyle,
+    height,
+    width,
   };
   return (
-    <TouchableOpacity
-      disabled={disabled}
-      style={mainContainerStyle}
-      onPress={onPress}
-    >
-      {checked && <Icon name="check" size={13} color={iconColor} />}
-    </TouchableOpacity>
+    <TouchableWithoutFeedback disabled={disabled} onPress={onPress}>
+      <View style={mainContainerStyle}>
+        {/* <Fade visible={checked!} containerStyle={{ flex: 1 }} duration={300}>
+          <Icon name="check" size={iconSize} color={iconColor} />
+        </Fade> */}
+        {checked && (
+          <Scale>
+            <Icon name="check" size={iconSize} color={iconColor} />
+          </Scale>
+        )}
+      </View>
+    </TouchableWithoutFeedback>
   );
 };
 
 const styles = StyleSheet.create({
   boxContainer: {
-    height: 20,
-    width: 20,
     borderWidth: 2,
     borderRadius: 4,
     alignItems: 'center',

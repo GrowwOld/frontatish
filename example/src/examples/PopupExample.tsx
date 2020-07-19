@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { Popup } from 'supergroww';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import NumPadExample from './NumPadExample';
 // import { getColors, Fonts } from '../styles';
 
@@ -15,7 +16,7 @@ const PopupExample = () => {
   const handleShowClick = () => setShow(!show);
   // const Colors = getColors(isDark);
   return (
-    <View>
+    <SafeAreaView style={{ flex: 1 }}>
       <Text onPress={() => setOpen(true)}>Show Popup</Text>
       <Popup
         isOpen={open}
@@ -32,7 +33,7 @@ const PopupExample = () => {
           {show && <NumPadExample isDark={false} />}
         </View>
       </Popup>
-    </View>
+    </SafeAreaView>
   );
 };
 

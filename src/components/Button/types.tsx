@@ -11,7 +11,6 @@ import { StyleType } from '../../common/types';
 export interface ButtonProps {
   children?: ReactNode;
   disabled?: boolean | null;
-  isDark: boolean;
   loading?: boolean;
   label: string;
   // can be changed

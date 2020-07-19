@@ -70,3 +70,6 @@ lib/
 
 # CocoaPods
 /ios/Pods/
+
+*.iml
+viserion_release_key
