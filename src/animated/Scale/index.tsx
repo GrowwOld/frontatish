@@ -1,37 +1,39 @@
-import React, { useRef, useEffect, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Animated } from 'react-native';
 
 interface ScaleProps {
   children: ReactNode;
 }
-const Scale = (props: ScaleProps) => {
-  const { children } = props;
-  const animatedScale = useRef(new Animated.Value(0)).current;
-  useEffect(() => {
-    console.log('start animation');
+
+interface ScaleState {
+  animatedScale: Animated.Value;
+}
+
+class Scale extends React.PureComponent<ScaleProps, ScaleState> {
+  constructor(props: ScaleProps) {
+    super(props);
+    this.state = { animatedScale: new Animated.Value(0) };
+  }
+
+  componentDidMount() {
+    // run Animation
+    const { animatedScale } = this.state;
     Animated.timing(animatedScale, {
       toValue: 1,
       duration: 300,
       useNativeDriver: true,
     }).start();
-  }, []);
-  console.log("animated value",animatedScale)
-  return (
-    <Animated.View
-      style={{
-        transform: [
-          {
-            scale: animatedScale.interpolate({
-              inputRange: [0, 1],
-              outputRange: [0, 1],
-            }),
-          },
-        ],
-      }}
-    >
-      {children}
-    </Animated.View>
-  );
-};
+  }
+
+  render() {
+    const { children } = this.props;
+    const { animatedScale } = this.state;
+    return (
+      <Animated.View style={{ transform: [{ scale: animatedScale }] }}>
+        {children}
+      </Animated.View>
+    );
+  }
+}
 
 export default Scale;
