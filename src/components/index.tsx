@@ -1,12 +1,13 @@
 import Ripple from 'react-native-material-ripple';
 import Button from './Button';
 import CheckBox from './CheckBox';
+import Calendar from './Calendar';
+import Input from './Input';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
-import Table from './Table';
-import Switch from './Switch';
 import Slider from './Slider';
-import Calendar from './Calendar';
+import Switch from './Switch';
+import Table from './Table';
 
 export {
   Button,
@@ -18,4 +19,5 @@ export {
   Slider,
   Switch,
   Table,
+  Input,
 };
