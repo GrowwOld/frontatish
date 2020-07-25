@@ -15,9 +15,17 @@ module.exports = {
       'scale',
       'splash',
       'ticker',
-      'bottomfixedview',
-      'centeredview' /* next_doc_id */,
+      /* next_doc_id */
     ],
-    // Guides: ['troubleshooting'],
+    Theming: [
+      'overview',
+      'themeprovider',
+      'themecontext',
+      'useColors',
+      'useThemeToggle',
+      'withColors',
+    ],
+    Layouts: ['bottomfixedview', 'centeredview'],
+    // Guides: ['Contributing',''],
   },
 };
