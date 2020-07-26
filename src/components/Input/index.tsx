@@ -2,6 +2,7 @@ import React from 'react';
 import {
   TextInput,
   TextInputProps,
+  TouchableNativeFeedback,
   View,
   StyleSheet,
   Text,
@@ -14,9 +15,10 @@ interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
   disabled?: string;
-  disabledStyle: StyleType;
-  containerStyle: StyleType;
   labelStyle: StyleType;
+  inputTextStyle: StyleType;
+  disabledTextStyle: StyleType;
+  containerStyle: StyleType;
   bottomBorderStyle?: StyleType;
   Colors?: any;
 }
@@ -26,24 +28,41 @@ interface InputState {
 }
 
 class Input extends React.PureComponent<InputProps, InputState> {
+  textInput: React.RefObject<TextInput>;
+
   constructor(props: InputProps) {
     super(props);
     this.state = { active: false };
+    this.textInput = React.createRef();
   }
 
-  setFocus = (active: boolean) => {
+  setActive = (active: boolean) => {
     this.setState({ active });
   };
 
+  setFocus = () => {
+    this.textInput?.current?.focus();
+  };
+
   getBottomBorderStyles = () => {
-    const { bottomBorderStyle, Colors } = this.props;
+    const { bottomBorderStyle, Colors, error } = this.props;
     const { active } = this.state;
     let mergedStyle;
-    if (active) {
+    if (error) {
       mergedStyle = [
         bottomBorderStyle,
         {
           height: 2,
+          marginTop: 4,
+          backgroundColor: Colors.semantic_red,
+        },
+      ];
+    } else if (active) {
+      mergedStyle = [
+        bottomBorderStyle,
+        {
+          height: 2,
+          marginTop: 4,
           backgroundColor: Colors.primary,
         },
       ];
@@ -52,7 +71,8 @@ class Input extends React.PureComponent<InputProps, InputState> {
         bottomBorderStyle,
         {
           height: 1,
-          backgroundColor: Colors.font_3,
+          marginTop: 4,
+          backgroundColor: Colors.font_5,
         },
       ];
     }
@@ -62,23 +82,36 @@ class Input extends React.PureComponent<InputProps, InputState> {
   render() {
     const {
       label,
+      error,
       containerStyle,
-      placeholder,
       labelStyle,
       Colors,
+      disabled,
+      disabledTextStyle,
+      inputTextStyle,
     } = this.props;
     styles = getStyles(Colors);
     const bottomBorderStyles = this.getBottomBorderStyles();
+    const textInputStyle = disabled
+      ? { ...styles.disabledTextStyle, ...disabledTextStyle }
+      : { ...styles.inputTextStyle, ...inputTextStyle };
     return (
-      <View style={[styles.containerStyle, containerStyle]}>
-        <Text style={[styles.lableStyle, labelStyle]}>{label}</Text>
-        <TextInput
-          placeholder={placeholder}
-          onFocus={() => this.setFocus(true)}
-          onBlur={() => this.setFocus(false)}
-        />
-        <View style={bottomBorderStyles} />
-      </View>
+      <TouchableNativeFeedback onPress={this.setFocus}>
+        <View style={[styles.containerStyle, containerStyle]}>
+          <Text style={[styles.lableStyle, labelStyle]}>{label}</Text>
+          <TextInput
+            {...this.props}
+            style={textInputStyle}
+            // eslint-disable-next-line no-return-assign
+            ref={this.textInput}
+            editable={!disabled}
+            onFocus={() => this.setActive(true)}
+            onBlur={() => this.setActive(false)}
+          />
+          <View style={bottomBorderStyles} />
+          {error && <Text style={styles.errorStyle}>{error}</Text>}
+        </View>
+      </TouchableNativeFeedback>
     );
   }
 }
@@ -86,11 +119,10 @@ class Input extends React.PureComponent<InputProps, InputState> {
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
     containerStyle: { padding: 20 },
-    lableStyle: { color: Colors.font_2 },
-    bottomBorder: {
-      height: 2,
-      marginVertical: 4,
-    },
+    lableStyle: { color: Colors.font_2, marginBottom: 8, fontWeight: '500' },
+    errorStyle: { color: Colors.semantic_red, marginTop: 4, fontWeight: '500' },
+    inputTextStyle: { color: Colors.primary },
+    disabledTextStyle: { color: Colors.font_3 },
   });
 };
 
