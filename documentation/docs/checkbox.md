@@ -17,7 +17,7 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 ```jsx
 // react base imports
 
-import { Checkbox } from 'growwsuper/components';
+import { Checkbox } from 'viserion';
 
 // normal checkbox
   <CheckBox
@@ -54,19 +54,18 @@ Callback function that needed to be passed which updates the state of checkbox,t
 
 checked will be a state variable which hold the state of the checkbox,on which checkbox will decide when to show check icon and when to not
 
-|           Type            |            Default             |       Required        |
-| :-----------------------: | :----------------------------: | :-------------------: |
+|            Type            |         Default          |       Required        |
+| :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
 ---
 
-### `isDark`
+### `size`
+you can control the size of the checkbox and the icon inside by using this props
 
-This flags helps us to handle colors for dark mode changes in the component,if the parent component support theming then this will be useful to handle color visibilty in the dark mode as well.(*we might update this attribute to something else to handle theme in a better way*)
-
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
-| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
+|            Type            |         Default          |       Required        |
+| :------------------------: | :----------------------: | :-------------------: |
+| enum('sm', 'md', 'lg')	<img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
 
 ---
 
@@ -78,9 +77,15 @@ disabled make sure if its true then user won't be able to click it and the onPre
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-### `containerStyles`
+---
 
-A react native style object which gives flexibility to alter the styles of checkobox container
+### `disabledStyle`
+
+Coming soon!!
+
+### `containerStyle`
+
+A react native style object which gives flexibility to alter the styles of checkbox container
 
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |

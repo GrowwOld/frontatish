@@ -26,7 +26,7 @@ Button components helps to handle all user actions using onPress handlers, the b
 ```jsx
 // react base imports
 
-import { Button } from 'growwsuper/components';
+import { Button } from 'supergroww';
 
 // primary button
 <Button
@@ -75,16 +75,6 @@ On the basis of **type** passed to component, it applies the defined style to it
 | :-----------------: | :------------: | :------------:   | :------------:
 | string <img width="500"/> | **primary** <img width="500"/> |  oneOf(primary, secondary, default) <img width="500"/> | No <img width="500"/>
 
-
----
-
-### `isDark`
-
-This flags helps us to handle colors for dark mode changes in the component,if the parent component support theming then this will be useful to handle color visibilty in the dark mode as well.(*we might update this attribute to something else to handle theme in a better way*)
-
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
-| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
 ---
 

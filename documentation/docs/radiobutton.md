@@ -12,10 +12,10 @@ Radio buttons helps to implement selection between multiple options, on the low 
     </figure>
 </div>
 
-
 ## Usage
+
 ```jsx
-import { RadioButton } from 'growwsuper/components';
+import { RadioButton } from 'supergroww';
 
 // normal
 <RadioButton
@@ -51,16 +51,16 @@ import { RadioButton } from 'growwsuper/components';
 
 The value of radio button
 
-|           Type            |            Default             |       Required        |
-| :-----------------------: | :----------------------------: | :-------------------: |
-| string <img width="500"/> | '' <img width="500"/> | Yes <img width="500"/> |
+|           Type            |        Default        |        Required        |
+| :-----------------------: | :-------------------: | :--------------------: |
+| string <img width="500"/> |  None <img width="500"/> | Yes <img width="500"/> |
 
 ### `selected`
 
 Flag which helps to mark radio button selected or not
 
-|           Type            |            Default             |       Required        |
-| :-----------------------: | :----------------------------: | :-------------------: |
+|            Type            |         Default          |        Required        |
+| :------------------------: | :----------------------: | :--------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | Yes <img width="500"/> |
 
 ### `onPress`
@@ -71,18 +71,33 @@ Callback function which sets the `selected value` in the parent state
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
+
+
 ### `disabled`
+
 Flag to decide whether to disable the press on radio button or not
 
 |            Type            |         Default          |       Required        |
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-### `isDark`
+### `disabledStyle`
 
-This flags helps us to handle colors for dark mode changes in the component,if the parent component support theming then this will be useful to handle color visibilty in the dark mode as well.(*we might update this attribute to something else to handle theme in a better way*)
+Coming soon!!
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
-| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
+### `containerStyle`
 
+A react native View style object which gives flexibility to alter the styles of radio-button container
+
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| ViewStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |
+
+
+### `labelStyle`
+
+A react native Text style object which gives flexibility to alter the styles of label of the radio-button
+
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| TextStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |

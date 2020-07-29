@@ -15,7 +15,7 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 
 ## Usage
 ```jsx
-import { NumPad } from 'growwsuper/components';
+import { NumPad } from 'supergroww';
 
 class NumPadExample extends Component {
   constructor(props) {
@@ -73,12 +73,3 @@ it will basically delete the the last item from the current value.
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
----
-
-### `isDark`
-
-This flags helps us to handle colors for dark mode changes in the component,if the parent component support theming then this will be useful to handle color visibilty in the dark mode as well.(*we might update this attribute to something else to handle theme in a better way*)
-
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
-| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |

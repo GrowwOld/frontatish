@@ -19,7 +19,7 @@ At the low level we have used [react-native-modal](https://www.npmjs.com/package
 ```jsx
 // react base imports
 
-import { Popup } from 'growwsuper/components';
+import { Popup } from 'supergroww';
 
 <Popup
   isOpen={isOpen}
