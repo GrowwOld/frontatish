@@ -1,21 +1,18 @@
 import React from 'react';
 
-import { View, Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Table, Ripple } from 'supergroww';
+import { Table, Ripple, useColors } from 'supergroww';
 // import { Fonts, getColors } from '../styles';
 import { tableData } from './fixtures';
 
-interface TableExampleProps {
-  isDark: boolean;
-}
 interface MrpItemProps {
   item: any;
   onPress?: () => void;
 }
-const TableExample = (props: TableExampleProps) => {
-  const { isDark } = props;
-  // const Colors = getColors(isDark);
+const TableExample = () => {
+  const Colors = useColors();
   const MrpItem = (MrpProps: MrpItemProps) => {
     const { item, onPress } = MrpProps;
     const prefix = item.dayChange > 0 ? '+' : '';
@@ -24,8 +21,8 @@ const TableExample = (props: TableExampleProps) => {
         style={{ flex: 1, alignItems: 'flex-end', paddingVertical: 16 }}
         onPress={onPress}
       >
-        <Text>{item.marketPrice}</Text>
-        <Text>
+        <Text style={{ color: Colors.font_1 }}>{item.marketPrice}</Text>
+        <Text style={{ color: Colors.font_1 }}>
           {`${prefix} ${item.dayChange.toFixed(
             2,
           )} (${item.dayChangePerc.toFixed(2)})`}
@@ -37,19 +34,26 @@ const TableExample = (props: TableExampleProps) => {
   // so that it can be correctly mapped
   const customRightItemComponents = { marketPrice: MrpItem };
   return (
-    <View style={{ flex: 1, marginHorizontal: 20 }}>
-      <Text>Table Example</Text>
-      <Table
-        data={tableData}
-        isDark={isDark}
-        title="Name"
-        option={['marketPrice', 'holding', 'industryName']}
-        optionLabel={['Market Price', 'Holding', 'Sector']}
-        leftKey="companyName"
-        flatlistKey="isin"
-        customRightItemComponents={customRightItemComponents}
-      />
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        justifyContent: 'center',
+      }}
+    >
+      <View style={{ marginHorizontal: 20 }}>
+        <Text style={{ color: Colors.font_1 }}>Table Example</Text>
+        <Table
+          data={tableData}
+          title="Name"
+          option={['marketPrice', 'holding', 'industryName']}
+          optionLabel={['Market Price', 'Holding', 'Sector']}
+          leftKey="companyName"
+          flatlistKey="isin"
+          customRightItemComponents={customRightItemComponents}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 

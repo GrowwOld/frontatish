@@ -9,13 +9,13 @@ import { ButtonProps } from './types';
 import { getBtnStyles, getLabelStyles } from './helper';
 
 // styles and themes
-import { getColors } from '../../styles';
+import { useColors } from '../../themes';
 
 const Button = (props: ButtonProps) => {
-  const { customStyles, disabled, isDark, label, type, onPress } = props;
+  const { customStyles, disabled, label, type, onPress } = props;
   // getting the suitable color based on the theme
   // activated inside the app
-  const Colors = getColors(isDark);
+  const Colors = useColors();
   // getting base button styles defined
   // by our design guidelines, component
   // also takes custom styles so that can also

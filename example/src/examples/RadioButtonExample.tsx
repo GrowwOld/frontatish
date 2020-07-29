@@ -2,51 +2,58 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { RadioButton } from 'supergroww';
+import { RadioButton, useColors } from 'supergroww';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Fonts, getColors } from '../styles';
 
-interface RadioButtonExampleProps {
-  isDark: boolean;
-}
-
-const RadioButtonExample = (props: RadioButtonExampleProps) => {
+const RadioButtonExample = () => {
+  const Colors = useColors();
   // choosen will hold the value of selected radio button
-  const [choosen, setChoosen] = useState('selected');
-  const { isDark } = props;
+  const [choosen, setChoosen] = useState('xtra small');
   const radioPress = (value: string) => {
     setChoosen(value);
   };
   // const Colors = getColors(isDark);
   return (
-    <View style={{ flex: 1, margin: 20 }}>
-      <Text style={[]}>RadioButton Examples</Text>
-      <Text style={[]}>{`Selected Value is ${choosen}`}</Text>
-      <View
-        style={{ marginVertical: 20, flexDirection: 'row', flexWrap: 'wrap' }}
-      >
+    <SafeAreaView
+      style={{
+        flex: 1,
+        backgroundColor: Colors.white,
+        justifyContent: 'center',
+      }}
+    >
+      <Text style={{ color: Colors.font_1, margin: 20 }}>
+        {`Selected Value is ${choosen}`}
+      </Text>
+      <View style={{ margin: 20 }}>
         <RadioButton
-          isDark={isDark}
-          value="selected"
+          value="xtra small"
           onPress={radioPress}
-          selected={choosen === 'selected'}
+          selected={choosen === 'xtra small'}
+          containerStyle={{ marginVertical: 15 }}
+          size="xs"
         />
         <RadioButton
-          isDark={isDark}
-          value="option-1"
+          value="small"
           onPress={radioPress}
-          selected={choosen === 'option-1'}
+          selected={choosen === 'small'}
+          containerStyle={{ marginVertical: 15 }}
+          size="sm"
         />
         <RadioButton
-          isDark={isDark}
-          value="option-2"
+          value="medium"
           onPress={radioPress}
-          selected={choosen === 'option-2'}
+          selected={choosen === 'medium'}
+          containerStyle={{ marginVertical: 15 }}
+          size="md"
         />
         <RadioButton
-          isDark={isDark}
-          value="option-3"
+          value="large"
           onPress={radioPress}
-          selected={choosen === 'option-3'}
+          selected={choosen === 'large'}
+          containerStyle={{ marginVertical: 15 }}
+          labelStyle={{ color: Colors.font_2 }}
+          size="lg"
         />
         {/* just for having a neat example ui display,
             these are not anyway important to the library
@@ -54,13 +61,17 @@ const RadioButtonExample = (props: RadioButtonExampleProps) => {
         <View style={{ height: 20, width: '100%' }} />
         <RadioButton
           disabled
-          isDark={isDark}
           value="disable-selected"
           selected
+          containerStyle={{ marginVertical: 10 }}
         />
-        <RadioButton disabled isDark={isDark} value="disable-unselected" />
+        <RadioButton
+          disabled
+          value="disable-unselected"
+          containerStyle={{ marginVertical: 10 }}
+        />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
