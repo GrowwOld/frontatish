@@ -16,7 +16,7 @@ const DropdownExample = () => {
       style={{
         flex: 1,
         backgroundColor: Colors.white,
-        justifyContent: 'center',
+        // justifyContent: 'center',
       }}
     >
       <Dropdown dropItems={items} active={active} onChange={onChange} />

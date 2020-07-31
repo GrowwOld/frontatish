@@ -1,10 +1,14 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, SyntheticEvent } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Animated,
   TouchableNativeFeedback,
+  NativeEventEmitter,
+  NativeMethods,
+  NativeSyntheticEvent,
+  LayoutChangeEvent,
 } from 'react-native';
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
@@ -20,6 +24,7 @@ interface DropdownProps {
 const Dropdown = (props: DropdownProps) => {
   const animateRotate = useRef(new Animated.Value(0)).current;
   const [open, setOpen] = useState(false);
+  const [offset, setOffset] = useState(0);
   const { dropItems, active, onChange } = props;
   const Colors = useColors();
   const styles = getStyles(Colors);
@@ -35,8 +40,11 @@ const Dropdown = (props: DropdownProps) => {
     onChange(index);
     handleList();
   };
+  const setOffsetHeight = (e: LayoutChangeEvent) => {
+    setOffset(e.nativeEvent.layout.height);
+  };
   return (
-    <View style={styles.container}>
+    <View style={styles.container} onLayout={setOffsetHeight}>
       <TouchableNativeFeedback onPress={handleList}>
         <View style={styles.activeItem}>
           <Text>{dropItems[active]}</Text>
@@ -63,7 +71,12 @@ const Dropdown = (props: DropdownProps) => {
       </TouchableNativeFeedback>
       {!open && <Line />}
       {open && (
-        <DropList items={dropItems} active={active} onItemClick={onItemClick} />
+        <DropList
+          items={dropItems}
+          active={active}
+          onItemClick={onItemClick}
+          offset={offset}
+        />
       )}
     </View>
   );
@@ -71,18 +84,11 @@ const Dropdown = (props: DropdownProps) => {
 
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
-    container: { flex: 1, justifyContent: 'center', margin: 20 },
+    container: { margin: 20, position: 'relative' },
     activeItem: {
       flexDirection: 'row',
       alignItems: 'center',
       paddingVertical: 10,
-    },
-    itemContainer: {
-      padding: 20,
-      // padding: 10,
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: Colors.font_6,
     },
     caret: {
       width: 0,
