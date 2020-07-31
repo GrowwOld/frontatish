@@ -1,20 +1,25 @@
-import React, { useRef, useState, SyntheticEvent } from 'react';
+import React, { useRef, useState } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Animated,
   TouchableNativeFeedback,
-  NativeEventEmitter,
-  NativeMethods,
-  NativeSyntheticEvent,
   LayoutChangeEvent,
 } from 'react-native';
+// import IonIcon from 'react-native-vector-icons/IonIcons';
+// eslint-disable-next-line import/no-unresolved
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
 import DropList from './DropList';
 import Line from './Line';
 
+let Icon:ReactNo = null;
+try {
+  Icon = require('react-native-vector-icons/MaterialIcons');
+} catch (err) {
+  console.warn('Looks like', err);
+}
 interface DropdownProps {
   dropItems: Array<string>;
   active: number;
@@ -51,7 +56,7 @@ const Dropdown = (props: DropdownProps) => {
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Animated.View
               style={[
-                styles.caret,
+                // styles.caret,
                 {
                   // flex: 1,
                   // alignItems: 'flex-end',
@@ -59,13 +64,19 @@ const Dropdown = (props: DropdownProps) => {
                     {
                       rotate: animateRotate.interpolate({
                         inputRange: [0, 1],
-                        outputRange: ['180deg', '0deg'],
+                        outputRange: ['0deg', '180deg'],
                       }),
                     },
                   ],
                 },
               ]}
-            />
+            >
+              {/* <Icon
+                name="keyboard-arrow-down"
+                size={20}
+                color={Colors.primary}
+              /> */}
+            </Animated.View>
           </View>
         </View>
       </TouchableNativeFeedback>
