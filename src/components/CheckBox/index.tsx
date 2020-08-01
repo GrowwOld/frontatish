@@ -16,7 +16,7 @@ import { Scale } from '../../animated';
 // styles and themes
 import { useColors } from '../../themes';
 
-const Checkbox = (props: CheckBoxProps) => {
+const CheckBox = (props: CheckBoxProps) => {
   const { checked, containerStyle, disabled, onPress, size } = props;
   const [height, width, iconSize] = getCheckDmnsn(size!);
   const Colors = useColors();
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-export default Checkbox;
+export default CheckBox;

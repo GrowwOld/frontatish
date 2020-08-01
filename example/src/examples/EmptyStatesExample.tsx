@@ -5,7 +5,7 @@ import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // eslint-disable-next-line import/no-unresolved
-import { EmptyState, useColors } from 'supergroww';
+import { EmptyState, useColors } from 'viserion';
 
 const EmptyStatesGenericWrapper = () => {
   const Colors = useColors();

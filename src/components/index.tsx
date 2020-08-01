@@ -1,24 +1,26 @@
 // eslint-disable-next-line import/no-unresolved
 import Ripple from 'react-native-material-ripple';
 import Button from './Button';
-import Checkbox from './CheckBox';
+import CheckBox from './CheckBox';
+import Calendar from './Calendar';
+import Dropdown from './Dropdown';
+import Input from './Input';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
 import EmptyState from './EmptyState';
 import Switch from './Switch';
-import Slider from './Slider';
-import Calendar from './Calendar';
 
 export {
   Button,
-  Checkbox,
+  CheckBox,
   Calendar,
   EmptyState,
+  Dropdown,
   NumPad,
   RadioButton,
   Ripple,
-  Slider,
   Switch,
   Table,
+  Input,
 };

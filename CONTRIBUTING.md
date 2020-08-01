@@ -49,9 +49,9 @@ Remember to add tests for your change if possible. Run the unit tests by:
 yarn test
 ```
 
-To edit the Objective-C files, open `example/ios/SupergrowwExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > supergroww`.
+To edit the Objective-C files, open `example/ios/viserionExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > viserion`.
 
-To edit the Java files, open `example/android` in Android studio and find the source files at `supergroww` under `Android`.
+To edit the Java files, open `example/android` in Android studio and find the source files at `viserion` under `Android`.
 
 ### Commit message convention
 
