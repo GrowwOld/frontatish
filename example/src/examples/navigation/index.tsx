@@ -21,8 +21,6 @@ export const COMPONENT_SCREENS = {
 
 export const ANIMATED_SCREENS = {
   FADE: 'Fade',
-  SPLASH: 'Splash',
-  TICKER: 'Ticker',
 };
 
 export const SCREEN_MAPPING = [
