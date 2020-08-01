@@ -8,7 +8,8 @@
 
 /* Begin PBXBuildFile section */
 
-		5E555C0D2413F4C50049A1A2 /* Supergroww.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Supergroww.mm */; };
+
+		5E555C0D2413F4C50049A1A2 /* Viserion.mm in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* Viserion.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,10 +25,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libSupergroww.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSupergroww.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		134814201AA4EA6300B7C361 /* libViserion.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libViserion.a; sourceTree = BUILT_PRODUCTS_DIR; };
 
-		B3E7B5881CC2AC0600A0062D /* Supergroww.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Supergroww.h; sourceTree = "<group>"; };
-		B3E7B5891CC2AC0600A0062D /* Supergroww.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Supergroww.mm; sourceTree = "<group>"; };
+
+		B3E7B5881CC2AC0600A0062D /* Viserion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Viserion.h; sourceTree = "<group>"; };
+		B3E7B5891CC2AC0600A0062D /* Viserion.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Viserion.mm; sourceTree = "<group>"; };
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,7 +47,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libSupergroww.a */,
+				134814201AA4EA6300B7C361 /* libViserion.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -53,8 +56,10 @@
 			isa = PBXGroup;
 			children = (
 
-				B3E7B5881CC2AC0600A0062D /* Supergroww.h */,
-				B3E7B5891CC2AC0600A0062D /* Supergroww.mm */,
+
+				B3E7B5881CC2AC0600A0062D /* Viserion.h */,
+				B3E7B5891CC2AC0600A0062D /* Viserion.mm */,
+
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -62,9 +67,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* Supergroww */ = {
+		58B511DA1A9E6C8500147676 /* Viserion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "Supergroww" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "Viserion" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -74,9 +79,9 @@
 			);
 			dependencies = (
 			);
-			name = Supergroww;
+			name = Viserion;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libSupergroww.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libViserion.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -93,7 +98,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "Supergroww" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "Viserion" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -106,7 +111,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* Supergroww */,
+				58B511DA1A9E6C8500147676 /* Viserion */,
 			);
 		};
 /* End PBXProject section */
@@ -117,7 +122,9 @@
 			buildActionMask = 2147483647;
 			files = (
 
-				5E555C0D2413F4C50049A1A2 /* Supergroww.mm in Sources */,
+
+				5E555C0D2413F4C50049A1A2 /* Viserion.mm in Sources */,
+
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +235,9 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Supergroww;
+				PRODUCT_NAME = Viserion;
 				SKIP_INSTALL = YES;
+
 			};
 			name = Debug;
 		};
@@ -244,15 +252,16 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = Supergroww;
+				PRODUCT_NAME = Viserion;
 				SKIP_INSTALL = YES;
+
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "Supergroww" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "Viserion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -261,7 +270,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "Supergroww" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "Viserion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

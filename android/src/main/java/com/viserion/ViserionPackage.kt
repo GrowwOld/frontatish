@@ -1,4 +1,4 @@
-package com.supergroww
+package com.viserion
 
 import java.util.Arrays
 import java.util.Collections
@@ -9,9 +9,9 @@ import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.uimanager.ViewManager
 import com.facebook.react.bridge.JavaScriptModule
 
-class SupergrowwPackage : ReactPackage {
+class ViserionPackage : ReactPackage {
     override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-        return Arrays.asList<NativeModule>(SupergrowwModule(reactContext))
+        return Arrays.asList<NativeModule>(ViserionModule(reactContext))
     }
 
     override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {

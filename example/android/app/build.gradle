@@ -37,7 +37,7 @@ import com.android.build.OutputFile
  *   // bundleInBeta: true,
  *
  *   // whether to disable dev mode in custom build variants (by default only disabled in release)
- *   // for SupergrowwExample: to disable dev mode in the staging build type (if configured)
+ *   // for ViserionExample: to disable dev mode in the staging build type (if configured)
  *   devDisabledInStaging: true,
  *   // The configuration property can be in the following formats
  *   //         'devDisabledIn${productFlavor}${buildType}'
@@ -64,7 +64,7 @@ import com.android.build.OutputFile
  *   // that we don't look at files in android/ or ios/ to determine whether the tasks are up to
  *   // date; if you have any other folders that you want to ignore for performance reasons (gradle
  *   // indexes the entire tree), add them here. Alternatively, if you have JS files in android/
- *   // for SupergrowwExample, you might want to remove it from here.
+ *   // for ViserionExample, you might want to remove it from here.
  *   inputExcludes: ["android/**", "ios/**"],
  *
  *   // override which node gets called and with what additional arguments
@@ -77,8 +77,8 @@ import com.android.build.OutputFile
 
 project.ext.react = [
     enableHermes: false,  // clean and rebuild if changing
-    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf', 'Ionicons.ttf', 'MaterialCommunityIcons.ttf' ] // Name of the font files you want to copy
 ]
+
 apply from: "../../node_modules/react-native/react.gradle"
 
 /**
@@ -99,7 +99,7 @@ def enableProguardInReleaseBuilds = false
 /**
  * The preferred build flavor of JavaScriptCore.
  *
- * For SupergrowwExample, to use the international variant, you can use:
+ * For ViserionExample, to use the international variant, you can use:
  * `def jscFlavor = 'org.webkit:android-jsc-intl:+'`
  *
  * The international variant includes ICU i18n library and necessary data
@@ -118,11 +118,6 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
-println "Enter keystore password"
-def password = System.in.newReader().readLine()
-println "Enter keystore alias"
-def alias = System.in.newReader().readLine()
-
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -132,7 +127,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.supergroww"
+        applicationId "com.example.viserion"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -147,17 +142,11 @@ android {
         }
     }
     signingConfigs {
-        clerdebug {
+        debug {
             storeFile file('debug.keystore')
             storePassword 'android'
             keyAlias 'androiddebugkey'
             keyPassword 'android'
-        }
-        release {
-            storeFile file('viserion_release_key')
-            storePassword password
-            keyAlias alias
-            keyPassword password
         }
     }
     buildTypes {
@@ -167,7 +156,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
-            signingConfig signingConfigs.release
+            signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -220,7 +209,7 @@ dependencies {
         implementation jscFlavor
     }
 
-    implementation project(':supergroww')
+    implementation project(':viserion')
 }
 
 // Run this once to be able to run the application with BUCK
@@ -229,7 +218,6 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
-
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
 apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
