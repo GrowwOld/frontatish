@@ -7,19 +7,13 @@ import {
   TouchableNativeFeedback,
   LayoutChangeEvent,
 } from 'react-native';
-// import IonIcon from 'react-native-vector-icons/IonIcons';
 // eslint-disable-next-line import/no-unresolved
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
 import DropList from './DropList';
 import Line from './Line';
 
-let Icon:ReactNo = null;
-try {
-  Icon = require('react-native-vector-icons/MaterialIcons');
-} catch (err) {
-  console.warn('Looks like', err);
-}
 interface DropdownProps {
   dropItems: Array<string>;
   active: number;
@@ -71,11 +65,11 @@ const Dropdown = (props: DropdownProps) => {
                 },
               ]}
             >
-              {/* <Icon
+              <Icon
                 name="keyboard-arrow-down"
                 size={20}
                 color={Colors.primary}
-              /> */}
+              />
             </Animated.View>
           </View>
         </View>
