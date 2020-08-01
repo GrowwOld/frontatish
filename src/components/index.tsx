@@ -5,7 +5,6 @@ import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
 import Switch from './Switch';
-import Slider from './Slider';
 import Calendar from './Calendar';
 
 export {
@@ -15,7 +14,6 @@ export {
   NumPad,
   RadioButton,
   Ripple,
-  Slider,
   Switch,
   Table,
 };
