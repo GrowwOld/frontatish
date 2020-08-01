@@ -3,7 +3,7 @@ import { TextStyle } from 'react-native';
 
 export interface EmptyViewProps {
   illustration?: ReactNode;
-  type?: 'error' | 'nodata';
+  type?: 'apiError' | 'nodata';
   title?: string;
   titleStyle?: TextStyle;
   subTitle?: string;

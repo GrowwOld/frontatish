@@ -8,8 +8,8 @@ import { Fonts } from '../../styles';
 interface TagProps {
   onPress?: () => void;
   tagTitle: string;
-  containerStyle: ViewStyle;
-  tagTextStyle: TextStyle;
+  containerStyle?: ViewStyle;
+  tagTextStyle?: TextStyle;
 }
 const Tag = (props: TagProps) => {
   const { onPress, tagTitle, containerStyle, tagTextStyle } = props;
@@ -25,8 +25,10 @@ const Tag = (props: TagProps) => {
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
     tagContainer: {
-      padding: 4,
-      borderRadius: 4,
+      paddingVertical: 2,
+      paddingHorizontal: 6,
+      alignSelf: 'flex-start',
+      borderRadius: 8,
       backgroundColor: Colors.primary_attr_40,
     },
     tagText: {

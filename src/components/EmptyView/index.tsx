@@ -26,7 +26,7 @@ const EmptyView = (props: EmptyViewProps) => {
     }
     return (
       <Image
-        source={type === 'error' ? Images.apiErrorLight : Images.emptyLight}
+        source={type === 'apiError' ? Images.apiErrorLight : Images.emptyLight}
         resizeMode="contain"
         style={{ height: 150, width: 150, alignSelf: 'center' }}
       />
