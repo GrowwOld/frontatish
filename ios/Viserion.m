@@ -1,6 +1,6 @@
-#import "Supergroww.h"
+#import "Viserion.h"
 
-@implementation Supergroww
+@implementation Viserion
 
 RCT_EXPORT_MODULE()
 

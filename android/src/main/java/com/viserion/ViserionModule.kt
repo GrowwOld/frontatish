@@ -1,14 +1,14 @@
-package com.supergroww
+package com.viserion
 
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.Promise
 
-class SupergrowwModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
+class ViserionModule(reactContext: ReactApplicationContext) : ReactContextBaseJavaModule(reactContext) {
 
     override fun getName(): String {
-        return "Supergroww"
+        return "Viserion"
     }
 
     // Example method

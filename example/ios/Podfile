@@ -20,8 +20,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'SupergrowwExample' do
-  # Pods for SupergrowwExample
+target 'ViserionExample' do
+  # Pods for ViserionExample
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -53,10 +53,10 @@ target 'SupergrowwExample' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  pod 'supergroww', :path => '../..'
+  pod 'viserion', :path => '../..'
 
   use_native_modules!
-  
+
   # Enables Flipper.
   #
   # Note that if you have use_frameworks! enabled, Flipper will not work and
