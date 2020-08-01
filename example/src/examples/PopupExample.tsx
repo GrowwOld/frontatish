@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { Popup } from 'supergroww';
+import { Popup } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import NumPadExample from './NumPadExample';
 // import { getColors, Fonts } from '../styles';

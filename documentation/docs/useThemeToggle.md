@@ -12,7 +12,7 @@ useThemeToggle is a custom hook,which returns a **setter** to set the active the
 
 
 ```jsx
-import { useThemeToggle } from 'supergroww';
+import { useThemeToggle } from 'viserion';
 
 const ProfileScreen = () => {
   const setTheme = useThemeToggle();

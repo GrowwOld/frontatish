@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { RadioButton, useColors } from 'supergroww';
+import { RadioButton, useColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Fonts, getColors } from '../styles';
 

@@ -1,5 +1,5 @@
 {
-  "name": "supergroww",
+  "name": "viserion",
   "version": "0.1.0",
   "description": "react-native master ui helpers",
   "main": "lib/commonjs/index.js",
@@ -12,7 +12,7 @@
     "lib",
     "android",
     "ios",
-    "supergroww.podspec"
+    "viserion.podspec"
   ],
   "scripts": {
     "test": "jest",

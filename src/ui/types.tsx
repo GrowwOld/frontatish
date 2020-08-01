@@ -3,5 +3,5 @@ import { ReactNode } from 'react';
 
 export interface UIViewProps {
   children: ReactNode;
-  style: ViewStyle;
+  style?: ViewStyle;
 }

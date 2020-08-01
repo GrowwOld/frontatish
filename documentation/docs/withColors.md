@@ -14,7 +14,7 @@ withColors is a higher order component which uses **ThemeContext** to fetch the 
 
 ```jsx
 
-import { withColors } from 'supergroww';
+import { withColors } from 'viserion';
 
 class App extends React.Component{
   render() {

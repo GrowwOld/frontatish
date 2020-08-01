@@ -14,7 +14,7 @@ useColors is a custom hook which uses **useContext** to fetch the current active
 
 ```jsx
 
-import { useColors } from 'supergroww';
+import { useColors } from 'viserion';
 
 const App = () => {
   const Colors = useColors();

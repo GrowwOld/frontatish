@@ -2,7 +2,7 @@ import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // eslint-disable-next-line import/no-unresolved
-import { Splash, useColors } from 'supergroww';
+import { Splash, useColors } from 'viserion';
 
 const SplashExample = () => {
   const Colors = useColors();
