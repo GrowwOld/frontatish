@@ -11,6 +11,7 @@ import Table from './Table';
 import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
 import Switch from './Switch';
+import Tag from './Tag';
 
 export {
   Button,
@@ -24,5 +25,6 @@ export {
   Ripple,
   Switch,
   Table,
+  Tag,
   Input,
 };
