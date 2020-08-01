@@ -10,6 +10,7 @@ import RadioButton from './RadioButton';
 import Table from './Table';
 import EmptyState from './EmptyState';
 import Switch from './Switch';
+import Tag from './Tag';
 
 export {
   Button,
@@ -22,5 +23,6 @@ export {
   Ripple,
   Switch,
   Table,
+  Tag,
   Input,
 };
