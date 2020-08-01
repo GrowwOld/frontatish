@@ -6,9 +6,8 @@ import Dropdown from './Dropdown';
 import Input from './Input';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
-import Slider from './Slider';
-import Switch from './Switch';
 import Table from './Table';
+import Switch from './Switch';
 
 export {
   Button,
@@ -18,7 +17,6 @@ export {
   NumPad,
   RadioButton,
   Ripple,
-  Slider,
   Switch,
   Table,
   Input,
