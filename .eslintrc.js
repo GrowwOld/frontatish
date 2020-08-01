@@ -16,6 +16,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'comma-dangle': 'off',
+    'global-require': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
