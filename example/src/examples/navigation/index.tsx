@@ -5,6 +5,7 @@ import NumPadScreen from '../NumPadExample';
 import TableScreen from '../TableExample';
 import FadeScreen from '../FadeExample';
 import CalendarScreen from '../CalendarExample';
+import SearchbarScreen from '../SearchbarExample';
 import EmptyStateScreen from '../EmptyStatesExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
@@ -16,6 +17,7 @@ export const COMPONENT_SCREENS = {
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
   CALENDAR: 'Calendar',
+  SEARCHBAR: 'Searchbar',
   EMPTYSTATES: 'EmptyStates',
   INPUT: 'Input',
   DROPDOWN: 'Dropdown',
@@ -33,6 +35,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.NUMPAD, screen: NumPadScreen },
   { name: COMPONENT_SCREENS.TABLES, screen: TableScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  { name: COMPONENT_SCREENS.SEARCHBAR, screen: SearchbarScreen },
   { name: COMPONENT_SCREENS.EMPTYSTATES, screen: EmptyStateScreen },
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
