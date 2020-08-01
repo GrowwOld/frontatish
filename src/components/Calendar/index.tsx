@@ -5,6 +5,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 import Button from '../Button';
 import { useColors } from '../../themes';
+import { CalendarProps } from './types';
 
 const styles = StyleSheet.create({
   calendarContainer: {
@@ -20,8 +21,8 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   datePickerContainer: {
-    height: 147,
-    width: 247,
+    // height: 147,
+    // width: 247,
     // marginTop: 20,
     // marginBottom: 40,
   },
@@ -42,34 +43,25 @@ const months = [
   'December',
 ];
 
-const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-const Calendar = () => {
+const Calendar = (props: CalendarProps) => {
   const [activeDate, setActiveDate] = useState(new Date());
   const Colors = useColors();
-  const changeMonth = (delta) => {
+  const { setDate } = props;
+  const changeMonth = (delta: number) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
     const updatedDate = new Date(newTimeInMS);
     setActiveDate(updatedDate);
-    // set(() => {
-    //   this.state.activeDate.setMonth(
-    //     this.state.activeDate.getMonth() + n
-    //   )
-    //   return this.state;
-    // });
   };
   const generateMatrix = () => {
     const matrix = [];
     // Create header
-    matrix[0] = weekDays;
-
-    // More code here
-
+    matrix[0] = ['1', '2', '3', '4', '5', '6', '7'];
     const year = activeDate.getFullYear();
     const month = activeDate.getMonth();
 
-    const firstDay = new Date(year, month, 1).getDay();
+    // const firstDay = new Date(year, month, 1).getDay();
     let maxDays = nDays[month];
     if (month === 1) {
       // February
@@ -77,82 +69,78 @@ const Calendar = () => {
         maxDays += 1;
       }
     }
-    let counter = 1;
-    for (let row = 1; row < 7; row++) {
+    let counter = 8;
+    for (let row = 1; row < 5; row += 1) {
       matrix[row] = [];
-      for (let col = 0; col < 7; col++) {
-        matrix[row][col] = -1;
-        if (row === 1 && col >= firstDay) {
-          // Fill in rows only after the first day of the month
-          matrix[row][col] = counter;
+      for (let col = 0; col < 7; col += 1) {
+        if (counter <= maxDays) {
+          matrix[row][col] = counter.toString();
           counter += 1;
-        } else if (row > 1 && counter <= maxDays) {
-          // Fill in rows only if the counter's not greater than
-          // the number of days in the month
-          matrix[row][col] = counter;
-          counter += 1;
+        } else {
+          matrix[row][col] = '';
         }
       }
     }
     return matrix;
   };
   const matrix = generateMatrix();
-  let rows = [];
-  rows = matrix.map((row, rowIndex) => {
-    const rowItems = row.map((item, colIndex) => {
-      return (
-        <Text
-          style={{
-            flex: 1,
-            height: 18,
-            textAlign: 'center',
-            // Highlight header
-            // backgroundColor: rowIndex === 0 ? '#ddd' : '#fff',
-            // Highlight Sundays
-            color: colIndex === 0 ? Colors.semantic_red : Colors.font_1,
-            // Highlight current date
-            fontWeight: item === activeDate.getDate() ? 'bold' : '',
-          }}
-          // onPress={() => this._onPress(item)}
-        >
-          {item !== -1 ? item : ''}
-        </Text>
-      );
-    });
+  const renderEachRow = (daysArray: number[]) => {
+    console.log('dataArray', daysArray);
     return (
       <View
         style={{
-          flex: 1,
           flexDirection: 'row',
-          padding: 15,
-          justifyContent: 'space-around',
-          alignItems: 'center',
+          margin: 10,
+          // backgroundColor: 'grey',
+          paddingHorizontal: 25,
+          paddingVertical: 10,
         }}
       >
-        {rowItems}
+        {daysArray.map((item) => {
+          if (item !== '') {
+            return (
+              <Ripple style={{ flex: 1 }} rippleContainerBorderRadius={16}>
+                <Text style={{}} key={item.toString()}>
+                  {item}
+                </Text>
+              </Ripple>
+            );
+          }
+        })}
       </View>
     );
-  });
+  };
+
   return (
-    <View
-      style={[styles.calendarContainer, { backgroundColor: Colors.font_6 }]}
-    >
+    <View style={[styles.calendarContainer, { backgroundColor: Colors.white }]}>
       <View style={{ marginVertical: 24 }}>
         <Text style={{ textAlign: 'center', color: Colors.font_1 }}>
           Selecting Date
         </Text>
       </View>
-      <View style={{ alignItems: 'center' }}>
+      <View
+        style={{
+          height: 40,
+          backgroundColor: Colors.font_6,
+
+          // justifyContent: 'center',
+        }}
+      >
         <View
           style={{
-            height: 40,
-
             flexDirection: 'row',
+            marginHorizontal: 30,
             alignItems: 'center',
           }}
         >
           <Ripple
-            style={{ height: 32, width: 32, borderRadius: 16 }}
+            style={{
+              height: 32,
+              width: 32,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            rippleContainerBorderRadius={16}
             onPress={() => changeMonth(-1)}
           >
             <IonIcon
@@ -162,11 +150,23 @@ const Calendar = () => {
               // style={{ flex: 1, textAlign: 'center' }}
             />
           </Ripple>
-          <Text style={{ marginHorizontal: 90, color: Colors.font_1 }}>
+          <Text
+            style={{
+              color: Colors.primary,
+              flex: 2,
+              textAlign: 'center',
+            }}
+          >
             {months[activeDate.getMonth()]}
           </Text>
           <Ripple
-            style={{ height: 32, width: 32, borderRadius: 16 }}
+            style={{
+              height: 32,
+              width: 32,
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+            rippleContainerBorderRadius={16}
             onPress={() => changeMonth(1)}
           >
             <IonIcon
@@ -178,9 +178,11 @@ const Calendar = () => {
           </Ripple>
         </View>
       </View>
-      <View style={{ alignItems: 'center' }}>{rows}</View>
+      <View style={{ alignItems: 'center' }}>
+        {matrix.map((item) => renderEachRow(item))}
+      </View>
       <View style={{ margin: 20 }}>
-        <Button label="CONFIRM DATE" isDark={false} />
+        <Button label="CONFIRM DATE" />
       </View>
     </View>
   );

@@ -73,3 +73,6 @@ lib/
 
 *.iml
 viserion_release_key
+release/
+assets/
+res/*
