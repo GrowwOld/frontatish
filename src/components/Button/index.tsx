@@ -1,6 +1,6 @@
 // base and lib imports
-import * as React from 'react';
-import { Text } from 'react-native';
+import React, { useState } from 'react';
+import { Text, View, LayoutChangeEvent } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 
 // utils and helpers
@@ -11,8 +11,11 @@ import { getBtnStyles, getLabelStyles } from './helper';
 // styles and themes
 import { useColors } from '../../themes';
 
+import Progress from '../../animated/Progress';
+
 const Button = (props: ButtonProps) => {
-  const { customStyles, disabled, label, type, onPress } = props;
+  const { customStyles, disabled, label, type, onPress, loading } = props;
+  const [width, setWidth] = useState<number>(0);
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = useColors();
@@ -26,34 +29,32 @@ const Button = (props: ButtonProps) => {
     ...customStyles,
   };
   const baseLabelStyles: StyleType = getLabelStyles(type, Colors, disabled);
-  // const renderProgressBar = () => (
-  //   <View
-  //     style={{
-  //       position: 'absolute',
-  //       width: '100%',
-  //       top: -6,
-  //       zIndex: 1,
-  //     }}
-  //   >
-  //     <ProgressBarAndroid
-  //       indeterminate
-  //       styleAttr="Horizontal"
-  //       color={Colors.CONSTANT_WHITE}
-  //     />
-  //   </View>
-  // );
+  const measureLayout = (e: LayoutChangeEvent) => {
+    setWidth(e.nativeEvent.layout.width);
+  };
+  const renderProgressBar = () => (
+    <View
+      style={{
+        position: 'absolute',
+        top: 0,
+      }}
+    >
+      <Progress width={width} />
+    </View>
+  );
 
   return (
     <Ripple
       onPress={onPress}
       disabled={disabled}
       style={mainBtnStyles}
+      onLayout={measureLayout}
       // style={[styles.btnContainer, {
       //   ...btnBorderStyle,
       //   backgroundColor: btnBgColor,
       // }]}
     >
-      {/* {loading && renderProgressBar()} */}
+      {loading && renderProgressBar()}
       <Text style={baseLabelStyles}>{label}</Text>
     </Ripple>
   );
