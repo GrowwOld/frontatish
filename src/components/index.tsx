@@ -9,6 +9,7 @@ import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
 import EmptyState from './EmptyState';
+import EmptyView from './EmptyView';
 import Switch from './Switch';
 
 export {
@@ -16,6 +17,7 @@ export {
   CheckBox,
   Calendar,
   EmptyState,
+  EmptyView,
   Dropdown,
   NumPad,
   RadioButton,
