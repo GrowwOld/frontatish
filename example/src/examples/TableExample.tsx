@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Table, Ripple, useColors } from 'supergroww';
+import { Table, Ripple, useColors } from 'viserion';
 // import { Fonts, getColors } from '../styles';
 import { tableData } from './fixtures';
 

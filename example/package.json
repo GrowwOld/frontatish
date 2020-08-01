@@ -1,6 +1,6 @@
 {
   "name": "viserion-example",
-  "description": "Example app for supergroww",
+  "description": "Example app for viserion",
   "version": "0.0.1",
   "private": true,
   "scripts": {

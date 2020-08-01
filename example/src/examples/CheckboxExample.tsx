@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { CheckBox, useColors } from 'supergroww';
+import { CheckBox, useColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const CheckboxExample = () => {

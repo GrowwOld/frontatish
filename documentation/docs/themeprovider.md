@@ -9,7 +9,7 @@ ThemeProvider gives you an option to pass your theme or colors to your child com
 ## Usage
 ```jsx
 
-import { ThemeProvider } from 'supergroww';
+import { ThemeProvider } from 'viserion';
 
 
 <ThemeProvider theme="light" colors={colors}>

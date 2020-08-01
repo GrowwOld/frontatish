@@ -3,7 +3,7 @@ import * as React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { Button, useColors, Fonts } from 'supergroww';
+import { Button, useColors, Fonts } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface ButtonExampleProps {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Dropdown, useColors } from 'supergroww';
+import { Dropdown, useColors } from 'viserion';
 
 const DropdownExample = () => {
   const Colors = useColors();

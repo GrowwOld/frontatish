@@ -3,7 +3,7 @@ import { Text, StyleSheet, View, StatusBar, Platform } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { useColors, useTheme, useThemeToggle, Switch } from 'supergroww';
+import { useColors, useTheme, useThemeToggle, Switch } from 'viserion';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 

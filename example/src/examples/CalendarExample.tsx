@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Calendar, useColors } from 'supergroww';
+import { Calendar, useColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
