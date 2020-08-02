@@ -26,7 +26,7 @@ Button components helps to handle all user actions using onPress handlers, the b
 ```jsx
 // react base imports
 
-import { Button } from 'supergroww';
+import { Button } from 'viserion';
 
 // primary button
 <Button
@@ -73,7 +73,7 @@ On the basis of **type** passed to component, it applies the defined style to it
 
 |        Type         |    Default     |     Values     | Required|
 | :-----------------: | :------------: | :------------:   | :------------:
-| string <img width="500"/> | **primary** <img width="500"/> |  oneOf(primary, secondary, default) <img width="500"/> | No <img width="500"/>
+| string <img width="500"/> | **primary** <img width="500"/> |  enum(primary, secondary, default) <img width="500"/> | No <img width="500"/>
 
 
 ---

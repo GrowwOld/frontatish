@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
-import Ripple from 'react-native-material-ripple';
 import { TableProps, TableItemProps } from './types';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
@@ -61,11 +60,14 @@ const Table = (props: TableProps) => {
       return <CustomLeftItem item={item} onPress={onLeftKeyPress} />;
     }
     return (
-      <Ripple style={{ flex: 2, paddingVertical: 16 }} onPress={onLeftKeyPress}>
+      <TouchableOpacity
+        style={{ flex: 2, paddingVertical: 16 }}
+        onPress={onLeftKeyPress}
+      >
         <Text style={mainLeftItemTextStyle} numberOfLines={1}>
           {item[leftKey]}
         </Text>
-      </Ripple>
+      </TouchableOpacity>
     );
   };
   const renderRightOptionItem = (item: any) => {
@@ -86,12 +88,12 @@ const Table = (props: TableProps) => {
       return <CustomRightItem item={item} onPress={onRightKeyPress} />;
     }
     return (
-      <Ripple
+      <TouchableOpacity
         onPress={onRightKeyPress}
         style={{ flex: 1, paddingVertical: 16 }}
       >
         <Text style={mainRightItemTextStyle}>{item[option[active]]}</Text>
-      </Ripple>
+      </TouchableOpacity>
     );
   };
   const onRightKeyPress = () => {

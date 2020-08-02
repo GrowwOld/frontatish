@@ -30,6 +30,6 @@ $ mv super <PROJECT_DIR>/node_modules
 ### Step-4
 start using the required components by using something like this
 ```jsx
-import { Button } from 'supergroww';
+import { Button } from 'viserion';
 
 ```

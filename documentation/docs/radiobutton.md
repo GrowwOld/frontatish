@@ -15,7 +15,7 @@ Radio buttons helps to implement selection between multiple options, on the low 
 ## Usage
 
 ```jsx
-import { RadioButton } from 'supergroww';
+import { RadioButton } from 'viserion';
 
 // normal
 <RadioButton

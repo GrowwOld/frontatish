@@ -16,13 +16,15 @@ const TableExample = () => {
   const MrpItem = (MrpProps: MrpItemProps) => {
     const { item, onPress } = MrpProps;
     const prefix = item.dayChange > 0 ? '+' : '';
+    const prefixColor =
+      item.dayChange > 0 ? Colors.primary : Colors.semantic_red;
     return (
       <Ripple
         style={{ flex: 1, alignItems: 'flex-end', paddingVertical: 16 }}
         onPress={onPress}
       >
         <Text style={{ color: Colors.font_1 }}>{item.marketPrice}</Text>
-        <Text style={{ color: Colors.font_1 }}>
+        <Text style={{ color: prefixColor }}>
           {`${prefix} ${item.dayChange.toFixed(
             2,
           )} (${item.dayChangePerc.toFixed(2)})`}
@@ -34,7 +36,7 @@ const TableExample = () => {
   // so that it can be correctly mapped
   const customRightItemComponents = { marketPrice: MrpItem };
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         backgroundColor: Colors.white,
@@ -66,7 +68,7 @@ const TableExample = () => {
           customRightItemComponents={customRightItemComponents}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

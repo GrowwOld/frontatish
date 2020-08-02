@@ -15,7 +15,7 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 
 ## Usage
 ```jsx
-import { NumPad } from 'supergroww';
+import { NumPad } from 'viserion';
 
 class NumPadExample extends Component {
   constructor(props) {
