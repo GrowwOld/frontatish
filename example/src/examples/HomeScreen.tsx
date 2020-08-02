@@ -3,7 +3,13 @@ import { Text, StyleSheet, View, StatusBar, Platform } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { useColors, useTheme, useThemeToggle, Switch } from 'viserion';
+import {
+  useColors,
+  useTheme,
+  useThemeToggle,
+  Switch,
+  Searchbar,
+} from 'viserion';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
@@ -38,6 +44,23 @@ const HomeScreen = ({ navigation }: any) => {
         animated
         barStyle={activeTheme === 'light' ? 'dark-content' : 'light-content'}
       />
+      <View style={{ padding: 20, flexDirection: 'row' }}>
+        <View style={{ flex: 4 }}>
+          <Searchbar />
+        </View>
+        <View
+          style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}
+        >
+          <Switch
+            isOn={isOn}
+            onColor="#00D09C"
+            offColor="#E6E7E8"
+            // label="Example label"
+            // size="small"
+            onToggle={onThemeSwitch}
+          />
+        </View>
+      </View>
       <ScrollView
         showsVerticalScrollIndicator={false}
         // contentContainerStyle={{ flexGrow: 1 }}
@@ -60,14 +83,6 @@ const HomeScreen = ({ navigation }: any) => {
           >
             UI components
           </Text>
-          <Switch
-            isOn={isOn}
-            onColor="#00D09C"
-            offColor="#E6E7E8"
-            // label="Example label"
-            // size="small"
-            onToggle={onThemeSwitch}
-          />
         </View>
         {Object.keys(COMPONENT_SCREENS).map((item) => {
           return (

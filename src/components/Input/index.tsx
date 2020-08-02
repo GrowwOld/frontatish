@@ -2,11 +2,12 @@ import React from 'react';
 import {
   TextInput,
   TextInputProps,
-  TouchableNativeFeedback,
   View,
   StyleSheet,
   Text,
 } from 'react-native';
+// eslint-disable-next-line import/no-unresolved
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { withColors } from '../../themes';
 import { StyleType, ColorType } from '../../common/types';
 
@@ -53,7 +54,7 @@ class Input extends React.PureComponent<InputProps, InputState> {
         bottomBorderStyle,
         {
           height: 2,
-          marginTop: 4,
+          // marginTop: 4,
           backgroundColor: Colors.semantic_red,
         },
       ];
@@ -62,7 +63,7 @@ class Input extends React.PureComponent<InputProps, InputState> {
         bottomBorderStyle,
         {
           height: 2,
-          marginTop: 4,
+          // marginTop: 4,
           backgroundColor: Colors.primary,
         },
       ];
@@ -71,7 +72,7 @@ class Input extends React.PureComponent<InputProps, InputState> {
         bottomBorderStyle,
         {
           height: 1,
-          marginTop: 4,
+          // marginTop: 4,
           backgroundColor: Colors.font_5,
         },
       ];
@@ -96,7 +97,7 @@ class Input extends React.PureComponent<InputProps, InputState> {
       ? { ...styles.disabledTextStyle, ...disabledTextStyle }
       : { ...styles.inputTextStyle, ...inputTextStyle };
     return (
-      <TouchableNativeFeedback onPress={this.setFocus}>
+      <TouchableWithoutFeedback onPress={this.setFocus}>
         <View style={[styles.containerStyle, containerStyle]}>
           <Text style={[styles.lableStyle, labelStyle]}>{label}</Text>
           <TextInput
@@ -111,7 +112,7 @@ class Input extends React.PureComponent<InputProps, InputState> {
           <View style={bottomBorderStyles} />
           {error && <Text style={styles.errorStyle}>{error}</Text>}
         </View>
-      </TouchableNativeFeedback>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -121,7 +122,7 @@ const getStyles = (Colors: ColorType) => {
     containerStyle: { padding: 20 },
     lableStyle: { color: Colors.font_2, marginBottom: 8, fontWeight: '500' },
     errorStyle: { color: Colors.semantic_red, marginTop: 4, fontWeight: '500' },
-    inputTextStyle: { color: Colors.primary },
+    inputTextStyle: { color: Colors.font_1 },
     disabledTextStyle: { color: Colors.font_3 },
   });
 };

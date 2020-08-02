@@ -9,18 +9,24 @@ import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
 import EmptyState from './EmptyState';
+import EmptyView from './EmptyView';
 import Switch from './Switch';
+import Searchbar from './Searchbar';
+import Tag from './Tag';
 
 export {
   Button,
   CheckBox,
   Calendar,
   EmptyState,
+  EmptyView,
   Dropdown,
   NumPad,
   RadioButton,
   Ripple,
   Switch,
+  Searchbar,
   Table,
+  Tag,
   Input,
 };

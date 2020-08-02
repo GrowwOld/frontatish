@@ -13,14 +13,13 @@ import Line from './Line';
 interface DropListProps {
   items: Array<string>;
   active: number;
-  offset: number;
   onItemClick: (index: number) => void;
 }
 
 const DropList = (props: DropListProps) => {
-  const { items, active, onItemClick, offset } = props;
+  const { items, active, onItemClick } = props;
   const Colors = useColors();
-  const styles = getStyles(Colors, offset);
+  const styles = getStyles(Colors);
   const renderItem = ({ item, index }: { item: string; index: number }) => {
     return (
       <TouchableOpacity onPress={() => onItemClick(index)}>
@@ -38,25 +37,20 @@ const DropList = (props: DropListProps) => {
   };
 
   return (
-    <View style={styles.listContainer}>
-      <FlatList
-        data={items}
-        renderItem={renderItem}
-        keyExtractor={(item) => item}
-      />
-    </View>
+    <FlatList
+      data={items}
+      contentContainerStyle={styles.listContainer}
+      renderItem={renderItem}
+      keyExtractor={(item) => item}
+    />
   );
 };
 
-const getStyles = (Colors: ColorType, offset: number) => {
+const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
     listContainer: {
       // backgroundColor: Colors.font_6,
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: offset,
-      // zIndex: 1001,
+      // position: 'absolute',
       // top: DEVICE_HEIGHT / 2,
       borderWidth: 1,
       borderColor: Colors.font_5,
