@@ -13,7 +13,7 @@ The library is still under development,so feel free to raise issue and contribut
 
 ### Step - 1
 ```bash
-$ git clone https://github.com/Groww/super
+$ yarn add viserion
 ```
 
 ### Step - 2
