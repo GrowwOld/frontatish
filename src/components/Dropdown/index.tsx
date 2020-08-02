@@ -5,7 +5,6 @@ import {
   StyleSheet,
   Animated,
   TouchableNativeFeedback,
-  LayoutChangeEvent,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -23,7 +22,6 @@ interface DropdownProps {
 const Dropdown = (props: DropdownProps) => {
   const animateRotate = useRef(new Animated.Value(0)).current;
   const [open, setOpen] = useState(false);
-  const [offset, setOffset] = useState(0);
   const { dropItems, active, onChange } = props;
   const Colors = useColors();
   const styles = getStyles(Colors);
@@ -39,11 +37,8 @@ const Dropdown = (props: DropdownProps) => {
     onChange(index);
     handleList();
   };
-  const setOffsetHeight = (e: LayoutChangeEvent) => {
-    setOffset(e.nativeEvent.layout.height);
-  };
   return (
-    <View style={styles.container} onLayout={setOffsetHeight}>
+    <View style={styles.container}>
       <TouchableNativeFeedback onPress={handleList}>
         <View style={styles.activeItem}>
           <Text>{dropItems[active]}</Text>
@@ -76,12 +71,7 @@ const Dropdown = (props: DropdownProps) => {
       </TouchableNativeFeedback>
       {!open && <Line />}
       {open && (
-        <DropList
-          items={dropItems}
-          active={active}
-          onItemClick={onItemClick}
-          offset={offset}
-        />
+        <DropList items={dropItems} active={active} onItemClick={onItemClick} />
       )}
     </View>
   );
