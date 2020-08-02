@@ -36,7 +36,7 @@ const Table = (props: TableProps) => {
       index !== data.length - 1
         ? {
             borderBottomWidth: 1,
-            borderBottomColor: Colors.font_2,
+            borderBottomColor: Colors.font_4,
           }
         : null;
     return (

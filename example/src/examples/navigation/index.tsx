@@ -17,6 +17,7 @@ export const COMPONENT_SCREENS = {
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
   CALENDAR: 'Calendar',
+  // EMPTYSTATES: 'EmptyStates',
   EMPTYVIEW: 'EmptyView',
   INPUT: 'Input',
   DROPDOWN: 'Dropdown',

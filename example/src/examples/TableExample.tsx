@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Table, Ripple, useColors } from 'viserion';
+import { Table, Ripple, useColors, Fonts } from 'viserion';
 // import { Fonts, getColors } from '../styles';
 import { tableData } from './fixtures';
 
@@ -34,15 +34,28 @@ const TableExample = () => {
   // so that it can be correctly mapped
   const customRightItemComponents = { marketPrice: MrpItem };
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         backgroundColor: Colors.white,
-        justifyContent: 'center',
       }}
     >
-      <View style={{ marginHorizontal: 20 }}>
-        <Text style={{ color: Colors.font_1 }}>Table Example</Text>
+      <Text
+        style={{
+          color: Colors.font_1,
+          fontSize: Fonts.size.h3,
+          marginHorizontal: 20,
+        }}
+      >
+        Table Example
+      </Text>
+      <View
+        style={{
+          marginHorizontal: 20,
+          flex: 1,
+          justifyContent: 'center',
+        }}
+      >
         <Table
           data={tableData}
           title="Name"
@@ -53,7 +66,7 @@ const TableExample = () => {
           customRightItemComponents={customRightItemComponents}
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
