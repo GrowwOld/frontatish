@@ -32,16 +32,21 @@ const Button = (props: ButtonProps) => {
   const measureLayout = (e: LayoutChangeEvent) => {
     setWidth(e.nativeEvent.layout.width);
   };
-  const renderProgressBar = () => (
-    <View
-      style={{
-        position: 'absolute',
-        top: 0,
-      }}
-    >
-      <Progress width={width} />
-    </View>
-  );
+
+  const renderProgressBar = () => {
+    const barColor = type === 'primary' ? Colors.white : Colors.primary;
+    return (
+      <View
+        style={{
+          position: 'absolute',
+          top: 0,
+          borderRadius: 5,
+        }}
+      >
+        <Progress width={width} barColor={barColor} />
+      </View>
+    );
+  };
 
   return (
     <Ripple

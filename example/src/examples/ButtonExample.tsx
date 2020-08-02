@@ -1,21 +1,17 @@
 // example usage of button component
-import * as React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
 import { Button, useColors, Fonts } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-interface ButtonExampleProps {
-  isDark: boolean;
-  openPopup: () => void;
-}
-
-const ButtonExample = (props: ButtonExampleProps) => {
-  const { openPopup } = props;
+const ButtonExample = () => {
   const Colors = useColors();
+  const [loading, setLoading] = useState(false);
   const handlePress = () => {
     // do some action
+    setLoading(!loading);
   };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
@@ -29,12 +25,14 @@ const ButtonExample = (props: ButtonExampleProps) => {
             onPress={handlePress}
             label="Primary Button"
             customStyles={{ flex: 1, marginRight: 20 }}
+            loading={loading}
           />
           <Button
             type="secondary"
-            onPress={openPopup}
+            onPress={handlePress}
             label="Secondary Button"
             customStyles={{ flex: 1 }}
+            loading={loading}
           />
         </View>
         <View style={{ flexDirection: 'row', marginVertical: 20 }}>
@@ -43,6 +41,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
             onPress={handlePress}
             label="Default Button"
             customStyles={{ flex: 1, marginRight: 20 }}
+            loading={loading}
           />
           <Button
             type="primary"
@@ -57,7 +56,7 @@ const ButtonExample = (props: ButtonExampleProps) => {
             type="primary"
             onPress={handlePress}
             label="Loading Button"
-            loading
+            loading={loading}
           />
         </View>
       </View>

@@ -1,11 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, Animated } from 'react-native';
+import { View, StyleSheet, Animated } from 'react-native';
 import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
 
 interface ProgeessProps {
   width: number;
   Colors: ColorType;
+  barColor?: string;
 }
 
 interface ProgressState {
@@ -26,20 +27,27 @@ class Progress extends React.Component<ProgeessProps, ProgressState> {
   startAnimation = () => {
     const { transX } = this.state;
     Animated.loop(
-      Animated.timing(transX, {
-        toValue: 1,
-        duration: 1500,
-        useNativeDriver: true,
-      }),
+      Animated.sequence([
+        Animated.timing(transX, {
+          toValue: 1,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+        Animated.timing(transX, {
+          toValue: 0,
+          duration: 1500,
+          useNativeDriver: true,
+        }),
+      ]),
     ).start();
   };
 
   render() {
-    const { width, Colors } = this.props;
+    const { width, barColor, Colors } = this.props;
     const { transX } = this.state;
-    const styles = getStyles(Colors, width);
+    const styles = getStyles(Colors, barColor, width);
     return (
-      <View style={[styles.progressContainer, { width }]}>
+      <View style={[styles.progressContainer]}>
         <Animated.View
           style={[
             styles.progressBar,
@@ -48,7 +56,7 @@ class Progress extends React.Component<ProgeessProps, ProgressState> {
                 {
                   translateX: transX.interpolate({
                     inputRange: [0, 1],
-                    outputRange: [-100, width],
+                    outputRange: [0, width - width / 4 - 5],
                     extrapolate: 'clamp',
                   }),
                 },
@@ -61,18 +69,22 @@ class Progress extends React.Component<ProgeessProps, ProgressState> {
   }
 }
 
-const getStyles = (Colors: ColorType, width: number) => {
+const getStyles = (
+  Colors: ColorType,
+  barColor: string | undefined,
+  width: number,
+) => {
   return StyleSheet.create({
     progressContainer: {
-      backgroundColor: Colors.primary_attr_40,
-      borderRadius: 4,
+      padding: 2,
       height: 4,
       width,
     },
     progressBar: {
       width: width / 4,
       padding: 2,
-      backgroundColor: Colors.white,
+      borderRadius: 4,
+      backgroundColor: barColor || Colors.white,
     },
   });
 };
