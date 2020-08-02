@@ -8,7 +8,10 @@ Radio buttons helps to implement selection between multiple options, on the low 
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/super/img/radio.png" alt="checkbox" width="300"/>
+      <img src="/super/img/radio_1.png" alt="checkbox" width="250"/>
+    </figure>
+    <figure>
+      <img src="/super/img/radio_2.png" alt="checkbox" width="250"/>
     </figure>
 </div>
 
@@ -51,9 +54,9 @@ import { RadioButton } from 'viserion';
 
 The value of radio button
 
-|           Type            |        Default        |        Required        |
-| :-----------------------: | :-------------------: | :--------------------: |
-| string <img width="500"/> |  None <img width="500"/> | Yes <img width="500"/> |
+|           Type            |         Default         |        Required        |
+| :-----------------------: | :---------------------: | :--------------------: |
+| string <img width="500"/> | None <img width="500"/> | Yes <img width="500"/> |
 
 ### `selected`
 
@@ -70,8 +73,6 @@ Callback function which sets the `selected value` in the parent state
 |            Type             |        Default         |        Required        |
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
-
-
 
 ### `disabled`
 
@@ -92,7 +93,6 @@ A react native View style object which gives flexibility to alter the styles of 
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |
 | ViewStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |
-
 
 ### `labelStyle`
 
