@@ -7,8 +7,7 @@ const DropdownExample = () => {
   const Colors = useColors();
   const items = ['ITEM-A', 'ITEM-B', 'ITEM-C', 'ITEM-D'];
   const [active, setActive] = useState(0);
-  const onChange = (index) => {
-    console.log('index is', index);
+  const onChange = (index: number) => {
     setActive(index);
   };
   return (
