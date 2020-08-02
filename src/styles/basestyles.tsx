@@ -15,7 +15,7 @@ const BaseStyles = StyleSheet.create({
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 4,
+    borderRadius: 5,
   },
   grwLabel: {
     fontFamily: Fonts.type.gotham_medium,
