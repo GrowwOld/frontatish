@@ -6,14 +6,17 @@ sidebar_label: NumPad
 
 Numpad is custom designed keypad for handling number inputs,it rely on [react-native-material-ripple](https://www.npmjs.com/package/react-native-material-ripple),to have ripple effect on every number press.
 
-<div>
+<div className="image-horizontal-preview">
     <figure>
-        <img src="/super/img/numberpad.png" alt="NumberPad" height="250"/>
+        <img src="/super/img/numpad.png" alt="NumberPad" height="250"/>
+    </figure>
+    <figure>
+        <img src="/super/img/numpad_2.png" alt="NumberPad" height="250"/>
     </figure>
 </div>
 
-
 ## Usage
+
 ```jsx
 import { NumPad } from 'viserion';
 
@@ -37,15 +40,8 @@ class NumPadExample extends Component {
 
   render() {
     const { input } = this.state;
-    const { isDark } = this.props;
     return (
-      <View>
-        <NumPad
-          onItemClick={this.onItemClick}
-          onDeleteItem={this.onDeleteItem}
-          isDark={isDark}
-        />
-      </View>
+      <NumPad onItemClick={this.onItemClick} onDeleteItem={this.onDeleteItem} />
     );
   }
 }
@@ -72,4 +68,3 @@ it will basically delete the the last item from the current value.
 |            Type             |        Default         |        Required        |
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
-

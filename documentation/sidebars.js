@@ -17,7 +17,7 @@ module.exports = {
       'ticker',
       /* next_doc_id */
     ],
-    Theming: [
+    Theme: [
       'overview',
       'themeprovider',
       'themecontext',

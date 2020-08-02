@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Text, StyleSheet, View, StatusBar, Platform } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { SafeAreaView } from 'react-native-safe-area-context';
-// eslint-disable-next-line import/no-unresolved
 import {
   useColors,
   useTheme,
   useThemeToggle,
   Switch,
   Searchbar,
+  // eslint-disable-next-line import/no-unresolved
 } from 'viserion';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';

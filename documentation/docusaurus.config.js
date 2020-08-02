@@ -1,5 +1,5 @@
 module.exports = {
-  title: 'Groww-super',
+  title: 'viserion',
   tagline:
     'Groww super is all in one repository of helpers and ui-kit for any react native projects',
   url: 'https://groww.github.io',
@@ -9,9 +9,9 @@ module.exports = {
   projectName: 'super', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Groww-super',
+      title: 'viserion',
       logo: {
-        alt: 'Groww-super',
+        alt: 'viserion',
         src: 'img/groww_logo.svg',
       },
       links: [
@@ -30,40 +30,14 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Style Guide',
-              to: 'docs/doc1',
-            },
-            // {
-            //   label: 'Second Doc',
-            //   to: 'docs/doc2',
-            // },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-          ],
-        },
         {
           title: 'Social',
           items: [
             {
               label: 'Blog',
-              href: 'https://groww.in/blog/',
+              href: 'https://medium.com/groww-engineering',
             },
             {
               label: 'GitHub',
