@@ -6,12 +6,13 @@ import {
 } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { ThemeProvider } from 'supergroww';
+import { ThemeProvider } from 'viserion';
 
 import HomeScreen from './examples/HomeScreen';
 import { SCREEN_MAPPING } from './examples/navigation';
 
 const Stack = createStackNavigator();
+// const EmptyStatesStack = createStackNavigator();
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Stack.Navigator
             screenOptions={() => ({
               headerShown: false,
-              gestureEnabled: true,
+              // gestureEnabled: false,
               ...TransitionPresets.SlideFromRightIOS,
             })}
           >

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "supergroww": ["./src/index"]
+      "viserion": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

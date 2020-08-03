@@ -3,7 +3,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Table, Ripple, useColors } from 'supergroww';
+import { Table, Ripple, useColors, Fonts } from 'viserion';
 // import { Fonts, getColors } from '../styles';
 import { tableData } from './fixtures';
 
@@ -16,13 +16,15 @@ const TableExample = () => {
   const MrpItem = (MrpProps: MrpItemProps) => {
     const { item, onPress } = MrpProps;
     const prefix = item.dayChange > 0 ? '+' : '';
+    const prefixColor =
+      item.dayChange > 0 ? Colors.primary : Colors.semantic_red;
     return (
       <Ripple
         style={{ flex: 1, alignItems: 'flex-end', paddingVertical: 16 }}
         onPress={onPress}
       >
         <Text style={{ color: Colors.font_1 }}>{item.marketPrice}</Text>
-        <Text style={{ color: Colors.font_1 }}>
+        <Text style={{ color: prefixColor }}>
           {`${prefix} ${item.dayChange.toFixed(
             2,
           )} (${item.dayChangePerc.toFixed(2)})`}
@@ -38,11 +40,24 @@ const TableExample = () => {
       style={{
         flex: 1,
         backgroundColor: Colors.white,
-        justifyContent: 'center',
       }}
     >
-      <View style={{ marginHorizontal: 20 }}>
-        <Text style={{ color: Colors.font_1 }}>Table Example</Text>
+      <Text
+        style={{
+          color: Colors.font_1,
+          fontSize: Fonts.size.h3,
+          marginHorizontal: 20,
+        }}
+      >
+        Table Example
+      </Text>
+      <View
+        style={{
+          marginHorizontal: 20,
+          flex: 1,
+          justifyContent: 'center',
+        }}
+      >
         <Table
           data={tableData}
           title="Name"

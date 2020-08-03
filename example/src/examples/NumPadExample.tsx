@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors } from 'supergroww';
+import { NumPad, withColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { Fonts, getColors } from '../styles';
