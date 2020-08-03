@@ -2,7 +2,7 @@
 import Ripple from 'react-native-material-ripple';
 import Button from './Button';
 import CheckBox from './CheckBox';
-import Calendar from './Calendar';
+// import Calendar from './Calendar';
 import Dropdown from './Dropdown';
 import Input from './Input';
 import NumPad from './NumPad';
@@ -17,7 +17,7 @@ import Tag from './Tag';
 export {
   Button,
   CheckBox,
-  Calendar,
+  // Calendar,
   EmptyState,
   EmptyView,
   Dropdown,

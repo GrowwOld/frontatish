@@ -4,7 +4,7 @@ import RadioButtonScreen from '../RadioButtonExample';
 import NumPadScreen from '../NumPadExample';
 import TableScreen from '../TableExample';
 import FadeScreen from '../FadeExample';
-import CalendarScreen from '../CalendarExample';
+// import CalendarScreen from '../CalendarExample';
 // import EmptyStateScreen from '../EmptyStatesExample';
 import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
@@ -16,7 +16,7 @@ export const COMPONENT_SCREENS = {
   RADIOBUTTON: 'RadioButton',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
-  CALENDAR: 'Calendar',
+  // CALENDAR: 'Calendar',
   // EMPTYSTATES: 'EmptyStates',
   EMPTYVIEW: 'EmptyView',
   INPUT: 'Input',
@@ -32,7 +32,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.RADIOBUTTON, screen: RadioButtonScreen },
   { name: COMPONENT_SCREENS.NUMPAD, screen: NumPadScreen },
   { name: COMPONENT_SCREENS.TABLES, screen: TableScreen },
-  { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  // { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
   // { name: COMPONENT_SCREENS.EMPTYSTATES, screen: EmptyStateScreen },
   { name: COMPONENT_SCREENS.EMPTYVIEW, screen: EmptyViewScreen },
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
