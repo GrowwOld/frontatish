@@ -1,23 +1,23 @@
 module.exports = {
   someSidebar: {
-    Introduction: ['getting-started'],
+    Introduction: ['getting-started', 'contributing'],
     Components: [
       'button',
       'checkbox',
       'numpad',
-      'popup',
+      // 'popup',
       'radiobutton',
       'table',
-      'calendar',
-      'slider',
+      'emptyview',
+      // 'calendar',
+      // 'slider',
       'switch',
-      'fade',
-      'scale',
-      'splash',
+      'dropdown',
+      'input',
       'ticker',
       /* next_doc_id */
     ],
-    Theming: [
+    Theme: [
       'overview',
       'themeprovider',
       'themecontext',

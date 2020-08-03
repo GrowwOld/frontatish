@@ -70,6 +70,12 @@ const RadioButtonExample = () => {
           value="disable-unselected"
           containerStyle={{ marginVertical: 10 }}
         />
+        <RadioButton
+          disabled
+          // value="disable-selected"
+          selected
+          containerStyle={{ marginVertical: 10 }}
+        />
       </View>
     </SafeAreaView>
   );

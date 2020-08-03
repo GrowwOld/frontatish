@@ -13,7 +13,7 @@ The library is still under development,so feel free to raise issue and contribut
 
 ### Step - 1
 ```bash
-$ git clone https://github.com/Groww/super
+$ yarn add viserion
 ```
 
 ### Step - 2
@@ -30,6 +30,6 @@ $ mv super <PROJECT_DIR>/node_modules
 ### Step-4
 start using the required components by using something like this
 ```jsx
-import { Button } from 'growwsuper/components';
+import { Button } from 'viserion';
 
 ```

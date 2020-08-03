@@ -16,10 +16,10 @@ interface InputProps extends TextInputProps {
   label?: string;
   error?: string;
   disabled?: string;
-  labelStyle: StyleType;
-  inputTextStyle: StyleType;
-  disabledTextStyle: StyleType;
-  containerStyle: StyleType;
+  labelStyle?: StyleType;
+  inputTextStyle?: StyleType;
+  disabledTextStyle?: StyleType;
+  containerStyle?: StyleType;
   bottomBorderStyle?: StyleType;
   Colors?: any;
 }

@@ -23,9 +23,7 @@ export const COMPONENT_SCREENS = {
   DROPDOWN: 'Dropdown',
 };
 
-export const ANIMATED_SCREENS = {
-  FADE: 'Fade',
-};
+export const ANIMATED_SCREENS = { FADE: 'Fade' };
 
 export const SCREEN_MAPPING = [
   // components screen mapping
