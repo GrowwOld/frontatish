@@ -22,19 +22,10 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 
 import { Checkbox } from 'viserion';
 
-// normal checkbox
+
   <CheckBox
     isDark={true}
     checked={true}
-    onPress={() => void}
-    containerStyle={{ marginRight: 20 }}
-  />
-
-// disabled checkbox
-  <CheckBox
-    checked={checked}
-    disable={true}
-    isDark={isDark}
     onPress={() => void}
     containerStyle={{ marginRight: 20 }}
   />
@@ -51,8 +42,6 @@ Callback function that needed to be passed which updates the state of checkbox,t
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
----
-
 ### `checked`
 
 checked will be a state variable which hold the state of the checkbox,on which checkbox will decide when to show check icon and when to not
@@ -61,16 +50,13 @@ checked will be a state variable which hold the state of the checkbox,on which c
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
----
-
 ### `size`
+
 you can control the size of the checkbox and the icon inside by using this props
 
-|            Type            |         Default          |       Required        |
-| :------------------------: | :----------------------: | :-------------------: |
-| enum('sm', 'md', 'lg')	<img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
-
----
+|                   Type                    |         Default         |       Required        |
+| :---------------------------------------: | :---------------------: | :-------------------: |
+| enum('sm', 'md', 'lg') <img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
 
 ### `disabled`
 
@@ -79,8 +65,6 @@ disabled make sure if its true then user won't be able to click it and the onPre
 |            Type            |         Default          |       Required        |
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
-
----
 
 ### `disabledStyle`
 

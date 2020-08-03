@@ -28,7 +28,6 @@ return (
     </Text>
     <Table
       data={[array of objects]}
-      isDark={isDark}
       title="Name"
       option={['marketPrice', 'holding', 'industryName']}
       optionLabel={['Market Price', 'Holding', 'Sector']}

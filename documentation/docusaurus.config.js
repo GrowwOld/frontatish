@@ -60,7 +60,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/Groww/viserion/tree/master/documentation',
+            'https://github.com/Groww/viserion/edit/alpha/docs/documentation',
         },
         theme: { customCss: require.resolve('./src/css/custom.css') },
       },

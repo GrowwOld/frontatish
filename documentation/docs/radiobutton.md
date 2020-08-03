@@ -20,32 +20,11 @@ Radio buttons helps to implement selection between multiple options, on the low 
 ```jsx
 import { RadioButton } from 'viserion';
 
-// normal
 <RadioButton
-  isDark={isDark}
   value="selected"
-  onPress={radioPress}
-  selected={choosen === 'selected'}
-/>
-
-// selected
-<RadioButton
-  isDark={isDark}
-  value="option-1"
-  onPress={radioPress}
+  onPress={() => void}
   selected={true}
-/>
-
-// disable-selected
-<RadioButton
-  disabled
-  isDark={isDark}
-  value="disable-selected"
-  selected
-/>
-// disabled-unselected
-<RadioButton disabled isDark={isDark} value="disable-unselected" />
-
+/>;
 ```
 
 ## Props
@@ -73,6 +52,14 @@ Callback function which sets the `selected value` in the parent state
 |            Type             |        Default         |        Required        |
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
+
+### `size`
+
+you can control the size of the checkbox and the icon inside by using this props
+
+|                   Type                    |         Default         |       Required        |
+| :---------------------------------------: | :---------------------: | :-------------------: |
+| enum('sm', 'md', 'lg') <img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
 
 ### `disabled`
 
