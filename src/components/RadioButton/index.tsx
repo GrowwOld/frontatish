@@ -31,7 +31,7 @@ const RadioButton = (props: RadioButtonProps) => {
   const onRadioPress = () => {
     // call onPress passed by user
     if (onPress) {
-      onPress(value);
+      onPress(value!!);
     }
   };
   return (
@@ -46,9 +46,11 @@ const RadioButton = (props: RadioButtonProps) => {
             </Scale>
           )}
         </View>
-        <View style={styles.labelContainer}>
-          <Text style={[{ color: Colors.font_1 }, labelStyle]}>{value}</Text>
-        </View>
+        {value && (
+          <View style={styles.labelContainer}>
+            <Text style={[{ color: Colors.font_1 }, labelStyle]}>{value}</Text>
+          </View>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );

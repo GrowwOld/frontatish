@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { RadioButton, useColors } from 'supergroww';
+import { RadioButton, useColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Fonts, getColors } from '../styles';
 
@@ -68,6 +68,12 @@ const RadioButtonExample = () => {
         <RadioButton
           disabled
           value="disable-unselected"
+          containerStyle={{ marginVertical: 10 }}
+        />
+        <RadioButton
+          disabled
+          // value="disable-selected"
+          selected
           containerStyle={{ marginVertical: 10 }}
         />
       </View>

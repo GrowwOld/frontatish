@@ -8,15 +8,15 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint', 'prettier'],
-  env: {
-    jest: true,
-  },
+  env: { jest: true },
   rules: {
     'no-use-before-define': 'off',
+    'no-unused-expressions': 'off',
     'react/jsx-filename-extension': 'off',
-    "react/jsx-props-no-spreading": "off",
+    'react/jsx-props-no-spreading': 'off',
     'react/prop-types': 'off',
     'comma-dangle': 'off',
+    'global-require': 'off',
     'import/extensions': [
       'error',
       'ignorePackages',
@@ -35,16 +35,11 @@ module.exports = {
     ],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
-    'object-curly-newline': ['error', { multiline: true }],
+    // 'object-curly-newline': ['error', { multiline: true }],
+    'object-curly-newline': 'off',
   },
-  globals: {
-    fetch: false,
-  },
+  globals: { fetch: false },
   settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
-    },
+    'import/resolver': { node: { extensions: ['.js', '.jsx', '.ts', '.tsx'] } },
   },
 };

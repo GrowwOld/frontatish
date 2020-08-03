@@ -1,14 +1,31 @@
 module.exports = {
   someSidebar: {
-    Introduction: ['getting-started'],
+    Introduction: ['getting-started', 'contributing'],
     Components: [
       'button',
       'checkbox',
       'numpad',
-      'popup',
+      // 'popup',
       'radiobutton',
-      'table' /* next_doc_id */,
+      'table',
+      'emptyview',
+      // 'calendar',
+      // 'slider',
+      'switch',
+      'dropdown',
+      'input',
+      'ticker',
+      /* next_doc_id */
     ],
-    // Guides: ['troubleshooting'],
+    Theme: [
+      'overview',
+      'themeprovider',
+      'themecontext',
+      'useColors',
+      'useThemeToggle',
+      'withColors',
+    ],
+    Layouts: ['bottomfixedview', 'centeredview'],
+    // Guides: ['Contributing',''],
   },
 };

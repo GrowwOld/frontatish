@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import { SafeAreaView } from 'react-native-safe-area-context';
 // eslint-disable-next-line import/no-unresolved
-import { Switch } from 'supergroww';
+import { Switch } from 'viserion';
 // import { Switch as RnSwitch } from 'react-native';
 
 const SwitchExample = () => {
