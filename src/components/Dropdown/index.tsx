@@ -41,7 +41,7 @@ const Dropdown = (props: DropdownProps) => {
     <View style={styles.container}>
       <TouchableNativeFeedback onPress={handleList}>
         <View style={styles.activeItem}>
-          <Text>{dropItems[active]}</Text>
+          <Text style={{ color: Colors.font_2 }}>{dropItems[active]}</Text>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Animated.View
               style={[

@@ -29,7 +29,7 @@ const DropList = (props: DropListProps) => {
             padding: 16,
           }}
         >
-          <Text>{item}</Text>
+          <Text style={{ color: Colors.font_2 }}>{item}</Text>
         </View>
         {index < items.length - 1 && <Line style={{ marginHorizontal: 16 }} />}
       </TouchableOpacity>
