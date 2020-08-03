@@ -55,7 +55,7 @@ const EmptyViewExample = () => {
           subTitle={data.subTitle}
           actionTitle={data.actionTitle}
           actionPress={() => {}}
-          type={active}
+          emptyType={active}
         />
       </CenteredView>
     </SafeAreaView>
