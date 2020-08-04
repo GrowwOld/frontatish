@@ -12,7 +12,7 @@ const EmptyView = (props: EmptyViewProps) => {
     illustration,
     title,
     titleStyle,
-    type,
+    emptyType,
     subTitle,
     subTitleStyle,
     actionTitle,
@@ -26,7 +26,9 @@ const EmptyView = (props: EmptyViewProps) => {
     }
     return (
       <Image
-        source={type === 'apiError' ? Images.apiErrorLight : Images.emptyLight}
+        source={
+          emptyType === 'apiError' ? Images.apiErrorLight : Images.emptyLight
+        }
         resizeMode="contain"
         style={{ height: 150, width: 150, alignSelf: 'center' }}
       />
