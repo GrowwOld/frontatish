@@ -29,7 +29,7 @@ import { RadioButton } from 'viserion';
 
 ## Props
 
-### `value`
+### value
 
 The value of radio button
 
@@ -37,7 +37,7 @@ The value of radio button
 | :-----------------------: | :---------------------: | :--------------------: |
 | string <img width="500"/> | None <img width="500"/> | Yes <img width="500"/> |
 
-### `selected`
+### selected
 
 Flag which helps to mark radio button selected or not
 
@@ -45,15 +45,15 @@ Flag which helps to mark radio button selected or not
 | :------------------------: | :----------------------: | :--------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | Yes <img width="500"/> |
 
-### `onPress`
+### onPress
 
-Callback function which sets the `selected value` in the parent state
+Callback function which sets the selected value in the parent state
 
 |            Type             |        Default         |        Required        |
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
-### `size`
+### size
 
 you can control the size of the checkbox and the icon inside by using this props
 
@@ -61,7 +61,7 @@ you can control the size of the checkbox and the icon inside by using this props
 | :---------------------------------------: | :---------------------: | :-------------------: |
 | enum('sm', 'md', 'lg') <img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
 
-### `disabled`
+### disabled
 
 Flag to decide whether to disable the press on radio button or not
 
@@ -69,11 +69,11 @@ Flag to decide whether to disable the press on radio button or not
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-### `disabledStyle`
+### disabledStyle
 
 Coming soon!!
 
-### `containerStyle`
+### containerStyle
 
 A react native View style object which gives flexibility to alter the styles of radio-button container
 
@@ -81,7 +81,7 @@ A react native View style object which gives flexibility to alter the styles of 
 | :--------------------------: | :---------------------: | :-------------------: |
 | ViewStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |
 
-### `labelStyle`
+### labelStyle
 
 A react native Text style object which gives flexibility to alter the styles of label of the radio-button
 

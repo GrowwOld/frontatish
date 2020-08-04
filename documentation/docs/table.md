@@ -43,7 +43,7 @@ return (
 
 ## Props
 
-### `data`
+### data
 
 An array of objects which contents all the info that needed to be displayed
 
@@ -51,7 +51,7 @@ An array of objects which contents all the info that needed to be displayed
 | :--------------------------: | :--------------------: | :--------------------: |
 | objects[] <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `leftKey`
+### leftKey
 
 The key from data object(single item from the data array) which you want to display in the left side of the table.
 
@@ -59,7 +59,7 @@ The key from data object(single item from the data array) which you want to disp
 | :-----------------------: | :--------------------: | :--------------------: |
 | string <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `customLeftItemComponents`
+### customLeftItemComponents
 
 You can override the left item's ui by passing a custom component in an object whose `key` must be equal to the `leftKey`, so that it can get correctly mapped in the ui
 
@@ -67,11 +67,11 @@ You can override the left item's ui by passing a custom component in an object w
 | :-----------------------: | :--------------------: | :--------------------: |
 | object <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `title`
+### title
 
 Title of the table which appears on the top left of the table
 
-### `option`
+### option
 
 Option is a single string or array of string,that string should exactly be same as `key` of that data object,which you want to display in the table,so be careful and cross check the `dto` before you pass the option.
 
@@ -79,7 +79,7 @@ Option is a single string or array of string,that string should exactly be same 
 | :-----------------------------------: | :--------------------: | :--------------------: |
 | string or string[] <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `customRightItemComponents`
+### customRightItemComponents
 
 You can override the right item's ui by passing a custom component in an object whose `key` must be one of the option key which has been passed in `option`, so that it can get correctly mapped in the ui, for better clarity you can checkout the example above. or [go through this example](https://github.com/Groww/super/blob/master/src/examples/TableExample.tsx)
 
@@ -87,7 +87,7 @@ You can override the right item's ui by passing a custom component in an object 
 | :-----------------------: | :--------------------: | :--------------------: |
 | object <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `optionLabel`
+### optionLabel
 
 Option label is the label for `option key` you provided in `option` props to show the label in the ui,if you will not provide it,it will show option as a label in the top right side of the table. if your `option` props is array of strings then make sure you should pass the `optionLabel` array in same order as `option` props.
 
@@ -95,7 +95,7 @@ Option label is the label for `option key` you provided in `option` props to sho
 | :-----------------------------------: | :--------------------: | :-------------------: |
 | string or string[] <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `flatlistkey`
+### flatlistkey
 
 This is the key from your data object to set the `key` parameter in Table component,since we are looping in the array to get a single data object
 
@@ -103,7 +103,7 @@ This is the key from your data object to set the `key` parameter in Table compon
 | :-----------------------: | :--------------------: | :--------------------: |
 | string <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
-### `leftItemContainerStyle`
+### leftItemContainerStyle
 
 To give the custom style to the container of the left item in the table
 
@@ -111,7 +111,7 @@ To give the custom style to the container of the left item in the table
 | :--------------------------: | :--------------------: | :-------------------: |
 | ViewStyle <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `leftKeyOnPress`
+### leftKeyOnPress
 
 Callback function to be called once user clicks on left item in the table
 
@@ -119,7 +119,7 @@ Callback function to be called once user clicks on left item in the table
 | :-------------------------: | :--------------------: | :-------------------: |
 | function <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `rightItemContainerStyle`
+### rightItemContainerStyle
 
 To give the custom style to the container of the left item in the table
 
@@ -127,7 +127,7 @@ To give the custom style to the container of the left item in the table
 | :--------------------------: | :--------------------: | :-------------------: |
 | ViewStyle <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `rightKeyOnPress`
+### rightKeyOnPress
 
 Callback function to be called once user clicks on left item in the table
 

@@ -36,7 +36,7 @@ import { EmptyView } from 'viserion';
 
 ## Props
 
-### `title`
+### title
 
 The heading that will be shown on top of your error screen,it will be a string which renders under `Text` View so you can pass custom styles [titleStyle](#titlestyle).
 
@@ -44,7 +44,7 @@ The heading that will be shown on top of your error screen,it will be a string w
 | :-----------------------: | :--------------------: | :-------------------: |
 | string <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `titleStyle`
+### titleStyle
 
 custom `Text` Style object to style the title of your error message.
 
@@ -52,7 +52,7 @@ custom `Text` Style object to style the title of your error message.
 | :--------------------------: | :--------------------: | :-------------------: |
 | TextStyle <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `subTitle`
+### subTitle
 
 The subheading that will be shown below the title of the error screen,like title it is also a string which renders under `Text` View,whose styles you can control with [subTitleStyle](#subtitlestyle)
 
@@ -60,7 +60,7 @@ The subheading that will be shown below the title of the error screen,like title
 | :-----------------------: | :--------------------: | :-------------------: |
 | string <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-### `subTitleStyle`
+### subTitleStyle
 
 custom `Text` Style object to style the subtitle of your error message.
 
@@ -68,19 +68,18 @@ custom `Text` Style object to style the subtitle of your error message.
 | :--------------------------: | :--------------------: | :-------------------: |
 | TextStyle <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-
-### `actionTitle`
+### actionTitle
 
 `action` will let you to place a button in error screen so that user can perform any action,if some error occured or there is no data. so `actionTitle` will be the label of [Button](button).
 
-|             Type             |        Default         |       Required        |
-| :--------------------------: | :--------------------: | :-------------------: |
+|           Type            |        Default         |       Required        |
+| :-----------------------: | :--------------------: | :-------------------: |
 | string <img width="500"/> | none<img width="500"/> | No <img width="500"/> |
 
-
-### `actionType`
+### actionType
 
 using this props you can control the type of button to be used in the action part of the empty view,the values will be the same as [type](button#type) props of `Button` Component
 
-### `actionPress`
+### actionPress
+
 it is a function to be called when user will press the button,it is similar as [onPress](button#onpress) props of `Button` Component

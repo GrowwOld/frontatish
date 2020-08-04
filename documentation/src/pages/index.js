@@ -74,11 +74,21 @@ function Home() {
             <Link
               className={classnames(
                 'button button--outline button--secondary button--lg',
-                styles.getStarted,
+                // styles.getStarted,
               )}
-              to={useBaseUrl('docs/getting-started')}
+              to={useBaseUrl('docs/installation')}
             >
               Get Started
+            </Link>
+            <Link
+              className={classnames(
+                'button button--outline button--secondary button--lg',
+                // styles.getStarted,
+              )}
+              style={{ marginLeft: 10 }}
+              to={'https://google.com'}
+            >
+              Try demo app
             </Link>
           </div>
         </div>

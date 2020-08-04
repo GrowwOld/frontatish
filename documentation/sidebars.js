@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    Introduction: ['getting-started', 'contributing'],
+    "Geting Started": ['installation', 'contributing'],
     Components: [
       'button',
       'checkbox',
@@ -14,7 +14,7 @@ module.exports = {
       'switch',
       'dropdown',
       'input',
-      'ticker',
+      // 'ticker',
       /* next_doc_id */
     ],
     Theme: [
