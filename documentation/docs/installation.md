@@ -23,3 +23,20 @@ If you are at **_>0.60_** react-native versions then you don't need to link thes
 ```bash
 react-native link <package-name>
 ```
+
+## Usage
+
+```jsx
+import React from 'react';
+import { View } from 'react-native';
+import { Button } from 'viserion';
+
+const App = () => {
+  return (
+    <View>
+      <Button label="PRESS ME!">
+    </View>
+  );
+}
+
+```

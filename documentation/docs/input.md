@@ -58,8 +58,20 @@ TextStyle object to style your input label
 
 ### inputTextStyle
 
+TextStyle object to style the text of input value same as [labelStyle](#labelstyle)
+
 ### disabledTextStyle
+
+TextStyle object to style the text of input value,when its in disabled state same as [labelStyle](#labelstyle)
 
 ### containerStyle
 
+ViewStyle object to style the parent container,which contains the whole TextInput and error messages.
+
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| ViewStyle <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
+
 ### bottomBorderStyle
+
+ViewStyle object to style the underline of your TextInput,same as [containerStyle](#containerstyle)
