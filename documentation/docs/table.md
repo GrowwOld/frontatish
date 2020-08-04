@@ -8,7 +8,7 @@ Table is used to display the data in tabular format with optional toggle feature
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/super/img/table.png" alt="checkbox" width="300"/>
+      <img src="/viserion/img/table.png" alt="checkbox" width="300"/>
     </figure>
 </div>
 

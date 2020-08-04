@@ -8,10 +8,10 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/super/img/checkbox_1.png" alt="checkbox" />
+      <img src="/viserion/img/checkbox_1.png" alt="checkbox" />
     </figure>
     <figure>
-      <img src="/super/img/checkbox_2.png" alt="checkbox" />
+      <img src="/viserion/img/checkbox_2.png" alt="checkbox" />
     </figure>
 </div>
 
