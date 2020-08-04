@@ -4,8 +4,8 @@ import React from 'react';
 import ThemeContext from './ThemeContext';
 import ColorPalette from '../styles/colorPalette';
 
-export default function (ComposedComponent) {
-  return function (props: any) {
+export default function withColors(ComposedComponent: typeof React.Component) {
+  function EnhancedComponent(props: any) {
     return (
       <ThemeContext.Consumer>
         {(value) => {
@@ -21,5 +21,6 @@ export default function (ComposedComponent) {
         }}
       </ThemeContext.Consumer>
     );
-  };
+  }
+  return EnhancedComponent;
 }
