@@ -8,7 +8,9 @@ import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 
-export const COMPONENT_SCREENS = {
+type objectType = { [index: string]: string };
+
+export const COMPONENT_SCREENS: objectType = {
   BUTTON: 'Button',
   CHECKBOX: 'Checkbox',
   RADIOBUTTON: 'RadioButton',
@@ -19,7 +21,7 @@ export const COMPONENT_SCREENS = {
   DROPDOWN: 'Dropdown',
 };
 
-export const ANIMATED_SCREENS = { FADE: 'Fade' };
+export const ANIMATED_SCREENS: objectType = { FADE: 'Fade' };
 
 export const SCREEN_MAPPING = [
   // components screen mapping
