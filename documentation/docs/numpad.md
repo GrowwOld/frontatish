@@ -8,10 +8,10 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/super/img/numpad.png" alt="NumberPad" height="250"/>
+        <img src="/viserion/img/numpad.png" alt="NumberPad" height="250"/>
     </figure>
     <figure>
-        <img src="/super/img/numpad_2.png" alt="NumberPad" height="250"/>
+        <img src="/viserion/img/numpad_2.png" alt="NumberPad" height="250"/>
     </figure>
 </div>
 
@@ -49,7 +49,7 @@ class NumPadExample extends Component {
 
 ## Props
 
-### `onItemClick`
+### onItemClick
 
 Callback function which gets called on every item press in number pad,you can see the usage to understand better
 it will basically append the the value you will press, eventually in the parent state.
@@ -58,9 +58,7 @@ it will basically append the the value you will press, eventually in the parent 
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
 
----
-
-### `onDeleteItem`
+### onDeleteItem
 
 Callback function which gets called on delete icon press,you can see the usage to understand better
 it will basically delete the the last item from the current value.

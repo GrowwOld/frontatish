@@ -8,10 +8,10 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/super/img/checkbox_1.png" alt="checkbox" />
+      <img src="/viserion/img/checkbox_1.png" alt="checkbox" />
     </figure>
     <figure>
-      <img src="/super/img/checkbox_2.png" alt="checkbox" />
+      <img src="/viserion/img/checkbox_2.png" alt="checkbox" />
     </figure>
 </div>
 
@@ -34,7 +34,7 @@ import { Checkbox } from 'viserion';
 
 ## Props
 
-### `onPress`
+### onPress
 
 Callback function that needed to be passed which updates the state of checkbox,to hanle both checked and unchecked state of a checkbox.
 
@@ -42,7 +42,7 @@ Callback function that needed to be passed which updates the state of checkbox,t
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
-### `checked`
+### checked
 
 checked will be a state variable which hold the state of the checkbox,on which checkbox will decide when to show check icon and when to not
 
@@ -50,7 +50,7 @@ checked will be a state variable which hold the state of the checkbox,on which c
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-### `size`
+### size
 
 you can control the size of the checkbox and the icon inside by using this props
 
@@ -58,7 +58,7 @@ you can control the size of the checkbox and the icon inside by using this props
 | :---------------------------------------: | :---------------------: | :-------------------: |
 | enum('sm', 'md', 'lg') <img width="500"/> | 'sm' <img width="500"/> | No <img width="500"/> |
 
-### `disabled`
+### disabled
 
 disabled make sure if its true then user won't be able to click it and the onPress would not get called
 
@@ -66,11 +66,11 @@ disabled make sure if its true then user won't be able to click it and the onPre
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-### `disabledStyle`
+### disabledStyle
 
 Coming soon!!
 
-### `containerStyle`
+### containerStyle
 
 A react native style object which gives flexibility to alter the styles of checkbox container
 

@@ -8,46 +8,48 @@ Switch component gives an option to the user to toggle between two option to eit
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/super/img/switch.png" alt="NumberPad" height="50"/>
+        <img src="/viserion/img/switch.png" alt="NumberPad" height="50"/>
     </figure>
     <figure>
-        <img src="/super/img/switch_2.png" alt="NumberPad" height="50"/>
+        <img src="/viserion/img/switch_2.png" alt="NumberPad" height="50"/>
     </figure>
 </div>
 
 ## Usage
 
 ```jsx
-  <Switch
-    isOn={isOn}
-    onColor="#00D09C"
-    offColor="#E6E7E8"
-    // label="Example label"
-    // size="small"
-    onToggle={onThemeSwitch}
-  />
+<Switch
+  isOn={isOn}
+  onColor="#00D09C"
+  offColor="#E6E7E8"
+  // label="Example label"
+  // size="small"
+  onToggle={onThemeSwitch}
+/>
 ```
+
 ## Props
 
-### `isOn`
+### isOn
 
-### `onColor`
+### onColor
 
-### `offColor`
+### offColor
 
-### `onToggle`
+### onToggle
 
-### `size`
+### size
 
-### `icon`
+### icon
+
 You can pass custom icon for switch to make the ui more impressive,like if you are having light mode and dark mode then you can pass sunlight and moonlight icon into switch to make you switch to look much more good.
 
-### `disabled`
+### disabled
 
-### `trackOffStyle`
+### trackOffStyle
 
-### `trackOnStyle`
+### trackOnStyle
 
-### `thumbOnStyle`
+### thumbOnStyle
 
-### `thumbOffStyle`
+### thumbOffStyle

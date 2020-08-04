@@ -8,16 +8,16 @@ Button components helps to handle all user actions using onPress handlers, the b
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/super/img/primary-button.png" alt="primary-button" />
+      <img src="/viserion/img/primary-button.png" alt="primary-button" />
     </figure>
     <figure>
-      <img src="/super/img/secondary-button.png" alt="secondary-button" />
+      <img src="/viserion/img/secondary-button.png" alt="secondary-button" />
     </figure>
     <figure>
-      <img src="/super/img/default-button.png" alt="default-button" />
+      <img src="/viserion/img/default-button.png" alt="default-button" />
     </figure>
     <figure>
-      <img src="/super/img/disabled-button.png" alt="disabled-button" />
+      <img src="/viserion/img/disabled-button.png" alt="disabled-button" />
     </figure>
 </div>
 
@@ -46,62 +46,50 @@ import { Button } from 'viserion';
 
 ## Props
 
-### `onPress`
+### onPress
 
 Function to be called when user taps on the button
 
-|        Type         |    Default     | Required|
-| :-----------------: | :------------: | :------------:
-| function <img width="500"/> | None<img width="500"/>| Yes <img width="500"/>
+|            Type             |        Default         |        Required        |
+| :-------------------------: | :--------------------: | :--------------------: |
+| function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
----
-
-### `label`
+### label
 
 Label to display inside the button
 
-|        Type         |    Default     | Required|
-| :-----------------: | :------------: | :------------:
-| string <img width="500"/> | None <img width="500"/>| Yes <img width="500"/>
+|           Type            |         Default         |        Required        |
+| :-----------------------: | :---------------------: | :--------------------: |
+| string <img width="500"/> | None <img width="500"/> | Yes <img width="500"/> |
 
-
----
-
-### `type`
+### type
 
 On the basis of **type** passed to component, it applies the defined style to it
 
-|        Type         |    Default     |     Values     | Required|
-| :-----------------: | :------------: | :------------:   | :------------:
-| string <img width="500"/> | **primary** <img width="500"/> |  enum(primary, secondary, default) <img width="500"/> | No <img width="500"/>
+|           Type            |            Default             |                        Values                        |       Required        |
+| :-----------------------: | :----------------------------: | :--------------------------------------------------: | :-------------------: |
+| string <img width="500"/> | **primary** <img width="500"/> | enum(primary, secondary, default) <img width="500"/> | No <img width="500"/> |
 
-
----
-
-### `loading`
+### loading
 
 loading ensures that user see some indicator while some action is getting done,it also disables onPress when loading is true so that function call can be atomic.
 
-|        Type         |    Default     | Required|
-| :-----------------: | :------------: | :------------:
-| boolean <img width="500"/> | false <img width="500"/>| No <img width="500"/>
+|            Type            |         Default          |       Required        |
+| :------------------------: | :----------------------: | :-------------------: |
+| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
----
-
-### `disabled`
+### disabled
 
 disabled make sure if its true then user won't be able to click it and the onPress would not get called
 
-|        Type         |    Default     | Required
-| :-----------------: | :------------: | :------------:
-| boolean <img width="500"/> | false <img width="500"/>| No <img width="500"/>
+|            Type            |         Default          |       Required        |
+| :------------------------: | :----------------------: | :-------------------: |
+| boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
 
-
-### `customStyles`
+### customStyles
 
 A react native style object which takes care of styling the button component as per your needs
 
-|        Type         |    Default     | Required
-| :-----------------: | :------------: | :------------:
-| ViewStyle <img width="500"/> | none <img width="500"/>| No <img width="500"/>
-
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| ViewStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |

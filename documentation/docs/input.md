@@ -24,45 +24,42 @@ import { Input } from 'viserion';
 
 ## Props
 
-### `label`
+### label
 
 The tilte of your input field,which will be a string.
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|           Type            |         Default         |       Required        |
+| :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `error`
+### error
 
 The error message you want to show,once error gets occured
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|           Type            |         Default         |       Required        |
+| :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `disabled`
+### disabled
 
 boolean value to be passed,if you want to disable the input.
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|            Type            |         Default         |       Required        |
+| :------------------------: | :---------------------: | :-------------------: |
 | boolean <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `labelStyle`
+### labelStyle
 
 TextStyle object to style your input label
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
 | TextStyle <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
+### inputTextStyle
 
-### `inputTextStyle`
+### disabledTextStyle
 
-### `disabledTextStyle`
+### containerStyle
 
-### `containerStyle`
-
-
-### `bottomBorderStyle`
-
+### bottomBorderStyle

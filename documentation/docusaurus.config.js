@@ -1,29 +1,28 @@
 module.exports = {
-  title: 'viserion',
-  tagline:
-    'Groww super is all in one repository of helpers and ui-kit for any react native projects',
+  title: 'Viserion',
+  tagline: 'A collection of common ui components for react-native apps',
   url: 'https://groww.github.io',
-  baseUrl: '/super/',
+  baseUrl: '/viserion/',
   favicon: 'img/favicon.ico',
   organizationName: 'Groww', // Usually your GitHub org/user name.
-  projectName: 'super', // Usually your repo name.
+  projectName: 'viserion', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'viserion',
+      title: 'Viserion',
       logo: {
         alt: 'viserion',
         src: 'img/groww_logo.svg',
       },
       links: [
         {
-          to: 'docs/getting-started',
+          to: 'docs/installation',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/Groww/super',
+          href: 'https://github.com/Groww/viserion',
           label: 'GitHub',
           position: 'right',
         },
