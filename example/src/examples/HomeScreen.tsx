@@ -51,14 +51,7 @@ const HomeScreen = ({ navigation }: any) => {
         <View
           style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}
         >
-          <Switch
-            isOn={isOn}
-            onColor="#00D09C"
-            offColor="#E6E7E8"
-            // label="Example label"
-            // size="small"
-            onToggle={onThemeSwitch}
-          />
+          <Switch isOn={isOn} onToggle={onThemeSwitch} />
         </View>
       </View>
       <ScrollView

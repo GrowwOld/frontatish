@@ -62,7 +62,7 @@ const Switch = (props: SwitchProps) => {
 
 const calculateDimensions = (size: string) => {
   switch (size) {
-    case 'small':
+    case 'sm':
       return {
         width: 40,
         padding: 10,
@@ -70,7 +70,7 @@ const calculateDimensions = (size: string) => {
         circleHeight: 15,
         translateX: 22,
       };
-    case 'large':
+    case 'lg':
       return {
         width: 70,
         padding: 20,
@@ -91,8 +91,8 @@ const calculateDimensions = (size: string) => {
 
 Switch.defaultProps = {
   isOn: false,
-  onColor: '#4cd137',
-  offColor: '#ecf0f1',
+  onColor: '#00D09C',
+  offColor: '#EBEBF5',
   size: 'medium',
   labelStyle: {},
   thumbOnStyle: {},

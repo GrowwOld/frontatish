@@ -3,10 +3,10 @@ import { StyleType } from '../../common/types';
 
 export interface SwitchProps {
   isOn: boolean;
-  onColor: string;
-  offColor: string;
+  onColor?: string;
+  offColor?: string;
   onToggle: () => void;
-  size?: string;
+  size?: 'sm' | 'lg' | 'md';
   icon?: ReactNode;
   disabled?: boolean;
   trackOffStyle: StyleType;
