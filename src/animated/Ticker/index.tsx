@@ -1,11 +1,16 @@
+// base and lib imports
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { withColors } from '../../themes';
-import { StyleType } from '../../common/types';
-import { Fonts } from '../../styles';
+import { StyleSheet, Text, View, LayoutChangeEvent } from 'react-native';
+
+// utils and helpers
+import { StyleType, ColorType } from '../../common/types';
+
+// common components
 import Tick from './Tick';
 
-let styles;
+// styles and themes
+import { withColors } from '../../themes';
+import { Fonts } from '../../styles';
 
 interface TickerProps {
   text: string;
@@ -26,7 +31,7 @@ class Ticker extends Component<TickerProps, TickerState> {
     };
   }
 
-  handleLayout = (e) => {
+  handleLayout = (e: LayoutChangeEvent) => {
     this.setState({
       measured: true,
       height: e.nativeEvent.layout.height,
@@ -35,23 +40,23 @@ class Ticker extends Component<TickerProps, TickerState> {
 
   render() {
     const { Colors } = this.props;
-    styles = styleSheet(Colors);
+    const styles = getStyles(Colors);
     const { height, measured } = this.state;
     const wrapStyle = measured ? { height } : styles.measure;
-    const { type, textStyle } = this.props;
-    let { text } = this.props;
+    const { text } = this.props;
 
     // just in case to handle crashes
-    if (text && typeof text === 'number') {
-      text = text.toFixed(1);
-      // type needs to be passed so that it will
-      // remain reusable for any type of of text passed.
-      text = type == 'percentage' ? `${text.toString()}%` : text.toString();
-    }
+    // if (text && typeof text === 'number') {
+    //   // text = text.toFixed(1);
+    //   // type needs to be passed so that it will
+    //   // remain reusable for any type of of text passed.
+    //   // text = type === 'percentage' ? `${text.toString()}%` : text.toString();
+    // }
     return (
       <View style={styles.container}>
         <View style={[styles.row, wrapStyle]}>
           {text.split('').map((v, i) => {
+            // eslint-disable-next-line no-restricted-globals
             if (isNaN(parseFloat(v))) {
               return (
                 <Text key={i.toString()} style={[styles.text]}>
@@ -59,7 +64,14 @@ class Ticker extends Component<TickerProps, TickerState> {
                 </Text>
               );
             }
-            return <Tick key={i} value={v} height={height} styles={styles} />;
+            return (
+              <Tick
+                key={i.toString()}
+                value={v}
+                height={height}
+                styles={styles}
+              />
+            );
           })}
         </View>
         {!measured ? (
@@ -75,8 +87,8 @@ class Ticker extends Component<TickerProps, TickerState> {
   }
 }
 
-const styleSheet = (Colors: any) =>
-  StyleSheet.create({
+const getStyles = (Colors: ColorType) => {
+  return StyleSheet.create({
     container: {
       alignItems: 'flex-start',
       justifyContent: 'flex-start',
@@ -96,5 +108,6 @@ const styleSheet = (Colors: any) =>
       color: Colors.primary,
     },
   });
+};
 
 export default withColors(Ticker);
