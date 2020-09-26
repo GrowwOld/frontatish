@@ -2,6 +2,12 @@
 
 Viserion is a collection of common ui components developed and designed by Groww Engineering Team,which aims to give you all set of most commonly used ui components or helpers at a single place,so that you could only worry about writing the business logic of your app.
 
+# Preview
+
+Below screenshots are some previews of the components which resides in this ui-kit,it is just for demoonstration purposes,the kit contains many more components and helper methods.
+
+ <img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" />
+
 # Installation
 
 Follow this [link](https://groww.github.io/viserion/docs/getting-started) to setup viserion into you project.
@@ -26,7 +32,4 @@ We assume it best perform on `react-native` greater than `v0.60`,we have not tes
 8. [Dropdown](https://groww.github.io/viserion/docs/dropdown)
 9. [Input](https://groww.github.io/viserion/docs/input)
 
- <img src="documentation/static/img/ButtonScreen.png" height="400"/>
- <img src="documentation/static/img/NumpadScreen.png" height="400"/>
- <img src="documentation/static/img/DropdownScreen.png" height="400"/>
- <img src="documentation/static/img/TableScreen.png" height="400" />
+
