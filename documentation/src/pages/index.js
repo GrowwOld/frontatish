@@ -13,7 +13,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        Viserion is very easy to use,you just need to install this package
+        frontatish is very easy to use,you just need to install this package
         and you get all amazing react-native ui components out of the box.
       </>
     ),
@@ -23,7 +23,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
-        Viserion gives you a great set of common ui components which we often
+        frontatish gives you a great set of common ui components which we often
         need in our daily development process, so you just have to worry about
         the business logic of your app rather than worrying about such basic
         components

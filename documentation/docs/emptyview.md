@@ -8,13 +8,13 @@ Emptyview gives you a nice way to handle the empty state of your screen,like sho
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/viserion/img/emptyview-1.png" alt="emptyview" height="350"/>
+        <img src="/frontatish/img/emptyview-1.png" alt="emptyview" height="350"/>
     </figure>
     <figure>
-        <img src="/viserion/img/emptyview-2.png" alt="emptyview" height="350"/>
+        <img src="/frontatish/img/emptyview-2.png" alt="emptyview" height="350"/>
     </figure>
      <figure>
-        <img src="/viserion/img/emptyviewdark.png" alt="emptyview" height="350"/>
+        <img src="/frontatish/img/emptyviewdark.png" alt="emptyview" height="350"/>
     </figure>
 </div>
 

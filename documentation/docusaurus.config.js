@@ -1,16 +1,16 @@
 module.exports = {
-  title: 'Viserion',
+  title: 'Frontatish',
   tagline: 'A collection of common ui components for react-native apps',
   url: 'https://groww.github.io',
-  baseUrl: '/viserion/',
+  baseUrl: '/frontatish/',
   favicon: 'img/favicon.ico',
   organizationName: 'Groww', // Usually your GitHub org/user name.
-  projectName: 'viserion', // Usually your repo name.
+  projectName: 'frontatish', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'Viserion',
+      title: 'frontatish',
       logo: {
-        alt: 'viserion',
+        alt: 'frontatish',
         src: 'img/groww_logo.svg',
       },
       links: [
@@ -22,7 +22,7 @@ module.exports = {
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/Groww/viserion',
+          href: 'https://github.com/Groww/frontatish',
           label: 'GitHub',
           position: 'right',
         },
@@ -59,7 +59,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/Groww/viserion/edit/alpha/docs/documentation',
+            'https://github.com/Groww/frontatish/edit/alpha/docs/documentation',
         },
         theme: { customCss: require.resolve('./src/css/custom.css') },
       },
