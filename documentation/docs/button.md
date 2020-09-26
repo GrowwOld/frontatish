@@ -8,16 +8,16 @@ Button components helps to handle all user actions using onPress handlers, the b
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/viserion/img/primary-button.png" alt="primary-button" />
+      <img src="/frontatish/img/primary-button.png" alt="primary-button" />
     </figure>
     <figure>
-      <img src="/viserion/img/secondary-button.png" alt="secondary-button" />
+      <img src="/frontatish/img/secondary-button.png" alt="secondary-button" />
     </figure>
     <figure>
-      <img src="/viserion/img/default-button.png" alt="default-button" />
+      <img src="/frontatish/img/default-button.png" alt="default-button" />
     </figure>
     <figure>
-      <img src="/viserion/img/disabled-button.png" alt="disabled-button" />
+      <img src="/frontatish/img/disabled-button.png" alt="disabled-button" />
     </figure>
 </div>
 
@@ -26,7 +26,7 @@ Button components helps to handle all user actions using onPress handlers, the b
 ```jsx
 // react base imports
 
-import { Button } from 'viserion';
+import { Button } from 'frontatish';
 
 // primary button
 <Button

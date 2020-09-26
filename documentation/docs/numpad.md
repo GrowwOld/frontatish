@@ -8,17 +8,17 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/viserion/img/numpad.png" alt="NumberPad" height="250"/>
+        <img src="/frontatish/img/numpad.png" alt="NumberPad" height="250"/>
     </figure>
     <figure>
-        <img src="/viserion/img/numpad_2.png" alt="NumberPad" height="250"/>
+        <img src="/frontatish/img/numpad_2.png" alt="NumberPad" height="250"/>
     </figure>
 </div>
 
 ## Usage
 
 ```jsx
-import { NumPad } from 'viserion';
+import { NumPad } from 'frontatish';
 
 class NumPadExample extends Component {
   constructor(props) {

@@ -8,10 +8,10 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/viserion/img/checkbox_1.png" alt="checkbox" />
+      <img src="/frontatish/img/checkbox_1.png" alt="checkbox" />
     </figure>
     <figure>
-      <img src="/viserion/img/checkbox_2.png" alt="checkbox" />
+      <img src="/frontatish/img/checkbox_2.png" alt="checkbox" />
     </figure>
 </div>
 
@@ -20,7 +20,7 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 ```jsx
 // react base imports
 
-import { Checkbox } from 'viserion';
+import { Checkbox } from 'frontatish';
 
 
   <CheckBox

@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { Button, useColors, Fonts } from 'viserion';
+import { Button, useColors, Fonts } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ButtonExample = () => {

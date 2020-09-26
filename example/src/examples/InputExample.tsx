@@ -1,6 +1,6 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Input, useColors } from 'viserion';
+import { Input, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const InputExample = () => {

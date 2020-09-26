@@ -5,13 +5,13 @@ sidebar_label: Installation
 ---
 
 :::info
-The library is still under development,create issues [here](https://github.com/Groww/viserion/issues/new)
+The library is still under development,create issues [here](https://github.com/Groww/frontatish/issues/new)
 :::
 
 ```bash
-yarn add viserion
+yarn add frontatish
 or
-npm install viserion
+npm install frontatish
 ```
 
 ## Requirements
@@ -29,7 +29,7 @@ react-native link <package-name>
 ```jsx
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from 'viserion';
+import { Button } from 'frontatish';
 
 const App = () => {
   return (

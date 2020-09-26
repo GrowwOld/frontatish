@@ -12,7 +12,7 @@ BottomFixedView extends from View only,and it helps any content under it to plac
 ## Usage
 
 ```jsx
-import { BottomFixedView } from 'viserion';
+import { BottomFixedView } from 'frontatish';
 
 <BottomFixedView>
     <View>

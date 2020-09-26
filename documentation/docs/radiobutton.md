@@ -8,17 +8,17 @@ Radio buttons helps to implement selection between multiple options, on the low 
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/viserion/img/radio_1.png" alt="checkbox" width="250"/>
+      <img src="/frontatish/img/radio_1.png" alt="checkbox" width="250"/>
     </figure>
     <figure>
-      <img src="/viserion/img/radio_2.png" alt="checkbox" width="250"/>
+      <img src="/frontatish/img/radio_2.png" alt="checkbox" width="250"/>
     </figure>
 </div>
 
 ## Usage
 
 ```jsx
-import { RadioButton } from 'viserion';
+import { RadioButton } from 'frontatish';
 
 <RadioButton
   value="selected"

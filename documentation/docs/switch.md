@@ -8,10 +8,10 @@ Switch component gives an option to the user to toggle between two option to eit
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/viserion/img/switch.png" alt="NumberPad" height="50"/>
+        <img src="/frontatish/img/switch.png" alt="NumberPad" height="50"/>
     </figure>
     <figure>
-        <img src="/viserion/img/switch_2.png" alt="NumberPad" height="50"/>
+        <img src="/frontatish/img/switch_2.png" alt="NumberPad" height="50"/>
     </figure>
 </div>
 

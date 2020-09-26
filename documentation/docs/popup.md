@@ -9,7 +9,7 @@ At the low level we have used [react-native-modal](https://www.npmjs.com/package
 
 <div>
     <figure>
-      <img src="/viserion/img/popup.png" alt="popup" height="400"/>
+      <img src="/frontatish/img/popup.png" alt="popup" height="400"/>
     </figure>
 </div>
 
@@ -19,7 +19,7 @@ At the low level we have used [react-native-modal](https://www.npmjs.com/package
 ```jsx
 // react base imports
 
-import { Popup } from 'viserion';
+import { Popup } from 'frontatish';
 
 <Popup
   isOpen={isOpen}

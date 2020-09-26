@@ -12,7 +12,7 @@ useThemeToggle is a custom hook,which returns a **setter** to set the active the
 
 
 ```jsx
-import { useThemeToggle } from 'viserion';
+import { useThemeToggle } from 'frontatish';
 
 const ProfileScreen = () => {
   const setTheme = useThemeToggle();

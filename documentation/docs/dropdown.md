@@ -8,14 +8,14 @@ Dropdown gives user an option to choose a value from list of values,and the list
 
 <div className="image-horizontal-preview">
     <figure>
-        <img src="/viserion/img/dropdown.png" alt="NumberPad" height="250"/>
+        <img src="/frontatish/img/dropdown.png" alt="NumberPad" height="250"/>
     </figure>
 </div>
 
 ## Usage
 
 ```jsx
-import { Dropdown } from 'viserion';
+import { Dropdown } from 'frontatish';
 const DropdownExample = () => {
   const items = ['ITEM-A', 'ITEM-B', 'ITEM-C', 'ITEM-D'];
   const [active, setActive] = useState(0);

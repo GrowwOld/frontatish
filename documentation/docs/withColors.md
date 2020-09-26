@@ -14,7 +14,7 @@ withColors is a higher order component which uses **ThemeContext** to fetch the 
 
 ```jsx
 
-import { withColors } from 'viserion';
+import { withColors } from 'frontatish';
 
 class App extends React.Component{
   render() {
