@@ -1,3 +1,5 @@
+> Due to npm package name availability the repository name has been changed to **frontatish** from **viserion**
+
 # Overview
 
 frontatish is a collection of common ui components developed and designed by Groww Engineering Team,which aims to give you all set of most commonly used ui components or helpers at a single place,so that you could only worry about writing the business logic of your app.
