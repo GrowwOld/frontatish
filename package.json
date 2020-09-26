@@ -29,13 +29,13 @@
     "ios",
     "android"
   ],
-  "repository": "https://github.com/groww/super",
+  "repository": "https://github.com/Groww/frontatish",
   "author": "growwdevs <devs@groww.in> (https://github.com/groww)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/groww/super/issues"
+    "url": "https://github.com/Groww/frontatish/issues"
   },
-  "homepage": "https://github.com/groww/super#readme",
+  "homepage": "https://github.com/Groww/frontatish#readme",
   "devDependencies": {
     "@commitlint/config-conventional": "^8.3.4",
     "@react-native-community/bob": "^0.14.5",
