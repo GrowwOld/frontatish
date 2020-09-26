@@ -26,4 +26,7 @@ We assume it best perform on `react-native` greater than `v0.60`,we have not tes
 8. [Dropdown](https://groww.github.io/viserion/docs/dropdown)
 9. [Input](https://groww.github.io/viserion/docs/input)
 
- <img src="documentation/static/img/primary-button.png" /><img src="documentation/static/img/default-button.png"  /><img src="documentation/static/img/switch_2.png" /><img src="documentation/static/img/radio_1.png"  /><img src="documentation/static/img/checkbox_2.png"  /><img src="documentation/static/img/emptyview-1.png"/><img src="documentation/static/img/numpad.png" />
+ <img src="documentation/static/img/ButtonScreen.png" height="400"/>
+ <img src="documentation/static/img/NumpadScreen.png" height="400"/>
+ <img src="documentation/static/img/DropdownScreen.png" height="400"/>
+ <img src="documentation/static/img/TableScreen.png" height="400" />
