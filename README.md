@@ -11,6 +11,17 @@ Below screenshots are some previews of the components which resides in this ui-k
  <img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" /><img src="documentation/static/img/EmptyScreen.png" height="400" />
 
 
+# Contribute
+
+If you are here to conribute into this project kindly follow the below steps to setup this project in your local system
+```bash
+  > git clone `repo-link`
+  > cd frontatish
+  > yarn bootstrap
+  > yarn example ios or yarn example android
+```
+
+
 # Quick Install
 ```bash
 yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated
