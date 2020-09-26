@@ -16,7 +16,7 @@ Table is used to display the data in tabular format with optional toggle feature
 
 ```jsx
 
-import { Table } from 'viserion';
+import { Table } from 'frontatish';
 
 // key should be exactly the same as option keys
 // so that it can be correctly mapped

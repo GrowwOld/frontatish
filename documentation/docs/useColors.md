@@ -14,7 +14,7 @@ useColors is a custom hook which uses **useContext** to fetch the current active
 
 ```jsx
 
-import { useColors } from 'viserion';
+import { useColors } from 'frontatish';
 
 const App = () => {
   const Colors = useColors();

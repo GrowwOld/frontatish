@@ -11,7 +11,7 @@ ThemeContext is just a React Context Object which holds the values which you pas
 ## Usage
 
 ```jsx
-import { ThemeContext } from 'viserion';
+import { ThemeContext } from 'frontatish';
 
 <ThemeContext.Consumer>
   {(value) => {

@@ -18,7 +18,7 @@ Radio buttons helps to implement selection between multiple options, on the low 
 ## Usage
 
 ```jsx
-import { RadioButton } from 'viserion';
+import { RadioButton } from 'frontatish';
 
 <RadioButton
   value="selected"

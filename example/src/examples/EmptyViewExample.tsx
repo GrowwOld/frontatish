@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { EmptyView, useColors, Tag, CenteredView } from 'viserion';
+import { EmptyView, useColors, Tag, CenteredView } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View } from 'react-native';
 

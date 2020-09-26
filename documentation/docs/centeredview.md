@@ -13,7 +13,7 @@ CenteredView extends from View only,and it helps any content under it to place a
 ## Usage
 
 ```jsx
-import { CenteredView } from 'viserion';
+import { CenteredView } from 'frontatish';
 
 <CenteredView>
     <View>

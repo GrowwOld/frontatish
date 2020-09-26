@@ -18,7 +18,7 @@ Numpad is custom designed keypad for handling number inputs,it rely on [react-na
 ## Usage
 
 ```jsx
-import { NumPad } from 'viserion';
+import { NumPad } from 'frontatish';
 
 class NumPadExample extends Component {
   constructor(props) {

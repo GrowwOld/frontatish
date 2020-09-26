@@ -29,7 +29,7 @@ react-native link <package-name>
 ```jsx
 import React from 'react';
 import { View } from 'react-native';
-import { Button } from 'viserion';
+import { Button } from 'frontatish';
 
 const App = () => {
   return (

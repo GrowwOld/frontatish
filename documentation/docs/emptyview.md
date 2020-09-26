@@ -21,7 +21,7 @@ Emptyview gives you a nice way to handle the empty state of your screen,like sho
 ## Usage
 
 ```jsx
-import { EmptyView } from 'viserion';
+import { EmptyView } from 'frontatish';
 
 <EmptyView
   title="This is title"

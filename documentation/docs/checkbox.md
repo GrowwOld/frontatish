@@ -20,7 +20,7 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 ```jsx
 // react base imports
 
-import { Checkbox } from 'viserion';
+import { Checkbox } from 'frontatish';
 
 
   <CheckBox

@@ -13,7 +13,7 @@ Input component supports all the props supported by TextInput along with it take
 ## Usage
 
 ```jsx
-import { Input } from 'viserion';
+import { Input } from 'frontatish';
 
 <Input
   label="Name (As on PAN Card)"

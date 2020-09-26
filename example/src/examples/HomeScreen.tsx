@@ -9,7 +9,7 @@ import {
   Switch,
   Searchbar,
   // eslint-disable-next-line import/no-unresolved
-} from 'viserion';
+} from 'frontatish';
 
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 

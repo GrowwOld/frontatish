@@ -26,7 +26,7 @@ Button components helps to handle all user actions using onPress handlers, the b
 ```jsx
 // react base imports
 
-import { Button } from 'viserion';
+import { Button } from 'frontatish';
 
 // primary button
 <Button

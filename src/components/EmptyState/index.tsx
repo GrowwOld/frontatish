@@ -1,9 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
-// eslint-disable-next-line import/no-unresolved
-import { Button } from 'viserion';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
+import Button from '../Button';
 import { EmptyStatePropsType } from './types';
 
 const EmptyState = (props: EmptyStatePropsType) => {

@@ -15,7 +15,7 @@ Dropdown gives user an option to choose a value from list of values,and the list
 ## Usage
 
 ```jsx
-import { Dropdown } from 'viserion';
+import { Dropdown } from 'frontatish';
 const DropdownExample = () => {
   const items = ['ITEM-A', 'ITEM-B', 'ITEM-C', 'ITEM-D'];
   const [active, setActive] = useState(0);
