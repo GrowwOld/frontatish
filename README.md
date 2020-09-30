@@ -10,6 +10,55 @@ Below screenshots are some previews of the components which resides in this ui-k
 
  <img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" /><img src="documentation/static/img/EmptyScreen.png" height="400" />
 
+# Set-up
+To get started with the project, run `yarn bootstrap` in the root directory to install the required dependencies for each package:
+
+```bash
+yarn bootstrap
+```
+
+While developing, you can run the example app to test your changes.
+
+To start the packager:
+
+```bash
+yarn example start
+```
+
+To run the example app on Android:
+
+```bash
+yarn example android
+```
+
+To run the example app on iOS:
+
+```bash
+yarn example ios
+```
+
+Make sure your code passes TypeScript and ESLint. Run the following to verify:
+
+```bash
+yarn typescript
+yarn lint
+```
+
+To fix formatting errors, run the following:
+
+```bash
+yarn lint --fix
+```
+
+Remember to add tests for your change if possible. Run the unit tests by:
+
+```bash
+yarn test
+```
+
+To edit the Objective-C files, open `example/ios/viserionExample.xcworkspace` in XCode and find the source files at `Pods > Development Pods > viserion`.
+
+To edit the Java files, open `example/android` in Android studio and find the source files at `viserion` under `Android`.
 
 # Contribute
 
