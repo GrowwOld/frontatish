@@ -25,28 +25,26 @@ const ButtonExample = () => {
             onPress={handlePress}
             label="Primary Button"
             customStyles={{ flex: 1, marginRight: 20 }}
-            loading={loading}
           />
           <Button
             type="secondary"
             onPress={handlePress}
             label="Secondary Button"
             customStyles={{ flex: 1 }}
-            loading={loading}
           />
         </View>
         <View style={{ flexDirection: 'row', marginVertical: 20 }}>
           <Button
-            type="default"
-            onPress={handlePress}
-            label="Default Button"
-            customStyles={{ flex: 1, marginRight: 20 }}
-            loading={loading}
-          />
-          <Button
             type="primary"
             onPress={handlePress}
-            label="Disabled button"
+            label="Primary Disabled"
+            customStyles={{ flex: 1, marginRight: 20 }}
+            disabled
+          />
+          <Button
+            type="secondary"
+            onPress={handlePress}
+            label="Secondary Disabled"
             disabled
             customStyles={{ flex: 1 }}
           />
