@@ -20,11 +20,21 @@ const CalendarExample = () => {
     >
       <View style={{ margin: 20 }}>
         <View>
-          <Text style={{ fontWeight: '500' }}>Selected date:</Text>
+          <Text style={{ color: Colors.font_1, fontWeight: '500' }}>
+            Selected date:
+          </Text>
+          <Text
+            style={{
+              color: Colors.font_1,
+              marginTop: 10,
+              marginBottom: 16,
+              textAlign: 'center',
+              fontSize: 12,
+            }}
+          >
+            {date?.toString()}
+          </Text>
         </View>
-        <Text style={{ marginVertical: 20, textAlign: 'center', fontSize: 12 }}>
-          {date?.toString()}
-        </Text>
         <Calendar setDate={setSelectedDate} title="Select Date" />
       </View>
     </SafeAreaView>

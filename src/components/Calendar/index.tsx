@@ -41,6 +41,8 @@ const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const Calendar = (props: CalendarProps) => {
   const [activeDate, setActiveDate] = useState(new Date());
+  // getting the suitable color based on the theme
+  // activated inside the app
   const Colors = useColors();
   const { setDate, title } = props;
   const changeMonth = (delta: number) => {
@@ -109,12 +111,13 @@ const Calendar = (props: CalendarProps) => {
                   width: 36,
                   backgroundColor:
                     activeDate.getDate().toString() === item
-                      ? '#E5FAF5'
-                      : 'white',
+                      ? Colors.primary_attr_90
+                      : Colors.white,
                 }}
               >
                 <Text
                   style={{
+                    color: Colors.font_2,
                     textAlign: 'center',
                   }}
                 >
@@ -129,8 +132,13 @@ const Calendar = (props: CalendarProps) => {
   };
 
   return (
-    <View style={[styles.calendarContainer, { backgroundColor: Colors.white }]}>
-      <View style={{ marginVertical: 24 }}>
+    <View
+      style={[
+        styles.calendarContainer,
+        { backgroundColor: Colors.white, shadowColor: Colors.font_1 },
+      ]}
+    >
+      <View style={{ marginVertical: 16 }}>
         <Text
           style={{
             textAlign: 'center',
@@ -145,8 +153,7 @@ const Calendar = (props: CalendarProps) => {
         style={{
           height: 40,
           backgroundColor: Colors.font_6,
-
-          // justifyContent: 'center',
+          justifyContent: 'center',
         }}
       >
         <View
