@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Calendar, useColors } from 'viserion';
+import { Button, Calendar, useColors } from 'viserion';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
@@ -35,7 +35,11 @@ const CalendarExample = () => {
             {date?.toString()}
           </Text>
         </View>
-        <Calendar setDate={setSelectedDate} title="Select Date" />
+        <Calendar setDate={setSelectedDate} title="Select Date">
+          <View style={{ margin: 20 }}>
+            <Button label="CONFIRM DATE" />
+          </View>
+        </Calendar>
       </View>
     </SafeAreaView>
   );

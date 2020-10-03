@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import Button from '../Button';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
 
@@ -44,7 +43,7 @@ const Calendar = (props: CalendarProps) => {
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = useColors();
-  const { setDate, title } = props;
+  const { setDate, title, children } = props;
   const changeMonth = (delta: number) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
     const updatedDate = new Date(newTimeInMS);
@@ -210,12 +209,12 @@ const Calendar = (props: CalendarProps) => {
           </Ripple>
         </View>
       </View>
-      <View style={{ alignItems: 'center', marginTop: 16 }}>
-        {matrix.map((item) => renderEachRow(item))}
+      <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'flex-start', marginTop: 16 }}>
+          {matrix.map((item) => renderEachRow(item))}
+        </View>
       </View>
-      <View style={{ margin: 20 }}>
-        <Button label="CONFIRM DATE" />
-      </View>
+      {children}
     </View>
   );
 };
