@@ -18,9 +18,14 @@ const CalendarExample = () => {
         backgroundColor: Colors.white,
       }}
     >
-      <Text>{date?.toString()}</Text>
       <View style={{ margin: 20 }}>
-        <Calendar setDate={setSelectedDate} />
+        <View>
+          <Text style={{ fontWeight: '500' }}>Selected date:</Text>
+        </View>
+        <Text style={{ marginVertical: 20, textAlign: 'center', fontSize: 12 }}>
+          {date?.toString()}
+        </Text>
+        <Calendar setDate={setSelectedDate} title="Select Date" />
       </View>
     </SafeAreaView>
   );

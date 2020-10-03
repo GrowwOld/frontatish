@@ -20,12 +20,6 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
     elevation: 3,
   },
-  datePickerContainer: {
-    // height: 147,
-    // width: 247,
-    // marginTop: 20,
-    // marginBottom: 40,
-  },
 });
 
 const months = [
@@ -48,12 +42,19 @@ const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const Calendar = (props: CalendarProps) => {
   const [activeDate, setActiveDate] = useState(new Date());
   const Colors = useColors();
-  const { setDate } = props;
+  const { setDate, title } = props;
   const changeMonth = (delta: number) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
     const updatedDate = new Date(newTimeInMS);
     setActiveDate(updatedDate);
   };
+  const changeDay = (dateOfMonth: number) => {
+    const newTimeInMS = activeDate.setMonth(activeDate.getMonth(), dateOfMonth);
+    const updatedDate = new Date(newTimeInMS);
+    setActiveDate(updatedDate);
+  };
+  setDate(activeDate);
+
   const generateMatrix = () => {
     const matrix = [];
     // Create header
@@ -85,27 +86,43 @@ const Calendar = (props: CalendarProps) => {
   };
   const matrix = generateMatrix();
   const renderEachRow = (daysArray: number[]) => {
-    console.log('dataArray', daysArray);
+    // console.log('dataArray', daysArray);
     return (
       <View
         style={{
           flexDirection: 'row',
-          margin: 10,
-          // backgroundColor: 'grey',
-          paddingHorizontal: 25,
-          paddingVertical: 10,
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
         }}
       >
         {daysArray.map((item) => {
-          if (item !== '') {
-            return (
-              <Ripple style={{ flex: 1 }} rippleContainerBorderRadius={16}>
-                <Text style={{}} key={item.toString()}>
+          return item === '' ? null : (
+            <Ripple
+              onPress={() => changeDay(item)}
+              rippleContainerBorderRadius={18}
+            >
+              <View
+                style={{
+                  justifyContent: 'center',
+                  borderRadius: 18,
+                  height: 36,
+                  width: 36,
+                  backgroundColor:
+                    activeDate.getDate().toString() === item
+                      ? '#E5FAF5'
+                      : 'white',
+                }}
+              >
+                <Text
+                  style={{
+                    textAlign: 'center',
+                  }}
+                >
                   {item}
                 </Text>
-              </Ripple>
-            );
-          }
+              </View>
+            </Ripple>
+          );
         })}
       </View>
     );
@@ -114,8 +131,14 @@ const Calendar = (props: CalendarProps) => {
   return (
     <View style={[styles.calendarContainer, { backgroundColor: Colors.white }]}>
       <View style={{ marginVertical: 24 }}>
-        <Text style={{ textAlign: 'center', color: Colors.font_1 }}>
-          Selecting Date
+        <Text
+          style={{
+            textAlign: 'center',
+            color: Colors.font_1,
+            fontWeight: 'bold',
+          }}
+        >
+          {title}
         </Text>
       </View>
       <View
@@ -155,6 +178,8 @@ const Calendar = (props: CalendarProps) => {
               color: Colors.primary,
               flex: 2,
               textAlign: 'center',
+              fontWeight: '500',
+              fontSize: 16,
             }}
           >
             {months[activeDate.getMonth()]}
@@ -178,7 +203,7 @@ const Calendar = (props: CalendarProps) => {
           </Ripple>
         </View>
       </View>
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: 'center', marginTop: 16 }}>
         {matrix.map((item) => renderEachRow(item))}
       </View>
       <View style={{ margin: 20 }}>
@@ -186,6 +211,10 @@ const Calendar = (props: CalendarProps) => {
       </View>
     </View>
   );
+};
+
+Calendar.defaultProps = {
+  title: 'Select Date:',
 };
 
 export default Calendar;
