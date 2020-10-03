@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Ticker, useColors } from 'viserion';
+import { Ticker, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const TickerExample = () => {

@@ -11,7 +11,6 @@ const BaseStyles = StyleSheet.create({
     // borderColor: Colors.DARK_SILVER
   },
   grwButton: {
-    paddingVertical: 16,
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',

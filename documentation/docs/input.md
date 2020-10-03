@@ -13,7 +13,7 @@ Input component supports all the props supported by TextInput along with it take
 ## Usage
 
 ```jsx
-import { Input } from 'viserion';
+import { Input } from 'frontatish';
 
 <Input
   label="Name (As on PAN Card)"
@@ -24,45 +24,54 @@ import { Input } from 'viserion';
 
 ## Props
 
-### `label`
+### label
 
 The tilte of your input field,which will be a string.
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|           Type            |         Default         |       Required        |
+| :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `error`
+### error
 
 The error message you want to show,once error gets occured
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|           Type            |         Default         |       Required        |
+| :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `disabled`
+### disabled
 
 boolean value to be passed,if you want to disable the input.
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|            Type            |         Default         |       Required        |
+| :------------------------: | :---------------------: | :-------------------: |
 | boolean <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### `labelStyle`
+### labelStyle
 
 TextStyle object to style your input label
 
-|           Type            |         Default         |        Required        |
-| :-----------------------: | :---------------------: | :--------------------: |
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
 | TextStyle <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
+### inputTextStyle
 
-### `inputTextStyle`
+TextStyle object to style the text of input value same as [labelStyle](#labelstyle)
 
-### `disabledTextStyle`
+### disabledTextStyle
 
-### `containerStyle`
+TextStyle object to style the text of input value,when its in disabled state same as [labelStyle](#labelstyle)
 
+### containerStyle
 
-### `bottomBorderStyle`
+ViewStyle object to style the parent container,which contains the whole TextInput and error messages.
 
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| ViewStyle <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
+
+### bottomBorderStyle
+
+ViewStyle object to style the underline of your TextInput,same as [containerStyle](#containerstyle)

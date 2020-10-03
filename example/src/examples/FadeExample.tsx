@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { Fade, useColors } from 'viserion';
+import { Fade, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const FadeExample = () => {

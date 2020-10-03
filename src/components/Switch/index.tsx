@@ -25,49 +25,36 @@ const Switch = (props: SwitchProps) => {
     duration: 300,
     useNativeDriver: true,
   }).start();
-
-  const createToggleSwitchStyle = () => {
-    return {
-      justifyContent: 'center',
+  const styles = getStyles();
+  const toggleSwitchStyle = [
+    styles.toggleSwitchStyle,
+    {
       width: dimensions.width,
-      borderRadius: 20,
       padding: dimensions.padding,
       backgroundColor: isOn ? onColor : offColor,
       ...(isOn ? trackOnStyle : trackOffStyle),
-    };
-  };
+    },
+  ];
 
-  const createInsideCircleStyle = () => {
-    return {
-      alignItems: 'center',
-      justifyContent: 'center',
-      margin: 4,
-      position: 'absolute',
-      backgroundColor: 'white',
+  const insideCircleStyle = [
+    styles.insideCircleStyle,
+    {
       transform: [{ translateX: offsetX }],
       width: dimensions.circleWidth,
       height: dimensions.circleHeight,
       borderRadius: dimensions.circleWidth / 2,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 2.5,
-      elevation: 1.5,
       ...(isOn ? thumbOnStyle : thumbOffStyle),
-    };
-  };
+    },
+  ];
 
   return (
     <View style={styles.container}>
       <TouchableOpacity
-        style={createToggleSwitchStyle()}
+        style={toggleSwitchStyle}
         activeOpacity={0.8}
         onPress={() => (disabled ? null : onToggle())}
       >
-        <Animated.View style={createInsideCircleStyle()}>{icon}</Animated.View>
+        <Animated.View style={insideCircleStyle}>{icon}</Animated.View>
       </TouchableOpacity>
     </View>
   );
@@ -75,7 +62,7 @@ const Switch = (props: SwitchProps) => {
 
 const calculateDimensions = (size: string) => {
   switch (size) {
-    case 'small':
+    case 'sm':
       return {
         width: 40,
         padding: 10,
@@ -83,7 +70,7 @@ const calculateDimensions = (size: string) => {
         circleHeight: 15,
         translateX: 22,
       };
-    case 'large':
+    case 'lg':
       return {
         width: 70,
         padding: 20,
@@ -104,8 +91,8 @@ const calculateDimensions = (size: string) => {
 
 Switch.defaultProps = {
   isOn: false,
-  onColor: '#4cd137',
-  offColor: '#ecf0f1',
+  onColor: '#00D09C',
+  offColor: '#EBEBF5',
   size: 'medium',
   labelStyle: {},
   thumbOnStyle: {},
@@ -116,12 +103,33 @@ Switch.defaultProps = {
   disabled: false,
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  labelStyle: { marginHorizontal: 10 },
-});
+const getStyles = () => {
+  return StyleSheet.create({
+    container: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    labelStyle: { marginHorizontal: 10 },
+    toggleSwitchStyle: {
+      justifyContent: 'center',
+      borderRadius: 20,
+    },
+    insideCircleStyle: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      margin: 4,
+      position: 'absolute',
+      backgroundColor: 'white',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 2.5,
+      elevation: 1.5,
+    },
+  });
+};
 
 export default Switch;

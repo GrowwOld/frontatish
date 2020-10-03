@@ -54,10 +54,6 @@ const Button = (props: ButtonProps) => {
       disabled={disabled}
       style={mainBtnStyles}
       onLayout={measureLayout}
-      // style={[styles.btnContainer, {
-      //   ...btnBorderStyle,
-      //   backgroundColor: btnBgColor,
-      // }]}
     >
       {loading && renderProgressBar()}
       <Text style={baseLabelStyles}>{label}</Text>

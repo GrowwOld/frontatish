@@ -1,29 +1,28 @@
 module.exports = {
-  title: 'viserion',
-  tagline:
-    'Groww super is all in one repository of helpers and ui-kit for any react native projects',
+  title: 'Frontatish',
+  tagline: 'A collection of common ui components for react-native apps',
   url: 'https://groww.github.io',
-  baseUrl: '/super/',
+  baseUrl: '/frontatish/',
   favicon: 'img/favicon.ico',
   organizationName: 'Groww', // Usually your GitHub org/user name.
-  projectName: 'super', // Usually your repo name.
+  projectName: 'frontatish', // Usually your repo name.
   themeConfig: {
     navbar: {
-      title: 'viserion',
+      title: 'frontatish',
       logo: {
-        alt: 'viserion',
+        alt: 'frontatish',
         src: 'img/groww_logo.svg',
       },
       links: [
         {
-          to: 'docs/getting-started',
+          to: 'docs/installation',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
         // {to: 'blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/Groww/super',
+          href: 'https://github.com/Groww/frontatish',
           label: 'GitHub',
           position: 'right',
         },
@@ -50,7 +49,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Groww, Inc. Built with Docusaurus.`,
     },
   },
   presets: [
@@ -60,7 +59,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/Groww/viserion/edit/alpha/docs/documentation',
+            'https://github.com/Groww/frontatish/edit/alpha/docs/documentation',
         },
         theme: { customCss: require.resolve('./src/css/custom.css') },
       },

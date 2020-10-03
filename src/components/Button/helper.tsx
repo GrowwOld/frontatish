@@ -38,7 +38,7 @@ export const getBtnStyles = (
     case 'primary':
       return {
         ...BaseStyles.grwButton,
-        backgroundColor: disabled ? Colors.primary_attr_40 : Colors.primary,
+        backgroundColor: disabled ? Colors.font_3 : Colors.primary,
         color: Colors.white,
         // opacity: disabled ? 0.6 : 1
       };
@@ -46,16 +46,9 @@ export const getBtnStyles = (
       return {
         ...BaseStyles.grwButton,
         backgroundColor: Colors.WHITE,
-        borderColor: disabled ? Colors.primary_attr_40 : Colors.primary,
+        borderColor: disabled ? Colors.font_3 : Colors.primary,
         // opacity: disabled ? 0.6 : 1,
-        borderWidth: 1,
-      };
-    case 'default':
-      return {
-        ...BaseStyles.grwButton,
-        backgroundColor: Colors.WHITE,
-        borderColor: Colors.font_3,
-        borderWidth: 1,
+        borderWidth: 2,
       };
     default: {
       return {};
@@ -77,12 +70,7 @@ export const getLabelStyles = (
     case 'secondary':
       return {
         ...BaseStyles.grwLabel,
-        color: disabled ? Colors.primary_40 : Colors.primary,
-      };
-    case 'default':
-      return {
-        ...BaseStyles.grwLabel,
-        color: disabled ? Colors.primary_40 : Colors.primary,
+        color: disabled ? Colors.font_3 : Colors.primary,
       };
     default: {
       return {};
