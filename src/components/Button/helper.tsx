@@ -48,14 +48,14 @@ export const getBtnStyles = (
         backgroundColor: Colors.WHITE,
         borderColor: disabled ? Colors.primary_attr_40 : Colors.primary,
         // opacity: disabled ? 0.6 : 1,
-        borderWidth: 1,
+        borderWidth: 2,
       };
     case 'default':
       return {
         ...BaseStyles.grwButton,
         backgroundColor: Colors.WHITE,
         borderColor: Colors.font_3,
-        borderWidth: 1,
+        borderWidth: 2,
       };
     default: {
       return {};
