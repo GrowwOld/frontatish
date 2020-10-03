@@ -8,16 +8,10 @@ Button components helps to handle all user actions using onPress handlers, the b
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/primary-button.png" alt="primary-button" />
+      <img src="/frontatish/img/button-light.png" alt="primary-button" />
     </figure>
     <figure>
-      <img src="/frontatish/img/secondary-button.png" alt="secondary-button" />
-    </figure>
-    <figure>
-      <img src="/frontatish/img/default-button.png" alt="default-button" />
-    </figure>
-    <figure>
-      <img src="/frontatish/img/disabled-button.png" alt="disabled-button" />
+      <img src="/frontatish/img/button-dark.png" alt="secondary-button" />
     </figure>
 </div>
 
@@ -66,9 +60,9 @@ Label to display inside the button
 
 On the basis of **type** passed to component, it applies the defined style to it
 
-|           Type            |            Default             |                        Values                        |       Required        |
-| :-----------------------: | :----------------------------: | :--------------------------------------------------: | :-------------------: |
-| string <img width="500"/> | **primary** <img width="500"/> | enum(primary, secondary, default) <img width="500"/> | No <img width="500"/> |
+|           Type            |            Default             |                 Values                  |       Required        |
+| :-----------------------: | :----------------------------: | :-------------------------------------: | :-------------------: |
+| string <img width="500"/> | **primary** <img width="500"/> | primary or secondary <img width="500"/> | No <img width="500"/> |
 
 ### loading
 
