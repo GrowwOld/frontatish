@@ -1,6 +1,6 @@
 module.exports = {
   someSidebar: {
-    "Geting Started": ['installation', 'contributing'],
+    'Geting Started': ['installation', 'contributing'],
     Components: [
       'button',
       'checkbox',

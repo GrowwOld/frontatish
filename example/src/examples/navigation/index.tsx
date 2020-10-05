@@ -7,6 +7,7 @@ import FadeScreen from '../FadeExample';
 import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
+import CalendarScreen from '../CalendarExample';
 
 type objectType = { [index: string]: string };
 
@@ -19,6 +20,7 @@ export const COMPONENT_SCREENS: objectType = {
   EMPTYVIEW: 'EmptyView',
   INPUT: 'Input',
   DROPDOWN: 'Dropdown',
+  CALENDAR: 'Calendar',
 };
 
 export const ANIMATED_SCREENS: objectType = { FADE: 'Fade' };
@@ -33,6 +35,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.EMPTYVIEW, screen: EmptyViewScreen },
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
+  { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];
