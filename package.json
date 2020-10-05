@@ -1,6 +1,6 @@
 {
   "name": "frontatish",
-  "version": "0.1.0",
+  "version": "0.2.0-alpha.0",
   "description": "react-native master ui helpers",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -24,14 +24,14 @@
     "bootstrap": "yarn example && yarn && yarn pods",
     "release": "release-it",
     "release:minor-alpha": "release-it minor --preRelease=alpha",
-    "release:minor-beta":"release-it minor --preRelease=beta",
-    "release:minor-rc":"release-it minor --preRelease=rc",
+    "release:minor-beta": "release-it minor --preRelease=beta",
+    "release:minor-rc": "release-it minor --preRelease=rc",
     "release:major-alpha": "release-it major --preRelease=alpha",
-    "release:major-beta":"release-it major --preRelease=beta",
-    "release:major-rc":"release-it major --preRelease=rc",
+    "release:major-beta": "release-it major --preRelease=beta",
+    "release:major-rc": "release-it major --preRelease=rc",
     "release:patch-alpha": "release-it patch --preRelease=alpha",
-    "release:patch-beta":"release-it patch --preRelease=beta",
-    "release:patch-rc":"release-it patch --preRelease=rc"
+    "release:patch-beta": "release-it patch --preRelease=beta",
+    "release:patch-rc": "release-it patch --preRelease=rc"
   },
   "keywords": [
     "react-native",
