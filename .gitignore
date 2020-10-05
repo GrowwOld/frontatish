@@ -29,6 +29,7 @@ project.xcworkspace
 local.properties
 android.iml
 
+
 # Cocoapods
 #
 example/ios/Pods
@@ -45,6 +46,9 @@ buck-out/
 \.buckd/
 android/app/libs
 android/keystores/debug.keystore
+android/.settings
+android/build
+android/*.iml
 
 # Expo
 .expo/*
