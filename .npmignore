@@ -1,0 +1,9 @@
+android/build
+android/.gradle
+android/.idea
+android/.settings
+android/.project
+android/gradle.properties
+android/local.properties
+android/viserion.iml
+android/android.iml
