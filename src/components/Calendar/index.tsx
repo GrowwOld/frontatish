@@ -86,7 +86,7 @@ const Calendar = (props: CalendarProps) => {
     return matrix;
   };
   const matrix = generateMatrix();
-  const renderEachRow = (daysArray: number[]) => {
+  const renderEachRow = (daysArray: string[]) => {
     // console.log('dataArray', daysArray);
     return (
       <View
@@ -99,7 +99,7 @@ const Calendar = (props: CalendarProps) => {
         {daysArray.map((item) => {
           return item === '' ? null : (
             <Ripple
-              onPress={() => changeDay(item)}
+              onPress={() => changeDay(parseInt(item, 10))}
               rippleContainerBorderRadius={18}
             >
               <View
@@ -129,7 +129,6 @@ const Calendar = (props: CalendarProps) => {
       </View>
     );
   };
-
   return (
     <View
       style={[

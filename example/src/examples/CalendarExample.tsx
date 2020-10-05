@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Button, Calendar, useColors } from 'viserion';
+import { Button, Calendar, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
