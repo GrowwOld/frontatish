@@ -19,10 +19,19 @@
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "prepare": "bob build",
-    "release": "release-it",
     "example": "yarn --cwd example",
     "pods": "node -e \"process.exit(require('os').platform() !== 'darwin')\" && test -d example/ios && cd example/ios && pod install || printf ''",
-    "bootstrap": "yarn example && yarn && yarn pods"
+    "bootstrap": "yarn example && yarn && yarn pods",
+    "release": "release-it",
+    "release:minor-alpha": "release-it minor --preRelease=alpha",
+    "release:minor-beta":"release-it minor --preRelease=beta",
+    "release:minor-rc":"release-it minor --preRelease=rc",
+    "release:major-alpha": "release-it major --preRelease=alpha",
+    "release:major-beta":"release-it major --preRelease=beta",
+    "release:major-rc":"release-it major --preRelease=rc",
+    "release:patch-alpha": "release-it patch --preRelease=alpha",
+    "release:patch-beta":"release-it patch --preRelease=beta",
+    "release:patch-rc":"release-it patch --preRelease=rc"
   },
   "keywords": [
     "react-native",
