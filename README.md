@@ -73,7 +73,7 @@ If you are here to conribute into this project kindly follow the below steps to 
 
 # Quick Install
 ```bash
-yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated
+yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated react-native-gesture-handler
 ```
 
 Make sure if you are running on ios device you go to the `ios/` folder and run `pod install` inside it to complete the installation of library like vector icons and reanimated.
@@ -97,7 +97,7 @@ We assume it best perform on `react-native` greater than `v0.60`,we have not tes
 1. [Button](https://groww.github.io/frontatish/docs/button)
 2. [Checkbox](https://groww.github.io/frontatish/docs/checkbox)
 3. [NumPad](https://groww.github.io/frontatish/docs/numpad)
-4. [Radiobutton](https://groww.github.io/frontatish/docs/checkbox)
+4. [Radiobutton](https://groww.github.io/frontatish/docs/radiobutton)
 5. [Table](https://groww.github.io/frontatish/docs/table)
 6. [EmptyView](https://groww.github.io/frontatish/docs/emptyview)
 7. [Switch](https://groww.github.io/frontatish/docs/switch)
