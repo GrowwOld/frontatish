@@ -73,7 +73,7 @@ If you are here to conribute into this project kindly follow the below steps to 
 
 # Quick Install
 ```bash
-yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated
+yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated react-native-gesture-handler
 ```
 
 Make sure if you are running on ios device you go to the `ios/` folder and run `pod install` inside it to complete the installation of library like vector icons and reanimated.
