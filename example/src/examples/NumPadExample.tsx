@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors } from 'frontatish';
+import { NumPad, withColors, CodeInput } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { Fonts, getColors } from '../styles';
@@ -23,7 +23,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   // onItemClick
   onItemClick = (value: string) => {
     const { input } = this.state;
-    if (input.length < 10) {
+    if (input.length < 4) {
       this.setState({ input: input + value });
     }
   };
@@ -40,15 +40,13 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
       <SafeAreaView
         style={{
           flex: 1,
-          justifyContent: 'flex-end',
+          // justifyContent: 'flex-end',
           backgroundColor: Colors.white,
         }}
       >
-        <Text
-          style={{ fontSize: 30, color: Colors.font_1, textAlign: 'center' }}
-        >
-          {input}
-        </Text>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <CodeInput value={input} codeLength={4} />
+        </View>
 
         <NumPad
           onItemClick={this.onItemClick}
