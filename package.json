@@ -124,5 +124,7 @@
       "typescript"
     ]
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-native-material-ripple": "^0.9.1"
+  }
 }

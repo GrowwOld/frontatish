@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import { StyleSheet, View, TouchableOpacity, Animated } from 'react-native';
-
 import { SwitchProps } from './types';
 
 const Switch = (props: SwitchProps) => {
