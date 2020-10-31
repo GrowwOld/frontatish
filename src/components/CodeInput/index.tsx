@@ -7,7 +7,8 @@ import { withColors } from '../../themes';
 interface CodeInputProps {
   value: string;
   codeLength: number;
-  Colors: any;
+  Colors?: any; // will come from redux
+  inputContainer: 'box' | 'line';
 }
 
 interface CodeInputState {
@@ -21,7 +22,7 @@ const styles = StyleSheet.create({
     height: 50,
     borderWidth: 2,
     borderColor: 'black',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
   inputUnderlined: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     width: 50,
     borderBottomColor: 'black',
     borderBottomWidth: 2,
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
   },
 });
@@ -48,7 +49,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     nextProps: CodeInputProps,
     prevState: CodeInputState,
   ) {
-    console.log('next', nextProps.value, prevState.prevValue);
+    // console.log('next', nextProps.value, prevState.prevValue);
     if (nextProps.value !== prevState.prevValue) {
       // if new value is increasing that means new
       // number has been entered
@@ -65,25 +66,35 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   }
 
   renderInputUI = () => {
-    const { codeLength, Colors } = this.props;
+    const { codeLength, Colors, inputContainer } = this.props;
     const { codeInputValue, activeInput } = this.state;
     const ui = [];
-    console.log('codeInputValue is', codeInputValue);
+    // console.log('codeInputValue is', codeInputValue);
     for (let i = 0; i < codeLength; i += 1) {
+      const activeStyle =
+        inputContainer === 'line'
+          ? { borderBottomColor: Colors.primary }
+          : { borderColor: Colors.primary };
       ui.push(
         <TouchableWithoutFeedback
           style={[
-            styles.inputUnderlined,
-            activeInput === i ? { borderBottomColor: Colors.primary } : null,
+            inputContainer === 'line'
+              ? styles.inputUnderlined
+              : styles.inputBox,
+            activeInput === i ? activeStyle : null,
           ]}
           key={i.toString()}
-          onPress={() => console.log('clicked box number', i + 1)}
+          onPress={() => this.setActiveInputBox(i)}
         >
           <Text style={{ fontSize: 20 }}>{codeInputValue[i]}</Text>
         </TouchableWithoutFeedback>,
       );
     }
     return ui;
+  };
+
+  setActiveInputBox = (index: number) => {
+    this.setState({ activeInput: index });
   };
 
   render() {

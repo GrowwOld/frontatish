@@ -15,15 +15,18 @@ interface NumPadExampleProps {
   Colors: any;
 }
 class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
+  codeLength: number;
+
   constructor(props: NumPadExampleProps) {
     super(props);
     this.state = { input: '' };
+    this.codeLength = 5;
   }
 
   // onItemClick
   onItemClick = (value: string) => {
     const { input } = this.state;
-    if (input.length < 4) {
+    if (input.length < this.codeLength) {
       this.setState({ input: input + value });
     }
   };
@@ -45,7 +48,11 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
         }}
       >
         <View style={{ flex: 1, justifyContent: 'center' }}>
-          <CodeInput value={input} codeLength={4} />
+          <CodeInput
+            value={input}
+            codeLength={this.codeLength}
+            inputContainer="line"
+          />
         </View>
 
         <NumPad
