@@ -25,6 +25,10 @@ class Scale extends React.PureComponent<ScaleProps, ScaleState> {
     }).start();
   }
 
+  componentDidUpdate(prevProps) {
+    console.log('this.props', this.props, prevProps);
+  }
+
   render() {
     const { children } = this.props;
     const { animatedScale } = this.state;

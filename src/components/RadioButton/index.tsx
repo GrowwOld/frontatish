@@ -14,6 +14,17 @@ import { useColors } from '../../themes';
 // common components
 import { Scale } from '../../animated';
 
+const InsideView = (props) => {
+  const { selected, innerDimen, radioColor } = props;
+  if (selected) {
+    return (
+      <Scale>
+        <View style={[innerDimen, { backgroundColor: radioColor }]} />
+      </Scale>
+    );
+  }
+  return null;
+};
 const RadioButton = (props: RadioButtonProps) => {
   const {
     disabled,
@@ -40,11 +51,11 @@ const RadioButton = (props: RadioButtonProps) => {
         <View
           style={[styles.outerRing, { ...outerDimen, borderColor: radioColor }]}
         >
-          {selected && (
-            <Scale>
-              <View style={[innerDimen, { backgroundColor: radioColor }]} />
-            </Scale>
-          )}
+          <InsideView
+            selected={selected}
+            innerDimen={innerDimen}
+            radioColor={radioColor}
+          />
         </View>
         {value && (
           <View style={styles.labelContainer}>
