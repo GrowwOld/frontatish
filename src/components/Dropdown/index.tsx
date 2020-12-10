@@ -10,21 +10,17 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
+import { DropdownProps } from './types';
 import DropList from './DropList';
 import Line from './Line';
 
-interface DropdownProps {
-  dropItems: Array<string>;
-  active: number;
-  onChange: (index: number) => void;
-}
-
 const Dropdown = (props: DropdownProps) => {
-  const animateRotate = useRef(new Animated.Value(0)).current;
   const [open, setOpen] = useState(false);
   const { dropItems, active, onChange } = props;
+  const animateRotate = useRef(new Animated.Value(0)).current;
   const Colors = useColors();
   const styles = getStyles(Colors);
+
   const handleList = () => {
     Animated.timing(animateRotate, {
       toValue: open ? 0 : 1,
@@ -41,7 +37,9 @@ const Dropdown = (props: DropdownProps) => {
     <View style={styles.container}>
       <TouchableNativeFeedback onPress={handleList}>
         <View style={styles.activeItem}>
-          <Text style={{ color: Colors.font_2 }}>{dropItems[active]}</Text>
+          <Text style={{ color: Colors.font_2 }}>
+            {dropItems[active]?.label ?? dropItems[active]}
+          </Text>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Animated.View
               style={[

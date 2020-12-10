@@ -5,7 +5,14 @@ import { Dropdown, useColors } from 'frontatish';
 
 const DropdownExample = () => {
   const Colors = useColors();
-  const items = ['ITEM-A', 'ITEM-B', 'ITEM-C', 'ITEM-D'];
+  const items = ['ITEM-A', 'ITEM-B', 'ITEM-C', 'ITEM-D', 'ITEM-E', 'ITEM-F'];
+  const dropItems = [
+    { value: 'AN', label: 'ANDAMAN & NICOBAR ISLANDS' },
+    { value: 'AP', label: 'ANDHRA PRADESH' },
+    { value: 'AR', label: 'ARUNACHAL PRADESH' },
+    { value: 'AS', label: 'ASSAM' },
+    { value: 'BH', label: 'BIHAR' },
+  ];
   const [active, setActive] = useState(0);
   const onChange = (index: number) => {
     setActive(index);
@@ -19,6 +26,7 @@ const DropdownExample = () => {
       }}
     >
       <Dropdown dropItems={items} active={active} onChange={onChange} />
+      <Dropdown dropItems={dropItems} active={active} onChange={onChange} />
     </SafeAreaView>
   );
 };
