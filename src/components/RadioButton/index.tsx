@@ -34,7 +34,7 @@ const RadioButton = (props: RadioButtonProps) => {
     onPress,
     selected,
     value,
-    valueView,
+    customLabel,
     size,
     containerStyle,
     labelStyle,
@@ -51,7 +51,7 @@ const RadioButton = (props: RadioButtonProps) => {
     }
   };
   const renderValue = () => {
-    if (valueView) return valueView;
+    if (customLabel) return customLabel;
     if (value) {
       return (
         <View style={styles.labelContainer}>
