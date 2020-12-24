@@ -88,3 +88,12 @@ A react native Text style object which gives flexibility to alter the styles of 
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |
 | TextStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |
+
+
+### customLabel
+
+A react component to render a custom label for your radio button
+
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| JSX.Element <img width="500"/> | none <img width="500"/> | No <img width="500"/> |

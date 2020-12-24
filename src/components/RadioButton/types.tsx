@@ -8,4 +8,5 @@ export interface RadioButtonProps {
   size?: 'xs' | 'sm' | 'md' | 'lg';
   containerStyle?: StyleType;
   labelStyle?: StyleType;
+  customLabel?: JSX.Element;
 }

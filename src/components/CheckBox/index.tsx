@@ -48,11 +48,10 @@ const CheckBox = (props: CheckBoxProps) => {
         {/* <Fade visible={checked!} containerStyle={{ flex: 1 }} duration={300}>
           <Icon name="check" size={iconSize} color={iconColor} />
         </Fade> */}
-        {checked && (
-          <Scale>
-            <Icon name="check" size={iconSize} color={iconColor} />
-          </Scale>
-        )}
+
+        <Scale scale={checked!!}>
+          <Icon name="check" size={iconSize} color={iconColor} />
+        </Scale>
       </View>
     </TouchableWithoutFeedback>
   );
