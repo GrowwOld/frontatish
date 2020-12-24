@@ -12,19 +12,21 @@ import { DropListProps, DropItem } from './types';
 import Line from './Line';
 
 const DropList = (props: DropListProps) => {
-  const { items, active, onItemClick } = props;
+  const { items, active, onChange, itemStyle } = props;
   const Colors = useColors();
   const styles = getStyles(Colors);
   const renderItem = ({ item, index }: { item: DropItem; index: number }) => {
     return (
-      <TouchableOpacity onPress={() => onItemClick(index)}>
+      <TouchableOpacity onPress={() => onChange(index)}>
         <View
           style={{
             backgroundColor: active === index ? Colors.font_6 : Colors.white,
             padding: 16,
           }}
         >
-          <Text style={{ color: Colors.font_2 }}>{item?.label ?? item}</Text>
+          <Text style={{ color: Colors.font_2, ...itemStyle }}>
+            {item?.label ?? item}
+          </Text>
         </View>
         {index < items.length - 1 && <Line />}
       </TouchableOpacity>
