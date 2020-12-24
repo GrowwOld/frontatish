@@ -1,6 +1,6 @@
 {
   "name": "frontatish",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "react-native master ui helpers",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
