@@ -3,14 +3,13 @@ export interface DropItem {
   value: string | number;
 }
 
-export type DropItems = DropItem[] & string[];
 export interface DropdownProps {
-  dropItems: DropItems;
+  dropItems: Array<DropItem>;
   active: number;
   onChange: (index: number) => void;
 }
 export interface DropListProps {
-  items: DropItems;
+  items: Array<DropItem>;
   active: number;
   onItemClick: (index: number) => void;
 }

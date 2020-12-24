@@ -77,7 +77,7 @@ const Dropdown = (props: DropdownProps) => {
 
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
-    container: { margin: 20, position: 'relative' },
+    container: { margin: 20 },
     activeItem: {
       flexDirection: 'row',
       alignItems: 'center',

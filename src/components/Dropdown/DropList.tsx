@@ -47,21 +47,10 @@ const DropList = (props: DropListProps) => {
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
     listContainer: {
-      // backgroundColor: Colors.font_6,
-      // position: 'absolute',
-      // top: DEVICE_HEIGHT / 2,
       borderWidth: 1,
       borderColor: Colors.font_5,
       borderRadius: 6,
       height: 150,
-      // shadowColor: '#000',
-      // shadowOffset: {
-      //   width: 0,
-      //   height: 1,
-      // },
-      // shadowOpacity: 0.2,
-      // shadowRadius: 1.41,
-      // elevation: 2,
     },
   });
 };
