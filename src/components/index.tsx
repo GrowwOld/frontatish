@@ -13,6 +13,7 @@ import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
 import Tag from './Tag';
+import DateInput from './DateInput';
 
 export {
   Button,
@@ -29,4 +30,5 @@ export {
   Table,
   Tag,
   Input,
+  DateInput,
 };
