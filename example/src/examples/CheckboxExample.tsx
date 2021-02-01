@@ -46,6 +46,18 @@ const CheckboxExample = () => {
         containerStyle={{ marginVertical: 20 }}
         size="lg"
       />
+      <CheckBox
+        checked={tick}
+        checkColor={Colors.primary}
+        onPress={() => setTick(!tick)}
+        containerStyle={{
+          marginVertical: 20,
+          backgroundColor: Colors.white,
+          borderWidth: 2,
+          borderColor: Colors.primary,
+        }}
+        size="lg"
+      />
     </SafeAreaView>
   );
 };

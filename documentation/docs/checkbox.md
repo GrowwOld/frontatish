@@ -34,6 +34,14 @@ import { Checkbox } from 'frontatish';
 
 ## Props
 
+### checkColor
+
+Color of check icon inside the checkbox,you can pass whatever color you like and control the overall checkbox style by using [containerStyle](#containerstyle)
+
+|           Type            |        Default         |       Required        |
+| :-----------------------: | :--------------------: | :-------------------: |
+| string <img width="500"/> | None<img width="500"/> | No <img width="500"/> |
+
 ### onPress
 
 Callback function that needed to be passed which updates the state of checkbox,to hanle both checked and unchecked state of a checkbox.
@@ -65,10 +73,6 @@ disabled make sure if its true then user won't be able to click it and the onPre
 |            Type            |         Default          |       Required        |
 | :------------------------: | :----------------------: | :-------------------: |
 | boolean <img width="500"/> | false <img width="500"/> | No <img width="500"/> |
-
-### disabledStyle
-
-Coming soon!!
 
 ### containerStyle
 
