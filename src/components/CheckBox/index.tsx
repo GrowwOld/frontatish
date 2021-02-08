@@ -2,7 +2,7 @@
 import React from 'react';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // types
 import { CheckBoxProps } from './types';
@@ -17,14 +17,7 @@ import { Scale } from '../../animated';
 import { useColors } from '../../themes';
 
 const CheckBox = (props: CheckBoxProps) => {
-  const {
-    checked,
-    containerStyle,
-    disabled,
-    onPress,
-    size,
-    checkColor,
-  } = props;
+  const { checked, containerStyle, disabled, size, checkColor } = props;
   const [height, width, iconSize] = getCheckDmnsn(size!);
   const Colors = useColors();
   const getRequiredColor = () => {
@@ -54,17 +47,15 @@ const CheckBox = (props: CheckBoxProps) => {
     width,
   };
   return (
-    <TouchableWithoutFeedback disabled={disabled} onPress={onPress}>
-      <View style={mainContainerStyle}>
-        {/* <Fade visible={checked!} containerStyle={{ flex: 1 }} duration={300}>
+    <View style={mainContainerStyle}>
+      {/* <Fade visible={checked!} containerStyle={{ flex: 1 }} duration={300}>
           <Icon name="check" size={iconSize} color={iconColor} />
         </Fade> */}
 
-        <Scale scale={checked!!}>
-          <Icon name="check" size={iconSize} color={finalIconColor} />
-        </Scale>
-      </View>
-    </TouchableWithoutFeedback>
+      <Scale scale={checked!!}>
+        <Icon name="check" size={iconSize} color={finalIconColor} />
+      </Scale>
+    </View>
   );
 };
 

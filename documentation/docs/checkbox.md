@@ -22,14 +22,7 @@ Checkbox component makes easy to turn and option on and off,which can be usefull
 
 import { Checkbox } from 'frontatish';
 
-
-  <CheckBox
-    isDark={true}
-    checked={true}
-    onPress={() => void}
-    containerStyle={{ marginRight: 20 }}
-  />
-
+<CheckBox isDark={true} checked={true} containerStyle={{ marginRight: 20 }} />;
 ```
 
 ## Props
@@ -41,14 +34,6 @@ Color of check icon inside the checkbox,you can pass whatever color you like and
 |           Type            |        Default         |       Required        |
 | :-----------------------: | :--------------------: | :-------------------: |
 | string <img width="500"/> | None<img width="500"/> | No <img width="500"/> |
-
-### onPress
-
-Callback function that needed to be passed which updates the state of checkbox,to hanle both checked and unchecked state of a checkbox.
-
-|            Type             |        Default         |        Required        |
-| :-------------------------: | :--------------------: | :--------------------: |
-| function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
 
 ### checked
 
