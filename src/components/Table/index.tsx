@@ -65,7 +65,7 @@ const Table = (props: TableProps) => {
         onPress={onLeftKeyPress}
       >
         <Text style={mainLeftItemTextStyle} numberOfLines={1}>
-          {item[leftKey]}
+          {extractResponseFromApiKey(item, leftKey.split('.'))}
         </Text>
       </TouchableOpacity>
     );
@@ -92,7 +92,9 @@ const Table = (props: TableProps) => {
         onPress={onRightKeyPress}
         style={{ flex: 1, paddingVertical: 16 }}
       >
-        <Text style={mainRightItemTextStyle}>{item[option[active]]}</Text>
+        <Text style={mainRightItemTextStyle}>
+          {extractResponseFromApiKey(item, option[active].split('.'))}
+        </Text>
       </TouchableOpacity>
     );
   };
@@ -111,6 +113,21 @@ const Table = (props: TableProps) => {
     // then this callback will be passed & called from here
     if (leftKeyOnPress) leftKeyOnPress();
   };
+
+  const extractResponseFromApiKey = (
+    item: any,
+    depthObjArray: Array<string>,
+  ): string => {
+    // to handle nested case Ex: data.class.student
+    if (depthObjArray.length === 1) {
+      return item[depthObjArray[0]];
+    }
+    return extractResponseFromApiKey(
+      item[depthObjArray[0]],
+      depthObjArray.slice(1),
+    );
+  };
+
   const mainTitleTextStyle = {
     ...styles.titleText,
     color: Colors.font_1,
@@ -143,7 +160,9 @@ const Table = (props: TableProps) => {
           <TableItem item={item} index={index} />
         )}
         initialNumToRender={5}
-        keyExtractor={(item) => item[flatlistKey]}
+        keyExtractor={(item) =>
+          extractResponseFromApiKey(item, flatlistKey.split('.'))
+        }
       />
     </View>
   );

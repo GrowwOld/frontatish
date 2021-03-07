@@ -63,7 +63,7 @@ const TableExample = () => {
           title="Name"
           option={['marketPrice', 'holding', 'industryName']}
           optionLabel={['Market Price', 'Holding', 'Sector']}
-          leftKey="companyName"
+          leftKey="companyHeader.companyName"
           flatlistKey="isin"
           customRightItemComponents={customRightItemComponents}
         />
