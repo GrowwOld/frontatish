@@ -6,7 +6,6 @@ export const tableData = [
     bseScriptCode: 500180,
     nseScriptCode: 'HDFCBANK',
     searchId: 'hdfc-bank-ltd',
-    companyName: 'HDFC Bank Ltd.',
     marketPrice: 1001.75,
     dayChange: 25,
     dayChangePerc: 2.5595085743537243,
@@ -15,6 +14,9 @@ export const tableData = [
     pe: 20.9219,
     holding: 12.57,
     financeSector: true,
+    companyHeader: {
+      companyName: 'HDFC Bank Ltd.',
+    },
   },
   {
     industryCode: 146,
@@ -23,7 +25,6 @@ export const tableData = [
     bseScriptCode: 500325,
     nseScriptCode: 'RELIANCE',
     searchId: 'reliance-industries-ltd',
-    companyName: 'Reliance Industries Ltd.',
     marketPrice: 1467.05,
     dayChange: -40.84999999999991,
     dayChangePerc: -2.864254662740142,
@@ -32,6 +33,9 @@ export const tableData = [
     pe: 30.0946,
     holding: 11.18,
     financeSector: false,
+    companyHeader: {
+      companyName: 'Reliance Industries Ltd.',
+    },
   },
   {
     industryCode: 48,
@@ -40,7 +44,6 @@ export const tableData = [
     bseScriptCode: 500010,
     nseScriptCode: 'HDFC',
     searchId: 'housing-development-finance-corporation-ltd',
-    companyName: 'Housing Development Finance Corporation Ltd.',
     marketPrice: 1917.1,
     dayChange: 80.09999999999991,
     dayChangePerc: 4.360370168753398,
@@ -49,6 +52,9 @@ export const tableData = [
     pe: 18.0476,
     holding: 8.84,
     financeSector: false,
+    companyHeader: {
+      companyName: 'Housing Development Finance Corporation Ltd.',
+    },
   },
   {
     industryCode: 15,
@@ -57,7 +63,6 @@ export const tableData = [
     bseScriptCode: 532174,
     nseScriptCode: 'ICICIBANK',
     searchId: 'icici-bank-ltd',
-    companyName: 'ICICI Bank Ltd.',
     marketPrice: 379.9,
     dayChange: -9.649999999999977,
     dayChangePerc: -2.606347062795402,
@@ -66,6 +71,9 @@ export const tableData = [
     pe: 32.0322,
     holding: 7.15,
     financeSector: true,
+    companyHeader: {
+      companyName: 'ICICI Bank Ltd.',
+    },
   },
   {
     industryCode: 65,
@@ -74,7 +82,6 @@ export const tableData = [
     bseScriptCode: 500209,
     nseScriptCode: 'INFY',
     searchId: 'infosys-ltd',
-    companyName: 'Infosys Ltd.',
     marketPrice: 716.2,
     dayChange: 38.5,
     dayChangePerc: 5.680979784565442,
@@ -83,6 +90,9 @@ export const tableData = [
     pe: 19.6249,
     holding: 6.18,
     financeSector: false,
+    companyHeader: {
+      companyName: 'Infosys Ltd.',
+    },
   },
 ];
 
