@@ -17,6 +17,7 @@ export interface TableProps {
   rightKeyOnPress?: () => void;
   title: string;
   titleTextStyle?: StyleType;
+  topContainerStyle?: StyleType;
 }
 
 export interface TableItemProps {
