@@ -27,19 +27,13 @@ const Table = (props: TableProps) => {
     rightItemTextStyle,
     title,
     titleTextStyle,
+    topContainerStyle,
   } = props;
   const Colors = useColors();
   const TableItem = (itemProps: TableItemProps) => {
-    const { item, index } = itemProps;
-    const borderStyle =
-      index !== data.length - 1
-        ? {
-            borderBottomWidth: 1,
-            borderBottomColor: Colors.font_4,
-          }
-        : null;
+    const { item } = itemProps;
     return (
-      <View style={[borderStyle, { height: 80, flexDirection: 'row' }]}>
+      <View style={{ height: 80, flexDirection: 'row' }}>
         {renderLeftOptionItem(item)}
         {renderRightOptionItem(item)}
       </View>
@@ -140,7 +134,7 @@ const Table = (props: TableProps) => {
   };
   return (
     <View>
-      <View style={{ flexDirection: 'row' }}>
+      <View style={[topContainerStyle, { flexDirection: 'row' }]}>
         <View style={{ flex: 1 }}>
           <Text style={mainTitleTextStyle}>{title}</Text>
         </View>
@@ -159,6 +153,13 @@ const Table = (props: TableProps) => {
         renderItem={({ item, index }) => (
           <TableItem item={item} index={index} />
         )}
+        ItemSeparatorComponent={() => {
+          return (
+            <View
+              style={{ borderBottomWidth: 1, borderBottomColor: Colors.font_4 }}
+            />
+          );
+        }}
         initialNumToRender={5}
         keyExtractor={(item) =>
           extractResponseFromApiKey(item, flatlistKey.split('.'))
