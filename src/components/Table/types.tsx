@@ -6,7 +6,7 @@ export interface TableProps {
   data: Array<any>;
   flatlistKey: string;
   leftKey: string;
-  leftKeyOnPress?: () => void;
+  leftKeyOnPress?: (item: any) => void;
   leftItemContainerStyle?: StyleType;
   leftItemTextStyle?: StyleType;
   rightItemContainerStyle?: StyleType;

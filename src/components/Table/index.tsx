@@ -51,12 +51,14 @@ const Table = (props: TableProps) => {
     // the active option
     if (customLeftItemComponents && customLeftItemComponents[leftKey]) {
       const CustomLeftItem = customLeftItemComponents[leftKey];
-      return <CustomLeftItem item={item} onPress={onLeftKeyPress} />;
+      return (
+        <CustomLeftItem item={item} onPress={() => onLeftKeyPress(item)} />
+      );
     }
     return (
       <TouchableOpacity
         style={{ flex: 2, paddingVertical: 16 }}
-        onPress={onLeftKeyPress}
+        onPress={() => onLeftKeyPress(item)}
       >
         <Text style={mainLeftItemTextStyle} numberOfLines={1}>
           {extractResponseFromApiKey(item, leftKey.split('.'))}
@@ -101,11 +103,12 @@ const Table = (props: TableProps) => {
       setActive((active + 1) % option.length);
     }
   };
-  const onLeftKeyPress = () => {
+
+  const onLeftKeyPress = (item: any) => {
     // if there has been some action needed to be
     // done when user will click left item of table
     // then this callback will be passed & called from here
-    if (leftKeyOnPress) leftKeyOnPress();
+    if (leftKeyOnPress) leftKeyOnPress(item);
   };
 
   const extractResponseFromApiKey = (
