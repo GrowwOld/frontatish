@@ -28,12 +28,14 @@ const Table = (props: TableProps) => {
     title,
     titleTextStyle,
     topContainerStyle,
+    itemSeparator,
+    tableItemStyle,
   } = props;
   const Colors = useColors();
   const TableItem = (itemProps: TableItemProps) => {
     const { item } = itemProps;
     return (
-      <View style={{ height: 80, flexDirection: 'row' }}>
+      <View style={{ height: 80, flexDirection: 'row', ...tableItemStyle }}>
         {renderLeftOptionItem(item)}
         {renderRightOptionItem(item)}
       </View>
@@ -57,10 +59,13 @@ const Table = (props: TableProps) => {
     }
     return (
       <TouchableOpacity
-        style={{ flex: 2, paddingVertical: 16 }}
+        style={{
+          flex: 2,
+          justifyContent: 'center',
+        }}
         onPress={() => onLeftKeyPress(item)}
       >
-        <Text style={mainLeftItemTextStyle} numberOfLines={1}>
+        <Text style={mainLeftItemTextStyle} numberOfLines={2}>
           {extractResponseFromApiKey(item, leftKey.split('.'))}
         </Text>
       </TouchableOpacity>
@@ -156,13 +161,7 @@ const Table = (props: TableProps) => {
         renderItem={({ item, index }) => (
           <TableItem item={item} index={index} />
         )}
-        ItemSeparatorComponent={() => {
-          return (
-            <View
-              style={{ borderBottomWidth: 1, borderBottomColor: Colors.font_4 }}
-            />
-          );
-        }}
+        ItemSeparatorComponent={itemSeparator}
         initialNumToRender={5}
         keyExtractor={(item) =>
           extractResponseFromApiKey(item, flatlistKey.split('.'))
@@ -174,7 +173,6 @@ const Table = (props: TableProps) => {
 
 const styles = StyleSheet.create({
   leftText: {
-    flex: 1,
     fontFamily: Fonts.type.gotham_medium,
     fontSize: Fonts.size.small_13,
     fontWeight: '800',

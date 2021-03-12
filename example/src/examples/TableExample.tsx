@@ -66,6 +66,19 @@ const TableExample = () => {
           leftKey="companyHeader.companyName"
           flatlistKey="isin"
           customRightItemComponents={customRightItemComponents}
+          itemSeparator={() => {
+            return (
+              <View
+                style={{
+                  borderBottomWidth: 1,
+                }}
+              />
+            );
+          }}
+          tableItemStyle={{
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
         />
       </View>
     </SafeAreaView>

@@ -18,6 +18,8 @@ export interface TableProps {
   title: string;
   titleTextStyle?: StyleType;
   topContainerStyle?: StyleType;
+  itemSeparator?: () => void;
+  tableItemStyle?: StyleType;
 }
 
 export interface TableItemProps {
