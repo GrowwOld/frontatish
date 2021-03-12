@@ -18,7 +18,7 @@ export interface TableProps {
   title: string;
   titleTextStyle?: StyleType;
   topContainerStyle?: StyleType;
-  itemSeparator?: () => void;
+  itemSeparator?: React.ComponentType<any>;
   tableItemStyle?: StyleType;
 }
 
