@@ -20,6 +20,7 @@ export interface TableProps {
   topContainerStyle?: StyleType;
   itemSeparator?: React.ComponentType<any>;
   tableItemStyle?: StyleType;
+  rightOptionIconName?: string;
 }
 
 export interface TableItemProps {

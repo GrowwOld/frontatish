@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 import { TableProps, TableItemProps } from './types';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
@@ -30,6 +31,7 @@ const Table = (props: TableProps) => {
     topContainerStyle,
     itemSeparator,
     tableItemStyle,
+    rightOptionIconName,
   } = props;
   const Colors = useColors();
   const TableItem = (itemProps: TableItemProps) => {
@@ -142,18 +144,25 @@ const Table = (props: TableProps) => {
   };
   return (
     <View>
-      <View style={[topContainerStyle, { flexDirection: 'row' }]}>
-        <View style={{ flex: 1 }}>
-          <Text style={mainTitleTextStyle}>{title}</Text>
-        </View>
+      <View
+        style={[
+          topContainerStyle,
+          { flexDirection: 'row', justifyContent: 'space-between' },
+        ]}
+      >
+        <Text style={mainTitleTextStyle}>{title}</Text>
         <TouchableOpacity
           style={{
-            flex: 1,
-            alignItems: 'flex-end',
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
           onPress={onRightKeyPress}
         >
           <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
+          <Icon
+            name={rightOptionIconName ?? 'select-arrows'}
+            color={Colors.primary}
+          />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -162,6 +171,7 @@ const Table = (props: TableProps) => {
           <TableItem item={item} index={index} />
         )}
         ItemSeparatorComponent={itemSeparator}
+        showsVerticalScrollIndicator={false}
         initialNumToRender={5}
         keyExtractor={(item) =>
           extractResponseFromApiKey(item, flatlistKey.split('.'))
