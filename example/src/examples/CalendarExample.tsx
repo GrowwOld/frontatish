@@ -35,11 +35,10 @@ const CalendarExample = () => {
             {date?.toString()}
           </Text>
         </View>
-        <Calendar setDate={setSelectedDate} title="Select Date">
-          <View style={{ margin: 20 }}>
-            <Button label="CONFIRM DATE" />
-          </View>
-        </Calendar>
+        <Calendar setDate={setSelectedDate} title="Select Date" />
+        <View style={{ margin: 20 }}>
+          <Button label="CONFIRM DATE" />
+        </View>
       </View>
     </SafeAreaView>
   );
