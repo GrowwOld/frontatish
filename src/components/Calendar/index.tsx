@@ -112,7 +112,6 @@ const Calendar = (props: CalendarProps) => {
   // activated inside the app
   const Colors = useColors();
   const {
-    setDate,
     title,
     children,
     isDayRequired,
@@ -132,7 +131,6 @@ const Calendar = (props: CalendarProps) => {
     const updatedDate = new Date(newTimeInMS);
     setActiveDate(updatedDate);
   };
-  setDate(activeDate);
 
   const generateMatrix = () => {
     const matrix = [];
