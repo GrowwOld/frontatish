@@ -8,9 +8,10 @@
 
 Below screenshots are some previews of the components which resides in this ui-kit,it is just for demoonstration purposes,the kit contains many more components and helper methods.
 
- <img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" /><img src="documentation/static/img/EmptyScreen.png" height="400" />
+<img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" /><img src="documentation/static/img/EmptyScreen.png" height="400" />
 
 # Set-up
+
 To get started with the project, run `yarn bootstrap` in the root directory to install the required dependencies for each package:
 
 ```bash
@@ -63,15 +64,19 @@ To edit the Java files, open `example/android` in Android studio and find the so
 # Contribute
 
 If you are here to conribute into this project kindly follow the below steps to setup this project in your local system
+
 ```bash
   > git clone `repo-link`
   > cd frontatish
   > yarn bootstrap
+  > cd src
+  > yarn
+  > cd ../
   > yarn example ios or yarn example android
 ```
 
-
 # Quick Install
+
 ```bash
 yarn add frontatish react-native-material-ripple react-native-vector-icons react-native-reanimated react-native-gesture-handler
 ```
@@ -103,5 +108,3 @@ We assume it best perform on `react-native` greater than `v0.60`,we have not tes
 7. [Switch](https://groww.github.io/frontatish/docs/switch)
 8. [Dropdown](https://groww.github.io/frontatish/docs/dropdown)
 9. [Input](https://groww.github.io/frontatish/docs/input)
-
-
