@@ -11,8 +11,7 @@ import { Fonts } from '../../styles';
 
 const styles = StyleSheet.create({
   calendarContainer: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
+    borderRadius: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -21,8 +20,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.22,
     shadowRadius: 2.22,
     elevation: 3,
+    padding: 8,
   },
-  questionText: {
+  TextStyle: {
     fontSize: 18,
     fontWeight: '500',
     fontStyle: 'normal',
@@ -119,6 +119,7 @@ const Calendar = (props: CalendarProps) => {
     isOpen,
     onClosed,
     onConfirmClick,
+    setDate,
     picker_key,
   } = props;
   const changeMonth = (delta: number) => {
@@ -131,6 +132,7 @@ const Calendar = (props: CalendarProps) => {
     const updatedDate = new Date(newTimeInMS);
     setActiveDate(updatedDate);
   };
+  setDate(activeDate);
 
   const generateMatrix = () => {
     const matrix = [];
@@ -214,14 +216,8 @@ const Calendar = (props: CalendarProps) => {
             { backgroundColor: Colors.white, shadowColor: Colors.font_1 },
           ]}
         >
-          <View style={{ marginVertical: 16 }}>
-            <Text
-              style={{
-                textAlign: 'center',
-                color: Colors.font_1,
-                fontWeight: 'bold',
-              }}
-            >
+          <View style={{ marginVertical: 10 }}>
+            <Text style={[styles.TextStyle, { color: Colors.font_1 }]}>
               {title}
             </Text>
           </View>
@@ -319,7 +315,15 @@ const Calendar = (props: CalendarProps) => {
           coverScreen
           // keyboardTopOffset={22}
         >
-          <Text style={styles.questionText}>Select a year & month</Text>
+          <Text style={styles.TextStyle}>Select a year & month</Text>
+          <View
+            style={{
+              borderWidth: 1,
+              height: 1,
+              marginTop: 10,
+              marginHorizontal: 15,
+            }}
+          ></View>
           <ScrollView
             pinchGestureEnabled={false}
             horizontal
@@ -327,25 +331,11 @@ const Calendar = (props: CalendarProps) => {
               marginHorizontal: 30,
             }}
             contentContainerStyle={{
-              marginTop: 15,
               flexGrow: 1,
               alignItems: 'center',
               justifyContent: 'center',
               flexWrap: 'wrap',
             }}
-            // style={{
-            //   backgroundColor: '#fff',
-            //   borderTopLeftRadius: 100,
-            //   borderTopRightRadius: 100,
-            //   //flexDirection: 'column',
-            //   paddingHorizontal: 20,
-            // }}
-            // contentContainerStyle={{
-            //   flexGrow: 1,
-            //   paddingHorizontal: 20,
-            //   paddingVertical: 10,
-            //   backgroundColor: '#ff1',
-            // }}
             showsHorizontalScrollIndicator={false}
           >
             {yearsArray.map((item, index) => (
@@ -369,6 +359,15 @@ const Calendar = (props: CalendarProps) => {
               </Text>
             ))}
           </ScrollView>
+          <View
+            style={{
+              borderWidth: 1,
+              height: 1,
+              marginBottom: 10,
+              marginTop: 10,
+              marginHorizontal: 15,
+            }}
+          ></View>
           <View
             style={{
               flexDirection: 'row',
@@ -417,6 +416,7 @@ Calendar.defaultProps = {
   onClosed: () => {},
   onConfirmClick: () => {},
   picker_key: {},
+  setDate: () => {},
 };
 
 export default Calendar;

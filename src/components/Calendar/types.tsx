@@ -9,6 +9,7 @@ export interface picker {
   value: monthYear;
 }
 export interface CalendarProps {
+  setDate: (calendarDate: Date) => void;
   title: string;
   children: ReactNode;
   isDayRequired: boolean;
