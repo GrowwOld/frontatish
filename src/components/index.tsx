@@ -7,6 +7,7 @@ import Dropdown from './Dropdown';
 import Input from './Input';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
+import RadioGroup from './RadioGroup';
 import Table from './Table';
 import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
@@ -23,6 +24,7 @@ export {
   Dropdown,
   NumPad,
   RadioButton,
+  RadioGroup,
   Ripple,
   Switch,
   Searchbar,
