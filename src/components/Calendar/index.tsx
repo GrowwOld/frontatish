@@ -316,15 +316,7 @@ const Calendar = (props: CalendarProps) => {
           // keyboardTopOffset={22}
         >
           <Text style={styles.TextStyle}>Select a year & month</Text>
-          <View
-            style={{
-              borderWidth: 1,
-              height: 1,
-              marginTop: 10,
-              marginHorizontal: 15,
-            }}
-          ></View>
-          <ScrollView
+          <ScrollView //use onScroll for the year selected
             pinchGestureEnabled={false}
             horizontal
             style={{
@@ -359,15 +351,6 @@ const Calendar = (props: CalendarProps) => {
               </Text>
             ))}
           </ScrollView>
-          <View
-            style={{
-              borderWidth: 1,
-              height: 1,
-              marginBottom: 10,
-              marginTop: 10,
-              marginHorizontal: 15,
-            }}
-          ></View>
           <View
             style={{
               flexDirection: 'row',
@@ -411,7 +394,7 @@ const Calendar = (props: CalendarProps) => {
 Calendar.defaultProps = {
   title: 'Select Date:',
   isDayRequired: true,
-  yearsArray: [2016, 2017, 2018, 2019, 2020, 2021],
+  yearsArray: [2016, 2017, 2018, 2019, 2020, 2021], //bounds on year
   isOpen: false,
   onClosed: () => {},
   onConfirmClick: () => {},

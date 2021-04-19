@@ -31,6 +31,7 @@ const CalendarExample = () => {
             onColor="#00D09C"
             offColor="#E6E7E8"
             onToggle={() => {
+              //use useCallback
               setIsDayRequired(!isDayRequired);
               setIsOpen(true);
             }}
