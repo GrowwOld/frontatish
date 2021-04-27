@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import Modalbox from 'react-native-modalbox';
+// eslint-disable-next-line import/no-unresolved
 import { Button } from 'frontatish';
+import Modal from 'react-native-modal';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
 import { Fonts } from '../../styles';
@@ -108,20 +109,22 @@ const Calendar = (props: CalendarProps) => {
   const [activeDate, setActiveDate] = useState(new Date());
   const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
   const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
+  const [refFlatList, setRefFlatList] = useState();
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = useColors();
   const {
     title,
     children,
-    isDayRequired,
+    type,
     yearsArray,
     isOpen,
     onClosed,
     onConfirmClick,
     setDate,
-    picker_key,
+    pickerKey,
   } = props;
+
   const changeMonth = (delta: number) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
     const updatedDate = new Date(newTimeInMS);
@@ -207,9 +210,12 @@ const Calendar = (props: CalendarProps) => {
       </View>
     );
   };
-  return (
-    <View>
-      {isDayRequired ? (
+  const getItemLayout = (index: number) => {
+    return { length: 70, offset: 70 * (index - 1), index };
+  };
+  switch (type) {
+    case 'D/M/Y':
+      return (
         <View
           style={[
             styles.calendarContainer,
@@ -289,116 +295,154 @@ const Calendar = (props: CalendarProps) => {
           </View>
           {children}
         </View>
-      ) : (
-        <Modalbox
+      );
+
+    case 'M/Y':
+      return (
+        // <Modalbox
+        //   style={{
+        //     width: 302,
+        //     height: null,
+        //     borderRadius: 10,
+        //     paddingHorizontal: 20,
+        //     maxHeight: 320,
+        //   }}
+        //   isOpen={isOpen}
+        //   // isDisabled={isDisabled}
+        //   backdropPressToClose
+        //   swipeToClose={false}
+        //   position="center"
+        //   entry="bottom"
+        //   backdrop
+        //   backdropOpacity={0.8}
+        //   backdropColor="black"
+        //   backdropContent={null}
+        //   animationDuration={400}
+        //   onClosed={onClosed}
+        //   backButtonClose
+        //   startOpen={false}
+        //   coverScreen
+        //   // keyboardTopOffset={22}
+        // >
+        <View
           style={{
-            width: 302,
-            height: null,
-            borderRadius: 10,
-            paddingHorizontal: 20,
-            maxHeight: 320,
+            justifyContent: 'center',
+            flex: 1,
+            alignContent: 'center',
           }}
-          isOpen={isOpen}
-          // isDisabled={isDisabled}
-          backdropPressToClose
-          swipeToClose={false}
-          position="center"
-          entry="bottom"
-          backdrop
-          backdropOpacity={0.8}
-          backdropColor="black"
-          backdropContent={null}
-          animationDuration={400}
-          onClosed={onClosed}
-          backButtonClose
-          startOpen={false}
-          coverScreen
-          // keyboardTopOffset={22}
         >
-          <Text style={styles.TextStyle}>Select a year & month</Text>
-          <ScrollView //use onScroll for the year selected
-            pinchGestureEnabled={false}
-            horizontal
+          <Modal
+            isVisible={isOpen}
+            backdropOpacity={0.8}
+            onBackdropPress={onClosed}
+            animationOutTiming={500}
+            onBackButtonPress={onClosed}
+            onModalShow={() => {
+              refFlatList.scrollToIndex({
+                animated: true,
+                index: selectedYear - yearsArray[0],
+              });
+            }}
             style={{
-              marginHorizontal: 30,
+              width: 302,
+              flex: -1,
+              borderRadius: 10,
+              paddingHorizontal: 20,
+
+              backgroundColor: 'white',
+              alignSelf: 'center',
             }}
-            contentContainerStyle={{
-              flexGrow: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexWrap: 'wrap',
-            }}
-            showsHorizontalScrollIndicator={false}
           >
-            {yearsArray.map((item, index) => (
-              <Text
-                key={index}
-                style={
-                  selectedYear === item
-                    ? [styles.yearSelectedStyle, { marginBottom: 0, flex: 1 }]
-                    : [
-                        styles.unselectedStyle,
-                        {
-                          marginBottom: 0,
-                          flex: 1,
-                          width: 60,
-                        },
-                      ]
-                }
-                onPress={() => setSelectedYear(item)}
+            <View>
+              <Text style={styles.TextStyle}>Select a year & month</Text>
+              <FlatList
+                data={yearsArray}
+                renderItem={({ item, index }) => (
+                  <Text
+                    key={index}
+                    style={
+                      selectedYear === item
+                        ? [
+                            styles.yearSelectedStyle,
+                            { marginBottom: 0, flex: 1 },
+                          ]
+                        : [
+                            styles.unselectedStyle,
+                            {
+                              marginBottom: 0,
+                              flex: 1,
+                              width: 60,
+                              alignSelf: 'center',
+                            },
+                          ]
+                    }
+                    onPress={() => setSelectedYear(item)}
+                  >
+                    {item}
+                  </Text>
+                )}
+                getItemLayout={getItemLayout}
+                keyExtractor={(item) => item.toString()}
+                horizontal
+                style={{
+                  marginHorizontal: 30,
+                }}
+                ref={(ref) => setRefFlatList(ref)}
+              />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  flexWrap: 'wrap',
+                  justifyContent: 'center',
+                  paddingHorizontal: 25,
+                }}
               >
-                {item}
-              </Text>
-            ))}
-          </ScrollView>
-          <View
-            style={{
-              flexDirection: 'row',
-              flexWrap: 'wrap',
-              justifyContent: 'center',
-              paddingHorizontal: 25,
-            }}
-          >
-            {months.map((item, index) => {
-              return (
-                <Text
-                  key={index}
-                  onPress={() => setSelectedMonth(index)}
-                  style={
-                    months[selectedMonth] === item
-                      ? [styles.selectedStyle]
-                      : [styles.unselectedStyle]
-                  }
-                >
-                  {item.substr(0, 3)}
-                </Text>
-              );
-            })}
-          </View>
-          <Button
-            label="Done"
-            customStyles={{ margin: 12 }}
-            onPress={() =>
-              onConfirmClick({
-                key: picker_key,
-                value: { year: selectedYear, month: selectedMonth },
-              })
-            }
-          />
-        </Modalbox>
-      )}
-    </View>
-  );
+                {months.map((item, index) => {
+                  return (
+                    <Text
+                      onPress={() => setSelectedMonth(index)}
+                      style={
+                        months[selectedMonth] === item
+                          ? [styles.selectedStyle]
+                          : [styles.unselectedStyle]
+                      }
+                    >
+                      {item.substr(0, 3)}
+                    </Text>
+                  );
+                })}
+              </View>
+              <Button
+                label="Done"
+                customStyles={{ margin: 12 }}
+                onPress={() =>
+                  onConfirmClick({
+                    key: pickerKey,
+                    value: { year: selectedYear, month: selectedMonth },
+                  })
+                }
+              />
+            </View>
+          </Modal>
+        </View>
+      );
+    default:
+      return (
+        <View>
+          <Text>Day Picker</Text>
+        </View>
+      );
+  }
 };
 
 Calendar.defaultProps = {
   title: 'Select Date:',
-  isDayRequired: true,
-  yearsArray: [2016, 2017, 2018, 2019, 2020, 2021], //bounds on year
+  type: 'D/M/Y',
+  yearsArray: [2016, 2017, 2018, 2019, 2020, 2021], // bounds on year
   isOpen: false,
   onClosed: () => {},
   onConfirmClick: () => {},
-  picker_key: {},
+  pickerKey: {},
   setDate: () => {},
 };
 
