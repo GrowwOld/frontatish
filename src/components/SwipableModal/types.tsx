@@ -1,3 +1,7 @@
+import { ReactNode } from 'react';
+
 export interface SwipableModalProps {
-    title: string;
+  children: ReactNode;
+  isOpen: boolean;
+  closeModal: () => void;
 }

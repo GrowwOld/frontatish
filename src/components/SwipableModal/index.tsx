@@ -1,87 +1,85 @@
-import React, { useState } from 'react';
-import { View, Text, Dimensions } from 'react-native';
-import { SwipableModalProps } from './types';
+import React, { useState, useRef } from 'react';
+import {
+  View,
+  Dimensions,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  ScrollView,
+} from 'react-native';
 import Modal from 'react-native-modal';
-import { Button } from 'frontatish';
-import { ScrollView } from 'react-native-gesture-handler';
+
+// eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import Modalbox from 'react-native-modalbox';
+import { SwipableModalProps } from './types';
 import { useColors } from '../../themes';
+import BottomFixedView from '../../ui/BottomFixedView';
 
 const SwipableModal = (props: SwipableModalProps) => {
   const Colors = useColors();
-  const { title } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const { children, isOpen, closeModal } = props;
 
-  const closeModal = () => {
-    setIsOpen(false);
+  const [scrollOffset, setScrollOffset] = useState(0);
+
+  const scrollViewRef = useRef<ScrollView>(null);
+
+  const handleOnScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    setScrollOffset(event.nativeEvent.contentOffset.y);
   };
+  const handleScrollTo = (p: number) => {
+    if (scrollViewRef.current) {
+      scrollViewRef.current.scrollTo(p);
+    }
+  };
+
   return (
-    <View
+    <Modal
+      isVisible={isOpen}
+      backdropOpacity={0.3}
+      swipeDirection="down"
+      animationOutTiming={500}
+      swipeThreshold={Dimensions.get('window').height / 8}
+      onSwipeComplete={closeModal}
+      onBackdropPress={closeModal}
+      onBackButtonPress={closeModal}
+      propagateSwipe
+      coverScreen
       style={{
-        margin: 30,
-        flex: 1,
-        justifyContent: 'center',
-        backgroundColor: 'red',
+        margin: 0,
       }}
+      scrollTo={handleScrollTo}
+      scrollOffset={scrollOffset}
+      scrollOffsetMax={500}
     >
-      <Text>{title}</Text>
-      <Modal
-        isVisible={isOpen}
-        backdropOpacity={0.3}
-        swipeDirection="down"
-        animationOutTiming={500}
-        swipeThreshold={Dimensions.get('window').height / 8}
-        onSwipeComplete={closeModal}
-        onBackdropPress={closeModal}
-        onBackButtonPress={closeModal}
-        propagateSwipe={true}
-        coverScreen={true}
-        style={{
-          margin: 0,
-        }}
-      >
-        {/* <Modalbox
-        isOpen={isOpen}
-        backButtonClose
-        onClosed={closeModal}
-        coverScreen
-        swipeThreshold={150}
-        style={{
-          borderRadius: 4,
-          maxHeight: 600,
-          bottom: 0,
-          position: 'absolute',
-        }}
-      > */}
+      <BottomFixedView>
         <View
           style={{
-            padding: 5,
             flex: 1,
             backgroundColor: Colors.white,
             borderRadius: 4,
             bottom: 0,
             position: 'absolute',
             width: '100%',
-            maxHeight: Dimensions.get('window').height / 2,
+            maxHeight: (Dimensions.get('window').height * 3) / 4,
+            minHeight: Dimensions.get('window').height / 3,
           }}
         >
           <View
             style={{
+              paddingHorizontal: 5,
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
-              backgroundColor: Colors.font_6,
+              // backgroundColor: Colors.font_6,
             }}
           >
-            <View style={{ width: 32 }}></View>
+            <View style={{ width: 32 }} />
             <View
               style={{
                 borderWidth: 1,
                 width: 50,
               }}
-            ></View>
+            />
             <Ripple
               style={{
                 height: 32,
@@ -100,23 +98,25 @@ const SwipableModal = (props: SwipableModalProps) => {
               />
             </Ripple>
           </View>
-          {/* <ScrollView>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-            <Text style={{ flex: 1, fontSize: 100 }}>Hello</Text>
-          </ScrollView> */}
+          <View
+            style={{
+              marginHorizontal: 20,
+              marginTop: 10,
+              marginBottom: 50,
+            }}
+          >
+            <ScrollView
+              ref={scrollViewRef}
+              onScroll={handleOnScroll}
+              scrollEventThrottle={16}
+              showsVerticalScrollIndicator={false}
+            >
+              {children}
+            </ScrollView>
+          </View>
         </View>
-        {/* </Modalbox> */}
-      </Modal>
-      <Button label="Open Modal" onPress={() => setIsOpen(true)} />
-    </View>
+      </BottomFixedView>
+    </Modal>
   );
-};
-
-SwipableModal.defaultProps = {
-  title: 'Hello',
 };
 export default SwipableModal;
