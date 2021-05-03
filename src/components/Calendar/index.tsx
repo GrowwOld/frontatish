@@ -117,7 +117,8 @@ const Calendar = (props: CalendarProps) => {
     title,
     children,
     type,
-    yearsArray,
+    yearsArrayLowerBound,
+    yearsArrayUpperBound,
     isOpen,
     onClosed,
     onConfirmClick,
@@ -136,6 +137,14 @@ const Calendar = (props: CalendarProps) => {
     setActiveDate(updatedDate);
   };
   setDate(activeDate);
+  const yearsArray = [];
+  for (
+    let year = yearsArrayLowerBound;
+    year <= yearsArrayUpperBound;
+    year += 1
+  ) {
+    yearsArray.push(year);
+  }
 
   const generateMatrix = () => {
     const matrix = [];
@@ -210,7 +219,7 @@ const Calendar = (props: CalendarProps) => {
       </View>
     );
   };
-  const getItemLayout = (index: number) => {
+  const getItemLayout = (data: number[] | null | undefined, index: number) => {
     return { length: 70, offset: 70 * (index - 1), index };
   };
   switch (type) {
@@ -340,7 +349,7 @@ const Calendar = (props: CalendarProps) => {
             onModalShow={() => {
               refFlatList.scrollToIndex({
                 animated: true,
-                index: selectedYear - yearsArray[0],
+                index: selectedYear - yearsArrayLowerBound,
               });
             }}
             style={{
@@ -438,7 +447,8 @@ const Calendar = (props: CalendarProps) => {
 Calendar.defaultProps = {
   title: 'Select Date:',
   type: 'D/M/Y',
-  yearsArray: [2016, 2017, 2018, 2019, 2020, 2021], // bounds on year
+  yearsArrayLowerBound: 2016,
+  yearsArrayUpperBound: new Date().getFullYear(),
   isOpen: false,
   onClosed: () => {},
   onConfirmClick: () => {},

@@ -13,7 +13,8 @@ export interface CalendarProps {
   title: string;
   children?: ReactNode;
   type: string;
-  yearsArray?: Array<number>;
+  yearsArrayLowerBound: number;
+  yearsArrayUpperBound: number;
   isOpen?: boolean;
   onClosed: () => void;
   onConfirmClick: (data: picker) => void;
