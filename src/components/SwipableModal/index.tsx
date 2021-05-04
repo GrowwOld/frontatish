@@ -17,7 +17,19 @@ import BottomFixedView from '../../ui/BottomFixedView';
 
 const SwipableModal = (props: SwipableModalProps) => {
   const Colors = useColors();
-  const { children, isOpen, closeModal } = props;
+  const {
+    children,
+    isOpen,
+    hasBackdrop,
+    backdropOpacity,
+    swipeThreshold,
+    swipable,
+    componentStyle,
+    onSwipeComplete,
+    onBackButtonPress,
+    onBackdropPress,
+    onCloseButtonPress,
+  } = props;
 
   const [scrollOffset, setScrollOffset] = useState(0);
 
@@ -35,15 +47,15 @@ const SwipableModal = (props: SwipableModalProps) => {
   return (
     <Modal
       isVisible={isOpen}
-      backdropOpacity={0.3}
-      swipeDirection="down"
+      hasBackdrop={hasBackdrop}
+      backdropOpacity={backdropOpacity}
+      swipeDirection={swipable ? 'down' : null}
       animationOutTiming={500}
-      swipeThreshold={Dimensions.get('window').height / 8}
-      onSwipeComplete={closeModal}
-      onBackdropPress={closeModal}
-      onBackButtonPress={closeModal}
+      swipeThreshold={swipeThreshold}
+      onSwipeComplete={onSwipeComplete}
+      onBackdropPress={onBackdropPress}
+      onBackButtonPress={onBackButtonPress}
       propagateSwipe
-      coverScreen
       style={{
         margin: 0,
       }}
@@ -53,55 +65,56 @@ const SwipableModal = (props: SwipableModalProps) => {
     >
       <BottomFixedView>
         <View
-          style={{
-            flex: 1,
-            backgroundColor: Colors.white,
-            borderRadius: 4,
-            bottom: 0,
-            position: 'absolute',
-            width: '100%',
-            maxHeight: (Dimensions.get('window').height * 3) / 4,
-            minHeight: Dimensions.get('window').height / 3,
-          }}
+          style={[
+            {
+              backgroundColor: Colors.white,
+              borderRadius: 4,
+              maxHeight: (Dimensions.get('window').height * 3) / 4,
+              minHeight: Dimensions.get('window').height / 3,
+            },
+            componentStyle,
+          ]}
         >
-          <View
-            style={{
-              paddingHorizontal: 5,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              // backgroundColor: Colors.font_6,
-            }}
-          >
-            <View style={{ width: 32 }} />
+          {swipable ? (
             <View
               style={{
-                borderWidth: 1,
-                width: 50,
-              }}
-            />
-            <Ripple
-              style={{
-                height: 32,
-                width: 32,
+                paddingHorizontal: 5,
+                flexDirection: 'row',
+                justifyContent: 'space-between',
                 alignItems: 'center',
-                justifyContent: 'center',
-                alignSelf: 'center',
+                // backgroundColor: Colors.font_6,
               }}
-              rippleContainerBorderRadius={16}
-              onPress={closeModal}
             >
-              <IonIcon
-                name="ios-close"
-                size={24}
-                // style={{ flex: 1, textAlign: 'center' }}
+              <View style={{ width: 32 }} />
+              <View
+                style={{
+                  borderWidth: 1,
+                  width: 50,
+                }}
               />
-            </Ripple>
-          </View>
+              <Ripple
+                style={{
+                  height: 32,
+                  width: 32,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  alignSelf: 'center',
+                }}
+                rippleContainerBorderRadius={16}
+                onPress={onCloseButtonPress}
+              >
+                <IonIcon
+                  name="ios-close"
+                  size={24}
+                  // style={{ flex: 1, textAlign: 'center' }}
+                />
+              </Ripple>
+            </View>
+          ) : null}
           <View
             style={{
               marginHorizontal: 20,
-              marginTop: 10,
+              marginTop: swipable ? 10 : 20,
               marginBottom: 50,
             }}
           >
@@ -118,5 +131,12 @@ const SwipableModal = (props: SwipableModalProps) => {
       </BottomFixedView>
     </Modal>
   );
+};
+
+SwipableModal.defaultProps = {
+  hasBackDrop: true,
+  backdropOpacity: 0.7,
+  swipeThreshold: Dimensions.get('window').height / 5,
+  swipable: true,
 };
 export default SwipableModal;

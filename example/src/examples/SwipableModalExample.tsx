@@ -75,7 +75,13 @@ const SwipableModalExample = () => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <SwipableModal isOpen={isOpen} closeModal={closeModal}>
+      <SwipableModal
+        isOpen={isOpen}
+        onBackButtonPress={closeModal}
+        onSwipeComplete={closeModal}
+        onBackdropPress={closeModal}
+        onCloseButtonPress={closeModal}
+      >
         {children()}
       </SwipableModal>
       <View
