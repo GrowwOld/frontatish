@@ -5,6 +5,7 @@ import {
   NativeSyntheticEvent,
   NativeScrollEvent,
   ScrollView,
+  StyleSheet,
 } from 'react-native';
 import Modal from 'react-native-modal';
 
@@ -12,11 +13,9 @@ import Modal from 'react-native-modal';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 import { SwipableModalProps } from './types';
-import { useColors } from '../../themes';
 import BottomFixedView from '../../ui/BottomFixedView';
 
 const SwipableModal = (props: SwipableModalProps) => {
-  const Colors = useColors();
   const {
     children,
     isOpen,
@@ -64,27 +63,9 @@ const SwipableModal = (props: SwipableModalProps) => {
       scrollOffsetMax={500}
     >
       <BottomFixedView>
-        <View
-          style={[
-            {
-              backgroundColor: Colors.white,
-              borderRadius: 4,
-              maxHeight: (Dimensions.get('window').height * 3) / 4,
-              minHeight: Dimensions.get('window').height / 3,
-            },
-            componentStyle,
-          ]}
-        >
+        <View style={[styles.container, componentStyle]}>
           {swipable ? (
-            <View
-              style={{
-                paddingHorizontal: 5,
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                // backgroundColor: Colors.font_6,
-              }}
-            >
+            <View style={styles.topBar}>
               <View style={{ width: 32 }} />
               <View
                 style={{
@@ -93,31 +74,15 @@ const SwipableModal = (props: SwipableModalProps) => {
                 }}
               />
               <Ripple
-                style={{
-                  height: 32,
-                  width: 32,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  alignSelf: 'center',
-                }}
+                style={styles.closeButton}
                 rippleContainerBorderRadius={16}
                 onPress={onCloseButtonPress}
               >
-                <IonIcon
-                  name="ios-close"
-                  size={24}
-                  // style={{ flex: 1, textAlign: 'center' }}
-                />
+                <IonIcon name="ios-close" size={24} />
               </Ripple>
             </View>
           ) : null}
-          <View
-            style={{
-              marginHorizontal: 20,
-              marginTop: swipable ? 10 : 20,
-              marginBottom: 50,
-            }}
-          >
+          <View style={[styles.contentView, { marginTop: swipable ? 10 : 20 }]}>
             <ScrollView
               ref={scrollViewRef}
               onScroll={handleOnScroll}
@@ -139,4 +104,30 @@ SwipableModal.defaultProps = {
   swipeThreshold: Dimensions.get('window').height / 5,
   swipable: true,
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: 'white',
+    borderRadius: 4,
+    maxHeight: (Dimensions.get('window').height * 3) / 4,
+    minHeight: Dimensions.get('window').height / 3,
+  },
+  topBar: {
+    paddingHorizontal: 5,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  closeButton: {
+    height: 32,
+    width: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+  },
+  contentView: {
+    marginHorizontal: 20,
+    marginBottom: 50,
+  },
+});
 export default SwipableModal;
