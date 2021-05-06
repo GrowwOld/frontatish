@@ -89,6 +89,13 @@ Follow this [link](https://groww.github.io/frontatish/docs/getting-started) to s
 
 > The library is still under development & we are working to ship more usefull components very soon,below are some components which seems stable to use for now.
 
+# Hot Reload
+
+```bash
+  > cd example
+  > yarn start
+```
+
 # Requirements
 
 Few of our components depends on external libraries to perform well,for example [Checkbox](https://groww.github.io/frontatish/docs/checkbox),it depends on [react-native-vector-icons](https://www.npmjs.com/package/react-native-vector-icons) to render icons inside the box,similarly [Button](https://groww.github.io/frontatish/docs/button) uses [react-native-material-ripple](https://www.npmjs.com/package/react-native-material-ripple) so before using these components you should install along with the `frontatish` installation
