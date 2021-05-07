@@ -6,7 +6,7 @@
 
 # Preview
 
-Below screenshots are some previews of the components which resides in this ui-kit,it is just for demoonstration purposes,the kit contains many more components and helper methods.
+Below screenshots are some previews of the components which resides in this ui-kit, it is just for demonstration purposes, the kit contains many more components and helper methods.
 
 <img src="documentation/static/img/ButtonScreen.png" height="400"/><img src="documentation/static/img/NumpadScreen.png" height="400"/><img src="documentation/static/img/DropdownScreen.png" height="400"/> <img src="documentation/static/img/TableScreen.png" height="400" /><img src="documentation/static/img/EmptyScreen.png" height="400" />
 
