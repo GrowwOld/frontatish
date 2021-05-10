@@ -88,11 +88,13 @@ const Table = (props: TableProps) => {
       customRightItemComponents[option[active]]
     ) {
       const CustomRightItem = customRightItemComponents[option[active]];
-      return <CustomRightItem item={item} onPress={onRightKeyPress} />;
+      return (
+        <CustomRightItem item={item} onPress={() => onRightKeyPress(item)} />
+      );
     }
     return (
       <TouchableOpacity
-        onPress={onRightKeyPress}
+        onPress={() => onRightKeyPress(item)}
         style={{ flex: 1, paddingVertical: 16 }}
       >
         <Text style={mainRightItemTextStyle}>
@@ -101,11 +103,11 @@ const Table = (props: TableProps) => {
       </TouchableOpacity>
     );
   };
-  const onRightKeyPress = () => {
+  const onRightKeyPress = (item?: any) => {
     // if there has been some action needed to be
     // done when user will click right item of table
     // then this callback will be passed & called from here
-    if (rightKeyOnPress) rightKeyOnPress();
+    if (rightKeyOnPress) rightKeyOnPress(optionLabel[active], item);
     if (typeof option === 'object') {
       setActive((active + 1) % option.length);
     }
@@ -156,7 +158,7 @@ const Table = (props: TableProps) => {
             flexDirection: 'row',
             alignItems: 'center',
           }}
-          onPress={onRightKeyPress}
+          onPress={() => onRightKeyPress(optionLabel[active])}
         >
           <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
           <Icon
