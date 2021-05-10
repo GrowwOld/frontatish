@@ -14,7 +14,7 @@ export interface TableProps {
   option: Array<string> | string;
   optionLabel: Array<string> | string;
   optionTextStyle?: StyleType;
-  rightKeyOnPress?: () => void;
+  rightKeyOnPress?: (label?: any, item?: any) => void;
   title: string;
   titleTextStyle?: StyleType;
   topContainerStyle?: StyleType;
