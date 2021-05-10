@@ -158,7 +158,7 @@ const Table = (props: TableProps) => {
             flexDirection: 'row',
             alignItems: 'center',
           }}
-          onPress={() => onRightKeyPress(optionLabel[active])}
+          onPress={onRightKeyPress}
         >
           <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
           <Icon
