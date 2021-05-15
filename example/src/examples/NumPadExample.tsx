@@ -47,11 +47,22 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
           backgroundColor: Colors.white,
         }}
       >
-        <View style={{ flex: 1, justifyContent: 'center' }}>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
           <CodeInput
             value={input}
             codeLength={this.codeLength}
             inputContainer="line"
+          />
+        </View>
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+        >
+          <CodeInput
+            value={input}
+            codeLength={this.codeLength}
+            inputContainer="box"
           />
         </View>
 

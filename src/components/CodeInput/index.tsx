@@ -20,11 +20,20 @@ interface CodeInputState {
 }
 const styles = StyleSheet.create({
   inputBox: {
-    width: 50,
-    height: 50,
+    width: 40,
+    height: 48,
     borderWidth: 2,
-    borderColor: 'black',
-    marginRight: 30,
+    borderColor: LIGHT_MODE_COLORS.primary_attr_40,
+    marginRight: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  animatedInputBox: {
+    width: 40,
+    height: 48,
+    borderWidth: 2.5,
+    borderColor: LIGHT_MODE_COLORS.primary,
+    marginRight: 18,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -34,8 +43,8 @@ const styles = StyleSheet.create({
     marginRight: 18,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: 2,
-    borderBottomColor: 'black',
+    borderBottomWidth: 2.5,
+    borderBottomColor: LIGHT_MODE_COLORS.primary,
   },
   inputUnderlined: {
     height: 48,
@@ -43,8 +52,8 @@ const styles = StyleSheet.create({
     marginRight: 18,
     justifyContent: 'center',
     alignItems: 'center',
-    borderBottomWidth: 2,
-    borderBottomColor: LIGHT_MODE_COLORS.primary,
+    // borderBottomWidth: 2,
+    // borderBottomColor: LIGHT_MODE_COLORS.primary_attr_40,
     backgroundColor: LIGHT_MODE_COLORS.font_5,
   },
 });
@@ -101,25 +110,26 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderInputUI = () => {
-    const { codeLength, Colors, inputContainer } = this.props;
-    const { codeInputValue, activeInput } = this.state;
+    const { codeLength, /* Colors */ inputContainer } = this.props;
+    const { codeInputValue /* activeInput */ } = this.state;
     const ui = [];
     // console.log('codeInputValue is', codeInputValue);
     for (let i = 0; i < codeLength; i += 1) {
-      const activeStyle =
-        inputContainer === 'line'
-          ? {
-              borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
-            }
-          : // eslint-disable-next-line camelcase
-            { borderColor: Colors?.font_1 ?? LIGHT_MODE_COLORS.font_1 };
+      const lastInputStyle = i === codeLength - 1 ? { marginRight: 0 } : {};
+      // const activeStyle =
+      //   inputContainer === 'line'
+      //     ? {
+      //         borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
+      //       }
+      //     : // eslint-disable-next-line camelcase
+      //       { borderColor: Colors?.font_1 ?? LIGHT_MODE_COLORS.font_1 };
       ui.push(
         <TouchableWithoutFeedback
           style={[
             inputContainer === 'line'
               ? styles.inputUnderlined
               : styles.inputBox,
-            activeInput === i ? activeStyle : null,
+            lastInputStyle,
           ]}
           key={i.toString()}
           onPress={() => this.setActiveInputBox(i)}
@@ -143,12 +153,12 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     const prevXDistance = prevActiveInput * translator;
     const currentXDistance = activeInput * translator;
     return (
-      <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
+      <View style={{ flexDirection: 'row' }}>
         <Animated.View
           style={[
             inputContainer === 'line'
               ? styles.animatedUnderLine
-              : styles.inputBox,
+              : styles.animatedInputBox,
             {
               position: 'absolute',
               left: 0,
