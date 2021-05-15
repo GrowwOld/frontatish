@@ -10,22 +10,26 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
+import { DropdownProps } from './types';
 import DropList from './DropList';
 import Line from './Line';
 
-interface DropdownProps {
-  dropItems: Array<string>;
-  active: number;
-  onChange: (index: number) => void;
-}
-
 const Dropdown = (props: DropdownProps) => {
-  const animateRotate = useRef(new Animated.Value(0)).current;
   const [open, setOpen] = useState(false);
-  const { dropItems, active, onChange } = props;
+  const {
+    items,
+    active,
+    onChange,
+    itemStyle,
+    activeItemStyle,
+    iconColor,
+  } = props;
+  const animateRotate = useRef(new Animated.Value(0)).current;
   const Colors = useColors();
   const styles = getStyles(Colors);
+
   const handleList = () => {
+    // axios.get();
     Animated.timing(animateRotate, {
       toValue: open ? 0 : 1,
       duration: 300,
@@ -41,14 +45,13 @@ const Dropdown = (props: DropdownProps) => {
     <View style={styles.container}>
       <TouchableNativeFeedback onPress={handleList}>
         <View style={styles.activeItem}>
-          <Text style={{ color: Colors.font_2 }}>{dropItems[active]}</Text>
+          <Text style={{ color: Colors.font_2, ...activeItemStyle }}>
+            {items[active]?.label ?? items[active]}
+          </Text>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Animated.View
               style={[
-                // styles.caret,
                 {
-                  // flex: 1,
-                  // alignItems: 'flex-end',
                   transform: [
                     {
                       rotate: animateRotate.interpolate({
@@ -63,7 +66,7 @@ const Dropdown = (props: DropdownProps) => {
               <Icon
                 name="keyboard-arrow-down"
                 size={20}
-                color={Colors.primary}
+                color={iconColor ?? Colors.primary}
               />
             </Animated.View>
           </View>
@@ -71,7 +74,12 @@ const Dropdown = (props: DropdownProps) => {
       </TouchableNativeFeedback>
       {!open && <Line />}
       {open && (
-        <DropList items={dropItems} active={active} onItemClick={onItemClick} />
+        <DropList
+          items={items}
+          active={active}
+          onChange={onItemClick}
+          itemStyle={itemStyle}
+        />
       )}
     </View>
   );
@@ -79,7 +87,7 @@ const Dropdown = (props: DropdownProps) => {
 
 const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
-    container: { margin: 20, position: 'relative' },
+    container: { margin: 20 },
     activeItem: {
       flexDirection: 'row',
       alignItems: 'center',

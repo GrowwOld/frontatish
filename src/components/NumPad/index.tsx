@@ -11,7 +11,7 @@ import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
 const NumPad = (props: NumPadProps) => {
-  const { onItemClick, onDeleteItem } = props;
+  const { onItemClick, onDeleteItem, onSubmit } = props;
   const numberRange = [
     '1',
     '2',
@@ -22,42 +22,42 @@ const NumPad = (props: NumPadProps) => {
     '7',
     '8',
     '9',
-    '.',
-    '0',
     'X',
+    '0',
+    '.',
   ];
-  // return (
 
-  //   <View style={{ flexDirection: 'row', flexWrap: 'wrap', alignItems: 'flex-start'}}>
-  //     {numberRange.map((value) => (
-  //       <NumberItem value={value} key={value} />
-  //     ))}
-  //   </View>
-  // );
+  const onButtonPress = (item: any) => {
+    switch (item) {
+      case 'X':
+        return onDeleteItem();
+      case '.':
+        return onSubmit();
+      default:
+        return onItemClick(item);
+    }
+  };
+
   const Colors = useColors();
   return (
     <View>
       <FlatList
         data={numberRange}
         horizontal={false}
-        // scrollEnabled={false}
+        scrollEnabled={false}
         // contentContainerStyle={styles.numPadContainerStyle}
         numColumns={3}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <Ripple
-            style={{
-              flex: 1,
-              padding: 20,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
+            style={styles.rippleContainer}
             rippleContainerBorderRadius={20}
-            onPress={item === 'X' ? onDeleteItem : () => onItemClick(item)}
+            rippleOpacity={0.2}
+            onPress={() => onButtonPress(item)}
           >
-            {item === 'X' ? (
+            {item === 'X' || item === '.' ? (
               <Icon
-                name="backspace"
+                name={item === 'X' ? 'backspace' : 'check'}
                 color={Colors.primary}
                 size={Fonts.size.h3}
               />
@@ -78,14 +78,20 @@ const styles = StyleSheet.create({
     fontFamily: Fonts.type.gotham_medium,
     fontSize: Fonts.size.h3,
   },
+  rippleContainer: {
+    flex: 1,
+    padding: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   // numPadContainerStyle: {
-  //   // shadowRadius: 2,
-  //   // shadowOffset: {
-  //   //   width: 0,
-  //   //   height: -3,
-  //   // },
-  //   // shadowColor: '#000000',
-  //   // elevation: 4,
+  //   shadowRadius: 2,
+  //   shadowOffset: {
+  //     width: 0,
+  //     height: -3,
+  //   },
+  //   shadowColor: '#000000',
+  //   elevation: 4,
   // },
 });
 

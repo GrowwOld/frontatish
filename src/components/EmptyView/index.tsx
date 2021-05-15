@@ -1,7 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { EmptyViewProps } from './types';
-import { Images } from '../../assets';
 import Button from '../Button';
 import { Fonts } from '../../styles';
 import { ColorType } from '../../common/types';
@@ -12,7 +11,6 @@ const EmptyView = (props: EmptyViewProps) => {
     illustration,
     title,
     titleStyle,
-    emptyType,
     subTitle,
     subTitleStyle,
     actionTitle,
@@ -25,12 +23,13 @@ const EmptyView = (props: EmptyViewProps) => {
       return illustration;
     }
     return (
-      <Image
-        source={
-          emptyType === 'apiError' ? Images.apiErrorLight : Images.emptyLight
-        }
-        resizeMode="contain"
-        style={{ height: 150, width: 150, alignSelf: 'center' }}
+      <View
+        style={{
+          height: 150,
+          width: 150,
+          alignSelf: 'center',
+          backgroundColor: Colors.font_1,
+        }}
       />
     );
   };

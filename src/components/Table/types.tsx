@@ -6,7 +6,7 @@ export interface TableProps {
   data: Array<any>;
   flatlistKey: string;
   leftKey: string;
-  leftKeyOnPress?: () => void;
+  leftKeyOnPress?: (item: any) => void;
   leftItemContainerStyle?: StyleType;
   leftItemTextStyle?: StyleType;
   rightItemContainerStyle?: StyleType;
@@ -14,9 +14,13 @@ export interface TableProps {
   option: Array<string> | string;
   optionLabel: Array<string> | string;
   optionTextStyle?: StyleType;
-  rightKeyOnPress?: () => void;
+  rightKeyOnPress?: (label?: any, item?: any) => void;
   title: string;
   titleTextStyle?: StyleType;
+  topContainerStyle?: StyleType;
+  itemSeparator?: React.ComponentType<any>;
+  tableItemStyle?: StyleType;
+  rightOptionIconName?: string;
 }
 
 export interface TableItemProps {

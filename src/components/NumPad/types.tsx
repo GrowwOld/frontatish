@@ -11,4 +11,5 @@
 export interface NumPadProps {
   onItemClick: (input: string) => void;
   onDeleteItem: () => void;
+  onSubmit: () => void;
 }

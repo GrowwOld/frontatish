@@ -72,6 +72,7 @@ const RadioButtonExample = () => {
         />
         <RadioButton
           disabled
+          customLabel={<Text>Vinit</Text>}
           // value="disable-selected"
           selected
           containerStyle={{ marginVertical: 10 }}

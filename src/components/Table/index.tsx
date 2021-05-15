@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import Icon from 'react-native-vector-icons/Entypo';
 import { TableProps, TableItemProps } from './types';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
@@ -27,19 +28,16 @@ const Table = (props: TableProps) => {
     rightItemTextStyle,
     title,
     titleTextStyle,
+    topContainerStyle,
+    itemSeparator,
+    tableItemStyle,
+    rightOptionIconName,
   } = props;
   const Colors = useColors();
   const TableItem = (itemProps: TableItemProps) => {
-    const { item, index } = itemProps;
-    const borderStyle =
-      index !== data.length - 1
-        ? {
-            borderBottomWidth: 1,
-            borderBottomColor: Colors.font_4,
-          }
-        : null;
+    const { item } = itemProps;
     return (
-      <View style={[borderStyle, { height: 80, flexDirection: 'row' }]}>
+      <View style={{ height: 80, flexDirection: 'row', ...tableItemStyle }}>
         {renderLeftOptionItem(item)}
         {renderRightOptionItem(item)}
       </View>
@@ -57,15 +55,20 @@ const Table = (props: TableProps) => {
     // the active option
     if (customLeftItemComponents && customLeftItemComponents[leftKey]) {
       const CustomLeftItem = customLeftItemComponents[leftKey];
-      return <CustomLeftItem item={item} onPress={onLeftKeyPress} />;
+      return (
+        <CustomLeftItem item={item} onPress={() => onLeftKeyPress(item)} />
+      );
     }
     return (
       <TouchableOpacity
-        style={{ flex: 2, paddingVertical: 16 }}
-        onPress={onLeftKeyPress}
+        style={{
+          flex: 2,
+          justifyContent: 'center',
+        }}
+        onPress={() => onLeftKeyPress(item)}
       >
-        <Text style={mainLeftItemTextStyle} numberOfLines={1}>
-          {item[leftKey]}
+        <Text style={mainLeftItemTextStyle} numberOfLines={2}>
+          {extractResponseFromApiKey(item, leftKey.split('.'))}
         </Text>
       </TouchableOpacity>
     );
@@ -85,32 +88,52 @@ const Table = (props: TableProps) => {
       customRightItemComponents[option[active]]
     ) {
       const CustomRightItem = customRightItemComponents[option[active]];
-      return <CustomRightItem item={item} onPress={onRightKeyPress} />;
+      return (
+        <CustomRightItem item={item} onPress={() => onRightKeyPress(item)} />
+      );
     }
     return (
       <TouchableOpacity
-        onPress={onRightKeyPress}
+        onPress={() => onRightKeyPress(item)}
         style={{ flex: 1, paddingVertical: 16 }}
       >
-        <Text style={mainRightItemTextStyle}>{item[option[active]]}</Text>
+        <Text style={mainRightItemTextStyle}>
+          {extractResponseFromApiKey(item, option[active].split('.'))}
+        </Text>
       </TouchableOpacity>
     );
   };
-  const onRightKeyPress = () => {
+  const onRightKeyPress = (item?: any) => {
     // if there has been some action needed to be
     // done when user will click right item of table
     // then this callback will be passed & called from here
-    if (rightKeyOnPress) rightKeyOnPress();
+    if (rightKeyOnPress) rightKeyOnPress(optionLabel[active], item);
     if (typeof option === 'object') {
       setActive((active + 1) % option.length);
     }
   };
-  const onLeftKeyPress = () => {
+
+  const onLeftKeyPress = (item: any) => {
     // if there has been some action needed to be
     // done when user will click left item of table
     // then this callback will be passed & called from here
-    if (leftKeyOnPress) leftKeyOnPress();
+    if (leftKeyOnPress) leftKeyOnPress(item);
   };
+
+  const extractResponseFromApiKey = (
+    item: any,
+    depthObjArray: Array<string>,
+  ): string => {
+    // to handle nested case Ex: data.class.student
+    if (depthObjArray.length === 1) {
+      return item[depthObjArray[0]];
+    }
+    return extractResponseFromApiKey(
+      item[depthObjArray[0]],
+      depthObjArray.slice(1),
+    );
+  };
+
   const mainTitleTextStyle = {
     ...styles.titleText,
     color: Colors.font_1,
@@ -123,18 +146,25 @@ const Table = (props: TableProps) => {
   };
   return (
     <View>
-      <View style={{ flexDirection: 'row' }}>
-        <View style={{ flex: 1 }}>
-          <Text style={mainTitleTextStyle}>{title}</Text>
-        </View>
+      <View
+        style={[
+          topContainerStyle,
+          { flexDirection: 'row', justifyContent: 'space-between' },
+        ]}
+      >
+        <Text style={mainTitleTextStyle}>{title}</Text>
         <TouchableOpacity
           style={{
-            flex: 1,
-            alignItems: 'flex-end',
+            flexDirection: 'row',
+            alignItems: 'center',
           }}
           onPress={onRightKeyPress}
         >
           <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
+          <Icon
+            name={rightOptionIconName ?? 'select-arrows'}
+            color={Colors.primary}
+          />
         </TouchableOpacity>
       </View>
       <FlatList
@@ -142,8 +172,12 @@ const Table = (props: TableProps) => {
         renderItem={({ item, index }) => (
           <TableItem item={item} index={index} />
         )}
+        ItemSeparatorComponent={itemSeparator}
+        showsVerticalScrollIndicator={false}
         initialNumToRender={5}
-        keyExtractor={(item) => item[flatlistKey]}
+        keyExtractor={(item) =>
+          extractResponseFromApiKey(item, flatlistKey.split('.'))
+        }
       />
     </View>
   );
@@ -151,7 +185,6 @@ const Table = (props: TableProps) => {
 
 const styles = StyleSheet.create({
   leftText: {
-    flex: 1,
     fontFamily: Fonts.type.gotham_medium,
     fontSize: Fonts.size.small_13,
     fontWeight: '800',

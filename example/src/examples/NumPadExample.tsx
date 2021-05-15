@@ -58,6 +58,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
         <NumPad
           onItemClick={this.onItemClick}
           onDeleteItem={this.onDeleteItem}
+          onSubmit={() => {}}
         />
       </SafeAreaView>
     );

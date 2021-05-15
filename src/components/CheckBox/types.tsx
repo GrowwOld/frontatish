@@ -4,7 +4,6 @@ export interface CheckBoxProps {
   checkColor?: string;
   checked?: boolean;
   disabled?: boolean;
-  onPress?: () => void;
   containerStyle?: ViewStyle;
   size?: 'sm' | 'md' | 'lg';
 }

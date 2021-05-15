@@ -1,6 +1,6 @@
 {
   "name": "frontatish",
-  "version": "0.2.2",
+  "version": "0.4.0",
   "description": "react-native master ui helpers",
   "main": "lib/commonjs/index.js",
   "module": "lib/module/index.js",
@@ -18,6 +18,7 @@
     "test": "jest",
     "typescript": "tsc --noEmit",
     "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "eslint --fix",
     "prepare": "bob build",
     "example": "yarn --cwd example",
     "pods": "node -e \"process.exit(require('os').platform() !== 'darwin')\" && test -d example/ios && cd example/ios && pod install || printf ''",

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { CheckBox, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 const CheckboxExample = () => {
   const [tick, setTick] = useState(false);
@@ -15,37 +16,52 @@ const CheckboxExample = () => {
         alignItems: 'center',
       }}
     >
-      <CheckBox
-        checked={tick}
-        onPress={() => setTick(!tick)}
-        containerStyle={{ marginVertical: 20 }}
-      />
-      <CheckBox
-        checked={tick}
-        onPress={() => setTick(!tick)}
-        containerStyle={{ marginVertical: 20 }}
-        size="md"
-      />
-      <CheckBox
-        checked={tick}
-        onPress={() => setTick(!tick)}
-        containerStyle={{ marginVertical: 20 }}
-        size="lg"
-      />
-      <CheckBox
-        checked
-        disabled
-        onPress={() => setTick(!tick)}
-        containerStyle={{ marginVertical: 20 }}
-        size="lg"
-      />
-      <CheckBox
-        checked={false}
-        disabled
-        onPress={() => setTick(!tick)}
-        containerStyle={{ marginVertical: 20 }}
-        size="lg"
-      />
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox checked={tick} containerStyle={{ marginVertical: 20 }} />
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox
+          checked={tick}
+          containerStyle={{ marginVertical: 20 }}
+          size="md"
+        />
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox
+          checked={tick}
+          containerStyle={{ marginVertical: 20 }}
+          size="lg"
+        />
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox
+          checked
+          disabled
+          containerStyle={{ marginVertical: 20 }}
+          size="lg"
+        />
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox
+          checked={false}
+          disabled
+          containerStyle={{ marginVertical: 20 }}
+          size="lg"
+        />
+      </TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <CheckBox
+          checked={tick}
+          checkColor={Colors.primary}
+          containerStyle={{
+            marginVertical: 20,
+            backgroundColor: Colors.white,
+            borderWidth: 2,
+            borderColor: Colors.primary,
+          }}
+          size="lg"
+        />
+      </TouchableWithoutFeedback>
     </SafeAreaView>
   );
 };

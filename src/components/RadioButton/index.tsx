@@ -14,17 +14,33 @@ import { useColors } from '../../themes';
 // common components
 import { Scale } from '../../animated';
 
+class InsideView extends React.PureComponent<{
+  selected: boolean;
+  innerDimen: any;
+  radioColor: any;
+}> {
+  render() {
+    const { selected, innerDimen, radioColor } = this.props;
+    return (
+      <Scale scale={selected}>
+        <View style={[innerDimen, { backgroundColor: radioColor }]} />
+      </Scale>
+    );
+  }
+}
 const RadioButton = (props: RadioButtonProps) => {
   const {
     disabled,
     onPress,
     selected,
     value,
+    customLabel,
     size,
     containerStyle,
     labelStyle,
   } = props;
   const [innerDimen, outerDimen] = getRadioDmnsn(size!);
+
   const Colors = useColors();
   // this color is use for both inner and outer ring of radio
   const radioColor = disabled ? Colors.font_3 : Colors.primary;
@@ -34,23 +50,30 @@ const RadioButton = (props: RadioButtonProps) => {
       onPress(value!!);
     }
   };
+  const renderValue = () => {
+    if (customLabel) return customLabel;
+    if (value) {
+      return (
+        <View style={styles.labelContainer}>
+          <Text style={[{ color: Colors.font_1 }, labelStyle]}>{value}</Text>
+        </View>
+      );
+    }
+    return null;
+  };
   return (
     <TouchableWithoutFeedback onPress={onRadioPress} disabled={disabled}>
       <View style={[{ flexDirection: 'row' }, containerStyle]}>
         <View
           style={[styles.outerRing, { ...outerDimen, borderColor: radioColor }]}
         >
-          {selected && (
-            <Scale>
-              <View style={[innerDimen, { backgroundColor: radioColor }]} />
-            </Scale>
-          )}
+          <InsideView
+            selected={selected!}
+            innerDimen={innerDimen}
+            radioColor={radioColor}
+          />
         </View>
-        {value && (
-          <View style={styles.labelContainer}>
-            <Text style={[{ color: Colors.font_1 }, labelStyle]}>{value}</Text>
-          </View>
-        )}
+        {renderValue()}
       </View>
     </TouchableWithoutFeedback>
   );
