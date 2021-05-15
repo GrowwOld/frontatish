@@ -20,7 +20,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   constructor(props: NumPadExampleProps) {
     super(props);
     this.state = { input: '' };
-    this.codeLength = 5;
+    this.codeLength = 6;
   }
 
   // onItemClick

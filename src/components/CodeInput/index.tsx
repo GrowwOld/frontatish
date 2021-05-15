@@ -2,12 +2,14 @@ import React from 'react';
 import { View, Text, StyleSheet, Animated } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { LIGHT_MODE_COLORS } from '../../styles/colorPalette';
+import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
 
 interface CodeInputProps {
   value: string;
   codeLength: number;
-  Colors?: any; // will come from redux
+  Colors?: ColorType;
   inputContainer: 'box' | 'line';
 }
 
@@ -26,14 +28,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  inputUnderlined: {
-    height: 50,
-    width: 50,
-    borderBottomColor: 'black',
-    borderBottomWidth: 2,
-    marginRight: 30,
+  animatedUnderLine: {
+    height: 48,
+    width: 40,
+    marginRight: 18,
     justifyContent: 'center',
     alignItems: 'center',
+    borderBottomWidth: 2,
+    borderBottomColor: 'black',
+  },
+  inputUnderlined: {
+    height: 48,
+    width: 40,
+    marginRight: 18,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    borderBottomColor: LIGHT_MODE_COLORS.primary,
+    backgroundColor: LIGHT_MODE_COLORS.font_5,
   },
 });
 
@@ -80,9 +92,9 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   }
 
   startAnimation = (toValue: number) => {
-    console.log('toValue->', toValue, this.animatedValue);
-    Animated.spring(this.animatedValue, {
+    Animated.timing(this.animatedValue, {
       toValue,
+      duration: 250,
       useNativeDriver: true,
       // speed: 3,
     }).start(() => this.animatedValue.setValue(toValue));
@@ -96,8 +108,11 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     for (let i = 0; i < codeLength; i += 1) {
       const activeStyle =
         inputContainer === 'line'
-          ? { borderBottomColor: Colors.primary }
-          : { borderColor: Colors.font_1 };
+          ? {
+              borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
+            }
+          : // eslint-disable-next-line camelcase
+            { borderColor: Colors?.font_1 ?? LIGHT_MODE_COLORS.font_1 };
       ui.push(
         <TouchableWithoutFeedback
           style={[
@@ -121,31 +136,25 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   render() {
-    // const { value, codeLength } = this.props;
     const { Colors, inputContainer } = this.props;
     const { activeInput } = this.state;
     const prevActiveInput = activeInput - 1;
-    const prevXDistance = prevActiveInput * 80;
-    const currentXDistance = activeInput * 80;
-    console.log(
-      'Data after input',
-      activeInput,
-      prevXDistance,
-      currentXDistance,
-    );
+    const translator = 58; // (width + margin-right)
+    const prevXDistance = prevActiveInput * translator;
+    const currentXDistance = activeInput * translator;
     return (
       <View style={{ flexDirection: 'row', marginHorizontal: 20 }}>
         <Animated.View
           style={[
             inputContainer === 'line'
-              ? styles.inputUnderlined
+              ? styles.animatedUnderLine
               : styles.inputBox,
             {
               position: 'absolute',
               left: 0,
               zIndex: 1,
-              borderBottomColor: Colors.primary,
-              borderColor: Colors.primary,
+              borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
+              borderColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
               transform: [
                 {
                   translateX: this.animatedValue.interpolate({
