@@ -10,13 +10,14 @@ const RadioGroup = ({
   containerStyle,
   labelStyle,
   children,
+  style,
 }: RadioGroupProps) => {
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   useEffect(() => onChange(selectedValue!), [selectedValue]);
 
   return (
-    <View>
+    <View style={style}>
       {children?.map((radioButton, index) => (
         <RadioButton
           key={index}

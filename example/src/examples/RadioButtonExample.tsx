@@ -91,13 +91,24 @@ const RadioButtonExample = (props: any) => {
           containerStyle={{ marginVertical: 10 }}
         />
 
-        <Text style={{ marginVertical: 20, fontWeight: 'bold' }}>
+        <Text
+          style={{
+            marginVertical: 20,
+            fontWeight: 'bold',
+            color: Colors.font_1,
+          }}
+        >
           RadioGroup
         </Text>
         <Text
           style={{ marginBottom: 20, color: Colors.font_1 }}
         >{`Selected Value: ${radioGroupText}`}</Text>
-        <RadioGroup onChange={onChangeRadioGroup} defaultValue="value1">
+
+        <RadioGroup
+          onChange={onChangeRadioGroup}
+          defaultValue="value1"
+          containerStyle={{ marginVertical: 5 }}
+        >
           <RadioButton value="value1" />
           <RadioButton value="value2 (small)" size="xs" />
           <RadioButton value="value3 (disabled)" disabled />

@@ -7,4 +7,5 @@ export interface RadioGroupProps {
   children?: JSX.Element[];
   containerStyle?: StyleType;
   labelStyle?: StyleType;
+  style?: StyleType;
 }

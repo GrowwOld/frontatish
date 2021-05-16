@@ -7,6 +7,7 @@ module.exports = {
       'numpad',
       // 'popup',
       'radiobutton',
+      'radioGroup',
       'table',
       'emptyview',
       // 'calendar',
