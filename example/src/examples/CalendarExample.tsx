@@ -8,10 +8,6 @@ const CalendarExample = () => {
   const Colors = useColors();
   const [date, setDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-  const [toDate, setToDate] = useState({
-    year: date.getFullYear(),
-    month: date.getMonth(),
-  });
   const [active, setActive] = useState(0);
   const setSelectedDate = (calendarDate: Date) => {
     setDate(calendarDate);
@@ -23,6 +19,58 @@ const CalendarExample = () => {
   ];
   const onChange = (index: number) => {
     setActive(index);
+  };
+  const giveSelectedDate = () => {
+    switch (active) {
+      case 0: {
+        return date?.toString();
+      }
+      case 1: {
+        return date.getDate();
+      }
+      case 2: {
+        return `Month: ${date.getMonth() + 1} Year: ${date.getFullYear()}`;
+      }
+      default:
+        return null;
+    }
+  };
+  const getCalendar = () => {
+    switch (active) {
+      case 0:
+        return (
+          <Calendar
+            title="Select Date:"
+            defaultDate={date}
+            setDate={setSelectedDate}
+            type="D/M/Y"
+          />
+        );
+      case 1:
+        return (
+          <Calendar
+            title="Select Date:"
+            defaultDate={date}
+            setDate={setSelectedDate}
+            type="D"
+            onClosed={() => setIsOpen(false)}
+            isOpen={isOpen}
+          />
+        );
+      case 2:
+        return (
+          <Calendar
+            title="Select Month & Year"
+            defaultDate={date}
+            type="M/Y"
+            setDate={setSelectedDate}
+            onClosed={() => setIsOpen(false)}
+            isOpen={isOpen}
+          />
+        );
+      default:
+        return null;
+    }
   };
   return (
     <SafeAreaView
@@ -58,23 +106,11 @@ const CalendarExample = () => {
               fontSize: 14,
             }}
           >
-            {active === 0
-              ? date?.toString()
-              : `Month: ${(toDate.month + 1).toString()}, ` +
-                `Year: ${toDate.year.toString()}`}
+            {giveSelectedDate()}
           </Text>
         </View>
-        <Calendar
-          setDate={setSelectedDate}
-          type={items[active].value}
-          onClosed={() => setIsOpen(false)}
-          onConfirmClick={(data) => {
-            setToDate({ ...data.value });
-            setIsOpen(false);
-          }}
-          isOpen={isOpen}
-          pickerKey="to_date"
-        />
+        {getCalendar()}
+
         <View style={{ margin: 20 }}>
           <Button
             label={active === 0 ? 'Done' : 'Open Calendar'}

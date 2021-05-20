@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, FlatList } from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 // eslint-disable-next-line import/no-unresolved
-import { Button } from 'frontatish';
+import { Button, BottomFixedView } from 'frontatish';
 import Modal from 'react-native-modal';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
@@ -106,14 +106,8 @@ const months = [
 const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 const Calendar = (props: CalendarProps) => {
-  const [activeDate, setActiveDate] = useState(new Date());
-  const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
-  const [selectedMonth, setSelectedMonth] = useState(new Date().getMonth());
-  const [refFlatList, setRefFlatList] = useState();
-  // getting the suitable color based on the theme
-  // activated inside the app
-  const Colors = useColors();
   const {
+    defaultDate,
     title,
     children,
     type,
@@ -121,10 +115,16 @@ const Calendar = (props: CalendarProps) => {
     yearsArrayUpperBound,
     isOpen,
     onClosed,
-    onConfirmClick,
     setDate,
-    pickerKey,
   } = props;
+
+  const [activeDate, setActiveDate] = useState(defaultDate);
+  const [activeMonth, setActiveMonth] = useState(defaultDate?.getMonth());
+  const [activeYear, setActiveYear] = useState(defaultDate?.getFullYear());
+  const [refFlatList, setRefFlatList] = useState();
+  // getting the suitable color based on the theme
+  // activated inside the app
+  const Colors = useColors();
 
   const changeMonth = (delta: number) => {
     const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
@@ -138,12 +138,14 @@ const Calendar = (props: CalendarProps) => {
   };
   setDate(activeDate);
   const yearsArray = [];
-  for (
-    let year = yearsArrayLowerBound;
-    year <= yearsArrayUpperBound;
-    year += 1
-  ) {
-    yearsArray.push(year);
+  if (type === 'M/Y') {
+    for (
+      let year = yearsArrayLowerBound;
+      year <= yearsArrayUpperBound;
+      year += 1
+    ) {
+      yearsArray.push(year);
+    }
   }
 
   const generateMatrix = () => {
@@ -196,6 +198,7 @@ const Calendar = (props: CalendarProps) => {
                 style={{
                   justifyContent: 'center',
                   borderRadius: 18,
+                  margin: 3,
                   height: 36,
                   width: 36,
                   backgroundColor:
@@ -308,37 +311,14 @@ const Calendar = (props: CalendarProps) => {
 
     case 'M/Y':
       return (
-        // <Modalbox
-        //   style={{
-        //     width: 302,
-        //     height: null,
-        //     borderRadius: 10,
-        //     paddingHorizontal: 20,
-        //     maxHeight: 320,
-        //   }}
-        //   isOpen={isOpen}
-        //   // isDisabled={isDisabled}
-        //   backdropPressToClose
-        //   swipeToClose={false}
-        //   position="center"
-        //   entry="bottom"
-        //   backdrop
-        //   backdropOpacity={0.8}
-        //   backdropColor="black"
-        //   backdropContent={null}
-        //   animationDuration={400}
-        //   onClosed={onClosed}
-        //   backButtonClose
-        //   startOpen={false}
-        //   coverScreen
-        //   // keyboardTopOffset={22}
-        // >
         <View
-          style={{
-            justifyContent: 'center',
-            flex: 1,
-            alignContent: 'center',
-          }}
+          style={
+            {
+              // justifyContent: 'center',
+              // flex: 1,
+              // alignContent: 'center',
+            }
+          }
         >
           <Modal
             isVisible={isOpen}
@@ -349,20 +329,21 @@ const Calendar = (props: CalendarProps) => {
             onModalShow={() => {
               refFlatList.scrollToIndex({
                 animated: true,
-                index: selectedYear - yearsArrayLowerBound,
+                index: activeYear - yearsArrayLowerBound,
               });
             }}
             style={{
               width: 302,
-              flex: -1,
-              borderRadius: 10,
-              paddingHorizontal: 20,
-
-              backgroundColor: 'white',
               alignSelf: 'center',
             }}
           >
-            <View>
+            <View
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 10,
+                paddingHorizontal: 20,
+              }}
+            >
               <Text style={styles.TextStyle}>Select a year & month</Text>
               <FlatList
                 data={yearsArray}
@@ -370,7 +351,7 @@ const Calendar = (props: CalendarProps) => {
                   <Text
                     key={index}
                     style={
-                      selectedYear === item
+                      activeYear === item
                         ? [
                             styles.yearSelectedStyle,
                             { marginBottom: 0, flex: 1 },
@@ -385,7 +366,9 @@ const Calendar = (props: CalendarProps) => {
                             },
                           ]
                     }
-                    onPress={() => setSelectedYear(item)}
+                    onPress={() => {
+                      setActiveYear(item);
+                    }}
                   >
                     {item}
                   </Text>
@@ -409,9 +392,11 @@ const Calendar = (props: CalendarProps) => {
                 {months.map((item, index) => {
                   return (
                     <Text
-                      onPress={() => setSelectedMonth(index)}
+                      onPress={() => {
+                        setActiveMonth(index);
+                      }}
                       style={
-                        months[selectedMonth] === item
+                        months[activeMonth] === item
                           ? [styles.selectedStyle]
                           : [styles.unselectedStyle]
                       }
@@ -424,16 +409,77 @@ const Calendar = (props: CalendarProps) => {
               <Button
                 label="Done"
                 customStyles={{ margin: 12 }}
-                onPress={() =>
-                  onConfirmClick({
-                    key: pickerKey,
-                    value: { year: selectedYear, month: selectedMonth },
-                  })
-                }
+                onPress={() => {
+                  activeDate.setMonth(activeMonth);
+                  activeDate.setFullYear(activeYear);
+                  setDate(activeDate);
+                  onClosed();
+                }}
               />
             </View>
           </Modal>
         </View>
+      );
+    case 'D':
+      return (
+        <Modal
+          isVisible={isOpen}
+          coverScreen
+          backdropOpacity={0.8}
+          onBackdropPress={onClosed}
+          animationOutTiming={500}
+          swipeDirection="down"
+          style={{
+            margin: 0,
+          }}
+        >
+          <BottomFixedView>
+            <View
+              style={{
+                backgroundColor: 'white',
+                paddingHorizontal: 20,
+                paddingVertical: 5,
+              }}
+            >
+              <View
+                style={{
+                  borderWidth: 2,
+                  borderRadius: 2,
+                  width: 50,
+                  alignSelf: 'center',
+                  marginBottom: 20,
+                  borderColor: '#EBEBF5',
+                }}
+              />
+              <Text
+                style={{
+                  textAlign: 'center',
+                  fontSize: 20,
+                  fontWeight: '800',
+                  marginBottom: 5,
+                }}
+              >
+                SIP Installment Date
+              </Text>
+              <View
+                style={{
+                  alignItems: 'center',
+                  marginBottom: 10,
+                }}
+              >
+                <View style={{ alignItems: 'flex-start', marginTop: 16 }}>
+                  {matrix.map((item) => renderEachRow(item))}
+                </View>
+              </View>
+
+              <Button
+                label="Confirm"
+                onPress={onClosed}
+                customStyles={{ margin: 10 }}
+              />
+            </View>
+          </BottomFixedView>
+        </Modal>
       );
     default:
       return (
@@ -445,15 +491,13 @@ const Calendar = (props: CalendarProps) => {
 };
 
 Calendar.defaultProps = {
+  // defaultDate: new Date(),
   title: 'Select Date:',
   type: 'D/M/Y',
   yearsArrayLowerBound: 2016,
   yearsArrayUpperBound: new Date().getFullYear(),
   isOpen: false,
-  onClosed: () => {},
-  onConfirmClick: () => {},
   pickerKey: {},
-  setDate: () => {},
 };
 
 export default Calendar;
