@@ -1,14 +1,15 @@
 import { ReactNode } from 'react';
 import { StyleType } from '../../common/types';
 
-export interface SwipableModalProps {
-  children: ReactNode;
+export interface SwipeableModalProps {
   isOpen: boolean;
+  children: ReactNode;
   hasBackdrop?: boolean;
   backdropOpacity?: number;
   swipeThreshold?: number;
-  swipable?: boolean;
+  swipeable?: boolean;
   componentStyle?: StyleType;
+  centerPositioned?: boolean;
   onSwipeComplete?: () => void;
   onBackdropPress?: () => void;
   onBackButtonPress: () => void;

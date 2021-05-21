@@ -12,18 +12,20 @@ import Modal from 'react-native-modal';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import { SwipableModalProps } from './types';
-import BottomFixedView from '../../ui/BottomFixedView';
+import { SwipeableModalProps } from './types';
+import { BottomFixedView, CenteredView } from '../../ui';
+import { colors } from '../../index';
 
-const SwipableModal = (props: SwipableModalProps) => {
+const SwipeableModal = (props: SwipeableModalProps) => {
   const {
     children,
     isOpen,
     hasBackdrop,
     backdropOpacity,
     swipeThreshold,
-    swipable,
+    swipeable,
     componentStyle,
+    centerPositioned,
     onSwipeComplete,
     onBackButtonPress,
     onBackdropPress,
@@ -43,80 +45,89 @@ const SwipableModal = (props: SwipableModalProps) => {
     }
   };
 
+  const modalContent = () => {
+    return (
+      <View style={[styles.container, componentStyle]}>
+        {swipeable && !centerPositioned ? (
+          <View style={styles.topBar}>
+            <View style={styles.emptyView} />
+            <View style={styles.swipeLine} />
+            <Ripple
+              style={styles.closeButton}
+              rippleContainerBorderRadius={16}
+              onPress={onCloseButtonPress}
+            >
+              <IonIcon name="ios-close" size={24} />
+            </Ripple>
+          </View>
+        ) : null}
+        <>
+          <ScrollView
+            ref={scrollViewRef}
+            onScroll={handleOnScroll}
+            scrollEventThrottle={16}
+            showsVerticalScrollIndicator={false}
+          >
+            {children}
+          </ScrollView>
+        </>
+      </View>
+    );
+  };
+
   return (
     <Modal
       isVisible={isOpen}
       hasBackdrop={hasBackdrop}
       backdropOpacity={backdropOpacity}
-      swipeDirection={swipable ? 'down' : null}
+      swipeDirection="down"
       animationOutTiming={500}
       swipeThreshold={swipeThreshold}
       onSwipeComplete={onSwipeComplete}
       onBackdropPress={onBackdropPress}
       onBackButtonPress={onBackButtonPress}
       propagateSwipe
-      style={{
-        margin: 0,
-      }}
+      style={styles.margin_0}
       scrollTo={handleScrollTo}
       scrollOffset={scrollOffset}
       scrollOffsetMax={500}
     >
-      <BottomFixedView>
-        <View style={[styles.container, componentStyle]}>
-          {swipable ? (
-            <View style={styles.topBar}>
-              <View style={{ width: 32 }} />
-              <View
-                style={{
-                  borderWidth: 1,
-                  width: 50,
-                }}
-              />
-              <Ripple
-                style={styles.closeButton}
-                rippleContainerBorderRadius={16}
-                onPress={onCloseButtonPress}
-              >
-                <IonIcon name="ios-close" size={24} />
-              </Ripple>
-            </View>
-          ) : null}
-          <View style={[styles.contentView, { marginTop: swipable ? 10 : 20 }]}>
-            <ScrollView
-              ref={scrollViewRef}
-              onScroll={handleOnScroll}
-              scrollEventThrottle={16}
-              showsVerticalScrollIndicator={false}
-            >
-              {children}
-            </ScrollView>
-          </View>
-        </View>
-      </BottomFixedView>
+      {centerPositioned ? (
+        <CenteredView>{modalContent()}</CenteredView>
+      ) : (
+        <BottomFixedView>{modalContent()}</BottomFixedView>
+      )}
     </Modal>
   );
 };
 
-SwipableModal.defaultProps = {
-  hasBackDrop: true,
+SwipeableModal.defaultProps = {
+  hasBackdrop: true,
   backdropOpacity: 0.7,
-  swipeThreshold: Dimensions.get('window').height / 5,
-  swipable: true,
+  swipeThreshold: 100,
+  swipeable: true,
+  centerPositioned: false,
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: colors.light.white,
     borderRadius: 4,
-    maxHeight: (Dimensions.get('window').height * 3) / 4,
-    minHeight: Dimensions.get('window').height / 3,
+    maxHeight: Dimensions.get('window').height,
+    paddingBottom: 40,
+    paddingHorizontal: 20,
+    paddingTop: 15,
   },
   topBar: {
     paddingHorizontal: 5,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  emptyView: { width: 32 },
+  swipeLine: {
+    borderWidth: 1,
+    width: 50,
   },
   closeButton: {
     height: 32,
@@ -125,9 +136,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
   },
-  contentView: {
-    marginHorizontal: 20,
-    marginBottom: 50,
+  margin_0: {
+    margin: 0,
   },
 });
-export default SwipableModal;
+export default SwipeableModal;

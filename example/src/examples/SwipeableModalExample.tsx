@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { SwipableModal, Button } from 'frontatish';
+import { SwipeableModal, Button, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
-const SwipableModalExample = () => {
+const SwipeableModalExample = () => {
+  const Colors = useColors();
   const [isOpen, setIsOpen] = useState(false);
 
   const closeModal = () => {
@@ -13,8 +14,14 @@ const SwipableModalExample = () => {
   const children = () => {
     return (
       <View style={{ flex: 1 }}>
-        <Text style={{ textAlign: 'center', fontSize: 24 }}>Hello</Text>
-        <Text style={{ fontSize: 20, letterSpacing: 0.2 }}>
+        <Text
+          style={{ textAlign: 'center', fontSize: 24, color: Colors.font_1 }}
+        >
+          Hello
+        </Text>
+        <Text
+          style={{ fontSize: 20, letterSpacing: 0.2, color: Colors.font_1 }}
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vitae
           libero id tellus aliquet accumsan vitae eget purus. Proin est mauris,
           imperdiet quis hendrerit non, pellentesque nec ipsum. Morbi hendrerit
@@ -75,15 +82,16 @@ const SwipableModalExample = () => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <SwipableModal
+      <SwipeableModal
         isOpen={isOpen}
         onBackButtonPress={closeModal}
         onSwipeComplete={closeModal}
         onBackdropPress={closeModal}
         onCloseButtonPress={closeModal}
+        componentStyle={{ backgroundColor: Colors.white }}
       >
         {children()}
-      </SwipableModal>
+      </SwipeableModal>
       <View
         style={{
           flex: 1,
@@ -92,7 +100,7 @@ const SwipableModalExample = () => {
         }}
       >
         <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 20 }}>
-          Swipable Modal Example
+          Swipeable Modal Example
         </Text>
         <Button label="Open Modal" onPress={() => setIsOpen(true)} />
       </View>
@@ -100,4 +108,4 @@ const SwipableModalExample = () => {
   );
 };
 
-export default SwipableModalExample;
+export default SwipeableModalExample;
