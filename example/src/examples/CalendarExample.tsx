@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Button, Calendar, useColors, Dropdown } from 'frontatish';
+import { Calendar, useColors, Dropdown } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
@@ -109,14 +109,14 @@ const CalendarExample = () => {
             {giveSelectedDate()}
           </Text>
         </View>
-        {getCalendar()}
+        <View style={{ borderWidth: 1 }}>{getCalendar()}</View>
 
-        <View style={{ margin: 20 }}>
+        {/* <View style={{ margin: 20 }}>
           <Button
             label={active === 0 ? 'Done' : 'Open Calendar'}
             onPress={() => setIsOpen(true)}
           />
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );
