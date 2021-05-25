@@ -1,5 +1,5 @@
 // base and lib imports
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, FlatList, View } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 // eslint-disable-next-line import/no-unresolved
@@ -11,7 +11,8 @@ import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
 const NumPad = (props: NumPadProps) => {
-  const { onItemClick, onDeleteItem, onSubmit } = props;
+  const { onItemClick, onSubmit } = props;
+  const [actionId, setActionId] = useState(0);
   const numberRange = [
     '1',
     '2',
@@ -27,12 +28,14 @@ const NumPad = (props: NumPadProps) => {
     '.',
   ];
 
-  const onButtonPress = (item: any) => {
+  const onButtonPress = (item: string) => {
+    setActionId(actionId + 1);
     switch (item) {
       case 'X':
         return onItemClick({
           value: item,
           actionType: 'delete',
+          actionId,
         });
       case '.':
         return onSubmit();
@@ -40,6 +43,7 @@ const NumPad = (props: NumPadProps) => {
         return onItemClick({
           value: item,
           actionType: 'insert',
+          actionId,
         });
     }
   };

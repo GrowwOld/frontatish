@@ -5,11 +5,15 @@ import { View } from 'react-native';
 import { NumPad, withColors, CodeInput } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// import { Fonts, getColors } from '../styles';
-
+type keyStrokeType = {
+  value: string;
+  actionType: 'insert' | 'delete';
+  actionId: number;
+};
 interface NumPadExampleState {
-  input: string;
-  enteredKey: string;
+  keyStroke: keyStrokeType | undefined;
+  value: string;
+  codeError: string;
 }
 interface NumPadExampleProps {
   isDark: boolean;
@@ -20,30 +24,29 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   constructor(props: NumPadExampleProps) {
     super(props);
-    this.state = { input: '', enteredKey: '' };
+    this.state = { keyStroke: undefined, value: '', codeError: '' };
     this.codeLength = 4;
   }
 
   // onItemClick
-  onItemClick = (input: { value: string; actionType: string }) => {
-    this.setState({ input });
-    // if (input.length < this.codeLength) {
-    //   this.setState({ input: input + value });
-    // }
+  onItemClick = (keyStroke?: keyStrokeType) => {
+    this.setState({ keyStroke });
   };
 
-  onDeleteItem = () => {
-    const { input } = this.state;
-    this.setState({ input: input.substring(0, input.length - 1) });
-  };
-
-  onCodeSubmit = (codeValue: string) => {
+  setCode = (value: string) => {
     // once everythis is entered
-    this.setState({ input: codeValue });
+    this.setState({ value });
+  };
+
+  onSubmit = () => {
+    const { value } = this.state;
+    if (parseInt(value, 10) < this.codeLength) {
+      this.setState({ codeError: 'Incorrect Code' });
+    }
   };
 
   render() {
-    const { input, enteredKey } = this.state;
+    const { value, keyStroke, codeError } = this.state;
     const { Colors } = this.props;
     return (
       <SafeAreaView
@@ -57,33 +60,28 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
           <CodeInput
-            value={input}
+            keyStroke={keyStroke}
             codeLength={this.codeLength}
             inputContainer="line"
-            onCodeSet={this.onCodeSubmit}
-            input={this.state.input}
+            setCode={this.setCode}
+            value={value}
+            codeError={codeError}
           />
         </View>
         <View
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
           <CodeInput
-            value={input}
+            value={value}
+            keyStroke={keyStroke}
             codeLength={this.codeLength}
             inputContainer="box"
-            onCodeSet={this.onCodeSubmit}
-            enteredKey={enteredKey}
-            input={this.state.input}
+            setCode={this.setCode}
+            codeError={codeError}
           />
         </View>
 
-        <NumPad
-          onItemClick={this.onItemClick}
-          onSubmit={() => {
-            if (this.state.input < 2) {
-            }
-          }}
-        />
+        <NumPad onItemClick={this.onItemClick} onSubmit={this.onSubmit} />
       </SafeAreaView>
     );
   }

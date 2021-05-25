@@ -58,46 +58,48 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     };
   }
 
-  updateCodeInput = (props: CodeInputProps, state) => {
+  componentDidUpdate(prevProps: CodeInputProps, prevState: CodeInputState) {
+    const { activeInput } = this.state;
+    const { codeLength } = this.props;
+    if (activeInput !== prevState.activeInput && activeInput < codeLength) {
+      this.startAnimation(activeInput);
+    }
+    if (prevProps?.keyStroke?.actionId !== this.props?.keyStroke?.actionId) {
+      this.updateCodeInput();
+    }
+  }
+
+  updateCodeInput = () => {
     const { codeInputValue, activeInput } = this.state;
-    if (props.input.actionType === 'insert' && activeInput < props.codeLength) {
+    const { keyStroke, setCode, codeLength } = this.props;
+    if (keyStroke?.actionType === 'insert' && activeInput < codeLength) {
       const x = [...codeInputValue];
-      x[activeInput] = props.input.value;
-      props.onCodeSet(x.join(''));
+      x[activeInput] = keyStroke?.value;
+      setCode(x.join(''));
       this.setState({
         codeInputValue: x,
         activeInput: activeInput + 1,
       });
-    } else if (props.input.actionType === 'delete' && activeInput >= 0) {
+    } else if (keyStroke?.actionType === 'delete' && activeInput >= 0) {
       let d;
       let newActiveInput = activeInput === 0 ? activeInput : activeInput - 1;
       if (codeInputValue[activeInput]) {
         d = activeInput;
+        newActiveInput = activeInput;
       } else {
         d = activeInput - 1;
       }
       const updated = codeInputValue.map((item, index) => {
         if (index === d) return undefined;
-        else return item;
+        return item;
       });
-      props.onCodeSet(updated.join(''));
+      setCode(updated.join(''));
       this.setState({
         activeInput: newActiveInput,
         codeInputValue: updated,
       });
     }
   };
-
-  componentDidUpdate(_prevProps: CodeInputProps, prevState: CodeInputState) {
-    const { activeInput } = this.state;
-    const { codeLength } = this.props;
-    if (activeInput !== prevState.activeInput && activeInput < codeLength) {
-      this.startAnimation(activeInput);
-    }
-    if (_prevProps.value !== this.props.value) {
-      this.updateCodeInput(this.props, this.state);
-    }
-  }
 
   startAnimation = (toValue: number) => {
     Animated.timing(this.animatedValue, {
@@ -109,19 +111,12 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderInputUI = () => {
-    const { codeLength, /* Colors */ inputContainer } = this.props;
-    const { codeInputValue /* activeInput */ } = this.state;
+    const { codeLength, inputContainer } = this.props;
+    const { codeInputValue } = this.state;
     const ui = [];
 
     for (let i = 0; i < codeLength; i += 1) {
       const lastInputStyle = i === codeLength - 1 ? { marginRight: 0 } : {};
-      // const activeStyle =
-      //   inputContainer === 'line'
-      //     ? {
-      //         borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
-      //       }
-      //     : // eslint-disable-next-line camelcase
-      //       { borderColor: Colors?.font_1 ?? LIGHT_MODE_COLORS.font_1 };
       ui.push(
         <TouchableWithoutFeedback
           style={[
@@ -141,9 +136,15 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   setActiveInputBox = (index: number) => {
-    this.props.onCodeSet(index);
-
     this.setState({ activeInput: index });
+  };
+
+  renderErrorMsg = () => {
+    const { codeError } = this.props;
+    if (codeError) {
+      return <Text>{codeError}</Text>;
+    }
+    return null;
   };
 
   render() {
@@ -154,31 +155,34 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     const prevXDistance = prevActiveInput * translator;
     const currentXDistance = activeInput * translator;
     return (
-      <View style={{ flexDirection: 'row' }}>
-        <Animated.View
-          style={[
-            inputContainer === 'line'
-              ? styles.animatedUnderLine
-              : styles.animatedInputBox,
-            {
-              position: 'absolute',
-              left: 0,
-              zIndex: 1,
-              borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
-              borderColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
-              transform: [
-                {
-                  translateX: this.animatedValue.interpolate({
-                    inputRange: [activeInput - 1, activeInput],
-                    outputRange: [prevXDistance, currentXDistance],
-                  }),
-                },
-              ],
-            },
-          ]}
-        />
-        {this.renderInputUI()}
-      </View>
+      <>
+        <View style={{ flexDirection: 'row' }}>
+          <Animated.View
+            style={[
+              inputContainer === 'line'
+                ? styles.animatedUnderLine
+                : styles.animatedInputBox,
+              {
+                position: 'absolute',
+                left: 0,
+                zIndex: 1,
+                borderBottomColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
+                borderColor: Colors?.primary ?? LIGHT_MODE_COLORS.primary,
+                transform: [
+                  {
+                    translateX: this.animatedValue.interpolate({
+                      inputRange: [activeInput - 1, activeInput],
+                      outputRange: [prevXDistance, currentXDistance],
+                    }),
+                  },
+                ],
+              },
+            ]}
+          />
+          {this.renderInputUI()}
+        </View>
+        {this.renderErrorMsg()}
+      </>
     );
   }
 }
