@@ -30,11 +30,17 @@ const NumPad = (props: NumPadProps) => {
   const onButtonPress = (item: any) => {
     switch (item) {
       case 'X':
-        return onDeleteItem();
+        return onItemClick({
+          value: item,
+          actionType: 'delete',
+        });
       case '.':
         return onSubmit();
       default:
-        return onItemClick(item);
+        return onItemClick({
+          value: item,
+          actionType: 'insert',
+        });
     }
   };
 

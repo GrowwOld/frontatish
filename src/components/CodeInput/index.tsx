@@ -3,21 +3,9 @@ import { View, Text, StyleSheet, Animated } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { LIGHT_MODE_COLORS } from '../../styles/colorPalette';
-import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
+import { CodeInputProps, CodeInputState } from './types';
 
-interface CodeInputProps {
-  value: string;
-  codeLength: number;
-  Colors?: ColorType;
-  inputContainer: 'box' | 'line';
-}
-
-interface CodeInputState {
-  prevValue: string;
-  codeInputValue: string[];
-  activeInput: number;
-}
 const styles = StyleSheet.create({
   inputBox: {
     width: 40,
@@ -65,38 +53,49 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     super(props);
     this.animatedValue = new Animated.Value(0);
     this.state = {
-      prevValue: props.value,
       codeInputValue: [],
       activeInput: 0,
     };
-    // this.startAnimation();
   }
 
-  static getDerivedStateFromProps(
-    nextProps: CodeInputProps,
-    prevState: CodeInputState,
-  ) {
-    // console.log('next', nextProps.value, prevState.prevValue);
-    if (nextProps.value !== prevState.prevValue) {
-      // if new value is increasing that means new
-      // number has been entered
-      // if (nextProps.value.length > prevState.prevValue.length) {
-      return {
-        // converting the string to array of values
-        // so that every index can hold one number
-        codeInputValue: nextProps.value.split(''),
-        activeInput: nextProps.value.length,
-        prevValue: nextProps.value,
-      };
+  updateCodeInput = (props: CodeInputProps, state) => {
+    const { codeInputValue, activeInput } = this.state;
+    if (props.input.actionType === 'insert' && activeInput < props.codeLength) {
+      const x = [...codeInputValue];
+      x[activeInput] = props.input.value;
+      props.onCodeSet(x.join(''));
+      this.setState({
+        codeInputValue: x,
+        activeInput: activeInput + 1,
+      });
+    } else if (props.input.actionType === 'delete' && activeInput >= 0) {
+      let d;
+      let newActiveInput = activeInput === 0 ? activeInput : activeInput - 1;
+      if (codeInputValue[activeInput]) {
+        d = activeInput;
+      } else {
+        d = activeInput - 1;
+      }
+      const updated = codeInputValue.map((item, index) => {
+        if (index === d) return undefined;
+        else return item;
+      });
+      props.onCodeSet(updated.join(''));
+      this.setState({
+        activeInput: newActiveInput,
+        codeInputValue: updated,
+      });
     }
-    return null;
-  }
+  };
 
   componentDidUpdate(_prevProps: CodeInputProps, prevState: CodeInputState) {
     const { activeInput } = this.state;
     const { codeLength } = this.props;
     if (activeInput !== prevState.activeInput && activeInput < codeLength) {
       this.startAnimation(activeInput);
+    }
+    if (_prevProps.value !== this.props.value) {
+      this.updateCodeInput(this.props, this.state);
     }
   }
 
@@ -113,7 +112,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     const { codeLength, /* Colors */ inputContainer } = this.props;
     const { codeInputValue /* activeInput */ } = this.state;
     const ui = [];
-    // console.log('codeInputValue is', codeInputValue);
+
     for (let i = 0; i < codeLength; i += 1) {
       const lastInputStyle = i === codeLength - 1 ? { marginRight: 0 } : {};
       // const activeStyle =
@@ -142,6 +141,8 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   setActiveInputBox = (index: number) => {
+    this.props.onCodeSet(index);
+
     this.setState({ activeInput: index });
   };
 

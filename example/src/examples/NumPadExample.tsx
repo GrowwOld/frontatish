@@ -9,6 +9,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface NumPadExampleState {
   input: string;
+  enteredKey: string;
 }
 interface NumPadExampleProps {
   isDark: boolean;
@@ -19,16 +20,16 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   constructor(props: NumPadExampleProps) {
     super(props);
-    this.state = { input: '' };
-    this.codeLength = 6;
+    this.state = { input: '', enteredKey: '' };
+    this.codeLength = 4;
   }
 
   // onItemClick
-  onItemClick = (value: string) => {
-    const { input } = this.state;
-    if (input.length < this.codeLength) {
-      this.setState({ input: input + value });
-    }
+  onItemClick = (input: { value: string; actionType: string }) => {
+    this.setState({ input });
+    // if (input.length < this.codeLength) {
+    //   this.setState({ input: input + value });
+    // }
   };
 
   onDeleteItem = () => {
@@ -36,8 +37,13 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
     this.setState({ input: input.substring(0, input.length - 1) });
   };
 
+  onCodeSubmit = (codeValue: string) => {
+    // once everythis is entered
+    this.setState({ input: codeValue });
+  };
+
   render() {
-    const { input } = this.state;
+    const { input, enteredKey } = this.state;
     const { Colors } = this.props;
     return (
       <SafeAreaView
@@ -54,6 +60,8 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             value={input}
             codeLength={this.codeLength}
             inputContainer="line"
+            onCodeSet={this.onCodeSubmit}
+            input={this.state.input}
           />
         </View>
         <View
@@ -63,13 +71,18 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             value={input}
             codeLength={this.codeLength}
             inputContainer="box"
+            onCodeSet={this.onCodeSubmit}
+            enteredKey={enteredKey}
+            input={this.state.input}
           />
         </View>
 
         <NumPad
           onItemClick={this.onItemClick}
-          onDeleteItem={this.onDeleteItem}
-          onSubmit={() => {}}
+          onSubmit={() => {
+            if (this.state.input < 2) {
+            }
+          }}
         />
       </SafeAreaView>
     );

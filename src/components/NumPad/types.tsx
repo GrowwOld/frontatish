@@ -9,7 +9,7 @@
 
 // NumPad component props type
 export interface NumPadProps {
-  onItemClick: (input: string) => void;
-  onDeleteItem: () => void;
+  onItemClick: (keyStroke: string) => void;
+  onDeleteItem: (keystroke?: string) => void;
   onSubmit: () => void;
 }
