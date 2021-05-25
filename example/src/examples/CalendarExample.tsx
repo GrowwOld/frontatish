@@ -7,7 +7,6 @@ import { View, Text } from 'react-native';
 const CalendarExample = () => {
   const Colors = useColors();
   const [date, setDate] = useState(new Date());
-  const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState(0);
   const setSelectedDate = (calendarDate: Date) => {
     setDate(calendarDate);
@@ -41,7 +40,7 @@ const CalendarExample = () => {
         return (
           <Calendar
             title="Select Date:"
-            defaultDate={date}
+            defaultDate={new Date()}
             setDate={setSelectedDate}
             type="D/M/Y"
           />
@@ -50,22 +49,18 @@ const CalendarExample = () => {
         return (
           <Calendar
             title="Select Date:"
-            defaultDate={date}
+            defaultDate={new Date()}
             setDate={setSelectedDate}
             type="D"
-            onClosed={() => setIsOpen(false)}
-            isOpen={isOpen}
           />
         );
       case 2:
         return (
           <Calendar
             title="Select Month & Year"
-            defaultDate={date}
+            defaultDate={new Date()}
             type="M/Y"
             setDate={setSelectedDate}
-            onClosed={() => setIsOpen(false)}
-            isOpen={isOpen}
           />
         );
       default:
@@ -110,13 +105,6 @@ const CalendarExample = () => {
           </Text>
         </View>
         <View style={{ borderWidth: 1 }}>{getCalendar()}</View>
-
-        {/* <View style={{ margin: 20 }}>
-          <Button
-            label={active === 0 ? 'Done' : 'Open Calendar'}
-            onPress={() => setIsOpen(true)}
-          />
-        </View> */}
       </View>
     </SafeAreaView>
   );

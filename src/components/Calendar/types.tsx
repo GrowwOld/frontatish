@@ -6,8 +6,6 @@ export interface CalendarProps {
   defaultDate: Date;
   title?: string;
   children?: ReactNode;
-  yearsArrayLowerBound?: number;
-  yearsArrayUpperBound?: number;
-  isOpen?: boolean;
-  onClosed?: () => void;
+  yearsArrayLowerBound: number;
+  yearsArrayUpperBound: number;
 }
