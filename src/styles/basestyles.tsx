@@ -21,6 +21,17 @@ const BaseStyles = StyleSheet.create({
     fontSize: Fonts.size.regular_16,
     fontWeight: 'bold',
   },
+  grwInfoBox: {
+    minHeight: 50,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 6,
+  },
+  grwInfoLabel: {
+    fontFamily: Fonts.type.roboto,
+    fontSize: Fonts.size.medium,
+    fontWeight: 'normal',
+  },
 });
 
 export default BaseStyles;
