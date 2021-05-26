@@ -35,10 +35,11 @@ const InfoBox = (props: InfoBoxProps) => {
     ...textStyle,
   };
   const iconStyles: StyleType = getIconStyles(backgroundColor, Colors);
+  const iconName = typeof icon === 'string' ? icon : 'exclamationcircle';
 
   return (
     <View style={mainInfoBoxStyles}>
-      {icon ? <Icon name="exclamationcircle" style={iconStyles} /> : null}
+      {icon ? <Icon name={iconName} style={iconStyles} /> : null}
       <Text style={mainLabelStyles}>{label}</Text>
     </View>
   );
