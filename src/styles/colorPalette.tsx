@@ -32,6 +32,7 @@ const LIGHT_MODE_COLORS = {
   font_4: '#DDDEE1',
   font_5: '#ECEDEF',
   font_6: '#F9F9FA',
+  font_7: '#44475B',
 };
 
 const DARK_MODE_COLORS = {
@@ -60,6 +61,7 @@ const DARK_MODE_COLORS = {
   font_4: '#2A2A2A',
   font_5: '#1D1D1D',
   font_6: '#171717',
+  font_7: '#44475B',
 };
 
 const Colors: ColorPaletteObjType = {

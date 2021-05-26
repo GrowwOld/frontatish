@@ -27,7 +27,7 @@ const BaseStyles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 6,
   },
-  grwInfoLabel: {
+  grwInfoBoxLabel: {
     fontFamily: Fonts.type.roboto,
     fontSize: Fonts.size.medium,
     fontWeight: 'normal',
