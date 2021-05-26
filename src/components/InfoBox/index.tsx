@@ -44,4 +44,13 @@ const InfoBox = (props: InfoBoxProps) => {
   );
 };
 
+InfoBox.defaultProps = {
+  label: '',
+  backgroundColor: 'info',
+  borderColor: '',
+  icon: false,
+  style: {},
+  textStyle: {},
+};
+
 export default InfoBox;
