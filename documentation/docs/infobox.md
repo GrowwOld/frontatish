@@ -8,10 +8,7 @@ About InfoBox usecase here.
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/button-light.png" alt="primary-button" />
-    </figure>
-    <figure>
-      <img src="/frontatish/img/button-dark.png" alt="secondary-button" />
+      <img src="/frontatish/img/InfoBox.png" alt="primary-button" />
     </figure>
 </div>
 
