@@ -4,7 +4,7 @@ title: InfoBox
 sidebar_label: InfoBox
 ---
 
-About InfoBox usecase here.
+Used for displaying information.
 
 <div className="image-horizontal-preview">
     <figure>
@@ -19,20 +19,24 @@ About InfoBox usecase here.
 
 import { InfoBox } from 'frontatish';
 
-// without icon
+// without icon, and borders
 <InfoBox
-    label="InfoBox"
+    label="Default"
     backgroundColor="info"
-    borderColor="warning"
-    style={{ marginTop: 20 }}
-    textStyle={{ color: '#ff00c4' }}
 />
 
+// with default icon: exclamationCircle
 <InfoBox
-    label="InfoBox"
-    backgroundColor="info"
+    label="With default icon"
+    backgroundColor="warning"
+    icon
+/>
+
+// all the props
+<InfoBox
+    label="All props"
+    backgroundColor="success"
     borderColor="warning"
-    icon="github"
     style={{ marginTop: 20 }}
     textStyle={{ color: '#ff00c4' }}
 />
@@ -42,7 +46,7 @@ import { InfoBox } from 'frontatish';
 
 ### label
 
-Label to display inside the button
+Label to display inside the info box
 
 |           Type            |         Default         |        Required        |
 | :-----------------------: | :---------------------: | :--------------------: |
@@ -50,7 +54,7 @@ Label to display inside the button
 
 ### backgroundColor
 
-On the basis of **type** passed to component, it applies the defined style to it
+Set background color from the values provided
 
 |           Type            |            Default             |                 Values                  |       Required        |
 | :-----------------------: | :----------------------------: | :-------------------------------------: | :-------------------: |
@@ -58,7 +62,7 @@ On the basis of **type** passed to component, it applies the defined style to it
 
 ### borderColor
 
-On the basis of **type** passed to component, it applies the defined style to it
+Set border color from the values provided
 
 |           Type            |            Default             |                 Values                  |       Required        |
 | :-----------------------: | :----------------------------: | :-------------------------------------: | :-------------------: |
@@ -66,15 +70,15 @@ On the basis of **type** passed to component, it applies the defined style to it
 
 ### icon
 
-disabled make sure if its true then user won't be able to click it and the onPress would not get called
+Set as true for an exclamationCircle icon, or pass any of the [AntDesign icon names](https://oblador.github.io/react-native-vector-icons/)
 
 |            Type            |              Default            |                    Values                   |     Required        |
 | :------------------------: | :-----------------------------: | :-----------------------------------------: | :-----------------: |
-| boolean or string <img width="500"/> | false <img width="500"/> | true, false, iconName from AntDesign  <img width="500"/>     |No <img width="500"/> |
+| boolean or string <img width="500"/> | false or exclamationCircle when true <img width="500"/> | true, false, iconName from AntDesign  <img width="500"/>     |No <img width="500"/> |
 
 ### style
 
-A react native style object which takes care of styling the button component as per your needs
+A react native style object which takes care of styling the InfoBox component as per your needs
 
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |
@@ -82,7 +86,7 @@ A react native style object which takes care of styling the button component as 
 
 ### textStyle
 
-A react native style object which takes care of styling the button component as per your needs
+A react native style object which takes care of text styling as per your needs
 
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |
