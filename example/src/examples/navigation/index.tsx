@@ -8,17 +8,21 @@ import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 import CalendarScreen from '../CalendarExample';
+import ChipExample from '../ChipExample';
+import ListExample from '../ListExample';
 
 type objectType = { [index: string]: string };
 
 export const COMPONENT_SCREENS: objectType = {
   BUTTON: 'Button',
   CHECKBOX: 'Checkbox',
+  CHIP: 'Chip',
   RADIOBUTTON: 'RadioButton',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
   EMPTYVIEW: 'EmptyView',
   INPUT: 'Input',
+  LIST: 'List',
   DROPDOWN: 'Dropdown',
   CALENDAR: 'Calendar',
 };
@@ -36,6 +40,8 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  { name: COMPONENT_SCREENS.CHIP, screen: ChipExample },
+  { name: COMPONENT_SCREENS.LIST, screen: ListExample },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];
