@@ -56,24 +56,24 @@ Label to display inside the info box
 
 Set background color from the values provided
 
-|           Type            |            Default             |                 Values                  |       Required        |
-| :-----------------------: | :----------------------------: | :-------------------------------------: | :-------------------: |
+|           Type            |          Default        |                             Values                            |        Required        |
+| :-----------------------: | :---------------------: | :-----------------------------------------------------------: | :--------------------: |
 | string <img width="500"/> | info <img width="500"/> | info, success, warning, error, transparent <img width="500"/> | Yes <img width="500"/> |
 
 ### borderColor
 
 Set border color from the values provided
 
-|           Type            |            Default             |                 Values                  |       Required        |
-| :-----------------------: | :----------------------------: | :-------------------------------------: | :-------------------: |
+|           Type            |        Default          |                      Values                      |       Required        |
+| :-----------------------: | :---------------------: | :----------------------------------------------: | :-------------------: |
 | string <img width="500"/> | none <img width="500"/> | info, success, warning, error <img width="500"/> | No <img width="500"/> |
 
 ### icon
 
 Set as true for an exclamationCircle icon, or pass any of the [AntDesign icon names](https://oblador.github.io/react-native-vector-icons/)
 
-|            Type            |              Default            |                    Values                   |     Required        |
-| :------------------------: | :-----------------------------: | :-----------------------------------------: | :-----------------: |
+|                Type                  |              Default            |                    Values                   |     Required        |
+| :----------------------------------: | :-----------------------------: | :-----------------------------------------: | :-----------------: |
 | boolean or string <img width="500"/> | false or exclamationCircle when true <img width="500"/> | true, false, iconName from AntDesign  <img width="500"/>     |No <img width="500"/> |
 
 ### style
