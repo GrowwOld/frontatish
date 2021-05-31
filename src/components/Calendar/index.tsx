@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
@@ -7,100 +7,9 @@ import Ripple from 'react-native-material-ripple';
 import { Button } from 'frontatish';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
-import { Fonts } from '../../styles';
-
-const styles = StyleSheet.create({
-  calendarContainer: {
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-    padding: 8,
-  },
-  TextStyle: {
-    fontSize: 18,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    lineHeight: 24,
-    letterSpacing: -0.17,
-    textAlign: 'center',
-    marginTop: 20,
-  },
-  yearSelectedStyle: {
-    height: 60,
-    width: 60,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    alignItems: 'center',
-    fontSize: 21,
-    fontWeight: '400',
-    fontStyle: 'normal',
-    letterSpacing: 0,
-    textAlign: 'center',
-    paddingVertical: 10,
-    // marginBottom: 4,
-    marginRight: 10,
-    color: '#44475B',
-  },
-  unselectedStyle: {
-    height: 40,
-    width: 40,
-    fontFamily: Fonts.type.gotham_medium,
-    fontSize: 13,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: 'rgba(0, 0, 0, 0.5)',
-    paddingVertical: 10,
-    marginBottom: 4,
-    marginRight: 10,
-    borderRadius: 25,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#FFFFFF',
-  },
-  selectedStyle: {
-    height: 40,
-    width: 40,
-    borderRadius: 25,
-    borderStyle: 'solid',
-    backgroundColor: '#00D09C',
-    borderWidth: 1,
-    borderColor: '#dfe1e4',
-    fontFamily: Fonts.type.gotham_medium,
-    fontSize: 13,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: '#FFFFFF',
-    paddingVertical: 10,
-    marginBottom: 4,
-    marginRight: 10,
-    overflow: 'hidden',
-  },
-});
-
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+import MonthYearPicker from './monthYearPicker';
+import styles from './styles';
+import { changeDay, changeMonth, months } from './helper';
 
 const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -116,44 +25,17 @@ const Calendar = (props: CalendarProps) => {
   } = props;
 
   const [activeDate, setActiveDate] = useState(defaultDate);
-  const [refFlatList, setRefFlatList] = useState(null);
 
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = useColors();
 
-  const changeYear = (newYear: number) => {
-    const newTimeInMS = activeDate.setFullYear(newYear);
-    const updatedDate = new Date(newTimeInMS);
-    setActiveDate(updatedDate);
-  };
-  const changeMonth = (newMonth: number) => {
-    const newTimeInMS = activeDate.setMonth(newMonth);
-    const updatedDate = new Date(newTimeInMS);
-    setActiveDate(updatedDate);
-  };
-  const changeDay = (dateOfMonth: number) => {
-    const newTimeInMS = activeDate.setMonth(activeDate.getMonth(), dateOfMonth);
-    const updatedDate = new Date(newTimeInMS);
-    setActiveDate(updatedDate);
-  };
   setDate(activeDate);
 
-  const yearsArray = [];
-  if (type === 'M/Y') {
-    for (
-      let year = yearsArrayLowerBound;
-      year <= yearsArrayUpperBound;
-      year += 1
-    ) {
-      yearsArray.push(year);
-    }
-  }
-
-  const generateMatrix = () => {
-    const matrix = [];
+  const generateDayMatrix = () => {
+    const dayMatrix = [];
     // Create header
-    matrix[0] = ['1', '2', '3', '4', '5', '6', '7'];
+    dayMatrix[0] = ['1', '2', '3', '4', '5', '6', '7'];
     const year = activeDate.getFullYear();
     const month = activeDate.getMonth();
 
@@ -166,20 +48,20 @@ const Calendar = (props: CalendarProps) => {
     }
     let counter = 8;
     for (let row = 1; row < 5; row += 1) {
-      matrix[row] = [];
+      dayMatrix[row] = [];
       for (let col = 0; col < 7; col += 1) {
         if (counter <= maxDays) {
-          matrix[row][col] = counter.toString();
+          dayMatrix[row][col] = counter.toString();
           counter += 1;
         } else {
-          matrix[row][col] = '';
+          dayMatrix[row][col] = '';
         }
       }
     }
-    return matrix;
+    return dayMatrix;
   };
-  const matrix = generateMatrix();
-  const renderEachRow = (daysArray: string[]) => {
+  const dayMatrix = generateDayMatrix();
+  const renderEachDayRow = (daysArray: string[]) => {
     return (
       <View
         style={{
@@ -191,7 +73,9 @@ const Calendar = (props: CalendarProps) => {
         {daysArray.map((item) => {
           return item === '' ? null : (
             <Ripple
-              onPress={() => changeDay(parseInt(item, 10))}
+              onPress={() =>
+                changeDay(parseInt(item, 10), activeDate, setActiveDate)
+              }
               rippleContainerBorderRadius={18}
             >
               <View
@@ -223,18 +107,7 @@ const Calendar = (props: CalendarProps) => {
     );
   };
 
-  const getItemLayout = (data: number[] | null | undefined, index: number) => {
-    return { length: 70, offset: 70 * (index - 1), index };
-  };
-
-  const scrollToSelectedYear = () => {
-    refFlatList?.scrollToIndex({
-      animated: true,
-      index: activeDate.getFullYear() - yearsArrayLowerBound,
-    });
-  };
-
-  const getChangeMonthIcon = (iconName: string) => {
+  const getChangeMonthIcon = (iconName: string, delta: number) => {
     return (
       <Ripple
         style={{
@@ -244,16 +117,28 @@ const Calendar = (props: CalendarProps) => {
           justifyContent: 'center',
         }}
         rippleContainerBorderRadius={16}
-        onPress={() => changeMonth(activeDate.getMonth() - 1)}
+        onPress={() =>
+          changeMonth(activeDate.getMonth() + delta, activeDate, setActiveDate)
+        }
       >
         <IonIcon name={iconName} size={16} color={Colors.primary} />
       </Ripple>
     );
   };
 
+  const getDayView = () => {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <View style={{ alignItems: 'flex-start' }}>
+          {dayMatrix.map((item) => renderEachDayRow(item))}
+        </View>
+      </View>
+    );
+  };
+
   const calendarContent = () => {
     switch (type) {
-      case 'D/M/Y':
+      case 'D/M':
         return (
           <>
             <View
@@ -263,27 +148,23 @@ const Calendar = (props: CalendarProps) => {
                 flexDirection: 'row',
                 paddingHorizontal: 30,
                 alignItems: 'center',
+                marginBottom: 16,
               }}
             >
-              {getChangeMonthIcon('ios-arrow-back')}
+              {getChangeMonthIcon('ios-arrow-back', -1)}
               <Text
                 style={{
                   color: Colors.primary,
                   flex: 2,
                   textAlign: 'center',
-                  fontWeight: '500',
                   fontSize: 16,
                 }}
               >
                 {months[activeDate.getMonth()]}
               </Text>
-              {getChangeMonthIcon('ios-arrow-forward')}
+              {getChangeMonthIcon('ios-arrow-forward', 1)}
             </View>
-            <View style={{ alignItems: 'center' }}>
-              <View style={{ alignItems: 'flex-start', marginTop: 16 }}>
-                {matrix.map((item) => renderEachRow(item))}
-              </View>
-            </View>
+            {getDayView()}
             {children}
             <Button label="Done" onPress={() => setDate(activeDate)} />
           </>
@@ -291,133 +172,26 @@ const Calendar = (props: CalendarProps) => {
 
       case 'M/Y':
         return (
-          <View
-            style={{
-              justifyContent: 'center',
-              alignContent: 'center',
-            }}
-            onLayout={scrollToSelectedYear}
-          >
-            <View
-              style={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                paddingHorizontal: 20,
-              }}
-            >
-              <Text style={styles.TextStyle}>{title}</Text>
-              <FlatList
-                data={yearsArray}
-                renderItem={({ item, index }) => (
-                  <Text
-                    key={index}
-                    style={
-                      activeDate.getFullYear() === item
-                        ? [
-                            styles.yearSelectedStyle,
-                            { marginBottom: 0, flex: 1 },
-                          ]
-                        : [
-                            styles.unselectedStyle,
-                            {
-                              marginBottom: 0,
-                              flex: 1,
-                              width: 60,
-                              alignSelf: 'center',
-                            },
-                          ]
-                    }
-                    onPress={() => {
-                      changeYear(item);
-                      scrollToSelectedYear();
-                    }}
-                  >
-                    {item}
-                  </Text>
-                )}
-                getItemLayout={getItemLayout}
-                keyExtractor={(item) => item.toString()}
-                horizontal
-                style={{
-                  marginHorizontal: 30,
-                }}
-                ref={(ref) => setRefFlatList(ref)}
-              />
-              <View
-                style={{
-                  flexDirection: 'row',
-                  flexWrap: 'wrap',
-                  justifyContent: 'center',
-                  paddingHorizontal: 25,
-                }}
-              >
-                {months.map((item, index) => {
-                  return (
-                    <Text
-                      onPress={() => {
-                        changeMonth(index);
-                      }}
-                      style={
-                        months[activeDate.getMonth()] === item
-                          ? [styles.selectedStyle]
-                          : [styles.unselectedStyle]
-                      }
-                    >
-                      {item.substr(0, 3)}
-                    </Text>
-                  );
-                })}
-              </View>
-              <Button
-                label="Done"
-                customStyles={{ margin: 12 }}
-                onPress={() => {}}
-              />
-            </View>
-          </View>
+          <MonthYearPicker
+            defaultDate={defaultDate}
+            yearsArrayLowerBound={yearsArrayLowerBound}
+            yearsArrayUpperBound={yearsArrayUpperBound}
+            setDate={setActiveDate}
+          />
         );
       case 'D':
         return (
-          <View
-            style={{
-              backgroundColor: 'white',
-              paddingHorizontal: 20,
-              paddingVertical: 5,
-            }}
-          >
-            <Text
-              style={{
-                textAlign: 'center',
-                fontSize: 20,
-                fontWeight: '800',
-                marginBottom: 5,
-              }}
-            >
-              {title}
-            </Text>
-            <View
-              style={{
-                alignItems: 'center',
-                marginBottom: 10,
-              }}
-            >
-              <View style={{ alignItems: 'flex-start', marginTop: 16 }}>
-                {matrix.map((item) => renderEachRow(item))}
-              </View>
-            </View>
+          <>
+            {getDayView()}
 
-            <Button
-              label="Confirm"
-              onPress={() => setDate(activeDate)}
-              customStyles={{ margin: 10 }}
-            />
-          </View>
+            <Button label="Done" onPress={() => setDate(activeDate)} />
+          </>
         );
       default:
         return (
-          <View>
+          <>
             <Text>Day Picker</Text>
-          </View>
+          </>
         );
     }
   };
@@ -429,7 +203,11 @@ const Calendar = (props: CalendarProps) => {
       ]}
     >
       <Text
-        style={[styles.TextStyle, { color: Colors.font_1, marginVertical: 10 }]}
+        style={[
+          styles.TextStyle,
+          { color: Colors.font_1 },
+          styles.marginVertical20,
+        ]}
       >
         {title}
       </Text>

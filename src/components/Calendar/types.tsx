@@ -9,3 +9,11 @@ export interface CalendarProps {
   yearsArrayLowerBound: number;
   yearsArrayUpperBound: number;
 }
+
+export interface MonthYearPickerProps {
+  defaultDate: Date;
+  yearsArrayLowerBound: number;
+  yearsArrayUpperBound: number;
+  children?: ReactNode;
+  setDate: (calendarDate: Date) => void;
+}

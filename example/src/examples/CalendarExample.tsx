@@ -12,27 +12,12 @@ const CalendarExample = () => {
     setDate(calendarDate);
   };
   const items = [
-    { value: 'D/M/Y', label: 'Day-Month-Year' },
+    { value: 'D/M', label: 'Day-Month' },
     { value: 'D', label: 'Day' },
     { value: 'M/Y', label: 'Month-Year' },
   ];
   const onChange = (index: number) => {
     setActive(index);
-  };
-  const giveSelectedDate = () => {
-    switch (active) {
-      case 0: {
-        return date?.toString();
-      }
-      case 1: {
-        return date.getDate();
-      }
-      case 2: {
-        return `Month: ${date.getMonth() + 1} Year: ${date.getFullYear()}`;
-      }
-      default:
-        return null;
-    }
   };
   const getCalendar = () => {
     switch (active) {
@@ -42,7 +27,7 @@ const CalendarExample = () => {
             title="Select Date:"
             defaultDate={new Date()}
             setDate={setSelectedDate}
-            type="D/M/Y"
+            type="D/M"
           />
         );
       case 1:
@@ -101,7 +86,7 @@ const CalendarExample = () => {
               fontSize: 14,
             }}
           >
-            {giveSelectedDate()}
+            {date.toDateString()}
           </Text>
         </View>
         <View style={{ borderWidth: 1 }}>{getCalendar()}</View>
