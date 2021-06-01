@@ -1,11 +1,16 @@
+import { TextStyle, ViewStyle } from 'react-native';
+
 export interface ListProps {
   leftLabel: string;
   leftSubtext?: string;
   rightLabel?: string;
   rightSubtext?: string;
-  leftChip: boolean;
-  rightChip: boolean;
-  sparkLine: boolean;
-  clickable: boolean;
-  onClick?: () => null;
+  leftChipLabel?: string;
+  rightChipLabel?: string;
+  sparkLine?: boolean;
+  disabled?: boolean;
+  onPress?: () => void;
+  labelStyle?: TextStyle;
+  subtextStyle?: TextStyle;
+  containerStyle?: ViewStyle;
 }

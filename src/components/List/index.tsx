@@ -15,30 +15,43 @@ const List = (props: ListProps) => {
     leftSubtext,
     rightLabel,
     rightSubtext,
-    leftChip,
-    rightChip,
+    leftChipLabel,
+    rightChipLabel,
     sparkLine,
-    clickable,
-    onClick,
+    disabled,
+    onPress,
+    labelStyle,
+    subtextStyle,
+    containerStyle,
   } = props;
 
-  const getChip = (showChip: boolean) => {
-    return <>{showChip ? <Chip style={styles.chipStyle} /> : null}</>;
+  const getChip = (chipLabel: string | undefined) => {
+    return (
+      <>
+        {chipLabel ? (
+          <Chip label={chipLabel} containerStyle={styles.chip} />
+        ) : null}
+      </>
+    );
   };
   const getLabelSubtextChip = (
     label: string,
     subtext: string | undefined,
-    showChip: boolean,
+    chipLabel: string | undefined,
   ) => {
     return (
       <>
-        <Text style={[styles.label, { color: Colors.font_1 }]}>{label}</Text>
+        <Text style={[styles.label, { color: Colors.font_1 }, labelStyle]}>
+          {label}
+        </Text>
         {subtext ? (
-          <Text style={[styles.subtext, { color: Colors.font_1 }]}>
+          <Text
+            style={[styles.subtext, { color: Colors.font_1 }, subtextStyle]}
+          >
             {subtext}
           </Text>
         ) : null}
-        {useMemo(() => getChip(showChip), [showChip])}
+        {useMemo(() => getChip(chipLabel), [chipLabel])}
       </>
     );
   };
@@ -46,32 +59,22 @@ const List = (props: ListProps) => {
   const getLeftLabelSubtextView = (
     label: string,
     subtext: string | undefined,
-    showChip: boolean,
+    chipLabel: string | undefined,
   ) => {
     return (
-      <View
-        style={{
-          flex: 4,
-          alignItems: 'flex-start',
-        }}
-      >
-        {getLabelSubtextChip(label, subtext, showChip)}
+      <View style={styles.leftView}>
+        {getLabelSubtextChip(label, subtext, chipLabel)}
       </View>
     );
   };
   const getRightLabelSubtextView = (
     label: string,
     subtext: string | undefined,
-    showChip: boolean,
+    chipLabel: string | undefined,
   ) => {
     return (
-      <View
-        style={{
-          flex: 3,
-          alignItems: 'flex-end',
-        }}
-      >
-        {getLabelSubtextChip(label, subtext, showChip)}
+      <View style={styles.rightView}>
+        {getLabelSubtextChip(label, subtext, chipLabel)}
       </View>
     );
   };
@@ -79,11 +82,15 @@ const List = (props: ListProps) => {
   return (
     <View>
       <Ripple
-        onPress={onClick}
-        disabled={!clickable}
-        style={[styles.containerStyle, { backgroundColor: Colors.white }]}
+        onPress={onPress}
+        disabled={disabled}
+        style={[
+          styles.container,
+          { backgroundColor: Colors.white },
+          containerStyle,
+        ]}
       >
-        {getLeftLabelSubtextView(leftLabel, leftSubtext, leftChip)}
+        {getLeftLabelSubtextView(leftLabel, leftSubtext, leftChipLabel)}
         {sparkLine ? (
           <View>
             <Image
@@ -94,13 +101,13 @@ const List = (props: ListProps) => {
           </View>
         ) : null}
         {rightLabel
-          ? getRightLabelSubtextView(rightLabel, rightSubtext, rightChip)
+          ? getRightLabelSubtextView(rightLabel, rightSubtext, rightChipLabel)
           : null}
-        {clickable ? (
+        {!disabled ? (
           <IonIcon
             name="ios-arrow-forward"
             size={10}
-            style={styles.paddingHorizontal10}
+            style={styles.arrowIcon}
           />
         ) : null}
       </Ripple>
@@ -109,17 +116,15 @@ const List = (props: ListProps) => {
 };
 
 List.defaultProps = {
-  leftChip: false,
-  rightChip: false,
   sparkLine: false,
-  clickable: true,
+  disabled: false,
 };
 
 const styles = StyleSheet.create({
   label: { fontSize: 16 },
   subtext: { fontSize: 12, marginTop: 6 },
-  chipStyle: { marginTop: 6 },
-  containerStyle: {
+  chip: { marginTop: 6 },
+  container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -127,8 +132,16 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 12,
   },
+  leftView: {
+    flex: 4,
+    alignItems: 'flex-start',
+  },
+  rightView: {
+    flex: 3,
+    alignItems: 'flex-end',
+  },
   sparkLine: { height: 54, width: 92 },
-  paddingHorizontal10: { paddingRight: 8, paddingLeft: 14 },
+  arrowIcon: { paddingRight: 8, paddingLeft: 14 },
 });
 
 export default List;
