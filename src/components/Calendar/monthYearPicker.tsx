@@ -1,7 +1,7 @@
 import { View, Text, FlatList } from 'react-native';
 import React, { useState } from 'react';
 import { MonthYearPickerProps } from './types';
-import { changeYear, changeMonth, months } from './helper';
+import { changeYear, changeMonth, months, getYearArray } from './helper';
 import styles from './styles';
 
 const MonthYearPicker = (props: MonthYearPickerProps) => {
@@ -14,19 +14,11 @@ const MonthYearPicker = (props: MonthYearPickerProps) => {
   } = props;
 
   const [activeDate, setActiveDate] = useState(defaultDate);
-  const [refFlatList, setRefFlatList] = useState(null);
+  const [refFlatList, setRefFlatList] = useState<FlatList<number>>();
 
   setDate(activeDate);
 
-  const yearsArray = [];
-
-  for (
-    let year = yearsArrayLowerBound;
-    year <= yearsArrayUpperBound;
-    year += 1
-  ) {
-    yearsArray.push(year);
-  }
+  const yearsArray = getYearArray(yearsArrayLowerBound, yearsArrayUpperBound);
 
   const getItemLayout = (data: number[] | null | undefined, index: number) => {
     return { length: 70, offset: 70 * (index - 1), index };
@@ -39,14 +31,7 @@ const MonthYearPicker = (props: MonthYearPickerProps) => {
     });
   };
   return (
-    <View
-      style={{
-        alignSelf: 'center',
-        width: 300,
-        paddingHorizontal: 20,
-      }}
-      onLayout={scrollToSelectedYear}
-    >
+    <View style={styles.monthYearContainer} onLayout={scrollToSelectedYear}>
       <FlatList
         data={yearsArray}
         renderItem={({ item, index }) => (
@@ -55,14 +40,7 @@ const MonthYearPicker = (props: MonthYearPickerProps) => {
             style={
               activeDate.getFullYear() === item
                 ? [styles.yearSelectedStyle]
-                : [
-                    styles.unselectedStyle,
-                    {
-                      flex: 1,
-                      width: 60,
-                      alignSelf: 'center',
-                    },
-                  ]
+                : [styles.unselectedStyle, styles.yearElement]
             }
             onPress={() => {
               changeYear(item, activeDate, setActiveDate);
@@ -75,19 +53,10 @@ const MonthYearPicker = (props: MonthYearPickerProps) => {
         getItemLayout={getItemLayout}
         keyExtractor={(item) => item.toString()}
         horizontal
-        style={{
-          marginHorizontal: 30,
-        }}
+        style={styles.marginHorizontal30}
         ref={(ref) => setRefFlatList(ref)}
       />
-      <View
-        style={{
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-          paddingHorizontal: 25,
-        }}
-      >
+      <View style={styles.monthView}>
         {months.map((item, index) => {
           return (
             <Text

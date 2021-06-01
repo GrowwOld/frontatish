@@ -77,6 +77,57 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   marginVertical20: { marginVertical: 20 },
+  monthYearContainer: {
+    alignSelf: 'center',
+    width: 300,
+    paddingHorizontal: 20,
+  },
+  yearElement: {
+    width: 60,
+    alignSelf: 'center',
+  },
+  marginHorizontal30: { marginHorizontal: 30 },
+  monthView: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    paddingHorizontal: 25,
+  },
+  dateView: {
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  dateElement: {
+    justifyContent: 'center',
+    borderRadius: 18,
+    margin: 3,
+    height: 36,
+    width: 36,
+  },
+  textAlignCenter: {
+    textAlign: 'center',
+  },
+  arrowIcon: {
+    height: 32,
+    width: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  alignItemsCenter: { alignItems: 'center' },
+  alignItemsStart: { alignItems: 'flex-start' },
+  dayMonthView: {
+    height: 40,
+    flexDirection: 'row',
+    paddingHorizontal: 30,
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  activeMonthTitle: {
+    flex: 2,
+    textAlign: 'center',
+    fontSize: 16,
+  },
 });
 
 export default styles;

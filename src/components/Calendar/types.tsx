@@ -1,13 +1,13 @@
 import { ReactNode } from 'react';
 
 export interface CalendarProps {
-  type: string;
+  type: 'D/M' | 'D' | 'M/Y';
   setDate: (calendarDate: Date) => void;
-  defaultDate: Date;
+  defaultDate?: Date;
   title?: string;
   children?: ReactNode;
-  yearsArrayLowerBound: number;
-  yearsArrayUpperBound: number;
+  yearsArrayLowerBound?: number;
+  yearsArrayUpperBound?: number;
 }
 
 export interface MonthYearPickerProps {
