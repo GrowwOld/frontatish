@@ -1,4 +1,4 @@
-import { StyleType } from '../../common/types';
+import { TextStyle, ViewStyle } from 'react-native';
 
 export interface ChipProps {
   label: string;
@@ -6,9 +6,9 @@ export interface ChipProps {
   onPress?: () => void;
   disabled?: boolean;
   iconName?: string;
-  iconStyle?: StyleType;
+  iconStyle?: ViewStyle;
   onClose?: () => void;
-  labelStyle?: StyleType;
-  containerStyle?: StyleType;
-  selectedContainerStyle?: StyleType;
+  labelStyle?: TextStyle;
+  containerStyle?: ViewStyle;
+  selectedContainerStyle?: ViewStyle;
 }

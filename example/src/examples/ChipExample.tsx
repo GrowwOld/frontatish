@@ -19,7 +19,6 @@ const ChipExample = () => {
       >
         <Chip
           onPress={() => setIsSelected(true)}
-          iconName="ios-arrow-forward"
           isSelected={isSelected}
           onClose={() => setIsSelected(false)}
         />

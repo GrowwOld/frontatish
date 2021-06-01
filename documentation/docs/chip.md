@@ -8,10 +8,10 @@ Chip component can be used to display content in small boxes.
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/button-light.png" alt="primary-button" />
+      <img src="/frontatish/img/Chip.png" alt="chip" />
     </figure>
     <figure>
-      <img src="/frontatish/img/button-dark.png" alt="secondary-button" />
+      <img src="/frontatish/img/chipSelected.png" alt="chipSelected" />
     </figure>
 </div>
 
@@ -22,7 +22,11 @@ Chip component can be used to display content in small boxes.
 
 import { Chip } from 'frontatish';
 
-<Chip label="Chip" />;
+<Chip
+  onPress={() => setIsSelected(true)}
+  isSelected={isSelected}
+  onClose={() => setIsSelected(false)}
+/>;
 ```
 
 ## Props
