@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { Chip, useColors } from 'frontatish';
@@ -6,6 +6,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 const ChipExample = () => {
   const Colors = useColors();
+  const [isSelected, setIsSelected] = useState(false);
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View
@@ -16,7 +17,12 @@ const ChipExample = () => {
           backgroundColor: Colors.white,
         }}
       >
-        <Chip />
+        <Chip
+          onPress={() => setIsSelected(true)}
+          iconName="ios-arrow-forward"
+          isSelected={isSelected}
+          onClose={() => setIsSelected(false)}
+        />
       </View>
     </SafeAreaView>
   );

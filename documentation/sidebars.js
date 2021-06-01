@@ -14,6 +14,7 @@ module.exports = {
       'switch',
       'dropdown',
       'input',
+      'chip',
       // 'ticker',
       /* next_doc_id */
     ],
