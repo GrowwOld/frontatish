@@ -58,6 +58,16 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     };
   }
 
+  componentDidMount() {
+    const { value } = this.props;
+    if (value) {
+      this.setState({
+        codeInputValue: value.split(''),
+        activeInput: value.length - 1,
+      });
+    }
+  }
+
   componentDidUpdate(prevProps: CodeInputProps, prevState: CodeInputState) {
     const { activeInput } = this.state;
     const { codeLength } = this.props;
@@ -73,24 +83,24 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     const { codeInputValue, activeInput } = this.state;
     const { keyStroke, setCode, codeLength } = this.props;
     if (keyStroke?.actionType === 'insert' && activeInput < codeLength) {
-      const x = [...codeInputValue];
-      x[activeInput] = keyStroke?.value;
-      setCode(x.join(''));
+      const updatedCodeInput = [...codeInputValue];
+      updatedCodeInput[activeInput] = keyStroke?.value;
+      setCode(updatedCodeInput.join(''));
       this.setState({
-        codeInputValue: x,
+        codeInputValue: updatedCodeInput,
         activeInput: activeInput + 1,
       });
     } else if (keyStroke?.actionType === 'delete' && activeInput >= 0) {
-      let d;
+      let deletedIndex: number;
       let newActiveInput = activeInput === 0 ? activeInput : activeInput - 1;
       if (codeInputValue[activeInput]) {
-        d = activeInput;
+        deletedIndex = activeInput;
         newActiveInput = activeInput;
       } else {
-        d = activeInput - 1;
+        deletedIndex = activeInput - 1;
       }
       const updated = codeInputValue.map((item, index) => {
-        if (index === d) return undefined;
+        if (index === deletedIndex) return undefined;
         return item;
       });
       setCode(updated.join(''));

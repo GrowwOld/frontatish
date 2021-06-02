@@ -25,7 +25,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   constructor(props: NumPadExampleProps) {
     super(props);
     this.state = { keyStroke: undefined, value: '', codeError: '' };
-    this.codeLength = 4;
+    this.codeLength = 6;
   }
 
   // onItemClick
@@ -40,13 +40,17 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   onSubmit = () => {
     const { value } = this.state;
-    if (parseInt(value, 10) < this.codeLength) {
+    if (value.length < this.codeLength) {
+      console.log('error is');
       this.setState({ codeError: 'Incorrect Code' });
+    }
+    if (value.length === this.codeLength) {
+      this.setState({ codeError: '' });
     }
   };
 
   render() {
-    const { value, keyStroke, codeError } = this.state;
+    const { keyStroke, codeError } = this.state;
     const { Colors } = this.props;
     return (
       <SafeAreaView
@@ -64,19 +68,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             codeLength={this.codeLength}
             inputContainer="line"
             setCode={this.setCode}
-            value={value}
-            codeError={codeError}
-          />
-        </View>
-        <View
-          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-        >
-          <CodeInput
-            value={value}
-            keyStroke={keyStroke}
-            codeLength={this.codeLength}
-            inputContainer="box"
-            setCode={this.setCode}
+            value="124567"
             codeError={codeError}
           />
         </View>

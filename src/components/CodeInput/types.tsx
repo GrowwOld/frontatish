@@ -12,6 +12,6 @@ export interface CodeInputProps {
 }
 
 export interface CodeInputState {
-  codeInputValue: string[];
+  codeInputValue: Array<string | undefined>;
   activeInput: number;
 }
