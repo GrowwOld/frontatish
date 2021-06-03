@@ -14,7 +14,6 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 import { SwipeableModalProps } from './types';
 import { BottomFixedView, CenteredView } from '../../ui';
-import { colors } from '../../index';
 
 const SwipeableModal = (props: SwipeableModalProps) => {
   const {
@@ -111,7 +110,7 @@ SwipeableModal.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: colors.light.white,
+    backgroundColor: '#ffffff',
     borderRadius: 4,
     maxHeight: Dimensions.get('window').height,
     paddingBottom: 40,
