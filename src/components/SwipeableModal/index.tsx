@@ -13,7 +13,8 @@ import Modal from 'react-native-modal';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 import { SwipeableModalProps } from './types';
-import { BottomFixedView, CenteredView } from '../../ui';
+import { useColors } from '../../themes';
+import { BottomFixedView } from '../../ui';
 
 const SwipeableModal = (props: SwipeableModalProps) => {
   const {
@@ -31,6 +32,8 @@ const SwipeableModal = (props: SwipeableModalProps) => {
     onCloseButtonPress,
   } = props;
 
+  const Colors = useColors();
+
   const [scrollOffset, setScrollOffset] = useState(0);
 
   const scrollViewRef = useRef<ScrollView>(null);
@@ -46,7 +49,13 @@ const SwipeableModal = (props: SwipeableModalProps) => {
 
   const modalContent = () => {
     return (
-      <View style={[styles.container, componentStyle]}>
+      <View
+        style={[
+          styles.container,
+          componentStyle,
+          { backgroundColor: centerPositioned ? '' : Colors.white },
+        ]}
+      >
         {swipeable && !centerPositioned ? (
           <View style={styles.topBar}>
             <View style={styles.emptyView} />
@@ -75,28 +84,30 @@ const SwipeableModal = (props: SwipeableModalProps) => {
   };
 
   return (
-    <Modal
-      isVisible={isOpen}
-      hasBackdrop={hasBackdrop}
-      backdropOpacity={backdropOpacity}
-      swipeDirection="down"
-      animationOutTiming={500}
-      swipeThreshold={swipeThreshold}
-      onSwipeComplete={onSwipeComplete}
-      onBackdropPress={onBackdropPress}
-      onBackButtonPress={onBackButtonPress}
-      propagateSwipe
-      style={styles.margin_0}
-      scrollTo={handleScrollTo}
-      scrollOffset={scrollOffset}
-      scrollOffsetMax={500}
-    >
-      {centerPositioned ? (
-        <CenteredView>{modalContent()}</CenteredView>
-      ) : (
-        <BottomFixedView>{modalContent()}</BottomFixedView>
-      )}
-    </Modal>
+    <View style={styles.flex_1}>
+      <Modal
+        isVisible={isOpen}
+        hasBackdrop={hasBackdrop}
+        backdropOpacity={backdropOpacity}
+        swipeDirection={centerPositioned || !swipeable ? [] : 'down'}
+        animationOutTiming={500}
+        swipeThreshold={swipeThreshold}
+        onSwipeComplete={onSwipeComplete}
+        onBackdropPress={onBackdropPress}
+        onBackButtonPress={onBackButtonPress}
+        propagateSwipe
+        style={styles.margin_0}
+        scrollTo={handleScrollTo}
+        scrollOffset={scrollOffset}
+        scrollOffsetMax={500}
+      >
+        {centerPositioned ? (
+          modalContent()
+        ) : (
+          <BottomFixedView>{modalContent()}</BottomFixedView>
+        )}
+      </Modal>
+    </View>
   );
 };
 
@@ -109,13 +120,11 @@ SwipeableModal.defaultProps = {
 };
 
 const styles = StyleSheet.create({
+  flex_1: { flex: 1 },
   container: {
-    backgroundColor: '#ffffff',
     borderRadius: 4,
     maxHeight: Dimensions.get('window').height,
-    paddingBottom: 40,
     paddingHorizontal: 20,
-    paddingTop: 15,
   },
   topBar: {
     paddingHorizontal: 5,
