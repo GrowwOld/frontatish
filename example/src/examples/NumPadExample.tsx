@@ -25,7 +25,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
 
   // onItemClick
   onItemClick = (keyStroke?: keyStrokeType) => {
-    this.setState({ keyStroke });
+    this.setState({ keyStroke, codeError: '' });
   };
 
   setCode = (value: string) => {
