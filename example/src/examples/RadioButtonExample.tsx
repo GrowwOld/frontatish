@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -7,7 +7,7 @@ import { RadioButton, useColors, RadioGroup } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 // import { Fonts, getColors } from '../styles';
 
-const RadioButtonExample = (props: any) => {
+const RadioButtonExample = (props: { navigation: any }) => {
   const Colors = useColors();
   // choosen will hold the value of selected radio button
   const [choosen, setChoosen] = useState('xtra small');
@@ -18,6 +18,7 @@ const RadioButtonExample = (props: any) => {
   const onChangeRadioGroup = (selectedValue: string) =>
     setRadioGroupText(selectedValue);
   // const Colors = getColors(isDark);
+  const goBack = useCallback(() => props.navigation.pop(), []);
   return (
     <SafeAreaView
       style={{
@@ -30,7 +31,7 @@ const RadioButtonExample = (props: any) => {
         name="arrow-back"
         size={20}
         style={{ margin: 20 }}
-        onPress={() => props.navigation.pop()}
+        onPress={goBack}
       />
       <Text style={{ margin: 20, fontWeight: 'bold' }}>
         Normal Radio Button
