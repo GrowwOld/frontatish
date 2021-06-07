@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders Correctly 1`] = `
+<View>
+  <RadioButton
+    key="0"
+    onPress={[Function]}
+    selected={false}
+    size="sm"
+    value="value1"
+  />
+  <RadioButton
+    key="1"
+    onPress={[Function]}
+    selected={false}
+    size="sm"
+    value="value2"
+  />
+</View>
+`;
