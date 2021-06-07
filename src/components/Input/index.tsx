@@ -5,9 +5,10 @@ import {
   View,
   StyleSheet,
   Text,
+  TouchableWithoutFeedback,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+
 import { withColors } from '../../themes';
 import { StyleType, ColorType } from '../../common/types';
 
