@@ -2,14 +2,9 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors, CodeInput } from 'frontatish';
+import { NumPad, withColors, CodeInput, keyStrokeType } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-type keyStrokeType = {
-  value: string;
-  actionType: 'insert' | 'delete';
-  actionId: number;
-};
 interface NumPadExampleState {
   keyStroke: keyStrokeType | undefined;
   value: string;
@@ -64,7 +59,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
           style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
           <CodeInput
-            keyStroke={keyStroke}
+            keyStroke={keyStroke!}
             codeLength={this.codeLength}
             inputContainer="line"
             setCode={this.setCode}

@@ -1,3 +1,4 @@
+import { TextStyle } from 'react-native';
 import { ColorType } from '../../common/types';
 import { keyStrokeType } from '../NumPad/types';
 
@@ -9,6 +10,7 @@ export interface CodeInputProps {
   setCode: (code: string) => void;
   keyStroke?: keyStrokeType;
   codeError: string;
+  errorStyle?: TextStyle;
 }
 
 export interface CodeInputState {

@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   },
   animatedUnderLine: {
     height: 48,
-    width: 40,
-    marginRight: 18,
+    width: 38,
+    marginRight: 16,
     justifyContent: 'center',
     alignItems: 'center',
     borderBottomWidth: 2.5,
@@ -36,13 +36,17 @@ const styles = StyleSheet.create({
   },
   inputUnderlined: {
     height: 48,
-    width: 40,
-    marginRight: 18,
+    width: 38,
+    marginRight: 16,
     justifyContent: 'center',
     alignItems: 'center',
     // borderBottomWidth: 2,
     // borderBottomColor: LIGHT_MODE_COLORS.primary_attr_40,
     backgroundColor: LIGHT_MODE_COLORS.font_5,
+  },
+  errorUnderlined: {
+    borderBottomWidth: 2.5,
+    borderBottomColor: LIGHT_MODE_COLORS.semantic_red,
   },
 });
 
@@ -121,18 +125,19 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderInputUI = () => {
-    const { codeLength, inputContainer } = this.props;
+    const { codeLength, inputContainer, codeError } = this.props;
     const { codeInputValue } = this.state;
     const ui = [];
 
     for (let i = 0; i < codeLength; i += 1) {
       const lastInputStyle = i === codeLength - 1 ? { marginRight: 0 } : {};
+      const errorBoxStyle = codeError ? styles.errorUnderlined : {};
       ui.push(
         <TouchableWithoutFeedback
           style={[
             inputContainer === 'line'
-              ? styles.inputUnderlined
-              : styles.inputBox,
+              ? [styles.inputUnderlined, errorBoxStyle]
+              : [styles.inputBox, errorBoxStyle],
             lastInputStyle,
           ]}
           key={i.toString()}
@@ -150,20 +155,31 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderErrorMsg = () => {
-    const { codeError } = this.props;
+    const { codeError, errorStyle } = this.props;
     if (codeError) {
-      return <Text>{codeError}</Text>;
+      return (
+        <Text
+          style={{
+            color: LIGHT_MODE_COLORS.semantic_red,
+            marginTop: 10,
+            ...errorStyle,
+          }}
+        >
+          {codeError}
+        </Text>
+      );
     }
-    return null;
+    return <Text style={{ marginTop: 10 }} />;
   };
 
   render() {
-    const { Colors, inputContainer } = this.props;
+    const { Colors, inputContainer, codeError } = this.props;
     const { activeInput } = this.state;
     const prevActiveInput = activeInput - 1;
-    const translator = 58; // (width + margin-right)
+    const translator = 54; // (width + margin-right)
     const prevXDistance = prevActiveInput * translator;
     const currentXDistance = activeInput * translator;
+    const errorBoxStyle = codeError ? styles.errorUnderlined : {};
     return (
       <>
         <View style={{ flexDirection: 'row' }}>
@@ -187,6 +203,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
                   },
                 ],
               },
+              errorBoxStyle,
             ]}
           />
           {this.renderInputUI()}

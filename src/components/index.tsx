@@ -32,3 +32,8 @@ export {
   Input,
   CodeInput,
 };
+
+// types export
+
+export * from './CodeInput/types';
+export * from './NumPad/types';
