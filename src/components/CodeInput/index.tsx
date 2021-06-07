@@ -125,7 +125,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderInputUI = () => {
-    const { codeLength, inputContainer, codeError } = this.props;
+    const { codeLength, inputContainer, codeError, Mask } = this.props;
     const { codeInputValue } = this.state;
     const ui = [];
 
@@ -143,7 +143,11 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
           key={i.toString()}
           onPress={() => this.setActiveInputBox(i)}
         >
-          <Text style={{ fontSize: 20 }}>{codeInputValue[i]}</Text>
+          {codeInputValue[i] && Mask ? (
+            <Mask />
+          ) : (
+            <Text style={{ fontSize: 20 }}>{codeInputValue[i]}</Text>
+          )}
         </TouchableWithoutFeedback>,
       );
     }

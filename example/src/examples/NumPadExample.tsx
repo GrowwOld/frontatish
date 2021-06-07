@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
 import { NumPad, withColors, CodeInput, keyStrokeType } from 'frontatish';
@@ -36,12 +36,15 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   onSubmit = () => {
     const { value } = this.state;
     if (value.length < this.codeLength) {
-      console.log('error is');
       this.setState({ codeError: 'Incorrect Code' });
     }
     if (value.length === this.codeLength) {
       this.setState({ codeError: '' });
     }
+  };
+
+  renderMask = () => {
+    return <Text style={{ fontSize: 20, alignSelf: 'center' }}>*</Text>;
   };
 
   render() {
@@ -65,6 +68,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             setCode={this.setCode}
             value="124567"
             codeError={codeError}
+            Mask={this.renderMask}
           />
         </View>
 

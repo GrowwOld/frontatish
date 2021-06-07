@@ -11,6 +11,7 @@ export interface CodeInputProps {
   keyStroke?: keyStrokeType;
   codeError: string;
   errorStyle?: TextStyle;
+  Mask?: React.ComponentType;
 }
 
 export interface CodeInputState {
