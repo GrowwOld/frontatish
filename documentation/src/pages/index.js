@@ -13,7 +13,7 @@ const features = [
     imageUrl: 'img/undraw_docusaurus_mountain.svg',
     description: (
       <>
-        frontatish is very easy to use,you just need to install this package
+        frontatish is very easy to use, you just need to install this package
         and you get all amazing react-native ui components out of the box.
       </>
     ),
@@ -86,7 +86,9 @@ function Home() {
                 // styles.getStarted,
               )}
               style={{ marginLeft: 10 }}
-              to={'https://drive.google.com/file/d/1zsVde_i7YkpLT4wQzfAc17lYqv68aXp4/view?usp=sharing'}
+              to={
+                'https://drive.google.com/file/d/1zsVde_i7YkpLT4wQzfAc17lYqv68aXp4/view?usp=sharing'
+              }
             >
               Try demo app
             </Link>
