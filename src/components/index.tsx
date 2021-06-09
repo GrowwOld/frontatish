@@ -12,6 +12,7 @@ import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
+import SearchbarEntry from './SearchbarEntry';
 import Tag from './Tag';
 
 export {
@@ -26,6 +27,7 @@ export {
   Ripple,
   Switch,
   Searchbar,
+  SearchbarEntry,
   Table,
   Tag,
   Input,

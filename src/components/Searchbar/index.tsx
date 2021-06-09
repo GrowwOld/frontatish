@@ -1,48 +1,98 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import { View, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
-import { Fonts } from '../../styles';
-import { ColorType } from '../../common/types';
+import { SearchbarProps } from './types';
+import getStyles from './helper';
 
-const Searchbar = () => {
+const Searchbar = (props: SearchbarProps) => {
   const Colors = useColors();
   const styles = getStyles(Colors);
-  return (
-    <View style={styles.searchbarContainer}>
-      <Text style={styles.placeholderText}>Search the components</Text>
+
+  const {
+    containerStyle = styles.searchbarContainer, // cannot define in defaultProps as the styles depend on Colors
+    inputStyle = styles.textInput,
+    placeholderTextColor = Colors.font_3,
+    placeholder,
+    value,
+    clearIcon,
+    backIcon,
+    showClearIcon,
+    showBackIcon,
+    autoFocus,
+    onChangeText,
+    onBackIconPress,
+    onClearIconPress,
+  } = props;
+
+  const renderClearIcon = () => {
+    if (!showClearIcon) {
+      return null;
+    }
+    const opacity = value ? 1 : 0;
+    // we have to show transparent clear icon when valu ein textinput is empty
+    // otherwise the text will move left once the clear icon is rendered
+    const onPress = () => {
+      onClearIconPress ? onClearIconPress() : onChangeText('');
+    };
+    return (
       <Icon
-        name="search"
-        size={20}
-        color={Colors.font_3}
-        style={{ flex: 1, textAlign: 'right' }}
+        name={clearIcon}
+        style={{ opacity, alignSelf: 'center' }}
+        size={30}
+        onPress={() => onPress()}
+        color={Colors.font_1}
       />
-    </View>
+    );
+  };
+
+  const renderBackIcon = () => {
+    if (!showBackIcon) {
+      return null;
+    }
+    return (
+      <Icon
+        name={backIcon}
+        style={{ alignSelf: 'center' }}
+        size={30}
+        onPress={onBackIconPress}
+        color={Colors.font_1}
+      />
+    );
+  };
+
+  return (
+    <>
+      <View style={containerStyle}>
+        {renderBackIcon()}
+        <View style={{ flex: 4, minHeight: 30 }}>
+          {/* to maintain consistency with SearchbarEntry */}
+          <TextInput
+            style={inputStyle}
+            placeholder={placeholder}
+            placeholderTextColor={placeholderTextColor}
+            value={value}
+            onChangeText={onChangeText}
+            autoFocus={autoFocus}
+            numberOfLines={1}
+          />
+        </View>
+        {renderClearIcon()}
+      </View>
+    </>
   );
 };
 
-const getStyles = (Colors: ColorType) => {
-  return StyleSheet.create({
-    searchbarContainer: {
-      flexDirection: 'row',
-      padding: 12,
-      backgroundColor: Colors.white,
-      borderRadius: 5,
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 1,
-      },
-      shadowOpacity: 0.22,
-      shadowRadius: 2.22,
-      elevation: 3,
-    },
-    placeholderText: {
-      fontSize: Fonts.size.small_13,
-      // fontWeight: 'bold',
-      color: Colors.font_3,
-    },
-  });
+Searchbar.defaultProps = {
+  placeholder: 'Search',
+  clearIcon: 'clear',
+  backIcon: 'arrow-back',
+  showClearIcon: true,
+  showBackIcon: true,
+  onChangeText: () => {},
+  value: '',
+  autoFocus: true,
+  onBackIconPress: () => {},
 };
 
 export default Searchbar;
