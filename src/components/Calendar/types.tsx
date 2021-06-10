@@ -1,13 +1,15 @@
 import { ReactNode } from 'react';
+import { ViewStyle } from 'react-native';
 
 export interface CalendarProps {
   type: 'D/M' | 'D' | 'M/Y';
-  setDate: (calendarDate: Date) => void;
+  OnPressDone: (calendarDate: Date) => void;
   defaultDate?: Date;
   title?: string;
   children?: ReactNode;
   yearsArrayLowerBound?: number;
   yearsArrayUpperBound?: number;
+  componentStyle?: ViewStyle;
 }
 
 export interface MonthYearPickerProps {

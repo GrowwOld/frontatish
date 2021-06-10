@@ -1,10 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { Fonts } from '../../styles';
 
 const styles = StyleSheet.create({
   calendarContainer: {
     borderRadius: 10,
-    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
@@ -30,51 +28,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     fontSize: 21,
-    fontWeight: '400',
-    fontStyle: 'normal',
-    letterSpacing: 0,
     textAlign: 'center',
     paddingVertical: 10,
     marginRight: 10,
-    color: '#44475B',
   },
-  unselectedStyle: {
+  monthElement: {
     height: 40,
     width: 40,
-    fontFamily: Fonts.type.gotham_medium,
-    fontSize: 13,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    letterSpacing: 0,
     textAlign: 'center',
-    color: 'rgba(0, 0, 0, 0.5)',
     paddingVertical: 10,
-    marginRight: 10,
+    marginHorizontal: 5,
     borderRadius: 25,
-    borderStyle: 'solid',
-    borderWidth: 1,
-    borderColor: '#FFFFFF',
     marginVertical: 5,
-  },
-  selectedStyle: {
-    height: 40,
-    width: 40,
-    borderRadius: 25,
-    borderStyle: 'solid',
-    backgroundColor: '#00D09C',
-    borderWidth: 1,
-    borderColor: '#dfe1e4',
-    fontFamily: Fonts.type.gotham_medium,
-    fontSize: 13,
-    fontWeight: '500',
-    fontStyle: 'normal',
-    letterSpacing: 0,
-    textAlign: 'center',
-    color: '#FFFFFF',
-    paddingVertical: 10,
-    marginBottom: 4,
-    marginRight: 10,
-    overflow: 'hidden',
   },
   marginVertical20: { marginVertical: 20 },
   monthYearContainer: {
@@ -85,13 +50,17 @@ const styles = StyleSheet.create({
   yearElement: {
     width: 60,
     alignSelf: 'center',
+    textAlign: 'center',
+    paddingVertical: 10,
+    marginRight: 10,
+    borderRadius: 25,
   },
   marginHorizontal30: { marginHorizontal: 30 },
   monthView: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    paddingHorizontal: 25,
+    marginHorizontal: 20,
   },
   dateView: {
     flexDirection: 'row',
@@ -100,10 +69,10 @@ const styles = StyleSheet.create({
   },
   dateElement: {
     justifyContent: 'center',
-    borderRadius: 18,
-    margin: 3,
-    height: 36,
-    width: 36,
+    borderRadius: 25,
+    padding: 3,
+    height: 40,
+    width: 40,
   },
   textAlignCenter: {
     textAlign: 'center',

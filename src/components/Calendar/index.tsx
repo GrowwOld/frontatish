@@ -19,7 +19,8 @@ const Calendar = (props: CalendarProps) => {
     type,
     yearsArrayLowerBound,
     yearsArrayUpperBound,
-    setDate,
+    OnPressDone,
+    componentStyle,
   } = props;
 
   const [activeDate, setActiveDate] = useState(defaultDate ?? new Date());
@@ -35,30 +36,26 @@ const Calendar = (props: CalendarProps) => {
       <View style={styles.dateView}>
         {daysArray.map((item) => {
           return item === '' ? null : (
-            <Ripple
-              onPress={() =>
-                changeDay(parseInt(item, 10), activeDate, setActiveDate)
-              }
-              rippleContainerBorderRadius={18}
+            <View
+              style={[
+                styles.dateElement,
+                {
+                  backgroundColor:
+                    activeDate.getDate().toString() === item
+                      ? Colors.primary_attr_40
+                      : Colors.white,
+                },
+              ]}
             >
-              <View
-                style={[
-                  styles.dateElement,
-                  {
-                    backgroundColor:
-                      activeDate.getDate().toString() === item
-                        ? Colors.primary_attr_90
-                        : Colors.white,
-                  },
-                ]}
+              <Text
+                style={[styles.textAlignCenter, { color: Colors.font_2 }]}
+                onPress={() =>
+                  changeDay(parseInt(item, 10), activeDate, setActiveDate)
+                }
               >
-                <Text
-                  style={[styles.textAlignCenter, { color: Colors.font_2 }]}
-                >
-                  {item}
-                </Text>
-              </View>
-            </Ripple>
+                {item}
+              </Text>
+            </View>
           );
         })}
       </View>
@@ -122,7 +119,7 @@ const Calendar = (props: CalendarProps) => {
           />
         );
       case 'D':
-        return <>{getDayView()}</>;
+        return getDayView();
       default:
         return <></>;
     }
@@ -131,6 +128,7 @@ const Calendar = (props: CalendarProps) => {
     <View
       style={[
         styles.calendarContainer,
+        componentStyle,
         { backgroundColor: Colors.white, shadowColor: Colors.font_1 },
       ]}
     >
@@ -144,7 +142,7 @@ const Calendar = (props: CalendarProps) => {
         {title}
       </Text>
       {calendarContent()}
-      <Button label="Done" onPress={() => setDate(activeDate)} />
+      <Button label="Done" onPress={() => OnPressDone(activeDate)} />
     </View>
   );
 };

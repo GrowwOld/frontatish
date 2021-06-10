@@ -48,13 +48,13 @@ import { Calendar } from 'frontatish';
 
 ## Props
 
-### setDate
+### OnPressDone
 
-Function to be called when user taps on 'Done' button. It updates the value of date.
+Function to be called when user taps on 'Done' button. You should pass a function to update the value of date in this.
 
-|            Type             |        Default         |        Required        |
-| :-------------------------: | :--------------------: | :--------------------: |
-| function <img width="500"/> | None<img width="500"/> | Yes <img width="500"/> |
+|            Type             |        Default         |                                              Signature                                              |        Required        |
+| :-------------------------: | :--------------------: | :-------------------------------------------------------------------------------------------------: | :--------------------: |
+| function <img width="500"/> | None<img width="500"/> | `function(calendarDate: Date) => void` where `calendarDate` is the updated date. <img width="500"/> | Yes <img width="500"/> |
 
 ### title
 
@@ -103,3 +103,11 @@ Any content to be displayed under day picker.
 |             Type             |         Default         |       Required        |
 | :--------------------------: | :---------------------: | :-------------------: |
 | ReactNode <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
+
+### componentStyle
+
+A react native style object which takes care of styling the calendar component as per your needs
+
+|             Type             |         Default         |       Required        |
+| :--------------------------: | :---------------------: | :-------------------: |
+| ViewStyle <img width="500"/> | none <img width="500"/> | No <img width="500"/> |

@@ -26,7 +26,7 @@ const CalendarExample = () => {
           <Calendar
             title="Select Date:"
             defaultDate={new Date()}
-            setDate={setSelectedDate}
+            OnPressDone={setSelectedDate}
             type="D/M"
           />
         );
@@ -35,7 +35,7 @@ const CalendarExample = () => {
           <Calendar
             title="Select Date:"
             defaultDate={new Date()}
-            setDate={setSelectedDate}
+            OnPressDone={setSelectedDate}
             type="D"
           />
         );
@@ -45,7 +45,7 @@ const CalendarExample = () => {
             title="Select Month & Year"
             defaultDate={new Date()}
             type="M/Y"
-            setDate={setSelectedDate}
+            OnPressDone={setSelectedDate}
           />
         );
       default:
@@ -89,7 +89,9 @@ const CalendarExample = () => {
             {date.toDateString()}
           </Text>
         </View>
-        <View style={{ borderWidth: 1 }}>{getCalendar()}</View>
+        <View style={{ borderWidth: 1, borderColor: Colors.font_1 }}>
+          {getCalendar()}
+        </View>
       </View>
     </SafeAreaView>
   );
