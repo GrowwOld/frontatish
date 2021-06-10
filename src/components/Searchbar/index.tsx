@@ -75,6 +75,7 @@ const Searchbar = (props: SearchbarProps) => {
             onChangeText={onChangeText}
             autoFocus={autoFocus}
             numberOfLines={1}
+            selectionColor={Colors.primary}
           />
         </View>
         {renderClearIcon()}
