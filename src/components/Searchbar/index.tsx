@@ -12,7 +12,7 @@ const Searchbar = (props: SearchbarProps) => {
   const {
     containerStyle = styles.searchbarContainer, // cannot define in defaultProps as the styles depend on Colors
     inputStyle = styles.textInput,
-    placeholderTextColor = Colors.font_3,
+    placeholderTextColor = Colors.font_2,
     placeholder,
     value,
     clearIcon,
