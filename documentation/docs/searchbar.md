@@ -34,7 +34,7 @@ const onChangeText = (text) => {
 };
 const navigation = useNavigation();
 
-<Button
+<Searchbar
   value={query}
   onChangeText={onChangeText}
   backIcon="arrow-back"
