@@ -10,9 +10,11 @@ const Searchbar = (props: SearchbarProps) => {
   const styles = getStyles(Colors);
 
   const {
-    containerStyle = styles.searchbarContainer, // cannot define in defaultProps as the styles depend on Colors
-    inputStyle = styles.textInput,
-    placeholderTextColor = Colors.font_2,
+    // containerStyle = styles.searchbarContainer,
+    containerStyle,
+    // inputStyle = styles.textInput,
+    inputStyle,
+    placeholderTextColor = Colors.font_2, // cannot define in defaultProps as the styles depend on Colors
     placeholder,
     value,
     clearIcon,
@@ -61,14 +63,23 @@ const Searchbar = (props: SearchbarProps) => {
     );
   };
 
+  const searchbarContainerStyle = containerStyle
+    ? { ...styles.searchbarContainer, containerStyle }
+    : styles.searchbarContainer;
+  const searchbarTextInputStyle = inputStyle
+    ? { ...styles.textInput, inputStyle }
+    : styles.textInput;
+
   return (
     <>
-      <View style={containerStyle}>
+      {/* <View style={containerStyle}> */}
+      <View style={searchbarContainerStyle}>
         {renderBackIcon()}
         <View style={{ flex: 4, minHeight: 30 }}>
           {/* to maintain consistency with SearchbarEntry */}
           <TextInput
-            style={inputStyle}
+            // style={inputStyle}
+            style={searchbarTextInputStyle}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
             value={value}
