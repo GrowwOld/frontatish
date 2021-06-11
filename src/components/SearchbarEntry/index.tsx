@@ -16,8 +16,10 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
   const styles = getStyles(Colors);
 
   const {
-    containerStyle = styles.searchbarEntryContainer,
-    inputStyle = styles.textInput,
+    // containerStyle = styles.searchbarEntryContainer,
+    containerStyle,
+    // inputStyle = styles.textInput,
+    inputStyle,
     leftIcon,
     rightIcon,
     leftLogo,
@@ -31,8 +33,10 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
   } = props;
 
   const renderIcon = (name: string, onIconPress: (() => void) | undefined) => {
+    const onPressUtil = onIconPress || onPress;
+
     return (
-      <Icon name={name} size={30} onPress={onIconPress} color={Colors.font_1} />
+      <Icon name={name} size={30} onPress={onPressUtil} color={Colors.font_1} />
     );
   };
 
@@ -42,8 +46,10 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
   ) => {
     const source = name;
 
+    const onPressUtil = onLogoPress || onPress;
+
     return (
-      <TouchableWithoutFeedback onPress={onLogoPress}>
+      <TouchableWithoutFeedback onPress={onPressUtil}>
         <Image source={source} style={{ height: 30, width: 30 }} />
       </TouchableWithoutFeedback>
     );
@@ -65,13 +71,22 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
     return null;
   };
 
+  const searchbarEntryContainerStyle = containerStyle
+    ? { ...styles.searchbarEntryContainer, containerStyle }
+    : styles.searchbarEntryContainer;
+  const searchbaerEntryTextInputStyle = inputStyle
+    ? { ...styles.textInput, inputStyle }
+    : styles.textInput;
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={containerStyle}>
+      {/* <View style={containerStyle}> */}
+      <View style={searchbarEntryContainerStyle}>
         {renderLogoOrIcon(leftLogo, onLeftLogoPress, leftIcon, onLeftIconPress)}
         <View style={{ flex: 4, minHeight: 30 }}>
           <TextInput
-            style={inputStyle}
+            // style={inputStyle}
+            style={searchbaerEntryTextInputStyle}
             value={value}
             editable={false}
             numberOfLines={1}
@@ -95,10 +110,10 @@ SearchbarEntry.defaultProps = {
   rightIcon: null,
   leftLogo: null,
   rightLogo: null,
-  onLeftIconPress: () => {},
-  onRightIconPress: () => {},
-  onLeftLogoPress: () => {},
-  onRightLogoPress: () => {},
+  onLeftIconPress: null,
+  onRightIconPress: null,
+  onLeftLogoPress: null,
+  onRightLogoPress: null,
 };
 
 export default SearchbarEntry;
