@@ -4,7 +4,7 @@ title: Searchbar
 sidebar_label: Searchbar
 ---
 
-Searchbar component allows user provides a text input to handle search. Using the props that are supported, things like icons to be used to go back and clear the text, callback function to handle the query etc can be customized.
+Searchbar component. When `editable` is set as `false`, the searchbar acts similar to a button and the `onPress` should contain the navigation to the seach screen. The screen screen should pass `editable` as `true` and the `onChangeText` function can use the `value` prop for the search logic. Various props are provided for customization, icons, logos and functionalities.
 
 <div className="image-horizontal-preview">
     <figure>
