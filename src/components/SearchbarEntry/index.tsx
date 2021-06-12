@@ -16,9 +16,7 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
   const styles = getStyles(Colors);
 
   const {
-    // containerStyle = styles.searchbarEntryContainer,
     containerStyle,
-    // inputStyle = styles.textInput,
     inputStyle,
     leftIcon,
     rightIcon,
@@ -72,15 +70,17 @@ const SearchbarEntry = (props: SearchbarEntryProps) => {
   };
 
   const searchbarEntryContainerStyle = containerStyle
-    ? { ...styles.searchbarEntryContainer, containerStyle }
+    ? { ...styles.searchbarEntryContainer, ...(containerStyle as object) }
     : styles.searchbarEntryContainer;
+
   const searchbaerEntryTextInputStyle = inputStyle
-    ? { ...styles.textInput, inputStyle }
+    ? { ...styles.textInput, ...(inputStyle as object) }
     : styles.textInput;
+
+  console.log(searchbarEntryContainerStyle);
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      {/* <View style={containerStyle}> */}
       <View style={searchbarEntryContainerStyle}>
         {renderLogoOrIcon(leftLogo, onLeftLogoPress, leftIcon, onLeftIconPress)}
         <View style={{ flex: 4, minHeight: 30 }}>
