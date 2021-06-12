@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, TextInput } from 'react-native';
+import {
+  View,
+  TextInput,
+  TouchableWithoutFeedback,
+  ImageSourcePropType,
+  Image,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
 import { SearchbarProps } from './types';
@@ -10,72 +16,142 @@ const Searchbar = (props: SearchbarProps) => {
   const styles = getStyles(Colors);
 
   const {
-    containerStyle,
-    inputStyle,
-    placeholderTextColor = Colors.font_2, // cannot define in defaultProps as the styles depend on Colors
-    placeholder,
-    value,
-    clearIcon,
+    autoFocus,
     backIcon,
+    clearIcon,
+    containerStyle,
+    editable,
+    inputStyle,
+    leftIcon,
+    leftLogo,
+    onBackIconPress,
+    onChangeText,
+    onClearIconPress,
+    onLeftIconPress,
+    onLeftLogoPress,
+    onRightIconPress,
+    onRightLogoPress,
+    onPress,
+    placeholder,
+    placeholderTextColor = Colors.font_2,
+    rightIcon,
+    rightLogo,
     showClearIcon,
     showBackIcon,
-    autoFocus,
-    onChangeText,
-    onBackIconPress,
-    onClearIconPress,
+    value,
   } = props;
 
   const renderClearIcon = () => {
     if (!showClearIcon) {
       return null;
     }
+
     const opacity = value ? 1 : 0;
-    // we have to show transparent clear icon when valu ein textinput is empty
+
+    // we have to show transparent clear icon when value in textinput is empty
     // otherwise the text will move left once the clear icon is rendered
-    const onPress = () => {
+    const onPressUtil = () => {
       onClearIconPress ? onClearIconPress() : onChangeText('');
     };
-    return (
-      <Icon
-        name={clearIcon}
-        style={{ opacity, alignSelf: 'center' }}
-        size={30}
-        onPress={() => onPress()}
-        color={Colors.font_1}
-      />
-    );
+    return renderIcon(clearIcon, onPressUtil, opacity);
   };
 
   const renderBackIcon = () => {
     if (!showBackIcon) {
       return null;
     }
+    const opacity = 1;
+    return renderIcon(backIcon, onBackIconPress, opacity);
+  };
+
+  const renderLogo = (
+    name: ImageSourcePropType,
+    onLogoPress: (() => void) | undefined,
+  ) => {
+    const source = name;
+
+    const onPressUtil = onLogoPress || onPress;
+
+    return (
+      <TouchableWithoutFeedback onPress={onPressUtil}>
+        <Image source={source} style={{ height: 30, width: 30 }} />
+      </TouchableWithoutFeedback>
+    );
+  };
+
+  const renderIcon = (
+    name: string | undefined,
+    onIconPress: (() => void) | undefined,
+    opacity: number,
+  ) => {
+    const onPressUtil = onIconPress || onPress;
+
     return (
       <Icon
-        name={backIcon}
-        style={{ alignSelf: 'center' }}
+        name={name}
         size={30}
-        onPress={onBackIconPress}
+        onPress={onPressUtil}
         color={Colors.font_1}
+        style={{ opacity, alignSelf: 'center' }}
       />
     );
+  };
+
+  const renderLogoOrIcon = (
+    logo: ImageSourcePropType | undefined,
+    onLogoPress: (() => void) | undefined,
+    icon: string | undefined,
+    onIconPress: (() => void) | undefined,
+  ) => {
+    if (logo) {
+      return renderLogo(logo, onLogoPress);
+    }
+    if (icon) {
+      const opacity = 1;
+      return renderIcon(icon, onIconPress, opacity);
+    }
+
+    return null;
+  };
+
+  const renderLeft = () => {
+    if (!editable) {
+      return renderLogoOrIcon(
+        leftLogo,
+        onLeftLogoPress,
+        leftIcon,
+        onLeftIconPress,
+      );
+    }
+    return renderBackIcon();
+  };
+
+  const renderRight = () => {
+    if (!editable) {
+      return renderLogoOrIcon(
+        rightLogo,
+        onRightLogoPress,
+        rightIcon,
+        onRightIconPress,
+      );
+    }
+    return renderClearIcon();
   };
 
   const searchbarContainerStyle = containerStyle
     ? { ...styles.searchbarContainer, ...(containerStyle as object) }
     : styles.searchbarContainer;
+
   const searchbarTextInputStyle = inputStyle
     ? { ...styles.textInput, ...(inputStyle as object) }
     : styles.textInput;
 
   return (
-    <>
+    <TouchableWithoutFeedback onPress={onPress}>
       <View style={searchbarContainerStyle}>
-        {renderBackIcon()}
+        {renderLeft()}
         <View style={{ flex: 4, minHeight: 30 }}>
-          {/* to maintain consistency with SearchbarEntry */}
           <TextInput
-            // style={inputStyle}
             style={searchbarTextInputStyle}
             placeholder={placeholder}
             placeholderTextColor={placeholderTextColor}
@@ -84,24 +160,35 @@ const Searchbar = (props: SearchbarProps) => {
             autoFocus={autoFocus}
             numberOfLines={1}
             selectionColor={Colors.primary}
+            editable={editable}
           />
         </View>
-        {renderClearIcon()}
+        {renderRight()}
       </View>
-    </>
+    </TouchableWithoutFeedback>
   );
 };
 
 Searchbar.defaultProps = {
-  placeholder: 'Search',
-  clearIcon: 'clear',
+  autoFocus: true,
   backIcon: 'arrow-back',
+  clearIcon: 'clear',
+  leftIcon: null,
+  leftLogo: null,
+  onBackIconPress: () => {},
+  onChangeText: () => {},
+  onLeftIconPress: null,
+  onLeftLogoPress: null,
+  onRightIconPress: null,
+  onRightLogoPress: null,
+  onPress: null,
+  placeholder: 'Search',
+  // default for placeholderTextColor defined while destructuring props
+  rightIcon: null,
+  rightLogo: null,
   showClearIcon: true,
   showBackIcon: true,
-  onChangeText: () => {},
   value: '',
-  autoFocus: true,
-  onBackIconPress: () => {},
 };
 
 export default Searchbar;

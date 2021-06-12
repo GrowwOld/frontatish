@@ -5,20 +5,35 @@
   mponent.
 */
 
-import { ViewStyle, StyleProp, TextStyle } from 'react-native';
+import {
+  ViewStyle,
+  StyleProp,
+  TextStyle,
+  ImageSourcePropType,
+} from 'react-native';
 
 export type SearchbarProps = {
+  autoFocus?: boolean;
+  backIcon?: string;
+  clearIcon?: string;
+  containerStyle?: StyleProp<ViewStyle>;
+  editable: boolean;
+  inputStyle?: StyleProp<TextStyle>;
+  leftIcon?: string;
+  leftLogo?: ImageSourcePropType;
+  onBackIconPress?(): void;
+  onChangeText(text: string): void;
+  onClearIconPress?(): void;
+  onLeftIconPress?(): void;
+  onLeftLogoPress?(): void;
+  onRightIconPress?(): void;
+  onRightLogoPress?(): void;
+  onPress?(): void;
   placeholder?: string;
   placeholderTextColor?: string;
-  value: string;
-  autoFocus?: boolean;
-  onChangeText(text: string): void;
-  containerStyle?: StyleProp<ViewStyle>;
-  inputStyle?: StyleProp<TextStyle>;
-  clearIcon: string;
-  backIcon: string;
-  showClearIcon?: boolean;
+  rightIcon?: string;
+  rightLogo?: ImageSourcePropType;
   showBackIcon?: boolean;
-  onClearIconPress?(): void;
-  onBackIconPress?(): void;
+  showClearIcon?: boolean;
+  value: string;
 };

@@ -14,7 +14,7 @@ import {
   useTheme,
   useThemeToggle,
   Switch,
-  SearchbarEntry,
+  Searchbar,
   // eslint-disable-next-line import/no-unresolved
 } from 'frontatish';
 
@@ -52,11 +52,12 @@ const HomeScreen = ({ navigation }: any) => {
       />
       <View style={{ padding: 20, flexDirection: 'row' }}>
         <View style={{ flex: 4 }}>
-          <SearchbarEntry
+          <Searchbar
             value="Search Groww"
             leftLogo={require('../../../src/assets/groww_logo.png')}
             rightIcon="account-circle"
             onPress={() => navigation.navigate('SearchbarScreen')}
+            editable={false}
           />
         </View>
         <View

@@ -90,6 +90,7 @@ const SearchbarScreen = () => {
       <View style={{ padding: 20, flexDirection: 'row' }}>
         <View style={{ flex: 4 }}>
           <Searchbar
+            editable
             placeholder="Search Components"
             value={query}
             onChangeText={onChangeText}
