@@ -68,7 +68,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             setCode={this.setCode}
             value="124567"
             codeError={codeError}
-            Mask={this.renderMask}
+            // Mask={this.renderMask}
           />
         </View>
 

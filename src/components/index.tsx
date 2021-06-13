@@ -13,7 +13,6 @@ import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
 import Tag from './Tag';
-import CodeInput from './CodeInput';
 
 export {
   Button,
@@ -30,10 +29,5 @@ export {
   Table,
   Tag,
   Input,
-  CodeInput,
 };
-
-// types export
-
-export * from './CodeInput/types';
-export * from './NumPad/types';
+export { CodeInput } from './CodeInput';
