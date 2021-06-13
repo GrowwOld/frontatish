@@ -14,10 +14,8 @@ import {
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const HomeScreen = ({ navigation }: any) => {
-  // const currentTheme = useContext(ThemeContext);
-  const colors = useColors();
   const toggleTheme = useThemeToggle();
-  const activeTheme = useTheme();
+  const [activeTheme, colors] = useTheme();
   const [isOn, setIsOn] = useState(false);
   const onThemeSwitch = () => {
     // dark mode is on

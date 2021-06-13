@@ -1,22 +1,28 @@
 import { useContext } from 'react';
-import ThemeContext from './ThemeContext';
+import ThemeContext, { ContextObjType } from './ThemeContext';
 import ColorPalette from '../styles/colorPalette';
 
+// @deprecated
 export const useColors = () => {
   const contextObj = useContext(ThemeContext);
-  const activeLocalColor = ColorPalette[contextObj.currentTheme];
-  const activeCustomColor = contextObj?.colors?.[contextObj.currentTheme];
-  return {
-    ...activeLocalColor,
-    ...activeCustomColor,
-  };
+  return getActiveColors(contextObj);
 };
 
 export const useTheme = () => {
   const contextObj = useContext(ThemeContext);
-  return contextObj.currentTheme;
+  const colors = getActiveColors(contextObj);
+  return [contextObj.currentTheme, colors];
 };
 export const useThemeToggle = () => {
   const contextObj = useContext(ThemeContext);
   return contextObj.toggleTheme;
+};
+
+const getActiveColors = (context: ContextObjType) => {
+  const activeLocalColor = ColorPalette[context.currentTheme];
+  const activeCustomColor = context?.colors?.[context.currentTheme];
+  return {
+    ...activeLocalColor,
+    ...activeCustomColor,
+  };
 };

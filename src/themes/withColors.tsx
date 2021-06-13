@@ -9,13 +9,20 @@ export default function withColors(ComposedComponent: typeof React.Component) {
     return (
       <ThemeContext.Consumer>
         {(value) => {
-          const { currentTheme, toggleTheme } = value;
-          const Colors = ColorPalette[currentTheme];
+          const { currentTheme, toggleTheme, colors } = value;
+          const activeLocalColor = ColorPalette[currentTheme];
+          const activeCustomColor = colors?.[currentTheme];
+          const Colors = {
+            ...activeLocalColor,
+            ...activeCustomColor,
+          };
+
           return (
             <ComposedComponent
               {...props}
               Colors={Colors}
               toggleTheme={toggleTheme}
+              currentTheme={currentTheme}
             />
           );
         }}
