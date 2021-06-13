@@ -15,7 +15,7 @@ import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const HomeScreen = ({ navigation }: any) => {
   // const currentTheme = useContext(ThemeContext);
-  const Colors = useColors();
+  const colors = useColors();
   const toggleTheme = useThemeToggle();
   const activeTheme = useTheme();
   const [isOn, setIsOn] = useState(false);
@@ -32,15 +32,15 @@ const HomeScreen = ({ navigation }: any) => {
       toggleTheme('dark');
       StatusBar.setBarStyle('default', true);
       if (Platform.OS === 'android') {
-        StatusBar.setBackgroundColor(Colors.white);
+        StatusBar.setBackgroundColor(colors.white);
       }
     }
     setIsOn(!isOn);
   };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.white }}>
       <StatusBar
-        backgroundColor={Colors.white}
+        backgroundColor={colors.white}
         animated
         barStyle={activeTheme === 'light' ? 'dark-content' : 'light-content'}
       />
@@ -51,7 +51,11 @@ const HomeScreen = ({ navigation }: any) => {
         <View
           style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}
         >
-          <Switch isOn={isOn} onToggle={onThemeSwitch} />
+          <Switch
+            isOn={isOn}
+            onToggle={onThemeSwitch}
+            onColor={colors.primary}
+          />
         </View>
       </View>
       <ScrollView
@@ -71,7 +75,7 @@ const HomeScreen = ({ navigation }: any) => {
               flex: 1,
               fontSize: 20,
               fontWeight: 'bold',
-              color: Colors.font_1,
+              color: colors.font_1,
             }}
           >
             UI components
@@ -84,7 +88,7 @@ const HomeScreen = ({ navigation }: any) => {
               style={styles.navButtonContainer}
               key={item}
             >
-              <Text style={{ color: Colors.font_1 }}>
+              <Text style={{ color: colors.font_1 }}>
                 {COMPONENT_SCREENS[item]}
               </Text>
             </TouchableOpacity>
@@ -95,7 +99,7 @@ const HomeScreen = ({ navigation }: any) => {
             fontSize: 20,
             margin: 20,
             fontWeight: 'bold',
-            color: Colors.font_1,
+            color: colors.font_1,
           }}
         >
           Animated components
@@ -106,7 +110,7 @@ const HomeScreen = ({ navigation }: any) => {
             style={styles.navButtonContainer}
             key={item}
           >
-            <Text style={{ color: Colors.font_1 }}>
+            <Text style={{ color: colors.font_1 }}>
               {ANIMATED_SCREENS[item]}
             </Text>
           </TouchableOpacity>

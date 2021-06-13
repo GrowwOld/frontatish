@@ -10,6 +10,7 @@ import { ThemeProvider } from 'frontatish';
 
 import HomeScreen from './examples/HomeScreen';
 import { SCREEN_MAPPING } from './examples/navigation';
+import colors from './examples/colors';
 
 const Stack = createStackNavigator();
 // const EmptyStatesStack = createStackNavigator();
@@ -17,7 +18,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <SafeAreaProvider>
-      <ThemeProvider theme="light">
+      <ThemeProvider theme="light" colors={colors}>
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={() => ({
