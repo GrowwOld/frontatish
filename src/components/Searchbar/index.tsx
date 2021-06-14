@@ -185,6 +185,7 @@ const Searchbar = (props: SearchbarProps) => {
             numberOfLines={1}
             selectionColor={selectionColor}
             editable={editable}
+            onTouchStart={onPress}
           />
         </View>
         {renderRight()}
