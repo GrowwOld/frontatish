@@ -202,6 +202,7 @@ Searchbar.defaultProps = {
   autoFocus: true,
   backIcon: 'arrow-back',
   clearIcon: 'clear',
+  editable: true,
   onChangeText: () => {},
   placeholder: 'Search',
   // default for placeholderTextColor and selectionColor defined while destructuring props

@@ -96,9 +96,9 @@ A react native style object which takes care of styling the container around the
 
 boolean value to determine if the searchbar is editable or not. If `editable` is `false`, the searchbar acts like an entry to the search screen. The `onPress` prop must provide navigation to the search screen that will use `Searchbar` with `editable` set as `true`. When `editable` is `true`, the searchbar can be used like `TextInput` for the search logic.
 
-|            Type            |         Default         |       Required        |
-| :------------------------: | :---------------------: | :-------------------: |
-| boolean <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
+|            Type            |          Default          |       Required        |
+| :------------------------: | :-----------------------: | :-------------------: |
+| boolean <img width="500"/> | `true` <img width="500"/> | No <img width="500"/> |
 
 ### inputStyle
 
