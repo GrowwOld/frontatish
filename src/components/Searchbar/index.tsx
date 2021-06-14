@@ -185,6 +185,11 @@ const Searchbar = (props: SearchbarProps) => {
             numberOfLines={1}
             selectionColor={selectionColor}
             editable={editable}
+            onTouchStart={onPress}
+            // we need onTouchStart because in ios, onPress of Touchable isn't wokring on TextInput
+            // we still need touchable because onTouchStart isn't working in android..
+            // ..and also because we need onPress for any whitespace & icons/logos in the container..
+            // ..(onPress of touchable works on whitespace & icons/logos even in ios)
           />
         </View>
         {renderRight()}
