@@ -70,7 +70,7 @@ Determines whether the modal box has backdrop when opened or not.
 | :------------------------: | :---------------------: | :-------------------: |
 | boolean <img width="500"/> | true <img width="500"/> | No <img width="500"/> |
 
-### backdropOpcaity
+### backdropOpacity
 
 Defines the opacity of backdrop of modal.
 
