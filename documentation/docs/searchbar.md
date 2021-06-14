@@ -60,6 +60,14 @@ Name of the icon to be showed which appears on the left end of the searchbar to 
 | :-----------------------: | :-----------------------------: | :-------------------: |
 | string <img width="500"/> | 'arrow-back' <img width="500"/> | No <img width="500"/> |
 
+### backIconStyle
+
+A react native style object for styling the `backIcon`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type             |                 Default                 |       Required        |
+| :--------------------------: | :-------------------------------------: | :-------------------: |
+| TextStyle <img width="500"/> | `{alignSelf: center}`<img width="500"/> | No <img width="500"/> |
+
 ### clearIcon
 
 Name of the icon to be showed which appears on the right end of the searchbar to clear the text. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
@@ -68,9 +76,17 @@ Name of the icon to be showed which appears on the right end of the searchbar to
 | :-----------------------: | :------------------------: | :-------------------: |
 | string <img width="500"/> | 'clear' <img width="500"/> | No <img width="500"/> |
 
+### clearIconStyle
+
+A react native style object for styling the `clearIcon`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type             |                 Default                 |       Required        |
+| :--------------------------: | :-------------------------------------: | :-------------------: |
+| TextStyle <img width="500"/> | `{alignSelf: center}`<img width="500"/> | No <img width="500"/> |
+
 ### containerStyle
 
-A react native style object which takes care of styling the container around the search input.
+A react native style object which takes care of styling the container around the search input. The values will be appended to the default style, overwriting the common keys, if any.
 
 |             Type             |                                                                            Default                                                                             |       Required        |
 | :--------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-------------------: |
@@ -86,7 +102,7 @@ boolean value to determine if the searchbar is editable or not. If `editable` is
 
 ### inputStyle
 
-A react native style object which takes care of styling the text in the searchbar.
+A react native style object which takes care of styling the text in the searchbar. The values will be appended to the default style, overwriting the common keys, if any.
 
 |             Type             |                                                               Default                                                                |       Required        |
 | :--------------------------: | :----------------------------------------------------------------------------------------------------------------------------------: | :-------------------: |
@@ -101,6 +117,14 @@ Note : If `editable` is `true` and `showBackIcon` is `true`, **only the `backIco
 | :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
 
+### leftIconStyle
+
+A react native style object for styling the `leftIcon`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type             |                 Default                 |       Required        |
+| :--------------------------: | :-------------------------------------: | :-------------------: |
+| TextStyle <img width="500"/> | `{alignSelf: center}`<img width="500"/> | No <img width="500"/> |
+
 ### leftLogo
 
 Logo to be displayed at the left end. **leftLogo has higher precedence than leftIcon** i.e., if both leftIcon and leftLogo are passed, only leftLogo is rendered in the left end (if `editable` is `false`).
@@ -108,6 +132,14 @@ Logo to be displayed at the left end. **leftLogo has higher precedence than left
 |                  Type                  |         Default         |       Required        |
 | :------------------------------------: | :---------------------: | :-------------------: |
 | ImageSourcePropType <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
+
+### leftLogoStyle
+
+A react native style object for styling the `leftLogo`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type              |                   Default                   |       Required        |
+| :---------------------------: | :-----------------------------------------: | :-------------------: |
+| ImageStyle <img width="500"/> | `{height: 30, width: 30}`<img width="500"/> | No <img width="500"/> |
 
 ### onBackIconPress
 
@@ -198,6 +230,14 @@ Note : If `editable` is `true` and `showClearIcon` is `true`, **only the `clearI
 | :-----------------------: | :---------------------: | :-------------------: |
 | string <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
 
+### rightIconStyle
+
+A react native style object for styling the `rightIcon`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type             |                 Default                 |       Required        |
+| :--------------------------: | :-------------------------------------: | :-------------------: |
+| TextStyle <img width="500"/> | `{alignSelf: center}`<img width="500"/> | No <img width="500"/> |
+
 ### rightLogo
 
 Logo to be displayed at the right end. **rightLogo has higher precedence than rightIcon** i.e., if both rightIcon and rightLogo are passed, only rightLogo is rendered in the right end (if `editable` is `false`).
@@ -205,6 +245,14 @@ Logo to be displayed at the right end. **rightLogo has higher precedence than ri
 |                  Type                  |         Default         |       Required        |
 | :------------------------------------: | :---------------------: | :-------------------: |
 | ImageSourcePropType <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
+
+### rightLogoStyle
+
+A react native style object for styling the `rightLogo`. The values will be appended to the default style, overwriting the common keys, if any.
+
+|             Type              |                   Default                   |       Required        |
+| :---------------------------: | :-----------------------------------------: | :-------------------: |
+| ImageStyle <img width="500"/> | `{height: 30, width: 30}`<img width="500"/> | No <img width="500"/> |
 
 ### selectionColor
 

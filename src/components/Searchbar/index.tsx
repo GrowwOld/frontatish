@@ -5,6 +5,9 @@ import {
   TouchableWithoutFeedback,
   ImageSourcePropType,
   Image,
+  StyleProp,
+  ImageStyle,
+  TextStyle,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
@@ -18,12 +21,16 @@ const Searchbar = (props: SearchbarProps) => {
   const {
     autoFocus,
     backIcon,
+    backIconStyle,
     clearIcon,
+    clearIconStyle,
     containerStyle,
     editable,
     inputStyle,
     leftIcon,
+    leftIconStyle,
     leftLogo,
+    leftLogoStyle,
     onBackIconPress,
     onChangeText,
     onClearIconPress,
@@ -35,7 +42,9 @@ const Searchbar = (props: SearchbarProps) => {
     placeholder,
     placeholderTextColor = Colors.font_2,
     rightIcon,
+    rightIconStyle,
     rightLogo,
+    rightLogoStyle,
     selectionColor = Colors.primary,
     showClearIcon,
     showBackIcon,
@@ -57,7 +66,7 @@ const Searchbar = (props: SearchbarProps) => {
       }
     };
 
-    return renderIcon(clearIcon, onPressUtil, opacity);
+    return renderIcon(clearIcon, clearIconStyle, onPressUtil, opacity);
   };
 
   const renderBackIcon = () => {
@@ -65,11 +74,12 @@ const Searchbar = (props: SearchbarProps) => {
       return null;
     }
     const opacity = 1;
-    return renderIcon(backIcon, onBackIconPress, opacity);
+    return renderIcon(backIcon, backIconStyle, onBackIconPress, opacity);
   };
 
   const renderLogo = (
     name: ImageSourcePropType,
+    logoStyle: StyleProp<ImageStyle> | undefined,
     onLogoPress: (() => void) | undefined,
   ) => {
     const source = name;
@@ -78,13 +88,17 @@ const Searchbar = (props: SearchbarProps) => {
 
     return (
       <TouchableWithoutFeedback onPress={onPressUtil}>
-        <Image source={source} style={{ height: 30, width: 30 }} />
+        <Image
+          source={source}
+          style={{ height: 30, width: 30, ...(logoStyle as object) }}
+        />
       </TouchableWithoutFeedback>
     );
   };
 
   const renderIcon = (
     name: string | undefined,
+    iconStyle: StyleProp<TextStyle> | undefined,
     onIconPress: (() => void) | undefined,
     opacity: number,
   ) => {
@@ -96,23 +110,25 @@ const Searchbar = (props: SearchbarProps) => {
         size={30}
         onPress={onPressUtil}
         color={Colors.font_1}
-        style={{ opacity, alignSelf: 'center' }}
+        style={{ opacity, alignSelf: 'center', ...(iconStyle as object) }}
       />
     );
   };
 
   const renderLogoOrIcon = (
     logo: ImageSourcePropType | undefined,
+    logoStyle: StyleProp<ImageStyle> | undefined,
     onLogoPress: (() => void) | undefined,
     icon: string | undefined,
+    iconStyle: StyleProp<TextStyle> | undefined,
     onIconPress: (() => void) | undefined,
   ) => {
     if (logo) {
-      return renderLogo(logo, onLogoPress);
+      return renderLogo(logo, logoStyle, onLogoPress);
     }
     if (icon) {
       const opacity = 1;
-      return renderIcon(icon, onIconPress, opacity);
+      return renderIcon(icon, iconStyle, onIconPress, opacity);
     }
 
     return null;
@@ -122,8 +138,10 @@ const Searchbar = (props: SearchbarProps) => {
     if (!editable) {
       return renderLogoOrIcon(
         leftLogo,
+        leftLogoStyle,
         onLeftLogoPress,
         leftIcon,
+        leftIconStyle,
         onLeftIconPress,
       );
     }
@@ -134,8 +152,10 @@ const Searchbar = (props: SearchbarProps) => {
     if (!editable) {
       return renderLogoOrIcon(
         rightLogo,
+        rightLogoStyle,
         onRightLogoPress,
         rightIcon,
+        rightIconStyle,
         onRightIconPress,
       );
     }
