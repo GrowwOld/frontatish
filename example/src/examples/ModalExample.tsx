@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { SwipeableModal, Button, useColors } from 'frontatish';
+import { Modal, Button, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
 
-const SwipeableModalExample = () => {
+const ModalExample = () => {
   const Colors = useColors();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -82,16 +82,19 @@ const SwipeableModalExample = () => {
   };
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <SwipeableModal
+      <Modal
         isOpen={isOpen}
         onBackButtonPress={closeModal}
         onSwipeComplete={closeModal}
         onBackdropPress={closeModal}
+        backdropOpacity={0.4}
         onCloseButtonPress={closeModal}
-        componentStyle={{ backgroundColor: Colors.white }}
+        componentStyle={{
+          height: 600,
+        }}
       >
         {children()}
-      </SwipeableModal>
+      </Modal>
       <View
         style={{
           flex: 1,
@@ -100,7 +103,7 @@ const SwipeableModalExample = () => {
         }}
       >
         <Text style={{ textAlign: 'center', fontSize: 20, marginBottom: 20 }}>
-          Swipeable Modal Example
+          Modal Example
         </Text>
         <Button label="Open Modal" onPress={() => setIsOpen(true)} />
       </View>
@@ -108,4 +111,4 @@ const SwipeableModalExample = () => {
   );
 };
 
-export default SwipeableModalExample;
+export default ModalExample;

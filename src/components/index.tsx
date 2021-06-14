@@ -12,7 +12,7 @@ import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
-import SwipeableModal from './SwipeableModal';
+import Modal from './Modal';
 import Tag from './Tag';
 
 export {
@@ -27,7 +27,7 @@ export {
   Ripple,
   Switch,
   Searchbar,
-  SwipeableModal,
+  Modal,
   Table,
   Tag,
   Input,

@@ -1,30 +1,30 @@
 ---
-id: swipeableModal
-title: SwipeableModal
-sidebar_label: SwipeableModal
+id: modal
+title: Modal
+sidebar_label: Modal
 ---
 
-SwipeableModal takes a children component and renders it inside a swipeable and scrollable modal box.
+Modal takes a children component and renders it inside a swipeable and scrollable modal box.
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/bottomPositionedModal.png" alt="swipeableModal"  />
+      <img src="/frontatish/img/bottomPositionedModal.png" alt="Modal"  />
     </figure>
     <figure>
-      <img src="/frontatish/img/centerPositionedModal.png" alt="swipeableModal"  />
+      <img src="/frontatish/img/centerPositionedModal.png" alt="Modal"  />
     </figure>
 </div>
 
 ## Usage
 
 ```jsx
-import { SwipeableModal, Button } from 'frontatish';
+import { Modal, Button } from 'frontatish';
 
 const [isOpen, setIsOpen] = useState(false);
 const closeModal = () => {
   setIsOpen(false);
 }
-<SwipeableModal
+<Modal
   isOpen={isOpen}
   onBackButtonPress={closeModal}
   onSwipeComplete={closeModal}
@@ -32,7 +32,7 @@ const closeModal = () => {
     <View>
       <Text>Text in a modal box</Text>
     <View>
-</SwipeableModal>
+</Modal>
 <Button label='Open Modal' onPress={() => {setIsOpen(true)}} />
 ```
 

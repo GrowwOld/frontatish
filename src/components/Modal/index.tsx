@@ -7,16 +7,16 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import Modal from 'react-native-modal';
+import Modalbox from 'react-native-modal';
 
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
-import { SwipeableModalProps } from './types';
+import { ModalProps } from './types';
 import { useColors } from '../../themes';
 import { BottomFixedView } from '../../ui';
 
-const SwipeableModal = (props: SwipeableModalProps) => {
+const Modal = (props: ModalProps) => {
   const {
     children,
     isOpen,
@@ -47,19 +47,20 @@ const SwipeableModal = (props: SwipeableModalProps) => {
     }
   };
 
-  const modalContent = () => {
+  const getModalContent = () => {
     return (
       <View
         style={[
           styles.container,
           componentStyle,
-          { backgroundColor: centerPositioned ? '' : Colors.white },
+          { backgroundColor: Colors.white },
         ]}
       >
-        {swipeable && !centerPositioned ? (
-          <View style={styles.topBar}>
-            <View style={styles.emptyView} />
+        <View style={styles.topBar}>
+          {swipeable && !centerPositioned ? (
             <View style={styles.swipeLine} />
+          ) : null}
+          {onCloseButtonPress ? (
             <Ripple
               style={styles.closeButton}
               rippleContainerBorderRadius={16}
@@ -67,8 +68,8 @@ const SwipeableModal = (props: SwipeableModalProps) => {
             >
               <IonIcon name="ios-close" size={24} />
             </Ripple>
-          </View>
-        ) : null}
+          ) : null}
+        </View>
         <>
           <ScrollView
             ref={scrollViewRef}
@@ -85,7 +86,7 @@ const SwipeableModal = (props: SwipeableModalProps) => {
 
   return (
     <View style={styles.flex_1}>
-      <Modal
+      <Modalbox
         isVisible={isOpen}
         hasBackdrop={hasBackdrop}
         backdropOpacity={backdropOpacity}
@@ -102,16 +103,16 @@ const SwipeableModal = (props: SwipeableModalProps) => {
         scrollOffsetMax={500}
       >
         {centerPositioned ? (
-          modalContent()
+          getModalContent()
         ) : (
-          <BottomFixedView>{modalContent()}</BottomFixedView>
+          <BottomFixedView>{getModalContent()}</BottomFixedView>
         )}
-      </Modal>
+      </Modalbox>
     </View>
   );
 };
 
-SwipeableModal.defaultProps = {
+Modal.defaultProps = {
   hasBackdrop: true,
   backdropOpacity: 0.7,
   swipeThreshold: 100,
@@ -124,28 +125,30 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
     maxHeight: Dimensions.get('window').height,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
+    paddingBottom: 5,
   },
   topBar: {
-    paddingHorizontal: 5,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    justifyContent: 'center',
+    height: 32,
   },
-  emptyView: { width: 32 },
   swipeLine: {
     borderWidth: 1,
     width: 50,
+    height: 1,
+    alignSelf: 'center',
   },
   closeButton: {
     height: 32,
     width: 32,
     alignItems: 'center',
     justifyContent: 'center',
-    alignSelf: 'center',
+    position: 'absolute',
+    right: 0,
   },
   margin_0: {
     margin: 0,
   },
 });
-export default SwipeableModal;
+export default Modal;

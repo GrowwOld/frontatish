@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { StyleType } from '../../common/types';
 
-export interface SwipeableModalProps {
+export interface ModalProps {
   isOpen: boolean;
   children: ReactNode;
   hasBackdrop?: boolean;
