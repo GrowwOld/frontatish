@@ -33,6 +33,7 @@ export type SearchbarProps = {
   placeholderTextColor?: string;
   rightIcon?: string;
   rightLogo?: ImageSourcePropType;
+  selectionColor?: string;
   showBackIcon?: boolean;
   showClearIcon?: boolean;
   value: string;

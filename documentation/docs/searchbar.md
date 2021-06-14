@@ -206,6 +206,14 @@ Logo to be displayed at the right end. **rightLogo has higher precedence than ri
 | :------------------------------------: | :---------------------: | :-------------------: |
 | ImageSourcePropType <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
 
+### selectionColor
+
+Color of the cursor when `editable` is `true`.
+
+|           Type            |               Default               |       Required        |
+| :-----------------------: | :---------------------------------: | :-------------------: |
+| string <img width="500"/> | `Colors.primary` <img width="500"/> | No <img width="500"/> |
+
 ### showBackIcon
 
 If `true`, `backIcon` will be rendered.

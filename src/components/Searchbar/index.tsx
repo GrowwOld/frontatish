@@ -36,6 +36,7 @@ const Searchbar = (props: SearchbarProps) => {
     placeholderTextColor = Colors.font_2,
     rightIcon,
     rightLogo,
+    selectionColor = Colors.primary,
     showClearIcon,
     showBackIcon,
     value,
@@ -46,13 +47,16 @@ const Searchbar = (props: SearchbarProps) => {
       return null;
     }
 
-    const opacity = value ? 1 : 0;
-
     // we have to show transparent clear icon when value in textinput is empty
     // otherwise the text will move left once the clear icon is rendered
+    const opacity = value ? 1 : 0;
+
     const onPressUtil = () => {
-      onClearIconPress ? onClearIconPress() : onChangeText('');
+      if (opacity) {
+        onClearIconPress ? onClearIconPress() : onChangeText('');
+      }
     };
+
     return renderIcon(clearIcon, onPressUtil, opacity);
   };
 
@@ -159,7 +163,7 @@ const Searchbar = (props: SearchbarProps) => {
             onChangeText={onChangeText}
             autoFocus={autoFocus}
             numberOfLines={1}
-            selectionColor={Colors.primary}
+            selectionColor={selectionColor}
             editable={editable}
           />
         </View>
@@ -173,19 +177,9 @@ Searchbar.defaultProps = {
   autoFocus: true,
   backIcon: 'arrow-back',
   clearIcon: 'clear',
-  leftIcon: null,
-  leftLogo: null,
-  onBackIconPress: () => {},
   onChangeText: () => {},
-  onLeftIconPress: null,
-  onLeftLogoPress: null,
-  onRightIconPress: null,
-  onRightLogoPress: null,
-  onPress: null,
   placeholder: 'Search',
-  // default for placeholderTextColor defined while destructuring props
-  rightIcon: null,
-  rightLogo: null,
+  // default for placeholderTextColor and selectionColor defined while destructuring props
   showClearIcon: true,
   showBackIcon: true,
   value: '',
