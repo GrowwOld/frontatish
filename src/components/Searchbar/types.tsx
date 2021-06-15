@@ -5,43 +5,41 @@
   mponent.
 */
 
+import React from 'react';
 import {
   ViewStyle,
   StyleProp,
   TextStyle,
   ImageSourcePropType,
   ImageStyle,
+  TextInput,
 } from 'react-native';
 
-export type SearchbarProps = {
-  autoFocus?: boolean;
+export type customProps = {
   backIcon?: string;
   backIconStyle?: StyleProp<TextStyle>;
   clearIcon?: string;
   clearIconStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
-  editable: boolean;
   inputStyle?: StyleProp<TextStyle>;
   leftIcon?: string;
   leftIconStyle?: StyleProp<TextStyle>;
   leftLogo?: ImageSourcePropType;
   leftLogoStyle?: StyleProp<ImageStyle>;
   onBackIconPress?(): void;
-  onChangeText(text: string): void;
   onClearIconPress?(): void;
   onLeftIconPress?(): void;
   onLeftLogoPress?(): void;
   onRightIconPress?(): void;
   onRightLogoPress?(): void;
   onPress?(): void;
-  placeholder?: string;
-  placeholderTextColor?: string;
   rightIcon?: string;
   rightIconStyle?: StyleProp<TextStyle>;
   rightLogo?: ImageSourcePropType;
   rightLogoStyle?: StyleProp<ImageStyle>;
-  selectionColor?: string;
   showBackIcon?: boolean;
   showClearIcon?: boolean;
-  value: string;
 };
+
+export type SearchbarProps = React.ComponentProps<typeof TextInput> &
+  customProps;

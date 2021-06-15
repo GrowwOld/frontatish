@@ -44,13 +44,17 @@ const navigation = useNavigation();
 
 ## Props
 
-### autoFocus
+**All props of TextInput can be used**
+**Default values of some of those props:**
 
-If `true` focuses the searchbar when the component is mounted.
+- `autoCapitalize` :`'none'`
+- `autoCorrect` : `true`
+- `autoFocus` : `true`
+- `placeholder` : `'Search'`
+- `placeholderTextColor` : `useColors().font_3`
+- `selectionColor` : `useColors().primary`
 
-|            Type            |         Default         |       Required        |
-| :------------------------: | :---------------------: | :-------------------: |
-| boolean <img width="500"/> | true <img width="500"/> | No <img width="500"/> |
+**Refer to [editable](#editable) for how it is used.**
 
 ### backIcon
 
@@ -149,14 +153,6 @@ Function to be called when the back icon is pressed. There will not be any funct
 | :-------------------------: | :---------------------: | :-------------------: |
 | function <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
 
-### onChangeText
-
-Function to use the text entered into the searchbar. This is the search logic.
-
-|            Type             |         Default         |       Required        |
-| :-------------------------: | :---------------------: | :-------------------: |
-| function <img width="500"/> | None <img width="500"/> | No <img width="500"/> |
-
 ### onClearIconPress
 
 Function to be called when the clear icon is pressed.
@@ -205,22 +201,6 @@ Function to be called when the searchbar with `editable` set as `false` is press
 | :-------------------------: | :---------------------: | :-------------------: |
 | function <img width="500"/> | null <img width="500"/> | No <img width="500"/> |
 
-### placeholder
-
-Text for placeholder
-
-|           Type            |          Default           |       Required        |
-| :-----------------------: | :------------------------: | :-------------------: |
-| string <img width="500"/> | 'Search'<img width="500"/> | No <img width="500"/> |
-
-### placeholderTextColor
-
-Color of placeholder
-
-|           Type            |                Default                |       Required        |
-| :-----------------------: | :-----------------------------------: | :-------------------: |
-| string <img width="500"/> | useColors().font_3 <img width="500"/> | No <img width="500"/> |
-
 ### rightIcon
 
 Name of the icon to be showed which appears in the right end of the searchbar. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
@@ -254,14 +234,6 @@ A react native style object for styling the `rightLogo`. The values will be appe
 | :---------------------------: | :-----------------------------------------: | :-------------------: |
 | ImageStyle <img width="500"/> | `{height: 30, width: 30}`<img width="500"/> | No <img width="500"/> |
 
-### selectionColor
-
-Color of the cursor when `editable` is `true`.
-
-|           Type            |               Default               |       Required        |
-| :-----------------------: | :---------------------------------: | :-------------------: |
-| string <img width="500"/> | `Colors.primary` <img width="500"/> | No <img width="500"/> |
-
 ### showBackIcon
 
 If `true`, `backIcon` will be rendered.
@@ -277,11 +249,3 @@ If `true`, `clearIcon` will be rendered.
 |            Type            |         Default         |       Required        |
 | :------------------------: | :---------------------: | :-------------------: |
 | boolean <img width="500"/> | true <img width="500"/> | No <img width="500"/> |
-
-### value
-
-Value to show in the searchbar. When `editable` is `true`, this prop is used for the search logic and for the text to be displayed in the searchbar.
-
-|           Type            |           Default            |       Required        |
-| :-----------------------: | :--------------------------: | :-------------------: |
-| string <img width="500"/> | user input<img width="500"/> | No <img width="500"/> |

@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native';
 import { ColorType } from '../../common/types';
 import { Fonts } from '../../styles';
+import { customProps, SearchbarProps } from './types';
 
-const getStyles = (Colors: ColorType) => {
+export const getStyles = (Colors: ColorType) => {
   return StyleSheet.create({
     searchbarContainer: {
       flexDirection: 'row',
@@ -23,4 +24,66 @@ const getStyles = (Colors: ColorType) => {
   });
 };
 
-export default getStyles;
+export const getCustomProps = ({
+  backIcon,
+  backIconStyle,
+  clearIcon,
+  clearIconStyle,
+  containerStyle,
+  inputStyle,
+  leftIcon,
+  leftIconStyle,
+  leftLogo,
+  leftLogoStyle,
+  onBackIconPress,
+  onClearIconPress,
+  onLeftIconPress,
+  onLeftLogoPress,
+  onRightIconPress,
+  onRightLogoPress,
+  onPress,
+  rightIcon,
+  rightIconStyle,
+  rightLogo,
+  rightLogoStyle,
+  showClearIcon,
+  showBackIcon,
+}: customProps) => ({
+  backIcon,
+  backIconStyle,
+  clearIcon,
+  clearIconStyle,
+  containerStyle,
+  inputStyle,
+  leftIcon,
+  leftIconStyle,
+  leftLogo,
+  leftLogoStyle,
+  onBackIconPress,
+  onClearIconPress,
+  onLeftIconPress,
+  onLeftLogoPress,
+  onRightIconPress,
+  onRightLogoPress,
+  onPress,
+  rightIcon,
+  rightIconStyle,
+  rightLogo,
+  rightLogoStyle,
+  showClearIcon,
+  showBackIcon,
+});
+
+export const getTextInputProps = (
+  customSearchbarProps: customProps,
+  allSearchbarProps: SearchbarProps,
+) => {
+  const textInputProps = { ...allSearchbarProps };
+  Object.entries(textInputProps).forEach(([key]) => {
+    if (key in customSearchbarProps) {
+      const keyWithCorrectType = key as keyof SearchbarProps;
+      delete textInputProps[keyWithCorrectType];
+    }
+  });
+  return textInputProps;
+};

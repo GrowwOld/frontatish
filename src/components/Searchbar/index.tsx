@@ -12,44 +12,43 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
 import { SearchbarProps } from './types';
-import getStyles from './helper';
+import { getStyles, getCustomProps, getTextInputProps } from './helper';
 
 const Searchbar = (props: SearchbarProps) => {
   const Colors = useColors();
   const styles = getStyles(Colors);
 
+  // destructure custom props and TextInput props separately
+  const customProps = getCustomProps(props);
+  const textInputProps = getTextInputProps(customProps, props);
+
   const {
-    autoFocus,
     backIcon,
     backIconStyle,
     clearIcon,
     clearIconStyle,
     containerStyle,
-    editable,
     inputStyle,
     leftIcon,
     leftIconStyle,
     leftLogo,
     leftLogoStyle,
     onBackIconPress,
-    onChangeText,
     onClearIconPress,
     onLeftIconPress,
     onLeftLogoPress,
     onRightIconPress,
     onRightLogoPress,
     onPress,
-    placeholder,
-    placeholderTextColor = Colors.font_2,
     rightIcon,
     rightIconStyle,
     rightLogo,
     rightLogoStyle,
-    selectionColor = Colors.primary,
     showClearIcon,
     showBackIcon,
-    value,
-  } = props;
+  } = customProps;
+
+  const { onChangeText, editable, value } = textInputProps;
 
   const renderClearIcon = () => {
     if (!showClearIcon) {
@@ -62,7 +61,11 @@ const Searchbar = (props: SearchbarProps) => {
 
     const onPressUtil = () => {
       if (opacity) {
-        onClearIconPress ? onClearIconPress() : onChangeText('');
+        if (onClearIconPress) {
+          onClearIconPress();
+        } else if (onChangeText) {
+          onChangeText('');
+        }
       }
     };
 
@@ -170,26 +173,15 @@ const Searchbar = (props: SearchbarProps) => {
     ? { ...styles.textInput, ...(inputStyle as object) }
     : styles.textInput;
 
+  textInputProps.onTouchStart = editable
+    ? textInputProps.onTouchStart
+    : onPress;
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={searchbarContainerStyle}>
         {renderLeft()}
-        <TextInput
-          style={searchbarTextInputStyle}
-          placeholder={placeholder}
-          placeholderTextColor={placeholderTextColor}
-          value={value}
-          onChangeText={onChangeText}
-          autoFocus={autoFocus}
-          numberOfLines={1}
-          selectionColor={selectionColor}
-          editable={editable}
-          onTouchStart={onPress}
-          // we need onTouchStart because in ios, onPress of Touchable isn't wokring on TextInput
-          // we still need touchable because onTouchStart isn't working in android..
-          // ..and also because we need onPress for any whitespace & icons/logos in the container..
-          // ..(onPress of touchable works on whitespace & icons/logos even in ios)
-        />
+        <TextInput {...textInputProps} style={searchbarTextInputStyle} />
         {renderRight()}
       </View>
     </TouchableWithoutFeedback>
@@ -197,6 +189,8 @@ const Searchbar = (props: SearchbarProps) => {
 };
 
 Searchbar.defaultProps = {
+  autoCapitalize: 'none',
+  autoCorrect: true,
   autoFocus: true,
   backIcon: 'arrow-back',
   clearIcon: 'clear',
@@ -206,7 +200,6 @@ Searchbar.defaultProps = {
   // default for placeholderTextColor and selectionColor defined while destructuring props
   showClearIcon: true,
   showBackIcon: true,
-  value: '',
 };
 
 export default Searchbar;
