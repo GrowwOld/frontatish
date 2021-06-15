@@ -165,6 +165,7 @@ const Searchbar = (props: SearchbarProps) => {
     return renderClearIcon();
   };
 
+  // define some default values
   const searchbarContainerStyle = containerStyle
     ? { ...styles.searchbarContainer, ...(containerStyle as object) }
     : styles.searchbarContainer;
@@ -176,6 +177,14 @@ const Searchbar = (props: SearchbarProps) => {
   textInputProps.onTouchStart = editable
     ? textInputProps.onTouchStart
     : onPress;
+
+  textInputProps.selectionColor = textInputProps.selectionColor
+    ? textInputProps.selectionColor
+    : Colors.primary;
+
+  textInputProps.placeholderTextColor = textInputProps.placeholderTextColor
+    ? textInputProps.placeholderTextColor
+    : Colors.font_3;
 
   return (
     <TouchableWithoutFeedback onPress={onPress}>
