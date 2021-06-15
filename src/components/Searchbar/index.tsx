@@ -174,24 +174,22 @@ const Searchbar = (props: SearchbarProps) => {
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={searchbarContainerStyle}>
         {renderLeft()}
-        <View style={{ flex: 4, minHeight: 30 }}>
-          <TextInput
-            style={searchbarTextInputStyle}
-            placeholder={placeholder}
-            placeholderTextColor={placeholderTextColor}
-            value={value}
-            onChangeText={onChangeText}
-            autoFocus={autoFocus}
-            numberOfLines={1}
-            selectionColor={selectionColor}
-            editable={editable}
-            onTouchStart={onPress}
-            // we need onTouchStart because in ios, onPress of Touchable isn't wokring on TextInput
-            // we still need touchable because onTouchStart isn't working in android..
-            // ..and also because we need onPress for any whitespace & icons/logos in the container..
-            // ..(onPress of touchable works on whitespace & icons/logos even in ios)
-          />
-        </View>
+        <TextInput
+          style={searchbarTextInputStyle}
+          placeholder={placeholder}
+          placeholderTextColor={placeholderTextColor}
+          value={value}
+          onChangeText={onChangeText}
+          autoFocus={autoFocus}
+          numberOfLines={1}
+          selectionColor={selectionColor}
+          editable={editable}
+          onTouchStart={onPress}
+          // we need onTouchStart because in ios, onPress of Touchable isn't wokring on TextInput
+          // we still need touchable because onTouchStart isn't working in android..
+          // ..and also because we need onPress for any whitespace & icons/logos in the container..
+          // ..(onPress of touchable works on whitespace & icons/logos even in ios)
+        />
         {renderRight()}
       </View>
     </TouchableWithoutFeedback>
