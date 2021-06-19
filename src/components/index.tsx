@@ -14,6 +14,7 @@ import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
 import Tag from './Tag';
+import TabView from './TabView';
 
 export {
   Button,
@@ -31,5 +32,6 @@ export {
   Tag,
   Input,
   InfoBox,
+  TabView,
 };
 export { CodeInput } from './CodeInput';
