@@ -11,7 +11,10 @@ export const useColors = () => {
 export const useTheme = () => {
   const contextObj = useContext(ThemeContext);
   const colors = getActiveColors(contextObj);
-  return [contextObj.currentTheme, colors];
+  return {
+    activeTheme: contextObj.currentTheme,
+    colors,
+  };
 };
 export const useThemeToggle = () => {
   const contextObj = useContext(ThemeContext);
