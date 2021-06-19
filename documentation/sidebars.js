@@ -8,6 +8,7 @@ module.exports = {
       'codeinput',
       // 'popup',
       'radiobutton',
+      'radioGroup',
       'table',
       'emptyview',
       'calendar',

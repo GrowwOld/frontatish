@@ -10,6 +10,7 @@ import Input from './Input';
 import List from './List';
 import NumPad from './NumPad';
 import RadioButton from './RadioButton';
+import RadioGroup from './RadioGroup';
 import Table from './Table';
 import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
@@ -29,6 +30,7 @@ export {
   List,
   NumPad,
   RadioButton,
+  RadioGroup,
   Ripple,
   Switch,
   Searchbar,
