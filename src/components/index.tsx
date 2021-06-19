@@ -32,3 +32,4 @@ export {
   Input,
   InfoBox,
 };
+export { CodeInput } from './CodeInput';

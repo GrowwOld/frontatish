@@ -1,7 +1,12 @@
 // base and lib imports
-import React from 'react';
-import { StyleSheet, Text, FlatList, View } from 'react-native';
-import Ripple from 'react-native-material-ripple';
+import React, { useState } from 'react';
+import {
+  StyleSheet,
+  Text,
+  FlatList,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,7 +16,8 @@ import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
 const NumPad = (props: NumPadProps) => {
-  const { onItemClick, onDeleteItem, onSubmit } = props;
+  const { onItemClick, onSubmit } = props;
+  const [actionId, setActionId] = useState(0);
   const numberRange = [
     '1',
     '2',
@@ -27,14 +33,23 @@ const NumPad = (props: NumPadProps) => {
     '.',
   ];
 
-  const onButtonPress = (item: any) => {
+  const onButtonPress = (item: string) => {
+    setActionId(actionId + 1);
     switch (item) {
       case 'X':
-        return onDeleteItem();
+        return onItemClick({
+          value: item,
+          actionType: 'delete',
+          actionId,
+        });
       case '.':
         return onSubmit();
       default:
-        return onItemClick(item);
+        return onItemClick({
+          value: item,
+          actionType: 'insert',
+          actionId,
+        });
     }
   };
 
@@ -45,14 +60,11 @@ const NumPad = (props: NumPadProps) => {
         data={numberRange}
         horizontal={false}
         scrollEnabled={false}
-        // contentContainerStyle={styles.numPadContainerStyle}
         numColumns={3}
         keyExtractor={(item) => item}
         renderItem={({ item }) => (
-          <Ripple
+          <TouchableOpacity
             style={styles.rippleContainer}
-            rippleContainerBorderRadius={20}
-            rippleOpacity={0.2}
             onPress={() => onButtonPress(item)}
           >
             {item === 'X' || item === '.' ? (
@@ -66,7 +78,7 @@ const NumPad = (props: NumPadProps) => {
                 {item}
               </Text>
             )}
-          </Ripple>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -80,19 +92,10 @@ const styles = StyleSheet.create({
   },
   rippleContainer: {
     flex: 1,
-    padding: 15,
+    padding: 12,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // numPadContainerStyle: {
-  //   shadowRadius: 2,
-  //   shadowOffset: {
-  //     width: 0,
-  //     height: -3,
-  //   },
-  //   shadowColor: '#000000',
-  //   elevation: 4,
-  // },
 });
 
 export default NumPad;
