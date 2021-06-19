@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StatusBar,
@@ -16,7 +16,6 @@ import {
 } from 'frontatish'; // eslint-disable-line import/no-unresolved
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { debounce } from '../../../src/common/utils';
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const SearchbarScreen = () => {
@@ -45,15 +44,15 @@ const SearchbarScreen = () => {
     setIsOn(!isOn);
   };
 
-  const [componentList, setComponentList] = useState({
-    ...COMPONENT_SCREENS,
-    ...ANIMATED_SCREENS,
-  });
+  const allScreens = { ...COMPONENT_SCREENS, ...ANIMATED_SCREENS };
 
-  const onChangeQuery = (text: string) => {
+  const [componentList, setComponentList] = useState(allScreens);
+
+  const onChangeText = (text: string) => {
+    setQuery(text);
     if (text) {
       const newList: typeof componentList = Object.fromEntries(
-        Object.entries(componentList).filter(([, value]) =>
+        Object.entries(allScreens).filter(([, value]) =>
           value.toUpperCase().includes(text.toUpperCase()),
         ),
       );
@@ -66,16 +65,9 @@ const SearchbarScreen = () => {
         setResultsHeading(`${text} not found`);
       }
     } else {
-      setComponentList(componentList);
+      setComponentList(allScreens);
       setResultsHeading('All Components');
     }
-  };
-
-  const debouncedOnChangeQuery = useCallback(debounce(onChangeQuery, 500), []);
-
-  const onChangeText = (text: string) => {
-    debouncedOnChangeQuery(text);
-    setQuery(text);
   };
 
   const navigation = useNavigation();
