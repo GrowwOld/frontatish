@@ -9,7 +9,7 @@ module.exports = {
       'radiobutton',
       'table',
       'emptyview',
-      // 'calendar',
+      'calendar',
       // 'slider',
       'switch',
       'dropdown',
