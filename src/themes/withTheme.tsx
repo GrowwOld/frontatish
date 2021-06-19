@@ -4,7 +4,7 @@ import React from 'react';
 import ThemeContext from './ThemeContext';
 import ColorPalette from '../styles/colorPalette';
 
-export default function withColors(ComposedComponent: typeof React.Component) {
+export default function withTheme(ComposedComponent: typeof React.Component) {
   function EnhancedComponent(props: any) {
     return (
       <ThemeContext.Consumer>

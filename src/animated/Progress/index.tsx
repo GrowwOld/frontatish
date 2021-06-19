@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { ColorType } from '../../common/types';
-import { withColors } from '../../themes';
+import { withTheme } from '../../themes';
 
 interface ProgeessProps {
   width: number;
@@ -89,4 +89,4 @@ const getStyles = (
   });
 };
 
-export default withColors(Progress);
+export default withTheme(Progress);
