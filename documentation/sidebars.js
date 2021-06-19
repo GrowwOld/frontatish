@@ -19,6 +19,7 @@ module.exports = {
       'infobox',
       'chip',
       'list',
+      'modal',
       // 'ticker',
       /* next_doc_id */
     ],

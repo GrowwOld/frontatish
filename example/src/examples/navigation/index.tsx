@@ -11,6 +11,7 @@ import CalendarScreen from '../CalendarExample';
 import TabViewExample from '../TabViewExample';
 import ChipExample from '../ChipExample';
 import ListExample from '../ListExample';
+import ModalScreen from '../ModalExample';
 
 type objectType = { [index: string]: string };
 
@@ -27,6 +28,7 @@ export const COMPONENT_SCREENS: objectType = {
   DROPDOWN: 'Dropdown',
   CALENDAR: 'Calendar',
   TABVIEW: 'TabView',
+  MODAL: 'Modal',
 };
 
 export const ANIMATED_SCREENS: objectType = { FADE: 'Fade' };
@@ -45,6 +47,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.TABVIEW, screen: TabViewExample },
   { name: COMPONENT_SCREENS.CHIP, screen: ChipExample },
   { name: COMPONENT_SCREENS.LIST, screen: ListExample },
+  { name: COMPONENT_SCREENS.MODAL, screen: ModalScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];

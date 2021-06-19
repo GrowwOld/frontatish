@@ -16,6 +16,7 @@ import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
+import Modal from './Modal';
 import Tag from './Tag';
 import TabView from './TabView';
 
@@ -34,6 +35,7 @@ export {
   Ripple,
   Switch,
   Searchbar,
+  Modal,
   Table,
   Tag,
   Input,
