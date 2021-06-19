@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View, StatusBar, Platform } from 'react-native';
-import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
+import {
+  Text,
+  StyleSheet,
+  View,
+  StatusBar,
+  Platform,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import {
   useColors,
@@ -22,13 +29,11 @@ const HomeScreen = ({ navigation }: any) => {
   const onThemeSwitch = () => {
     // dark mode is on
     if (isOn) {
-      // console.log(toggleTheme);
       // set theme to light
       toggleTheme('light');
       StatusBar.setBarStyle('dark-content', true);
     } else {
       // set theme to dark
-      // console.log(toggleTheme);
       toggleTheme('dark');
       StatusBar.setBarStyle('default', true);
       if (Platform.OS === 'android') {
@@ -37,6 +42,7 @@ const HomeScreen = ({ navigation }: any) => {
     }
     setIsOn(!isOn);
   };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
       <StatusBar
@@ -46,7 +52,13 @@ const HomeScreen = ({ navigation }: any) => {
       />
       <View style={{ padding: 20, flexDirection: 'row' }}>
         <View style={{ flex: 4 }}>
-          <Searchbar />
+          <Searchbar
+            value="Search Groww"
+            leftLogo={require('../assets/groww_logo.png')}
+            rightIcon="account-circle"
+            onPress={() => navigation.navigate('SearchbarScreen')}
+            editable={false}
+          />
         </View>
         <View
           style={{ flex: 1, alignItems: 'flex-end', justifyContent: 'center' }}
@@ -54,10 +66,7 @@ const HomeScreen = ({ navigation }: any) => {
           <Switch isOn={isOn} onToggle={onThemeSwitch} />
         </View>
       </View>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        // contentContainerStyle={{ flexGrow: 1 }}
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
             flex: 1,
