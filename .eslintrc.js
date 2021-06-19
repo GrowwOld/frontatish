@@ -37,6 +37,12 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'error',
     // 'object-curly-newline': ['error', { multiline: true }],
     'object-curly-newline': 'off',
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto',
+      },
+    ],
   },
   globals: { fetch: false },
   settings: {

@@ -1,225 +1,155 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
+// eslint-disable-next-line import/no-unresolved
+import { Button } from 'frontatish';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
-
-const styles = StyleSheet.create({
-  calendarContainer: {
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
-  },
-});
-
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-const nDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+import MonthYearPicker from './monthYearPicker';
+import styles from './styles';
+import { changeDay, changeMonth, generateDayMatrix, months } from './helper';
 
 const Calendar = (props: CalendarProps) => {
-  const [activeDate, setActiveDate] = useState(new Date());
+  const {
+    defaultDate,
+    title,
+    children,
+    type,
+    yearsArrayLowerBound,
+    yearsArrayUpperBound,
+    OnPressDone,
+    componentStyle,
+  } = props;
+
+  const [activeDate, setActiveDate] = useState(defaultDate ?? new Date());
+
   // getting the suitable color based on the theme
   // activated inside the app
   const Colors = useColors();
-  const { setDate, title, children } = props;
-  const changeMonth = (delta: number) => {
-    const newTimeInMS = activeDate.setMonth(activeDate.getMonth() + delta);
-    const updatedDate = new Date(newTimeInMS);
-    setActiveDate(updatedDate);
-  };
-  const changeDay = (dateOfMonth: number) => {
-    const newTimeInMS = activeDate.setMonth(activeDate.getMonth(), dateOfMonth);
-    const updatedDate = new Date(newTimeInMS);
-    setActiveDate(updatedDate);
-  };
-  setDate(activeDate);
 
-  const generateMatrix = () => {
-    const matrix = [];
-    // Create header
-    matrix[0] = ['1', '2', '3', '4', '5', '6', '7'];
-    const year = activeDate.getFullYear();
-    const month = activeDate.getMonth();
+  const dayMatrix = generateDayMatrix(activeDate);
 
-    // const firstDay = new Date(year, month, 1).getDay();
-    let maxDays = nDays[month];
-    if (month === 1) {
-      // February
-      if ((year % 4 === 0 && year % 100 !== 0) || year % 400 === 0) {
-        maxDays += 1;
-      }
-    }
-    let counter = 8;
-    for (let row = 1; row < 5; row += 1) {
-      matrix[row] = [];
-      for (let col = 0; col < 7; col += 1) {
-        if (counter <= maxDays) {
-          matrix[row][col] = counter.toString();
-          counter += 1;
-        } else {
-          matrix[row][col] = '';
-        }
-      }
-    }
-    return matrix;
-  };
-  const matrix = generateMatrix();
-  const renderEachRow = (daysArray: string[]) => {
-    // console.log('dataArray', daysArray);
+  const renderEachDayRow = (daysArray: string[]) => {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
-        }}
-      >
+      <View style={styles.dateView}>
         {daysArray.map((item) => {
           return item === '' ? null : (
-            <Ripple
-              onPress={() => changeDay(parseInt(item, 10))}
-              rippleContainerBorderRadius={18}
-            >
-              <View
-                style={{
-                  justifyContent: 'center',
-                  borderRadius: 18,
-                  height: 36,
-                  width: 36,
+            <View
+              style={[
+                styles.dateElement,
+                {
                   backgroundColor:
                     activeDate.getDate().toString() === item
-                      ? Colors.primary_attr_90
+                      ? Colors.primary_attr_40
                       : Colors.white,
-                }}
+                },
+              ]}
+            >
+              <Text
+                style={[styles.textAlignCenter, { color: Colors.font_2 }]}
+                onPress={() =>
+                  changeDay(parseInt(item, 10), activeDate, setActiveDate)
+                }
               >
-                <Text
-                  style={{
-                    color: Colors.font_2,
-                    textAlign: 'center',
-                  }}
-                >
-                  {item}
-                </Text>
-              </View>
-            </Ripple>
+                {item}
+              </Text>
+            </View>
           );
         })}
       </View>
     );
   };
+
+  const getChangeMonthIcon = (iconName: string, delta: number) => {
+    return (
+      <Ripple
+        style={styles.arrowIcon}
+        rippleContainerBorderRadius={16}
+        onPress={() =>
+          changeMonth(activeDate.getMonth() + delta, activeDate, setActiveDate)
+        }
+      >
+        <IonIcon name={iconName} size={16} color={Colors.primary} />
+      </Ripple>
+    );
+  };
+
+  const getDayView = () => {
+    return (
+      <View style={styles.alignItemsCenter}>
+        <View style={styles.alignItemsStart}>
+          {dayMatrix.map((item) => renderEachDayRow(item))}
+        </View>
+      </View>
+    );
+  };
+
+  const calendarContent = () => {
+    switch (type) {
+      case 'D/M':
+        return (
+          <>
+            <View
+              style={[styles.dayMonthView, { backgroundColor: Colors.font_6 }]}
+            >
+              {getChangeMonthIcon('ios-arrow-back', -1)}
+              <Text
+                style={[styles.activeMonthTitle, { color: Colors.primary }]}
+              >
+                {months[activeDate.getMonth()]}
+              </Text>
+              {getChangeMonthIcon('ios-arrow-forward', 1)}
+            </View>
+            {getDayView()}
+            {children}
+          </>
+        );
+
+      case 'M/Y':
+        return (
+          <MonthYearPicker
+            defaultDate={activeDate}
+            yearsArrayLowerBound={yearsArrayLowerBound ?? 2016}
+            yearsArrayUpperBound={
+              yearsArrayUpperBound ?? new Date().getFullYear()
+            }
+            setDate={setActiveDate}
+          />
+        );
+      case 'D':
+        return getDayView();
+      default:
+        return <></>;
+    }
+  };
   return (
     <View
       style={[
         styles.calendarContainer,
+        componentStyle,
         { backgroundColor: Colors.white, shadowColor: Colors.font_1 },
       ]}
     >
-      <View style={{ marginVertical: 16 }}>
-        <Text
-          style={{
-            textAlign: 'center',
-            color: Colors.font_1,
-            fontWeight: 'bold',
-          }}
-        >
-          {title}
-        </Text>
-      </View>
-      <View
-        style={{
-          height: 40,
-          backgroundColor: Colors.font_6,
-          justifyContent: 'center',
-        }}
+      <Text
+        style={[
+          styles.TextStyle,
+          { color: Colors.font_1 },
+          styles.marginVertical20,
+        ]}
       >
-        <View
-          style={{
-            flexDirection: 'row',
-            marginHorizontal: 30,
-            alignItems: 'center',
-          }}
-        >
-          <Ripple
-            style={{
-              height: 32,
-              width: 32,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            rippleContainerBorderRadius={16}
-            onPress={() => changeMonth(-1)}
-          >
-            <IonIcon
-              name="ios-arrow-back"
-              size={16}
-              color={Colors.primary}
-              // style={{ flex: 1, textAlign: 'center' }}
-            />
-          </Ripple>
-          <Text
-            style={{
-              color: Colors.primary,
-              flex: 2,
-              textAlign: 'center',
-              fontWeight: '500',
-              fontSize: 16,
-            }}
-          >
-            {months[activeDate.getMonth()]}
-          </Text>
-          <Ripple
-            style={{
-              height: 32,
-              width: 32,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-            rippleContainerBorderRadius={16}
-            onPress={() => changeMonth(1)}
-          >
-            <IonIcon
-              name="ios-arrow-forward"
-              size={16}
-              color={Colors.primary}
-              // style={{ flex: 1, textAlign: 'center' }}
-            />
-          </Ripple>
-        </View>
-      </View>
-      <View style={{ alignItems: 'center' }}>
-        <View style={{ alignItems: 'flex-start', marginTop: 16 }}>
-          {matrix.map((item) => renderEachRow(item))}
-        </View>
-      </View>
-      {children}
+        {title}
+      </Text>
+      {calendarContent()}
+      <Button label="Done" onPress={() => OnPressDone(activeDate)} />
     </View>
   );
 };
 
 Calendar.defaultProps = {
   title: 'Select Date:',
+  type: 'D/M',
 };
 
 export default Calendar;
