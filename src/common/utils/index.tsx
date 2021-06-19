@@ -78,3 +78,12 @@ export const getCheckDmnsn = (size: DimensionType) => {
       return [height, width, iconSize];
   }
 };
+
+export const debounce = (func: (...args: any[]) => any, delay: number = 0) => {
+  let timerId: NodeJS.Timeout;
+  return (...args: any[]) => {
+    const boundFunc = func.bind(this, ...args);
+    clearTimeout(timerId);
+    timerId = setTimeout(boundFunc, delay);
+  };
+};
