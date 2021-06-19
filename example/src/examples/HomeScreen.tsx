@@ -54,7 +54,7 @@ const HomeScreen = ({ navigation }: any) => {
         <View style={{ flex: 4 }}>
           <Searchbar
             value="Search Groww"
-            leftLogo={require('../../../src/assets/groww_logo.png')}
+            leftLogo={require('../assets/groww_logo.png')}
             rightIcon="account-circle"
             onPress={() => navigation.navigate('SearchbarScreen')}
             editable={false}
