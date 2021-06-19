@@ -11,6 +11,9 @@ let styles;
 class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   animatedValue: Animated.Value;
 
+  // eslint-disable-next-line react/static-property-placement
+  static defaultProps: CodeInputProps;
+
   constructor(props: CodeInputProps) {
     super(props);
     this.animatedValue = new Animated.Value(0);
@@ -30,16 +33,44 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
     }
   }
 
-  componentDidUpdate(prevProps: CodeInputProps, prevState: CodeInputState) {
-    // const { activeInput } = this.state;
-    // const { codeLength } = this.props;
-    // if (activeInput !== prevState.activeInput && activeInput < codeLength) {
-    //   this.startAnimation(activeInput);
-    // }
+  componentDidUpdate(prevProps: CodeInputProps) {
     if (prevProps?.keyStroke?.actionId !== this.props?.keyStroke?.actionId) {
       this.updateCodeInput();
     }
+
+    if (
+      prevProps.codeError !== this.props?.codeError &&
+      this.props?.codeError &&
+      this.props?.errorAnimation
+    ) {
+      this.shakeOnError();
+    }
   }
+
+  shakeOnError = () => {
+    Animated.sequence([
+      Animated.timing(this.animatedValue, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.animatedValue, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.animatedValue, {
+        toValue: 1,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.timing(this.animatedValue, {
+        toValue: 0,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
 
   updateCodeInput = () => {
     const { codeInputValue, activeInput } = this.state;
@@ -127,15 +158,28 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
 
   render() {
     const { Colors } = this.props;
-    const { activeInput } = this.state;
     styles = CodeInputStyles(Colors!);
     return (
-      <>
+      <Animated.View
+        style={{
+          transform: [
+            {
+              translateX: this.animatedValue.interpolate({
+                inputRange: [0, 1],
+                outputRange: [-10, 10],
+              }),
+            },
+          ],
+        }}
+      >
         <View style={{ flexDirection: 'row' }}>{this.renderInputUI()}</View>
         {this.renderErrorMsg()}
-      </>
+      </Animated.View>
     );
   }
 }
 
+CodeInput.defaultProps = {
+  errorAnimation: true,
+};
 export default withColors(CodeInput);

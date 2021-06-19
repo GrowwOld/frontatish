@@ -5,6 +5,7 @@ module.exports = {
       'button',
       'checkbox',
       'numpad',
+      'codeinput',
       // 'popup',
       'radiobutton',
       'table',

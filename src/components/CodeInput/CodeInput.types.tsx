@@ -12,6 +12,7 @@ export interface CodeInputProps {
   codeError: string;
   errorStyle?: TextStyle;
   Mask?: React.ComponentType;
+  errorAnimation?: boolean;
 }
 
 export interface CodeInputState {

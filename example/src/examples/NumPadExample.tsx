@@ -66,7 +66,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             codeLength={this.codeLength}
             inputContainer="line"
             setCode={this.setCode}
-            value="124567"
+            value="1247"
             codeError={codeError}
             // Mask={this.renderMask}
           />
