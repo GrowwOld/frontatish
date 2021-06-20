@@ -1,3 +1,4 @@
+import { Dimensions, PixelRatio } from 'react-native';
 import { DimensionType } from '../types';
 
 // getting radio button dimension based on DimensionType
@@ -77,4 +78,19 @@ export const getCheckDmnsn = (size: DimensionType) => {
     default:
       return [height, width, iconSize];
   }
+};
+
+export const scaleDimension = (dimension: number, base = 'width') => {
+  const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+  const scale = base === 'width' ? screenWidth / 375 : screenHeight / 667; // viewport of iphone se 2nd gen
+  const scaledDim = dimension * scale;
+  return Math.round(PixelRatio.roundToNearestPixel(scaledDim));
+};
+
+export const customScaleDimension = (
+  dimension: number,
+  base = 'width',
+  factor = 0.5,
+) => {
+  return dimension + (scaleDimension(dimension, base) - dimension) * factor;
 };

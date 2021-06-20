@@ -62,6 +62,7 @@ const SearchbarScreen = () => {
             onChangeText={onChangeText}
             backIcon="arrow-back"
             onBackIconPress={navigation.goBack}
+            numberOfLines={1}
           />
         </View>
       </View>
