@@ -2,47 +2,21 @@ import React, { useState } from 'react';
 import {
   View,
   StatusBar,
-  Platform,
   Text,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {
-  Searchbar,
-  useColors,
-  useThemeToggle,
-  useTheme,
-  Switch,
-} from 'frontatish'; // eslint-disable-line import/no-unresolved
+import { Searchbar, useColors, useTheme } from 'frontatish'; // eslint-disable-line import/no-unresolved
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const SearchbarScreen = () => {
   const Colors = useColors();
-  const toggleTheme = useThemeToggle();
   const activeTheme = useTheme();
-  const [isOn, setIsOn] = useState(false);
 
   const [query, setQuery] = useState('');
   const [resultsHeading, setResultsHeading] = useState('All Components');
-
-  const onThemeSwitch = () => {
-    // dark mode is on
-    if (isOn) {
-      // set theme to light
-      toggleTheme('light');
-      StatusBar.setBarStyle('dark-content', true);
-    } else {
-      // set theme to dark
-      toggleTheme('dark');
-      StatusBar.setBarStyle('default', true);
-      if (Platform.OS === 'android') {
-        StatusBar.setBackgroundColor(Colors.white);
-      }
-    }
-    setIsOn(!isOn);
-  };
 
   const allScreens = { ...COMPONENT_SCREENS, ...ANIMATED_SCREENS };
 
@@ -89,15 +63,6 @@ const SearchbarScreen = () => {
             backIcon="arrow-back"
             onBackIconPress={navigation.goBack}
           />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'flex-end',
-            justifyContent: 'center',
-          }}
-        >
-          <Switch isOn={isOn} onToggle={onThemeSwitch} />
         </View>
       </View>
       <View
