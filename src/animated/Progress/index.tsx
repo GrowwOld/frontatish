@@ -2,9 +2,8 @@ import React from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
-import { scaleDimension } from '../../common/utils';
 
-interface ProgeessProps {
+interface ProgressProps {
   width: number;
   Colors: ColorType;
   barColor?: string;
@@ -13,8 +12,8 @@ interface ProgeessProps {
 interface ProgressState {
   transX: Animated.Value;
 }
-class Progress extends React.Component<ProgeessProps, ProgressState> {
-  constructor(props: ProgeessProps) {
+class Progress extends React.Component<ProgressProps, ProgressState> {
+  constructor(props: ProgressProps) {
     super(props);
     this.state = {
       transX: new Animated.Value(0),
@@ -78,7 +77,7 @@ const getStyles = (
   return StyleSheet.create({
     progressContainer: {
       padding: 2,
-      height: scaleDimension(4, 'height'),
+      height: 4,
       width,
     },
     progressBar: {
