@@ -4,6 +4,7 @@ import { View, Text } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { RadioButton, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { scaleDimension } from '../../../src/common/utils';
 // import { Fonts, getColors } from '../styles';
 
 const RadioButtonExample = () => {
@@ -58,7 +59,7 @@ const RadioButtonExample = () => {
         {/* just for having a neat example ui display,
             these are not anyway important to the library
         */}
-        <View style={{ height: 20, width: '100%' }} />
+        <View style={{ height: scaleDimension(20, 'height'), width: '100%' }} />
         <RadioButton
           disabled
           value="disable-selected"

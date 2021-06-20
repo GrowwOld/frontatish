@@ -2,6 +2,7 @@ import React from 'react';
 import { View, StyleSheet, Animated } from 'react-native';
 import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
+import { scaleDimension } from '../../common/utils';
 
 interface ProgeessProps {
   width: number;
@@ -77,7 +78,7 @@ const getStyles = (
   return StyleSheet.create({
     progressContainer: {
       padding: 2,
-      height: 4,
+      height: scaleDimension(4, 'height'),
       width,
     },
     progressBar: {

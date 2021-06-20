@@ -6,6 +6,7 @@ import Ripple from 'react-native-material-ripple';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
 import { Fonts } from '../../styles';
+import { scaleDimension, customScaleDimension } from '../../common/utils';
 
 const styles = StyleSheet.create({
   calendarContainer: {
@@ -88,7 +89,6 @@ const Calendar = (props: CalendarProps) => {
   };
   const matrix = generateMatrix();
   const renderEachRow = (daysArray: string[]) => {
-    // console.log('dataArray', daysArray);
     return (
       <View
         style={{
@@ -107,8 +107,8 @@ const Calendar = (props: CalendarProps) => {
                 style={{
                   justifyContent: 'center',
                   borderRadius: 18,
-                  height: 36,
-                  width: 36,
+                  height: customScaleDimension(36, 'height', 0.25),
+                  width: scaleDimension(36),
                   backgroundColor:
                     activeDate.getDate().toString() === item
                       ? Colors.primary_attr_90
@@ -150,7 +150,7 @@ const Calendar = (props: CalendarProps) => {
       </View>
       <View
         style={{
-          height: 40,
+          height: scaleDimension(40, 'height'),
           backgroundColor: Colors.font_6,
           justifyContent: 'center',
         }}
@@ -164,8 +164,8 @@ const Calendar = (props: CalendarProps) => {
         >
           <Ripple
             style={{
-              height: 32,
-              width: 32,
+              height: scaleDimension(32, 'height'),
+              width: scaleDimension(32),
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -174,7 +174,7 @@ const Calendar = (props: CalendarProps) => {
           >
             <IonIcon
               name="ios-arrow-back"
-              size={16}
+              size={scaleDimension(16)}
               color={Colors.primary}
               // style={{ flex: 1, textAlign: 'center' }}
             />
@@ -192,8 +192,8 @@ const Calendar = (props: CalendarProps) => {
           </Text>
           <Ripple
             style={{
-              height: 32,
-              width: 32,
+              height: scaleDimension(32, 'height'),
+              width: scaleDimension(32),
               alignItems: 'center',
               justifyContent: 'center',
             }}
@@ -202,7 +202,7 @@ const Calendar = (props: CalendarProps) => {
           >
             <IonIcon
               name="ios-arrow-forward"
-              size={16}
+              size={scaleDimension(16)}
               color={Colors.primary}
               // style={{ flex: 1, textAlign: 'center' }}
             />

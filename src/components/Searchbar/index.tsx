@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
+import { customScaleDimension } from '../../common/utils';
 import { SearchbarProps } from './types';
 import { getStyles, getCustomProps, getTextInputProps } from './helper';
 
@@ -93,7 +94,11 @@ const Searchbar = (props: SearchbarProps) => {
       <TouchableWithoutFeedback onPress={onPressUtil}>
         <Image
           source={source}
-          style={{ height: 30, width: 30, ...(logoStyle as object) }}
+          style={{
+            height: customScaleDimension(30, 'width', 0.2),
+            width: customScaleDimension(30, 'width', 0.2),
+            ...(logoStyle as object),
+          }}
         />
       </TouchableWithoutFeedback>
     );

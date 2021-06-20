@@ -4,13 +4,13 @@ import { DimensionType } from '../types';
 // getting radio button dimension based on DimensionType
 export const getRadioDmnsn = (size: DimensionType) => {
   let outerDimen = {
-    width: 14,
-    height: 14,
+    width: scaleDimension(14),
+    height: scaleDimension(14),
     borderRadius: 7,
   };
   let innerDimen = {
-    width: 8,
-    height: 8,
+    width: scaleDimension(8),
+    height: scaleDimension(8),
     borderRadius: 5,
   };
   switch (size) {
@@ -18,38 +18,38 @@ export const getRadioDmnsn = (size: DimensionType) => {
       return [innerDimen, outerDimen];
     case 'sm':
       innerDimen = {
-        width: 8,
-        height: 8,
-        borderRadius: 4,
+        width: scaleDimension(8),
+        height: scaleDimension(8),
+        borderRadius: scaleDimension(4),
       };
       outerDimen = {
-        width: 16,
-        height: 16,
-        borderRadius: 8,
+        width: scaleDimension(16),
+        height: scaleDimension(16),
+        borderRadius: scaleDimension(8),
       };
       return [innerDimen, outerDimen];
     case 'md':
       innerDimen = {
-        width: 10,
-        height: 10,
-        borderRadius: 5,
+        width: scaleDimension(10),
+        height: scaleDimension(10),
+        borderRadius: scaleDimension(5),
       };
       outerDimen = {
-        width: 20,
-        height: 20,
-        borderRadius: 10,
+        width: scaleDimension(20),
+        height: scaleDimension(20),
+        borderRadius: scaleDimension(10),
       };
       return [innerDimen, outerDimen];
     case 'lg':
       innerDimen = {
-        width: 12,
-        height: 12,
-        borderRadius: 6,
+        width: scaleDimension(12),
+        height: scaleDimension(12),
+        borderRadius: scaleDimension(6),
       };
       outerDimen = {
-        width: 24,
-        height: 24,
-        borderRadius: 12,
+        width: scaleDimension(24),
+        height: scaleDimension(24),
+        borderRadius: scaleDimension(12),
       };
       return [innerDimen, outerDimen];
     default:
@@ -59,21 +59,22 @@ export const getRadioDmnsn = (size: DimensionType) => {
 
 // getting checkbox dimension based on DimensionType
 export const getCheckDmnsn = (size: DimensionType) => {
-  let height = 16;
-  let width = 16;
-  let iconSize = 12;
+  // not providing 'height' as argument to scaleDimension for heights as we need squares
+  let height = scaleDimension(16);
+  let width = scaleDimension(16);
+  let iconSize = scaleDimension(12);
   switch (size) {
     case 'sm':
       return [height, width, iconSize];
     case 'md':
-      height = 20;
-      width = 20;
-      iconSize = 16;
+      height = scaleDimension(20);
+      width = scaleDimension(20);
+      iconSize = scaleDimension(16);
       return [height, width, iconSize];
     case 'lg':
-      height = 24;
-      width = 24;
-      iconSize = 20;
+      height = scaleDimension(24);
+      width = scaleDimension(24);
+      iconSize = scaleDimension(20);
       return [height, width, iconSize];
     default:
       return [height, width, iconSize];
