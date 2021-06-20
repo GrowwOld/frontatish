@@ -95,6 +95,7 @@ const Searchbar = (props: SearchbarProps) => {
         <Image
           source={source}
           style={{
+            alignSelf: 'center',
             height: customScaleDimension(30, 'width', 0.2),
             width: customScaleDimension(30, 'width', 0.2),
             ...(logoStyle as object),
@@ -115,7 +116,7 @@ const Searchbar = (props: SearchbarProps) => {
     return (
       <Icon
         name={name}
-        size={30}
+        size={customScaleDimension(30, 'width', 0.2)}
         onPress={onPressUtil}
         color={Colors.font_1}
         style={{ opacity, alignSelf: 'center', ...(iconStyle as object) }}
