@@ -6,7 +6,7 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import { Searchbar, useColors, useTheme } from 'frontatish'; // eslint-disable-line import/no-unresolved
+import { Fonts, Searchbar, useColors, useTheme } from 'frontatish'; // eslint-disable-line import/no-unresolved
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
@@ -76,7 +76,7 @@ const SearchbarScreen = () => {
         <Text
           style={{
             flex: 1,
-            fontSize: 20,
+            fontSize: Fonts.size.h5,
             fontWeight: 'bold',
             color: Colors.font_1,
           }}

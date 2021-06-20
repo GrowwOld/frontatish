@@ -5,6 +5,7 @@ import IonIcon from 'react-native-vector-icons/Ionicons';
 import Ripple from 'react-native-material-ripple';
 import { useColors } from '../../themes';
 import { CalendarProps } from './types';
+import { Fonts } from '../../styles';
 
 const styles = StyleSheet.create({
   calendarContainer: {
@@ -184,7 +185,7 @@ const Calendar = (props: CalendarProps) => {
               flex: 2,
               textAlign: 'center',
               fontWeight: '500',
-              fontSize: 16,
+              fontSize: Fonts.size.regular_16,
             }}
           >
             {months[activeDate.getMonth()]}

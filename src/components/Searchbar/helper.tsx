@@ -1,5 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { scaleDimension } from '../../common/utils';
 import { ColorType } from '../../common/types';
 import { Fonts } from '../../styles';
 import { customProps, SearchbarProps } from './types';
@@ -19,7 +18,7 @@ export const getStyles = (Colors: ColorType) => {
       flex: 4,
       paddingHorizontal: 10,
       paddingVertical: 0,
-      fontSize: scaleDimension(Fonts.size.regular_16),
+      fontSize: Fonts.size.regular_16,
       color: Colors.font_1,
     },
   });
