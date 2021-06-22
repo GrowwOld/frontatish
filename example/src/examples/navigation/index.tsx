@@ -8,12 +8,14 @@ import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 import CalendarScreen from '../CalendarExample';
+import DraggableListScreen from '../DraggableListExample';
 
 type objectType = { [index: string]: string };
 
 export const COMPONENT_SCREENS: objectType = {
   BUTTON: 'Button',
   CHECKBOX: 'Checkbox',
+  DRAGGABLELIST: 'DraggableList',
   RADIOBUTTON: 'RadioButton',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
@@ -36,6 +38,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  { name: COMPONENT_SCREENS.DRAGGABLELIST, screen: DraggableListScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];
