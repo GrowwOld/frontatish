@@ -4,7 +4,6 @@ import { View, Text, Animated } from 'react-native';
 import CodeInputStyles from './CodeInput.styles';
 import { CodeInputProps, CodeInputState } from './CodeInput.types';
 import { withColors } from '../../themes';
-import { LIGHT_MODE_COLORS } from '../../styles/colorPalette';
 
 let styles;
 class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
@@ -145,12 +144,13 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   };
 
   renderErrorMsg = () => {
-    const { codeError, errorTextStyle } = this.props;
+    const { codeError, errorTextStyle, Colors } = this.props;
     if (codeError) {
       return (
         <Text
           style={{
-            color: LIGHT_MODE_COLORS.semantic_red,
+            // eslint-disable-next-line camelcase
+            color: Colors?.semantic_red,
             marginTop: 10,
             ...errorTextStyle,
           }}

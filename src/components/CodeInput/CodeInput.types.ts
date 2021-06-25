@@ -4,7 +4,7 @@ import { keyStrokeType } from '../NumPad/NumPad.types';
 
 export interface CodeInputProps {
   value: string;
-  codeLength?: number;
+  codeLength: number;
   Colors?: ColorType;
   inputContainer: 'box' | 'line';
   setCode: (code: string) => void;
