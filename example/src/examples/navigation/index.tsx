@@ -8,7 +8,7 @@ import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 import CalendarScreen from '../CalendarExample';
-import InfoBoxScreen from '../InfoBoxExample';
+// import InfoBoxScreen from '../InfoBoxExample';
 
 type objectType = { [index: string]: string };
 
@@ -22,7 +22,7 @@ export const COMPONENT_SCREENS: objectType = {
   INPUT: 'Input',
   DROPDOWN: 'Dropdown',
   CALENDAR: 'Calendar',
-  INFOBOX: 'InfoBox',
+  // INFOBOX: 'InfoBox',
 };
 
 export const ANIMATED_SCREENS: objectType = { FADE: 'Fade' };
