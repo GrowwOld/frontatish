@@ -3,7 +3,7 @@ import { View, Text, Animated } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import CodeInputStyles from './CodeInput.styles';
 import { CodeInputProps, CodeInputState } from './CodeInput.types';
-import { withColors } from '../../themes';
+import { withTheme } from '../../themes';
 
 let styles;
 class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
@@ -185,4 +185,4 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   }
 }
 
-export default withColors(CodeInput);
+export default withTheme(CodeInput);

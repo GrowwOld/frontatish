@@ -5,6 +5,11 @@ export interface StyleType {
 }
 export type ColorType = typeof LIGHT_MODE_COLORS;
 
+export interface ColorPaletteType {
+  light: ColorType;
+  dark: ColorType;
+}
+
 export type AlignTypes =
   | 'flex-start'
   | 'center'
@@ -15,3 +20,4 @@ export type AlignTypes =
   | undefined;
 
 export type DimensionType = 'xs' | 'sm' | 'md' | 'lg';
+export type ThemeType = 'light' | 'dark';

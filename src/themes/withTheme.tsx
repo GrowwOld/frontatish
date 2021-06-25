@@ -4,20 +4,25 @@ import React from 'react';
 import ThemeContext from './ThemeContext';
 import ColorPalette from '../styles/colorPalette';
 
-export default function withColors<P extends Object>(
-  ComposedComponent: React.ComponentType<P>,
-) {
-  function EnhancedComponent(props: P) {
+export default function withTheme(ComposedComponent: typeof React.Component) {
+  function EnhancedComponent(props: any) {
     return (
       <ThemeContext.Consumer>
         {(value) => {
-          const { currentTheme, toggleTheme } = value;
-          const Colors = ColorPalette[currentTheme];
+          const { currentTheme, toggleTheme, colors } = value;
+          const activeLocalColor = ColorPalette[currentTheme];
+          const activeCustomColor = colors?.[currentTheme];
+          const Colors = {
+            ...activeLocalColor,
+            ...activeCustomColor,
+          };
+
           return (
             <ComposedComponent
               {...props}
               Colors={Colors}
               toggleTheme={toggleTheme}
+              currentTheme={currentTheme}
             />
           );
         }}

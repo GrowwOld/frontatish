@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text, View } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors, CodeInput, keyStrokeType } from 'frontatish';
+import { NumPad, CodeInput, keyStrokeType, withTheme } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 interface NumPadExampleState {
@@ -79,4 +79,4 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
   }
 }
 
-export default withColors(NumPadExample);
+export default withTheme(NumPadExample);

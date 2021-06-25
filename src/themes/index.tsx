@@ -1,12 +1,12 @@
 import ThemeProvider from './ThemeProvider';
 import ThemeContext from './ThemeContext';
-import withColors from './withColors';
+import withTheme from './withTheme';
 import { useColors, useTheme, useThemeToggle } from './themeHooks';
 
 export {
   ThemeProvider,
   ThemeContext,
-  withColors,
+  withTheme,
   useColors,
   useTheme,
   useThemeToggle,
