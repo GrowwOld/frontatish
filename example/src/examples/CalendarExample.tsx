@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, Calendar, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { View, Text } from 'react-native';
+import fonts from '../../../src/styles/fonts';
 
 const CalendarExample = () => {
   const Colors = useColors();
@@ -29,7 +30,7 @@ const CalendarExample = () => {
               marginTop: 10,
               marginBottom: 16,
               textAlign: 'center',
-              fontSize: 12,
+              fontSize: fonts.size.small,
             }}
           >
             {date?.toString()}
