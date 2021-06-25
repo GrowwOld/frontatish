@@ -21,7 +21,7 @@ export const getInfoBoxStyles = (
     success: '#E5FAF5',
     warning: '#FFF5E0',
     error: '#FAE9E5',
-    transparent: Colors.WHITE,
+    transparent: Colors.white,
   };
   const borderColorMap: { [key: string]: string } = {
     info: '#DDDEE1',
@@ -48,7 +48,7 @@ export const getLabelStyles = (
   Colors: ColorType,
 ): StyleType => {
   const labelStyle = {
-    ...BaseStyles.grwInfoBoxLabel,
+    // ...BaseStyles.grwInfoBoxLabel,
     fontWeight: 'normal',
     flex: 1,
     padding: 16,

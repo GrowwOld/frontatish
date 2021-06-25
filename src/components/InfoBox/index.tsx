@@ -1,7 +1,8 @@
 // base and lib imports
-import { Text, View } from 'react-native';
 import React from 'react';
-import Icon from 'react-native-vector-icons/AntDesign';
+import { Text, View } from 'react-native';
+// eslint-disable-next-line import/no-unresolved
+import Icon from 'react-native-vector-icons/MaterialIcons';
 // utils and helpers
 
 import { StyleType } from '../../common/types';

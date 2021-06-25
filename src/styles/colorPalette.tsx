@@ -4,7 +4,7 @@ type ColorPaletteObjType = {
   [index: string]: ColorType;
 };
 
-const LIGHT_MODE_COLORS = {
+export const LIGHT_MODE_COLORS = {
   white: '#FFFFFF',
   constant_white: '#FFFFFF',
   primary: '#00D09C',
@@ -35,7 +35,7 @@ const LIGHT_MODE_COLORS = {
   font_7: '#44475B',
 };
 
-const DARK_MODE_COLORS = {
+export const DARK_MODE_COLORS = {
   white: '#121212',
   constant_white: '#FFFFFF',
   primary: '#0ABB92',

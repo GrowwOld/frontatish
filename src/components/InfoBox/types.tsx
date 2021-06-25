@@ -10,7 +10,7 @@ export interface InfoBoxProps {
   label: string;
   backgroundColor: 'info' | 'success' | 'warning' | 'error' | 'transparent';
   icon: boolean | string;
-  borderColor?:  'info' | 'success' | 'warning' | 'error';
+  borderColor?: 'info' | 'success' | 'warning' | 'error';
   style?: StyleType;
   textStyle?: StyleType;
 }
