@@ -4,7 +4,8 @@ import Button from './Button';
 import CheckBox from './CheckBox';
 import Calendar from './Calendar';
 import Dropdown from './Dropdown';
-import InfoBox from './InfoBox';
+// not for 0.4.1 release
+// import InfoBox from './InfoBox';
 import Input from './Input';
 import RadioButton from './RadioButton';
 import RadioGroup from './RadioGroup';
@@ -30,7 +31,7 @@ export {
   Table,
   Tag,
   Input,
-  InfoBox,
+  // InfoBox,
 };
 export { NumPad, keyStrokeType } from './NumPad';
 export { CodeInput } from './CodeInput';
