@@ -11,12 +11,40 @@ import {
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useColors } from '../../index';
 import { ModalProps } from './types';
 
 const Modal = (props: ModalProps) => {
-  const { open, close, children, contentHeight, swipeThreshold } = props;
+  const Colors = useColors();
+  const {
+    open,
+    close,
+    children,
+    contentHeight,
+    swipeThreshold,
+    position,
+    entryDirection,
+    exitDirection,
+    swipeable,
+    closeButton,
+  } = props;
 
-  const height = useRef(new Animated.Value(0)).current;
+  const getEntryExitValues = (direction: string) => {
+    switch (direction) {
+      case 'up':
+        return { x: 0, y: -Dimensions.get('screen').height };
+      case 'left':
+        return { x: -Dimensions.get('screen').width, y: 0 };
+      case 'right':
+        return { x: Dimensions.get('screen').width, y: 0 };
+      default:
+        return { x: 0, y: Dimensions.get('screen').height };
+    }
+  };
+
+  const height = useRef(new Animated.Value(contentHeight)).current;
+  const xyPos = useRef(new Animated.ValueXY(getEntryExitValues(entryDirection)))
+    .current;
   const fullHeight = useRef(false);
 
   const panResponder = useRef(
@@ -27,40 +55,57 @@ const Modal = (props: ModalProps) => {
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
 
-      onPanResponderGrant: () => {
+      onPanResponderGrant: (_, gestureState) => {
         // The gesture has started. Show visual feedback so the user knows
         // what is happening!
         // gestureState.d{x,y} will be set to zero now
-        console.log('grant');
+        height.setValue(
+          position === 'top'
+            ? gestureState.y0
+            : Dimensions.get('window').height - gestureState.y0,
+        );
       },
       onPanResponderMove: (_, gestureState) => {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
 
-        height.setValue(Dimensions.get('window').height - gestureState.moveY);
+        height.setValue(
+          position === 'top'
+            ? gestureState.moveY
+            : Dimensions.get('window').height - gestureState.moveY,
+        );
       },
       onPanResponderTerminationRequest: () => true,
       onPanResponderRelease: (_, gestureState) => {
-        if (gestureState.dy < -swipeThreshold && !fullHeight.current) {
-          Animated.timing(height, {
-            toValue: Dimensions.get('window').height,
-            duration: 300,
-            useNativeDriver: false,
-          }).start(() => {
-            fullHeight.current = true;
-          });
+        if (position === 'top') {
+          if (gestureState.dy > swipeThreshold && !fullHeight.current) {
+            toFullHeight();
+          } else if (
+            -gestureState.dy > swipeThreshold &&
+            height._value > contentHeight
+          ) {
+            toContentHeight();
+          } else if (
+            -gestureState.dy > swipeThreshold &&
+            height._value < contentHeight
+          ) {
+            onClose();
+            fullHeight.current = false;
+          } else {
+            height.setValue(
+              fullHeight.current
+                ? Dimensions.get('window').height
+                : contentHeight,
+            );
+          }
+        } else if (gestureState.dy < -swipeThreshold && !fullHeight.current) {
+          toFullHeight();
         } else if (
           gestureState.dy > swipeThreshold &&
           height._value > contentHeight
         ) {
-          Animated.timing(height, {
-            toValue: contentHeight,
-            duration: 300,
-            useNativeDriver: false,
-          }).start(() => {
-            fullHeight.current = false;
-          });
+          toContentHeight();
         } else if (
           gestureState.dy > swipeThreshold &&
           height._value < contentHeight
@@ -91,19 +136,126 @@ const Modal = (props: ModalProps) => {
   ).current;
 
   const onOpen = () => {
-    Animated.timing(height, {
-      toValue: contentHeight,
+    height.setValue(contentHeight);
+    Animated.timing(xyPos, {
+      toValue: { x: 0, y: 0 },
       duration: 700,
       useNativeDriver: false,
     }).start();
   };
 
-  const onClose = () => {
+  const toFullHeight = () => {
     Animated.timing(height, {
-      toValue: 0,
+      toValue: Dimensions.get('window').height,
+      duration: 300,
+      useNativeDriver: false,
+    }).start(() => {
+      fullHeight.current = true;
+    });
+  };
+
+  const toContentHeight = () => {
+    Animated.timing(height, {
+      toValue: contentHeight,
+      duration: 300,
+      useNativeDriver: false,
+    }).start(() => {
+      fullHeight.current = false;
+    });
+  };
+  const onClose = () => {
+    Animated.timing(xyPos, {
+      toValue: swipeable
+        ? getEntryExitValues(entryDirection)
+        : getEntryExitValues(exitDirection ?? entryDirection),
       duration: 700,
       useNativeDriver: false,
-    }).start(() => close());
+    }).start(() => {
+      close();
+      xyPos.setValue(getEntryExitValues(entryDirection));
+    });
+  };
+
+  const getPosition = () => {
+    switch (position) {
+      case 'top':
+        return 'flex-start';
+      case 'center':
+        return 'center';
+      default:
+        return 'flex-end';
+    }
+  };
+
+  const getTopBar = () => {
+    return (
+      <>
+        {(swipeable || closeButton) && (
+          <View
+            style={{
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: '100%',
+              flexDirection: 'row',
+              height: 25,
+              marginVertical: 10,
+            }}
+          >
+            {swipeable && (
+              <View
+                style={{
+                  justifyContent: 'space-between',
+                  height: 25,
+                  padding: 7,
+                  width: 50,
+                  // borderWidth: 1,
+                  backgroundColor: Colors.font_4,
+                }}
+                {...panResponder.panHandlers}
+              >
+                <View
+                  style={{
+                    borderTopWidth: 1,
+                    height: 1,
+                    borderColor: Colors.font_1,
+                  }}
+                />
+                <View
+                  style={{
+                    borderTopWidth: 1,
+                    height: 1,
+                    borderColor: Colors.font_1,
+                  }}
+                />
+                <View
+                  style={{
+                    borderTopWidth: 1,
+                    height: 1,
+                    borderColor: Colors.font_1,
+                  }}
+                />
+              </View>
+            )}
+            {closeButton && (
+              <TouchableOpacity
+                onPress={onClose}
+                style={{
+                  position: 'absolute',
+                  right: 0,
+                  backgroundColor: Colors.font_4,
+                  height: 25,
+                  width: 25,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <Icon name="close" size={20} style={{ color: Colors.font_1 }} />
+              </TouchableOpacity>
+            )}
+          </View>
+        )}
+      </>
+    );
   };
 
   return (
@@ -112,7 +264,7 @@ const Modal = (props: ModalProps) => {
         <View
           style={{
             // flex: 1,
-            justifyContent: 'flex-end',
+            justifyContent: getPosition(),
             // alignItems: 'center',
             backgroundColor: 'grey',
             width: '100%',
@@ -141,7 +293,7 @@ const Modal = (props: ModalProps) => {
           </TouchableWithoutFeedback>
           <Animated.View
             style={{
-              backgroundColor: '#fff',
+              backgroundColor: Colors.white,
               // marginTop: 40,
               // bottom: 0,
               // alignSelf: 'flex-end',
@@ -150,44 +302,15 @@ const Modal = (props: ModalProps) => {
 
               // justifyContent: 'flex-end',
               // flex: 1,
-              width: '100%',
-              maxHeight: height,
+              // width: '100%',
+              height,
+              transform: xyPos.getTranslateTransform(),
+              // marginHorizontal: 20,
             }}
           >
-            <View
-              style={{
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '100%',
-                flexDirection: 'row',
-                height: 25,
-                marginBottom: 10,
-              }}
-            >
-              <View
-                style={{
-                  justifyContent: 'space-between',
-                  height: 25,
-                  padding: 7,
-                  width: 50,
-                  // borderWidth: 1,
-                  backgroundColor: 'rgba(0,0,0,0.1)',
-                }}
-                {...panResponder.panHandlers}
-              >
-                <View style={{ borderTopWidth: 1, height: 1 }} />
-                <View style={{ borderTopWidth: 1, height: 1 }} />
-                <View style={{ borderTopWidth: 1, height: 1 }} />
-              </View>
-              <TouchableOpacity
-                onPress={onClose}
-                style={{ position: 'absolute', right: 0 }}
-              >
-                <Icon name="close" size={20} />
-              </TouchableOpacity>
-            </View>
+            {(position === 'bottom' || position === 'center') && getTopBar()}
             <ScrollView>{children}</ScrollView>
-            <Text style={{ flex: 1 }}>Hey</Text>
+            {position === 'top' && getTopBar()}
           </Animated.View>
         </View>
       )}
@@ -198,6 +321,7 @@ const Modal = (props: ModalProps) => {
 Modal.defaultProps = {
   contentHeight: (Dimensions.get('window').height * 3) / 4,
   swipeThreshold: 100,
+  position: 'bottom',
 };
 
 export default Modal;

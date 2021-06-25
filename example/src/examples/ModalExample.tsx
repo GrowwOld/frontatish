@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, SafeAreaView } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { Modal, Button } from 'frontatish';
+import { Modal, Button, useColors } from 'frontatish';
 
 const ModalScreen = () => {
+  const Colors = useColors();
   const [open, setOpen] = useState(false);
 
   const close = () => {
@@ -12,7 +13,7 @@ const ModalScreen = () => {
 
   const getChildren = () => {
     return (
-      <Text style={{ fontSize: 20 }}>
+      <Text style={{ fontSize: 20, color: Colors.font_1 }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet
         accumsan lorem. Vivamus non tincidunt erat, sodales sagittis neque.
         Donec tempus ex risus, non fringilla nibh imperdiet id. In scelerisque
@@ -48,7 +49,17 @@ const ModalScreen = () => {
       }}
     >
       {/* <ScrollView style={{ width: '100%' }}> */}
-      <Modal open={open} close={close} contentHeight={400} swipeThreshold={100}>
+      <Modal
+        open={open}
+        close={close}
+        contentHeight={400}
+        swipeThreshold={100}
+        position="bottom"
+        // entryDirection="up"
+        // exitDirection="up"
+        swipeable
+        closeButton
+      >
         {getChildren()}
       </Modal>
       <View style={{ width: '100%' }}>
