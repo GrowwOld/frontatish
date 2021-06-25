@@ -5,7 +5,7 @@ import { ColorPaletteType, ThemeType } from '../common/types';
 interface ThemedProps {
   children: any;
   theme: ThemeType;
-  colors: ColorPaletteType;
+  colors?: ColorPaletteType;
 }
 
 const ThemeProvider = (props: ThemedProps) => {
