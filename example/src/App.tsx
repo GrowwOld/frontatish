@@ -11,6 +11,7 @@ import { ThemeProvider } from 'frontatish';
 import HomeScreen from './examples/HomeScreen';
 import { SCREEN_MAPPING } from './examples/navigation';
 import colors from './examples/colors';
+import SearchbarScreen from './examples/SearchbarScreen';
 
 const Stack = createStackNavigator();
 // const EmptyStatesStack = createStackNavigator();
@@ -30,6 +31,12 @@ function App() {
             <Stack.Screen
               name="Home"
               component={HomeScreen}
+              options={{ headerShown: false }}
+              // initialParams={{ setTheme }}
+            />
+            <Stack.Screen
+              name="SearchbarScreen"
+              component={SearchbarScreen}
               options={{ headerShown: false }}
               // initialParams={{ setTheme }}
             />

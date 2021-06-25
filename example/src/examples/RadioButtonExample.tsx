@@ -1,19 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // eslint-disable-next-line import/no-unresolved
-import { RadioButton, useColors } from 'frontatish';
+import { RadioButton, useColors, RadioGroup } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { scaleDimension } from '../../../src/common/utils';
 // import { Fonts, getColors } from '../styles';
 
-const RadioButtonExample = () => {
+const RadioButtonExample = (props: { navigation: any }) => {
   const Colors = useColors();
   // choosen will hold the value of selected radio button
   const [choosen, setChoosen] = useState('xtra small');
+  const [radioGroupText, setRadioGroupText] = useState('value1');
   const radioPress = (value: string) => {
     setChoosen(value);
   };
+  const onChangeRadioGroup = (selectedValue: string) =>
+    setRadioGroupText(selectedValue);
   // const Colors = getColors(isDark);
+  const goBack = useCallback(() => props.navigation.pop(), []);
   return (
     <SafeAreaView
       style={{
@@ -22,6 +28,15 @@ const RadioButtonExample = () => {
         justifyContent: 'center',
       }}
     >
+      <Icon
+        name="arrow-back"
+        size={20}
+        style={{ margin: 20 }}
+        onPress={goBack}
+      />
+      <Text style={{ margin: 20, fontWeight: 'bold' }}>
+        Normal Radio Button
+      </Text>
       <Text style={{ color: Colors.font_1, margin: 20 }}>
         {`Selected Value is ${choosen}`}
       </Text>
@@ -58,7 +73,7 @@ const RadioButtonExample = () => {
         {/* just for having a neat example ui display,
             these are not anyway important to the library
         */}
-        <View style={{ height: 20, width: '100%' }} />
+        <View style={{ height: scaleDimension(20, 'height'), width: '100%' }} />
         <RadioButton
           disabled
           value="disable-selected"
@@ -77,6 +92,29 @@ const RadioButtonExample = () => {
           selected
           containerStyle={{ marginVertical: 10 }}
         />
+
+        <Text
+          style={{
+            marginVertical: 20,
+            fontWeight: 'bold',
+            color: Colors.font_1,
+          }}
+        >
+          RadioGroup
+        </Text>
+        <Text
+          style={{ marginBottom: 20, color: Colors.font_1 }}
+        >{`Selected Value: ${radioGroupText}`}</Text>
+
+        <RadioGroup
+          onChange={onChangeRadioGroup}
+          defaultValue="value1"
+          containerStyle={{ marginVertical: 5 }}
+        >
+          <RadioButton value="value1" />
+          <RadioButton value="value2 (small)" size="xs" />
+          <RadioButton value="value3 (disabled)" disabled />
+        </RadioGroup>
       </View>
     </SafeAreaView>
   );

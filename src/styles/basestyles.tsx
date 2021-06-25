@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import Fonts from './fonts';
+import { customScaleDimension } from '../common/utils';
 
 const BaseStyles = StyleSheet.create({
   borderSecondaryBtn: {
@@ -11,7 +12,7 @@ const BaseStyles = StyleSheet.create({
     // borderColor: Colors.DARK_SILVER
   },
   grwButton: {
-    height: 50,
+    height: customScaleDimension(50, 'height', 0.3),
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 5,

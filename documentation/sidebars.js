@@ -5,8 +5,10 @@ module.exports = {
       'button',
       'checkbox',
       'numpad',
+      'codeinput',
       // 'popup',
       'radiobutton',
+      'radioGroup',
       'table',
       'emptyview',
       // 'calendar',
@@ -14,6 +16,7 @@ module.exports = {
       'switch',
       'dropdown',
       'input',
+      'searchbar',
       'infobox',
       // 'ticker',
       /* next_doc_id */
