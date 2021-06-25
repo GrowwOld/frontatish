@@ -1,12 +1,12 @@
 import React from 'react';
-import { ColorType } from '../common/types';
+import { ColorPaletteType, ThemeType } from '../common/types';
 
-interface conttextObjType {
-  currentTheme: string;
-  toggleTheme: (theme: string) => void;
-  colors?: ColorType;
-}
-const ThemeContext = React.createContext<conttextObjType>({
+export type ContextObjType = {
+  currentTheme: ThemeType;
+  toggleTheme: (theme: ThemeType) => void;
+  colors?: ColorPaletteType;
+};
+const ThemeContext = React.createContext<ContextObjType>({
   currentTheme: 'light',
   toggleTheme: () => {},
 });
