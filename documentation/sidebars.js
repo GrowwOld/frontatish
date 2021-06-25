@@ -17,7 +17,7 @@ module.exports = {
       'dropdown',
       'input',
       'searchbar',
-      'infobox',
+      // 'infobox',
       // 'ticker',
       /* next_doc_id */
     ],
