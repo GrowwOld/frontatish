@@ -3,7 +3,7 @@ import { View, StyleSheet, Animated } from 'react-native';
 import { ColorType } from '../../common/types';
 import { withColors } from '../../themes';
 
-interface ProgeessProps {
+interface ProgressProps {
   width: number;
   Colors: ColorType;
   barColor?: string;
@@ -12,8 +12,8 @@ interface ProgeessProps {
 interface ProgressState {
   transX: Animated.Value;
 }
-class Progress extends React.Component<ProgeessProps, ProgressState> {
-  constructor(props: ProgeessProps) {
+class Progress extends React.Component<ProgressProps, ProgressState> {
+  constructor(props: ProgressProps) {
     super(props);
     this.state = {
       transX: new Animated.Value(0),

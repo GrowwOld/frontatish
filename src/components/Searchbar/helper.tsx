@@ -18,7 +18,7 @@ export const getStyles = (Colors: ColorType) => {
       flex: 4,
       paddingHorizontal: 10,
       paddingVertical: 0,
-      fontSize: Fonts.size.regular_17,
+      fontSize: Fonts.size.regular_16,
       color: Colors.font_1,
     },
   });

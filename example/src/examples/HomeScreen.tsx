@@ -15,6 +15,7 @@ import {
   useThemeToggle,
   Switch,
   Searchbar,
+  Fonts,
   // eslint-disable-next-line import/no-unresolved
 } from 'frontatish';
 
@@ -53,7 +54,7 @@ const HomeScreen = ({ navigation }: any) => {
       <View style={{ padding: 20, flexDirection: 'row' }}>
         <View style={{ flex: 4 }}>
           <Searchbar
-            value="Search Groww"
+            value="Search Components"
             leftLogo={require('../assets/groww_logo.png')}
             rightIcon="account-circle"
             onPress={() => navigation.navigate('SearchbarScreen')}
@@ -78,7 +79,7 @@ const HomeScreen = ({ navigation }: any) => {
           <Text
             style={{
               flex: 1,
-              fontSize: 20,
+              fontSize: Fonts.size.h5,
               fontWeight: 'bold',
               color: Colors.font_1,
             }}
@@ -101,7 +102,7 @@ const HomeScreen = ({ navigation }: any) => {
         })}
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Fonts.size.h5,
             margin: 20,
             fontWeight: 'bold',
             color: Colors.font_1,

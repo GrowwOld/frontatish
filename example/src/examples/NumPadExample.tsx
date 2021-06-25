@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Text } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors } from 'frontatish';
+import { Fonts, NumPad, withColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 // import { Fonts, getColors } from '../styles';
@@ -45,7 +45,11 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
         }}
       >
         <Text
-          style={{ fontSize: 30, color: Colors.font_1, textAlign: 'center' }}
+          style={{
+            fontSize: Fonts.size.h3,
+            color: Colors.font_1,
+            textAlign: 'center',
+          }}
         >
           {input}
         </Text>

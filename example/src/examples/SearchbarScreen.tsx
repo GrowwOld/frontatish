@@ -1,59 +1,32 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   StatusBar,
-  Platform,
   Text,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {
-  Searchbar,
-  useColors,
-  useThemeToggle,
-  useTheme,
-  Switch,
-} from 'frontatish'; // eslint-disable-line import/no-unresolved
+import { Fonts, Searchbar, useColors, useTheme } from 'frontatish'; // eslint-disable-line import/no-unresolved
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { debounce } from '../../../src/common/utils';
 import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const SearchbarScreen = () => {
   const Colors = useColors();
-  const toggleTheme = useThemeToggle();
   const activeTheme = useTheme();
-  const [isOn, setIsOn] = useState(false);
 
   const [query, setQuery] = useState('');
   const [resultsHeading, setResultsHeading] = useState('All Components');
 
-  const onThemeSwitch = () => {
-    // dark mode is on
-    if (isOn) {
-      // set theme to light
-      toggleTheme('light');
-      StatusBar.setBarStyle('dark-content', true);
-    } else {
-      // set theme to dark
-      toggleTheme('dark');
-      StatusBar.setBarStyle('default', true);
-      if (Platform.OS === 'android') {
-        StatusBar.setBackgroundColor(Colors.white);
-      }
-    }
-    setIsOn(!isOn);
-  };
+  const allScreens = { ...COMPONENT_SCREENS, ...ANIMATED_SCREENS };
 
-  const [componentList, setComponentList] = useState({
-    ...COMPONENT_SCREENS,
-    ...ANIMATED_SCREENS,
-  });
+  const [componentList, setComponentList] = useState(allScreens);
 
-  const onChangeQuery = (text: string) => {
+  const onChangeText = (text: string) => {
+    setQuery(text);
     if (text) {
       const newList: typeof componentList = Object.fromEntries(
-        Object.entries(componentList).filter(([, value]) =>
+        Object.entries(allScreens).filter(([, value]) =>
           value.toUpperCase().includes(text.toUpperCase()),
         ),
       );
@@ -66,16 +39,9 @@ const SearchbarScreen = () => {
         setResultsHeading(`${text} not found`);
       }
     } else {
-      setComponentList(componentList);
+      setComponentList(allScreens);
       setResultsHeading('All Components');
     }
-  };
-
-  const debouncedOnChangeQuery = useCallback(debounce(onChangeQuery, 500), []);
-
-  const onChangeText = (text: string) => {
-    debouncedOnChangeQuery(text);
-    setQuery(text);
   };
 
   const navigation = useNavigation();
@@ -96,16 +62,8 @@ const SearchbarScreen = () => {
             onChangeText={onChangeText}
             backIcon="arrow-back"
             onBackIconPress={navigation.goBack}
+            numberOfLines={1}
           />
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'flex-end',
-            justifyContent: 'center',
-          }}
-        >
-          <Switch isOn={isOn} onToggle={onThemeSwitch} />
         </View>
       </View>
       <View
@@ -118,7 +76,7 @@ const SearchbarScreen = () => {
         <Text
           style={{
             flex: 1,
-            fontSize: 20,
+            fontSize: Fonts.size.h5,
             fontWeight: 'bold',
             color: Colors.font_1,
           }}

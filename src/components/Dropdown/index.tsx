@@ -10,6 +10,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useColors } from '../../themes';
 import { ColorType } from '../../common/types';
+import { scaleDimension } from '../../common/utils';
 import { DropdownProps } from './types';
 import DropList from './DropList';
 import Line from './Line';
@@ -65,7 +66,7 @@ const Dropdown = (props: DropdownProps) => {
             >
               <Icon
                 name="keyboard-arrow-down"
-                size={20}
+                size={scaleDimension(20)}
                 color={iconColor ?? Colors.primary}
               />
             </Animated.View>
