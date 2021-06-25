@@ -23,8 +23,8 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
     this.codeLength = 6;
   }
 
-  // onItemClick
-  onItemClick = (keyStroke?: keyStrokeType) => {
+  // onItemKeyClick
+  onItemKeyClick = (keyStroke?: keyStrokeType) => {
     this.setState({ keyStroke, codeError: '' });
   };
 
@@ -74,7 +74,7 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
           />
         </View>
 
-        <NumPad onItemClick={this.onItemClick} onSubmit={this.onSubmit} />
+        <NumPad onItemKeyClick={this.onItemKeyClick} onSubmit={this.onSubmit} />
       </SafeAreaView>
     );
   }

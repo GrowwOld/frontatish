@@ -16,7 +16,7 @@ import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
 const NumPad = (props: NumPadProps) => {
-  const { onItemClick, onSubmit } = props;
+  const { onItemClick, onItemKeyClick, onSubmit, onDeleteItem } = props;
   const [actionId, setActionId] = useState(0);
   const numberRange = [
     '1',
@@ -37,19 +37,28 @@ const NumPad = (props: NumPadProps) => {
     setActionId(actionId + 1);
     switch (item) {
       case 'X':
-        return onItemClick({
+        // send delete meta data
+        onItemKeyClick?.({
           value: item,
           actionType: 'delete',
           actionId,
         });
+        // directly manipulate data on delete with this callback
+        onDeleteItem?.();
+        break;
       case '.':
-        return onSubmit();
+        onSubmit();
+        break;
       default:
-        return onItemClick({
+        // send the value directly
+        onItemClick?.(item);
+        // send the value along with meta data
+        onItemKeyClick?.({
           value: item,
           actionType: 'insert',
           actionId,
         });
+        break;
     }
   };
 

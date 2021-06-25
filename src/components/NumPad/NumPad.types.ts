@@ -6,8 +6,11 @@ export type keyStrokeType = {
 
 // NumPad component props type
 export interface NumPadProps {
-  onItemClick: (keyStroke?: keyStrokeType) => void;
-  // will be removed
-  onDeleteItem?: (keystroke?: keyStrokeType) => void;
+  // gives all the meta data from numpad key
+  onItemKeyClick?: (keyStroke?: keyStrokeType) => void;
+  // get the item value directly
+  onItemClick?: (input: string) => void;
+  // if you want to explicitly handle onDeleteItem
+  onDeleteItem?: () => void;
   onSubmit: () => void;
 }
