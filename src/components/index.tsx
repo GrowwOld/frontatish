@@ -5,7 +5,6 @@ import CheckBox from './CheckBox';
 import Calendar from './Calendar';
 import Dropdown from './Dropdown';
 import Input from './Input';
-import NumPad from './NumPad';
 import RadioButton from './RadioButton';
 import Table from './Table';
 import EmptyState from './EmptyState';
@@ -21,7 +20,6 @@ export {
   EmptyState,
   EmptyView,
   Dropdown,
-  NumPad,
   RadioButton,
   Ripple,
   Switch,
@@ -30,4 +28,5 @@ export {
   Tag,
   Input,
 };
+export { NumPad, keyStrokeType } from './NumPad';
 export { CodeInput } from './CodeInput';

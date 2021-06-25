@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Animated } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import CodeInputStyles from './CodeInput.styles';
 import { CodeInputProps, CodeInputState } from './CodeInput.types';
 import { withColors } from '../../themes';
@@ -12,7 +11,9 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   animatedValue: Animated.Value;
 
   // eslint-disable-next-line react/static-property-placement
-  static defaultProps: CodeInputProps;
+  static defaultProps = {
+    errorAnimation: true,
+  };
 
   constructor(props: CodeInputProps) {
     super(props);
@@ -92,20 +93,27 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
       } else {
         deletedIndex = activeInput - 1;
       }
-      const updated = codeInputValue.map((item, index) => {
+      const updatedCode = codeInputValue.map((item, index) => {
         if (index === deletedIndex) return undefined;
         return item;
       });
-      setCode(updated.join(''));
+      setCode(updatedCode.join(''));
       this.setState({
         activeInput: newActiveInput,
-        codeInputValue: updated,
+        codeInputValue: updatedCode,
       });
     }
   };
 
   renderInputUI = () => {
-    const { codeLength, inputContainer, codeError, Mask, Colors } = this.props;
+    const {
+      codeLength,
+      inputContainer,
+      codeError,
+      Mask,
+      Colors,
+      codeTextStyle,
+    } = this.props;
     const { codeInputValue } = this.state;
     const ui = [];
     styles = CodeInputStyles(Colors!);
@@ -113,7 +121,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
       const lastInputStyle = i === codeLength - 1 ? { marginRight: 0 } : {};
       const errorBoxStyle = codeError ? styles.errorUnderlined : {};
       ui.push(
-        <TouchableWithoutFeedback
+        <View
           style={[
             inputContainer === 'line'
               ? [styles.inputUnderlined, errorBoxStyle]
@@ -121,32 +129,29 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
             lastInputStyle,
           ]}
           key={i.toString()}
-          onPress={() => this.setActiveInputBox(i)}
         >
           {codeInputValue[i] && Mask ? (
             <Mask />
           ) : (
-            <Text style={styles.codeTextStyle}>{codeInputValue[i]}</Text>
+            <Text style={[styles.codeTextStyle, { ...codeTextStyle }]}>
+              {codeInputValue[i]}
+            </Text>
           )}
-        </TouchableWithoutFeedback>,
+        </View>,
       );
     }
     return ui;
   };
 
-  setActiveInputBox = (index: number) => {
-    this.setState({ activeInput: index });
-  };
-
   renderErrorMsg = () => {
-    const { codeError, errorStyle } = this.props;
+    const { codeError, errorTextStyle } = this.props;
     if (codeError) {
       return (
         <Text
           style={{
             color: LIGHT_MODE_COLORS.semantic_red,
             marginTop: 10,
-            ...errorStyle,
+            ...errorTextStyle,
           }}
         >
           {codeError}
@@ -179,7 +184,4 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   }
 }
 
-CodeInput.defaultProps = {
-  errorAnimation: true,
-};
 export default withColors(CodeInput);

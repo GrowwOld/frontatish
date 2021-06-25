@@ -68,6 +68,8 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
             setCode={this.setCode}
             value="1247"
             codeError={codeError}
+            errorTextStyle={{ textAlign: 'center' }}
+            codeTextStyle={{ color: Colors.font_1 }}
             // Mask={this.renderMask}
           />
         </View>
