@@ -48,7 +48,7 @@ const EmptyState = (props: EmptyStatePropsType) => {
     bottomButton: {
       backgroundColor: Colors.transparent,
       borderWidth: 0,
-      fontSize: 10,
+      fontSize: Fonts.size.mini,
     },
     splashScreen: {
       width: Dimensions.get('window').width * 0.35,
@@ -70,7 +70,7 @@ const EmptyState = (props: EmptyStatePropsType) => {
       flexDirection: 'row',
       justifyContent: 'flex-start',
       margin: 13,
-      fontSize: 15,
+      fontSize: Fonts.size.medium_15,
       color: Colors.font_1,
       fontWeight: 'bold',
     },
@@ -81,7 +81,7 @@ const EmptyState = (props: EmptyStatePropsType) => {
       alignItems: 'center',
       textAlign: 'right',
       margin: 13,
-      fontSize: 15,
+      fontSize: Fonts.size.medium_15,
       fontWeight: 'bold',
     },
   });
