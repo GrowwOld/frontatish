@@ -63,7 +63,6 @@ class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
         >
           <CodeInput
             keyStroke={keyStroke!}
-            codeLength={this.codeLength}
             inputContainer="line"
             setCode={this.setCode}
             value="1247"

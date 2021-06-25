@@ -13,6 +13,7 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   // eslint-disable-next-line react/static-property-placement
   static defaultProps = {
     errorAnimation: true,
+    codeLength: 6,
   };
 
   constructor(props: CodeInputProps) {
