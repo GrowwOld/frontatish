@@ -38,7 +38,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
-  { name: COMPONENT_SCREENS.INFOBOX, screen: InfoBoxScreen },
+  // { name: COMPONENT_SCREENS.INFOBOX, screen: InfoBoxScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];
