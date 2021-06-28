@@ -1,28 +1,31 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import {
   View,
   Animated,
   PanResponder,
   PanResponderInstance,
+  FlatList,
+  StyleSheet,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  LayoutChangeEvent,
 } from 'react-native';
 import { DraggableListProps } from './types';
 
 const DraggableList = (props: DraggableListProps) => {
   const {
-    flatList,
-    setInfo,
-    flatListRef,
-    scrollOffset,
+    setDraggingIdx,
     flatListTopOffset,
     ITEM_HEIGHT,
     HOLD_TIME,
-    getView,
-    setPan,
+    listRenderItem,
+    listItemInfo,
     setData,
-    propData,
+    listData,
+    componentStyle,
   } = props;
 
-  const data = propData;
+  const data = listData;
 
   setData(data);
   const [draggingInfo, setDraggingInfo] = useState({
@@ -30,19 +33,22 @@ const DraggableList = (props: DraggableListProps) => {
     draggingIdx: -1,
   });
 
-  setInfo(draggingInfo);
+  setDraggingIdx(draggingInfo.draggingIdx);
   const [panResponder, setPanResponder] = useState<PanResponderInstance>();
-  setPan(panResponder);
+  const flatListHeight = useRef(0);
 
   const point = useRef(new Animated.ValueXY()).current;
 
-  const flatListHeight = useRef(0);
   const currentIdx = useRef(-1);
   const currentY = useRef(-1);
   const currentVelY = useRef(0);
   const active = useRef(false);
+  const listRef = useRef<FlatList<any>>(null);
+  const scrollOffset = useRef(0);
 
-  let longPressTimer;
+  const numOfItemsOnScreen = Math.ceil(flatListHeight.current / ITEM_HEIGHT);
+
+  let longPressTimer: NodeJS.Timeout;
 
   useEffect(() => {
     reorderData();
@@ -68,6 +74,7 @@ const DraggableList = (props: DraggableListProps) => {
       },
       onPanResponderMove: (_, gestureState) => {
         setDraggingInfo({ dragging: true, draggingIdx: currentIdx.current });
+
         currentY.current = Math.max(
           flatListTopOffset.current,
           Math.min(
@@ -141,18 +148,12 @@ const DraggableList = (props: DraggableListProps) => {
       onPanResponderRelease: () => {
         // The user has released all touches while this view is the
         // responder. This typically means a gesture has succeeded
-        if (!panResponder) {
-          clearTimeout(longPressTimer); // clean the timeout handler
-        }
 
         reset();
       },
       onPanResponderTerminate: () => {
         // Another component has become the responder, so this gesture
         // should be cancelled
-        if (!panResponder) {
-          clearTimeout(longPressTimer); // clean the timeout handler
-        }
 
         reset();
       },
@@ -169,6 +170,9 @@ const DraggableList = (props: DraggableListProps) => {
   }
 
   const reset = () => {
+    if (!panResponder) {
+      clearTimeout(longPressTimer); // clean the timeout handler
+    }
     setDraggingInfo({ dragging: false, draggingIdx: -1 });
     setPanResponder(undefined);
     active.current = false;
@@ -184,7 +188,7 @@ const DraggableList = (props: DraggableListProps) => {
           (flatListHeight.current * 3) / 4 &&
         currentVelY.current > 0
       ) {
-        flatListRef.current?.scrollToOffset({
+        listRef.current?.scrollToOffset({
           offset:
             scrollOffset.current +
             Math.min(
@@ -200,7 +204,7 @@ const DraggableList = (props: DraggableListProps) => {
           (flatListHeight.current * 1) / 4 &&
         currentVelY.current < 0
       ) {
-        flatListRef.current?.scrollToOffset({
+        listRef.current?.scrollToOffset({
           offset:
             scrollOffset.current +
             Math.max(
@@ -241,33 +245,74 @@ const DraggableList = (props: DraggableListProps) => {
     return x;
   };
 
+  const keyExtractor = useCallback((item) => item.toString(), []);
+  const renderItem = useCallback((item) => listRenderItem(item, panResponder), [
+    reset,
+  ]);
+  const setScrollOffset = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+    scrollOffset.current = event.nativeEvent.contentOffset.y;
+    if (listItemInfo)
+      listItemInfo({
+        numOfItems: numOfItemsOnScreen,
+        topIndex: Math.floor(scrollOffset.current / ITEM_HEIGHT),
+        bottomIndex: Math.floor(
+          (scrollOffset.current + flatListHeight.current) / ITEM_HEIGHT,
+        ),
+      });
+  };
+  const onListLayout = (event: LayoutChangeEvent) => {
+    flatListHeight.current = event.nativeEvent.layout.height;
+    if (listItemInfo)
+      listItemInfo({
+        numOfItems: Math.ceil(flatListHeight.current / ITEM_HEIGHT),
+        topIndex: Math.floor(scrollOffset.current / ITEM_HEIGHT),
+        bottomIndex: Math.floor(
+          (scrollOffset.current + flatListHeight.current) / ITEM_HEIGHT,
+        ),
+      });
+  };
+  const getItemLayout = (_: any, index: number) => ({
+    length: ITEM_HEIGHT,
+    offset: ITEM_HEIGHT * index,
+    index,
+  });
+
+  const getFlatList = () => {
+    return (
+      <FlatList
+        scrollEnabled={!draggingInfo.dragging}
+        // disableVirtualization={false}
+        ref={listRef}
+        getItemLayout={getItemLayout}
+        onScroll={setScrollOffset}
+        scrollEventThrottle={16}
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+        style={style.fullWidth}
+        onLayout={onListLayout}
+      />
+    );
+  };
+
   return (
-    <View
-      style={{
-        paddingHorizontal: 20,
-        width: '100%',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-      onLayout={(event) => {
-        flatListHeight.current = event.nativeEvent.layout.height;
-      }}
-    >
+    <View style={style.containerView}>
       {draggingInfo.dragging ? (
         <Animated.View
-          style={{
-            position: 'absolute',
-            zIndex: 2,
-            top: point.getLayout().top,
-            width: '100%',
-            scaleX: 1.03,
-          }}
+          style={[
+            style.animatedView,
+            { top: point.getLayout().top },
+            componentStyle,
+          ]}
         >
-          {getView(data[draggingInfo.draggingIdx], -1)}
+          {renderItem({
+            item: data[draggingInfo.draggingIdx],
+            index: -1,
+          })}
         </Animated.View>
       ) : null}
 
-      {flatList}
+      {getFlatList()}
     </View>
   );
 };
@@ -275,4 +320,20 @@ const DraggableList = (props: DraggableListProps) => {
 DraggableList.defaultProps = {
   HOLD_TIME: 500,
 };
+
+const style = StyleSheet.create({
+  animatedView: {
+    position: 'absolute',
+    zIndex: 2,
+    width: '100%',
+    transform: [{ scale: 1.03 }],
+  },
+  containerView: {
+    paddingHorizontal: 20,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fullWidth: { width: '100%' },
+});
 export default DraggableList;
