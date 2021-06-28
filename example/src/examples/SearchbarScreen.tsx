@@ -13,7 +13,7 @@ import { COMPONENT_SCREENS, ANIMATED_SCREENS } from './navigation';
 
 const SearchbarScreen = () => {
   const Colors = useColors();
-  const activeTheme = useTheme();
+  const { activeTheme } = useTheme();
 
   const [query, setQuery] = useState('');
   const [resultsHeading, setResultsHeading] = useState('All Components');

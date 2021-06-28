@@ -1,4 +1,4 @@
-const LIGHT_MODE_COLORS = {
+export const LIGHT_MODE_COLORS = {
   white: '#FFFFFF',
   constant_white: '#FFFFFF',
   primary: '#00D09C',
