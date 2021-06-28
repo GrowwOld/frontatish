@@ -29,5 +29,10 @@ export default function withTheme(ComposedComponent: typeof React.Component) {
       </ThemeContext.Consumer>
     );
   }
+  // copying static methods
+  // @ts-ignore
+  EnhancedComponent.router = ComposedComponent?.router;
+  // @ts-ignore
+  EnhancedComponent.navigationOptions = ComposedComponent?.navigationOptions;
   return EnhancedComponent;
 }
