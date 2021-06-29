@@ -15,14 +15,13 @@ import { DraggableListProps } from './types';
 const DraggableList = (props: DraggableListProps) => {
   const {
     setDraggingIdx,
-    flatListTopOffset,
+    flatlistTopOffset,
     ITEM_HEIGHT,
     HOLD_TIME,
     listRenderItem,
     listItemInfo,
     setData,
     listData,
-    componentStyle,
   } = props;
 
   const data = listData;
@@ -76,9 +75,9 @@ const DraggableList = (props: DraggableListProps) => {
         setDraggingInfo({ dragging: true, draggingIdx: currentIdx.current });
 
         currentY.current = Math.max(
-          flatListTopOffset.current,
+          flatlistTopOffset.current,
           Math.min(
-            flatListTopOffset.current + flatListHeight.current,
+            flatlistTopOffset.current + flatListHeight.current,
             gestureState.moveY,
           ),
         );
@@ -89,7 +88,7 @@ const DraggableList = (props: DraggableListProps) => {
             0,
             Math.min(
               flatListHeight.current - ITEM_HEIGHT,
-              gestureState.moveY - flatListTopOffset.current - ITEM_HEIGHT / 2,
+              gestureState.moveY - flatlistTopOffset.current - ITEM_HEIGHT / 2,
             ),
           ),
         });
@@ -134,7 +133,7 @@ const DraggableList = (props: DraggableListProps) => {
         currentIdx.current = yToIndex(gestureState.y0);
 
         Animated.event([{ y: point.y }], { useNativeDriver: false })({
-          y: gestureState.y0 - flatListTopOffset.current - ITEM_HEIGHT / 2,
+          y: gestureState.y0 - flatlistTopOffset.current - ITEM_HEIGHT / 2,
         });
 
         longPressTimer = setTimeout(onLongPress, HOLD_TIME);
@@ -184,7 +183,7 @@ const DraggableList = (props: DraggableListProps) => {
     requestAnimationFrame(() => {
       // check if we want to scroll
       if (
-        currentY.current - flatListTopOffset.current >
+        currentY.current - flatlistTopOffset.current >
           (flatListHeight.current * 3) / 4 &&
         currentVelY.current > 0
       ) {
@@ -193,14 +192,14 @@ const DraggableList = (props: DraggableListProps) => {
             scrollOffset.current +
             Math.min(
               currentY.current -
-                flatListTopOffset.current -
+                flatlistTopOffset.current -
                 (flatListHeight.current * 3) / 4,
               25,
             ),
           animated: false,
         });
       } else if (
-        currentY.current - flatListTopOffset.current <
+        currentY.current - flatlistTopOffset.current <
           (flatListHeight.current * 1) / 4 &&
         currentVelY.current < 0
       ) {
@@ -209,7 +208,7 @@ const DraggableList = (props: DraggableListProps) => {
             scrollOffset.current +
             Math.max(
               currentY.current -
-                flatListTopOffset.current -
+                flatlistTopOffset.current -
                 (flatListHeight.current * 1) / 4,
               -25,
             ),
@@ -236,7 +235,7 @@ const DraggableList = (props: DraggableListProps) => {
       Math.max(
         0,
         Math.floor(
-          (scrollOffset.current + y - flatListTopOffset.current) / ITEM_HEIGHT,
+          (scrollOffset.current + y - flatlistTopOffset.current) / ITEM_HEIGHT,
         ),
       ),
     );
@@ -296,14 +295,10 @@ const DraggableList = (props: DraggableListProps) => {
   };
 
   return (
-    <View style={style.containerView}>
+    <View style={style.fullWidth}>
       {draggingInfo.dragging ? (
         <Animated.View
-          style={[
-            style.animatedView,
-            { top: point.getLayout().top },
-            componentStyle,
-          ]}
+          style={[style.animatedView, { top: point.getLayout().top }]}
         >
           {renderItem({
             item: data[draggingInfo.draggingIdx],
@@ -327,12 +322,6 @@ const style = StyleSheet.create({
     zIndex: 2,
     width: '100%',
     transform: [{ scale: 1.03 }],
-  },
-  containerView: {
-    paddingHorizontal: 20,
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   fullWidth: { width: '100%' },
 });

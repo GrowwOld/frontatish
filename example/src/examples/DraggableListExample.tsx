@@ -56,10 +56,12 @@ const DraggableListExample = () => {
           <View
             style={{
               width: 50,
-              paddingVertical: 35,
-              height: 80,
+              paddingVertical: 10,
+              height: 30,
               paddingHorizontal: 10,
+              marginHorizontal: 5,
               justifyContent: 'space-between',
+              backgroundColor: 'grey',
             }}
             {...(panResponder ? panResponder.panHandlers : {})}
           >
@@ -84,6 +86,7 @@ const DraggableListExample = () => {
         alignItems: 'center',
         width: '100%',
         marginVertical: 50,
+        paddingHorizontal: 20,
       }}
       onLayout={(event) => {
         flatListTopOffset.current = event.nativeEvent.layout.y;
@@ -91,12 +94,12 @@ const DraggableListExample = () => {
     >
       <DraggableList
         listRenderItem={listRenderItem}
-        flatListTopOffset={flatListTopOffset}
+        flatlistTopOffset={flatListTopOffset}
         setDraggingIdx={setDraggingIdx}
         setData={setData}
         ITEM_HEIGHT={ITEM_HEIGHT}
         listData={data}
-        HOLD_TIME={300}
+        HOLD_TIME={100}
       />
     </SafeAreaView>
   );

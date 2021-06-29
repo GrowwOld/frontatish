@@ -14,6 +14,7 @@ module.exports = {
       'switch',
       'dropdown',
       'input',
+      'draggableList',
       // 'ticker',
       /* next_doc_id */
     ],
