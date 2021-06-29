@@ -1,10 +1,10 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useCallback } from 'react';
 import {
   View,
   Text,
-  FlatList,
   SafeAreaView,
   PanResponderInstance,
+  ListRenderItemInfo,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import { DraggableList } from 'frontatish';
@@ -22,70 +22,60 @@ const bgColor: string[] = [];
 
 const DraggableListExample = () => {
   const [data, setData] = useState(
-    Array.from(Array(500), (_, i) => {
+    Array.from(Array(50), (_, i) => {
       bgColor[i] = useMemo(() => getRandomColor(), []);
       return i;
     }),
   );
 
-  const listRef = useRef<FlatList<any>>();
-  const scrollOffset = useRef(0);
-  const ITEM_HEIGHT = 50;
+  const ITEM_HEIGHT = 100;
 
-  const [panResponder, setPanResponder] = useState<PanResponderInstance>();
-
-  const [draggingInfo, setDraggingInfo] = useState({
-    dragging: false,
-    draggingIdx: -1,
-  });
+  const [draggingIdx, setDraggingIdx] = useState(-1);
 
   const flatListTopOffset = useRef(0);
 
-  const getView = (item: number, index: number) => {
-    return (
-      <View
-        style={[
-          {
-            height: 50,
-            width: '100%',
-            backgroundColor: bgColor[item],
-            borderWidth: 1,
-            flexDirection: 'row',
-            alignItems: 'center',
-            opacity: draggingInfo.draggingIdx === index ? 0 : 1,
-          },
-        ]}
-        {...(panResponder ? panResponder.panHandlers : {})}
-      >
-        <Text style={{ fontSize: 24, flex: 1, textAlign: 'center' }}>
-          {item}
-        </Text>
-      </View>
-    );
-  };
+  const listRenderItem = useCallback(
+    (
+      { item, index }: ListRenderItemInfo<any>,
+      panResponder: PanResponderInstance | undefined,
+    ) => {
+      return (
+        <View
+          style={[
+            {
+              height: 100,
+              width: '100%',
+              backgroundColor: bgColor[item],
+              borderWidth: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              opacity: draggingIdx === index ? 0 : 1,
+            },
+          ]}
+        >
+          <View
+            style={{
+              width: 50,
+              paddingVertical: 35,
+              height: 80,
+              paddingHorizontal: 10,
+              justifyContent: 'space-between',
+            }}
+            {...(panResponder ? panResponder.panHandlers : {})}
+          >
+            <View style={{ borderTopWidth: 1, width: '100%' }} />
+            <View style={{ borderTopWidth: 1, width: '100%' }} />
+            <View style={{ borderTopWidth: 1, width: '100%' }} />
+          </View>
+          <Text style={{ fontSize: 24, flex: 1, textAlign: 'center' }}>
+            {item}
+          </Text>
+        </View>
+      );
+    },
+    [draggingIdx],
+  );
 
-  const getFlatList = () => {
-    return (
-      <FlatList
-        scrollEnabled={!draggingInfo.dragging}
-        disableVirtualization={false}
-        ref={listRef}
-        getItemLayout={(_, index) => ({
-          length: ITEM_HEIGHT,
-          offset: ITEM_HEIGHT * index,
-          index,
-        })}
-        onScroll={(event) => {
-          scrollOffset.current = event.nativeEvent.contentOffset.y;
-        }}
-        scrollEventThrottle={16}
-        data={data}
-        renderItem={({ item, index }) => getView(item, index)}
-        keyExtractor={(item) => item.toString()}
-        style={{ width: '100%' }}
-      />
-    );
-  };
   return (
     <SafeAreaView
       style={{
@@ -100,16 +90,13 @@ const DraggableListExample = () => {
       }}
     >
       <DraggableList
-        flatList={getFlatList()}
-        getView={getView}
-        scrollOffset={scrollOffset}
-        flatListRef={listRef}
+        listRenderItem={listRenderItem}
         flatListTopOffset={flatListTopOffset}
-        setInfo={(info) => setDraggingInfo(info)}
-        setPan={(pan) => setPanResponder(pan)}
-        setData={(newData) => setData(newData)}
+        setDraggingIdx={setDraggingIdx}
+        setData={setData}
         ITEM_HEIGHT={ITEM_HEIGHT}
-        propData={data}
+        listData={data}
+        HOLD_TIME={300}
       />
     </SafeAreaView>
   );
