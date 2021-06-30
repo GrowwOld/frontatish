@@ -1,46 +1,78 @@
+/* eslint-disable no-underscore-dangle */
 import React, { useRef } from 'react';
 import {
   View,
-  Text,
   Animated,
   TouchableOpacity,
   Dimensions,
   PanResponder,
   ScrollView,
   TouchableWithoutFeedback,
+  BackHandler,
+  StyleSheet,
 } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useColors } from '../../index';
 import { ModalProps } from './types';
 
+const getEntryExitValues = (direction: string | undefined) => {
+  switch (direction) {
+    case 'up':
+      return { x: 0, y: -Dimensions.get('screen').height };
+    case 'left':
+      return { x: -Dimensions.get('screen').width, y: 0 };
+    case 'right':
+      return { x: Dimensions.get('screen').width, y: 0 };
+    default:
+      return { x: 0, y: Dimensions.get('screen').height };
+  }
+};
+
+const DIST_BTW_BAR_AND_TOP = 25;
+
+const getHeightValue = (yPos: number, position: string | undefined) => {
+  if (position === 'top') {
+    return yPos + DIST_BTW_BAR_AND_TOP;
+  }
+  return Dimensions.get('window').height - yPos + DIST_BTW_BAR_AND_TOP;
+};
+
+const getPosition = (position: string | undefined) => {
+  switch (position) {
+    case 'top':
+      return 'flex-start';
+    case 'center':
+      return 'center';
+    default:
+      return 'flex-end';
+  }
+};
+
 const Modal = (props: ModalProps) => {
   const Colors = useColors();
   const {
     open,
-    close,
+    onModalClose,
     children,
     contentHeight,
+    animationInTiming,
+    animationOutTiming,
     swipeThreshold,
     position,
     entryDirection,
     exitDirection,
     swipeable,
-    closeButton,
+    hasCloseButton,
+    onModalShow,
+    closeButtonStyle,
+    style,
+    hasBackdrop,
+    backdropColor,
+    backdropOpacity,
+    onBackdropPressClose,
+    onBackButtonPressClose,
   } = props;
-
-  const getEntryExitValues = (direction: string) => {
-    switch (direction) {
-      case 'up':
-        return { x: 0, y: -Dimensions.get('screen').height };
-      case 'left':
-        return { x: -Dimensions.get('screen').width, y: 0 };
-      case 'right':
-        return { x: Dimensions.get('screen').width, y: 0 };
-      default:
-        return { x: 0, y: Dimensions.get('screen').height };
-    }
-  };
 
   const height = useRef(new Animated.Value(contentHeight)).current;
   const xyPos = useRef(new Animated.ValueXY(getEntryExitValues(entryDirection)))
@@ -59,57 +91,24 @@ const Modal = (props: ModalProps) => {
         // The gesture has started. Show visual feedback so the user knows
         // what is happening!
         // gestureState.d{x,y} will be set to zero now
-        height.setValue(
-          position === 'top'
-            ? gestureState.y0
-            : Dimensions.get('window').height - gestureState.y0,
-        );
+        height.setValue(getHeightValue(gestureState.y0, position));
       },
       onPanResponderMove: (_, gestureState) => {
         // The most recent move distance is gestureState.move{X,Y}
         // The accumulated gesture distance since becoming responder is
         // gestureState.d{x,y}
 
-        height.setValue(
-          position === 'top'
-            ? gestureState.moveY
-            : Dimensions.get('window').height - gestureState.moveY,
-        );
+        height.setValue(getHeightValue(gestureState.moveY, position));
       },
       onPanResponderTerminationRequest: () => true,
       onPanResponderRelease: (_, gestureState) => {
-        if (position === 'top') {
-          if (gestureState.dy > swipeThreshold && !fullHeight.current) {
-            toFullHeight();
-          } else if (
-            -gestureState.dy > swipeThreshold &&
-            height._value > contentHeight
-          ) {
-            toContentHeight();
-          } else if (
-            -gestureState.dy > swipeThreshold &&
-            height._value < contentHeight
-          ) {
-            onClose();
-            fullHeight.current = false;
-          } else {
-            height.setValue(
-              fullHeight.current
-                ? Dimensions.get('window').height
-                : contentHeight,
-            );
-          }
-        } else if (gestureState.dy < -swipeThreshold && !fullHeight.current) {
+        const dy = position === 'top' ? gestureState.dy : -gestureState.dy;
+
+        if (dy > swipeThreshold && !fullHeight.current) {
           toFullHeight();
-        } else if (
-          gestureState.dy > swipeThreshold &&
-          height._value > contentHeight
-        ) {
+        } else if (-dy > swipeThreshold && height._value > contentHeight) {
           toContentHeight();
-        } else if (
-          gestureState.dy > swipeThreshold &&
-          height._value < contentHeight
-        ) {
+        } else if (-dy > swipeThreshold && height._value < contentHeight) {
           onClose();
           fullHeight.current = false;
         } else {
@@ -137,11 +136,12 @@ const Modal = (props: ModalProps) => {
 
   const onOpen = () => {
     height.setValue(contentHeight);
+    BackHandler.addEventListener('hardwareBackPress', onBackButtonPress);
     Animated.timing(xyPos, {
       toValue: { x: 0, y: 0 },
-      duration: 700,
+      duration: animationInTiming,
       useNativeDriver: false,
-    }).start();
+    }).start(() => onModalShow());
   };
 
   const toFullHeight = () => {
@@ -165,89 +165,46 @@ const Modal = (props: ModalProps) => {
   };
   const onClose = () => {
     Animated.timing(xyPos, {
-      toValue: swipeable
-        ? getEntryExitValues(entryDirection)
-        : getEntryExitValues(exitDirection ?? entryDirection),
-      duration: 700,
+      toValue: getEntryExitValues(exitDirection),
+      duration: animationOutTiming,
       useNativeDriver: false,
     }).start(() => {
-      close();
+      onModalClose();
       xyPos.setValue(getEntryExitValues(entryDirection));
+      BackHandler.removeEventListener('hardwareBackPress', onBackButtonPress);
     });
   };
 
-  const getPosition = () => {
-    switch (position) {
-      case 'top':
-        return 'flex-start';
-      case 'center':
-        return 'center';
-      default:
-        return 'flex-end';
+  const onBackButtonPress = () => {
+    if (onBackButtonPressClose && open) {
+      onClose();
+      return true;
     }
+    return false;
   };
 
   const getTopBar = () => {
     return (
       <>
-        {(swipeable || closeButton) && (
-          <View
-            style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%',
-              flexDirection: 'row',
-              height: 25,
-              marginVertical: 10,
-            }}
-          >
+        {(swipeable || hasCloseButton) && (
+          <View style={styles.topBar}>
             {swipeable && (
               <View
-                style={{
-                  justifyContent: 'space-between',
-                  height: 25,
-                  padding: 7,
-                  width: 50,
-                  // borderWidth: 1,
-                  backgroundColor: Colors.font_4,
-                }}
+                style={[
+                  styles.swipeView,
+                  {
+                    backgroundColor: Colors.font_4,
+                  },
+                ]}
                 {...panResponder.panHandlers}
               >
-                <View
-                  style={{
-                    borderTopWidth: 1,
-                    height: 1,
-                    borderColor: Colors.font_1,
-                  }}
-                />
-                <View
-                  style={{
-                    borderTopWidth: 1,
-                    height: 1,
-                    borderColor: Colors.font_1,
-                  }}
-                />
-                <View
-                  style={{
-                    borderTopWidth: 1,
-                    height: 1,
-                    borderColor: Colors.font_1,
-                  }}
-                />
+                <Icon name="menu" size={25} style={{ color: Colors.font_2 }} />
               </View>
             )}
-            {closeButton && (
+            {hasCloseButton && (
               <TouchableOpacity
                 onPress={onClose}
-                style={{
-                  position: 'absolute',
-                  right: 0,
-                  backgroundColor: Colors.font_4,
-                  height: 25,
-                  width: 25,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
+                style={[styles.closeButton, closeButtonStyle]}
               >
                 <Icon name="close" size={20} style={{ color: Colors.font_1 }} />
               </TouchableOpacity>
@@ -262,51 +219,36 @@ const Modal = (props: ModalProps) => {
     <>
       {open && (
         <View
-          style={{
-            // flex: 1,
-            justifyContent: getPosition(),
-            // alignItems: 'center',
-            backgroundColor: 'grey',
-            width: '100%',
-            // height: 400,
-            // bottom: 0,
-            height: Dimensions.get('window').height,
-            position: 'absolute',
-            // paddingHorizontal: 20,
-            zIndex: 1,
-            // transform: [{ translateY: animated }],
-          }}
+          style={[
+            { justifyContent: getPosition(position) },
+            styles.containerView,
+          ]}
           onLayout={onOpen}
         >
-          <TouchableWithoutFeedback onPress={onClose}>
-            <View
-              style={{
-                position: 'absolute',
-                top: 0,
-                bottom: 0,
-                left: 0,
-                right: 0,
-                opacity: 0.3,
-                // backgroundColor: 'rgba(0,0,0,0.7)',
-              }}
-            />
-          </TouchableWithoutFeedback>
+          {hasBackdrop && (
+            <TouchableWithoutFeedback
+              onPress={onBackdropPressClose ? onClose : undefined}
+            >
+              <View
+                style={[
+                  styles.backdrop,
+                  {
+                    opacity: backdropOpacity,
+                    backgroundColor: backdropColor,
+                  },
+                ]}
+              />
+            </TouchableWithoutFeedback>
+          )}
           <Animated.View
-            style={{
-              backgroundColor: Colors.white,
-              // marginTop: 40,
-              // bottom: 0,
-              // alignSelf: 'flex-end',
-              // height: contentHeight,
-              padding: 10,
-
-              // justifyContent: 'flex-end',
-              // flex: 1,
-              // width: '100%',
-              height,
-              transform: xyPos.getTranslateTransform(),
-              // marginHorizontal: 20,
-            }}
+            style={[
+              {
+                backgroundColor: Colors.white,
+                height,
+                transform: xyPos.getTranslateTransform(),
+              },
+              style,
+            ]}
           >
             {(position === 'bottom' || position === 'center') && getTopBar()}
             <ScrollView>{children}</ScrollView>
@@ -322,6 +264,47 @@ Modal.defaultProps = {
   contentHeight: (Dimensions.get('window').height * 3) / 4,
   swipeThreshold: 100,
   position: 'bottom',
+  entryDirection: 'down',
+  onModalShow: () => {},
+  hasBackdrop: true,
+  backdropOpacity: 0.7,
+  backdropColor: 'black',
+  onBackdropPressClose: false,
+  swipeable: false,
+  hasCloseButton: false,
+  animationInTiming: 700,
+  animationOutTiming: 700,
 };
+
+const styles = StyleSheet.create({
+  backdrop: { position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 },
+  containerView: {
+    width: '100%',
+    height: Dimensions.get('window').height,
+    position: 'absolute',
+    zIndex: 1,
+  },
+  closeButton: {
+    position: 'absolute',
+    right: 0,
+    height: 25,
+    width: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  swipeView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+  },
+  topBar: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '100%',
+    flexDirection: 'row',
+    height: 25,
+    marginVertical: 10,
+  },
+});
 
 export default Modal;

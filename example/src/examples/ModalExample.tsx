@@ -51,21 +51,21 @@ const ModalScreen = () => {
       {/* <ScrollView style={{ width: '100%' }}> */}
       <Modal
         open={open}
-        close={close}
+        onModalClose={close}
         contentHeight={400}
         swipeThreshold={100}
-        position="bottom"
-        // entryDirection="up"
-        // exitDirection="up"
+        position="top"
+        entryDirection="up"
+        onBackdropPressClose
+        onBackButtonPressClose
+        hasCloseButton
         swipeable
-        closeButton
       >
         {getChildren()}
       </Modal>
       <View style={{ width: '100%' }}>
         <Button label="Open" onPress={() => setOpen(true)} />
       </View>
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
