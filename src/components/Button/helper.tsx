@@ -5,15 +5,18 @@
   only related to this component,should
   be written here,else if the need of fu-
   nction is required by other components
-  then it should written in commonHelpers.
+  then it should written in '../common/utils'.
 */
 
 import { BaseStyles } from '../../styles';
 import { StyleType, ColorType } from '../../common/types';
 
-export const getBtnTextColorByType = (btnType: string, Colors: any): string => {
+export const getBtnTextColorByType = (
+  btnType: string,
+  Colors: ColorType,
+): string => {
   const colorMapForTxt: any = {
-    primary: Colors.WHITE,
+    primary: Colors.white,
     secondary: Colors.primary,
     default: Colors.primary,
   };
@@ -45,7 +48,7 @@ export const getBtnStyles = (
     case 'secondary':
       return {
         ...BaseStyles.grwButton,
-        backgroundColor: Colors.WHITE,
+        backgroundColor: Colors.white,
         borderColor: disabled ? Colors.font_3 : Colors.primary,
         // opacity: disabled ? 0.6 : 1,
         borderWidth: 2,

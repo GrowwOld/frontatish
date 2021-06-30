@@ -2,6 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { View, Animated, useWindowDimensions } from 'react-native';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
+import { scaleDimension } from '../../common/utils';
 
 const Splash = () => {
   const Colors = useColors();
@@ -25,8 +26,8 @@ const Splash = () => {
   });
   const logo = {
     top: 0,
-    height: 80,
-    width: 80,
+    height: scaleDimension(80),
+    width: scaleDimension(80),
     borderRadius: 40,
     backgroundColor: Colors.primary,
   };
