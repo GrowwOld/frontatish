@@ -1,9 +1,5 @@
 import { MutableRefObject } from 'react';
-import {
-  ListRenderItemInfo,
-  PanResponderInstance,
-  ViewStyle,
-} from 'react-native';
+import { ListRenderItemInfo, PanResponderInstance } from 'react-native';
 
 export interface ListItemInfo {
   bottomIndex: number;
