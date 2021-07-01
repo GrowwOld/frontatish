@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import ThemeContext from './ThemeContext';
-import { ColorType } from '../common/types';
+import { ColorPaletteType, ThemeType } from '../common/types';
 
 interface ThemedProps {
   children: any;
-  theme: string;
-  colors?: ColorType;
+  theme: ThemeType;
+  colors?: ColorPaletteType;
 }
 
 const ThemeProvider = (props: ThemedProps) => {
-  const { children, theme } = props;
+  const { children, theme, colors } = props;
   const [currentTheme, setCurrentTheme] = useState(theme);
-  const toggleTheme = (newTheme: string) => {
+  const toggleTheme = (newTheme: ThemeType) => {
     setCurrentTheme(newTheme);
   };
   return (
-    <ThemeContext.Provider value={{ currentTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ currentTheme, toggleTheme, colors }}>
       {children}
     </ThemeContext.Provider>
   );

@@ -66,3 +66,23 @@ it will basically delete the the last item from the current value.
 |            Type             |        Default         |        Required        |
 | :-------------------------: | :--------------------: | :--------------------: |
 | function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
+
+### onItemKeyClick
+
+Callback function which gets called if passed and with these argument `keyStroke` which is of type `keyStrokeType`.
+
+|            Type             |        Default         |        Required        |
+| :-------------------------: | :--------------------: | :--------------------: |
+| function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |
+
+> keyStrokeType `{ actionType:'insert' | 'delete' ,actionId: number,value: string }`
+
+keyStrokeType can help you to build more customizable components with it. for example to make use of [CodeInput](codeinput) along with the NumPad component this method will help you to use both of them together seamlessly
+
+### onSubmit
+
+Callback function which gets called on pressing submit button in the keypad
+
+|            Type             |        Default         |        Required        |
+| :-------------------------: | :--------------------: | :--------------------: |
+| function <img width="500"/> | none<img width="500"/> | Yes <img width="500"/> |

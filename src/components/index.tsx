@@ -4,9 +4,11 @@ import Button from './Button';
 import CheckBox from './CheckBox';
 import Calendar from './Calendar';
 import Dropdown from './Dropdown';
+// not for 0.4.1 release
+// import InfoBox from './InfoBox';
 import Input from './Input';
-import NumPad from './NumPad';
 import RadioButton from './RadioButton';
+import RadioGroup from './RadioGroup';
 import Table from './Table';
 import EmptyState from './EmptyState';
 import EmptyView from './EmptyView';
@@ -23,12 +25,15 @@ export {
   EmptyState,
   EmptyView,
   Dropdown,
-  NumPad,
   RadioButton,
+  RadioGroup,
   Ripple,
   Switch,
   Searchbar,
   Table,
   Tag,
   Input,
+  // InfoBox,
 };
+export { NumPad, keyStrokeType } from './NumPad';
+export { CodeInput } from './CodeInput';
