@@ -9,6 +9,7 @@ import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 import CalendarScreen from '../CalendarExample';
 import ModalScreen from '../ModalExample';
+// import InfoBoxScreen from '../InfoBoxExample';
 
 type objectType = { [index: string]: string };
 
@@ -23,6 +24,7 @@ export const COMPONENT_SCREENS: objectType = {
   INPUT: 'Input',
   DROPDOWN: 'Dropdown',
   CALENDAR: 'Calendar',
+  // INFOBOX: 'InfoBox',
 };
 
 export const ANIMATED_SCREENS: objectType = { FADE: 'Fade' };
@@ -39,6 +41,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.INPUT, screen: InputScreen },
   { name: COMPONENT_SCREENS.DROPDOWN, screen: DropDownScreen },
   { name: COMPONENT_SCREENS.CALENDAR, screen: CalendarScreen },
+  // { name: COMPONENT_SCREENS.INFOBOX, screen: InfoBoxScreen },
   // animated screen mapping
   { name: ANIMATED_SCREENS.FADE, screen: FadeScreen },
 ];

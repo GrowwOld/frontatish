@@ -1,63 +1,82 @@
 import React, { Component } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 
 // eslint-disable-next-line import/no-unresolved
-import { NumPad, withColors } from 'frontatish';
+import { NumPad, CodeInput, keyStrokeType, withTheme } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-// import { Fonts, getColors } from '../styles';
-
 interface NumPadExampleState {
-  input: string;
+  keyStroke: keyStrokeType | undefined;
+  value: string;
+  codeError: string;
 }
 interface NumPadExampleProps {
   isDark: boolean;
   Colors: any;
 }
 class NumPadExample extends Component<NumPadExampleProps, NumPadExampleState> {
+  codeLength: number;
+
   constructor(props: NumPadExampleProps) {
     super(props);
-    this.state = { input: '' };
+    this.state = { keyStroke: undefined, value: '', codeError: '' };
+    this.codeLength = 6;
   }
 
-  // onItemClick
-  onItemClick = (value: string) => {
-    const { input } = this.state;
-    if (input.length < 10) {
-      this.setState({ input: input + value });
+  // onItemKeyClick
+  onItemKeyClick = (keyStroke?: keyStrokeType) => {
+    this.setState({ keyStroke, codeError: '' });
+  };
+
+  setCode = (value: string) => {
+    // once everythis is entered
+    this.setState({ value });
+  };
+
+  onSubmit = () => {
+    const { value } = this.state;
+    if (value.length < this.codeLength) {
+      this.setState({ codeError: 'Incorrect Code' });
+    }
+    if (value.length === this.codeLength) {
+      this.setState({ codeError: '' });
     }
   };
 
-  onDeleteItem = () => {
-    const { input } = this.state;
-    this.setState({ input: input.substring(0, input.length - 1) });
+  renderMask = () => {
+    return <Text style={{ fontSize: 20, alignSelf: 'center' }}>*</Text>;
   };
 
   render() {
-    const { input } = this.state;
+    const { keyStroke, codeError } = this.state;
     const { Colors } = this.props;
     return (
       <SafeAreaView
         style={{
           flex: 1,
-          justifyContent: 'flex-end',
+          // justifyContent: 'flex-end',
           backgroundColor: Colors.white,
         }}
       >
-        <Text
-          style={{ fontSize: 30, color: Colors.font_1, textAlign: 'center' }}
+        <View
+          style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
         >
-          {input}
-        </Text>
+          <CodeInput
+            keyStroke={keyStroke!}
+            inputContainer="line"
+            setCode={this.setCode}
+            value="1247"
+            codeError={codeError}
+            errorTextStyle={{ textAlign: 'center' }}
+            codeTextStyle={{ color: Colors.font_1 }}
+            // Mask={this.renderMask}
+          />
+        </View>
 
-        <NumPad
-          onItemClick={this.onItemClick}
-          onDeleteItem={this.onDeleteItem}
-          onSubmit={() => {}}
-        />
+        <NumPad onItemKeyClick={this.onItemKeyClick} onSubmit={this.onSubmit} />
       </SafeAreaView>
     );
   }
 }
 
-export default withColors(NumPadExample);
+export default withTheme(NumPadExample);

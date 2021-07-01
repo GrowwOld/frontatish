@@ -1,8 +1,13 @@
+import { LIGHT_MODE_COLORS } from '../../styles/colorPalette';
+
 export interface StyleType {
   [index: string]: number | string;
 }
-export interface ColorType {
-  [index: string]: string;
+export type ColorType = typeof LIGHT_MODE_COLORS;
+
+export interface ColorPaletteType {
+  light: ColorType;
+  dark: ColorType;
 }
 
 export type AlignTypes =
@@ -15,3 +20,4 @@ export type AlignTypes =
   | undefined;
 
 export type DimensionType = 'xs' | 'sm' | 'md' | 'lg';
+export type ThemeType = 'light' | 'dark';

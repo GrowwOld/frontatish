@@ -9,7 +9,7 @@ import { StyleType, ColorType } from '../../common/types';
 import Tick from './Tick';
 
 // styles and themes
-import { withColors } from '../../themes';
+import { withTheme } from '../../themes';
 import { Fonts } from '../../styles';
 
 interface TickerProps {
@@ -110,4 +110,4 @@ const getStyles = (Colors: ColorType) => {
   });
 };
 
-export default withColors(Ticker);
+export default withTheme(Ticker);

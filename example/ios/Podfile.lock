@@ -304,7 +304,7 @@ PODS:
     - React
   - RNVectorIcons (6.6.0):
     - React
-  - viserion (0.3.9):
+  - viserion (0.4.2):
     - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -475,7 +475,7 @@ SPEC CHECKSUMS:
   RNReanimated: b5ccb50650ba06f6e749c7c329a1bc3ae0c88b43
   RNScreens: 62211832af51e0aebcf6e8c36bcf7dd65592f244
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
-  viserion: 44cd6ddbec8cc1a460e14c1860719b4bb4408e4c
+  viserion: 65c50abbd3dfefc7631414c4f42caee4f087059e
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
