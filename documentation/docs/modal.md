@@ -8,13 +8,13 @@ A Modal component that will popup in front of your screen. It can be swiped up t
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/topModal.gif" alt="primary-button" height="400" width="400" />
+      <img src="/frontatish/img/topModal.gif" alt="top-modal" height="400" width="400" />
     </figure>
      <figure>
-      <img src="/frontatish/img/centerModal.gif" alt="primary-button" height="400" width="400" />
+      <img src="/frontatish/img/centerModal.gif" alt="center-modal" height="400" width="400" />
     </figure>
      <figure>
-      <img src="/frontatish/img/bottomModal.gif" alt="primary-button" height="400" width="400" />
+      <img src="/frontatish/img/bottomModal.gif" alt="bottom-modal" height="400" width="400" />
     </figure>
 </div>
 
