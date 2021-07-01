@@ -8,11 +8,9 @@ Draggable List helps you make flatlists in which you can drag and drop items and
 
 <div className="image-horizontal-preview">
     <figure>
-      <img src="/frontatish/img/draggableList1.png" alt="primary-button" />
+      <img src="/frontatish/img/draggableList.gif" alt="draggable-list" width="250" height="500" />
     </figure>
-    <figure>
-      <img src="/frontatish/img/draggableList2.png" alt="secondary-button" />
-    </figure>
+    
 </div>
 
 ## Usage
