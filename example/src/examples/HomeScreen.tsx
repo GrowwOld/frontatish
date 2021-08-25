@@ -52,7 +52,6 @@ const HomeScreen = ({ navigation }: any) => {
         <View style={{ flex: 4 }}>
           <Searchbar
             value="Search Components"
-            rightIcon="account-circle"
             onPress={() => navigation.navigate('SearchbarScreen')}
             editable={false}
           />

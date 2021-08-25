@@ -58,7 +58,7 @@ const navigation = useNavigation();
 
 ### backIcon
 
-Name of the icon to be showed which appears on the left end of the searchbar to go to the previous screen. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
+Name of the icon to be showed which appears on the left end of the searchbar to go to the previous screen. Only icons from **react-native-vector-icons/Ionicons** are supported.
 
 |           Type            |             Default             |       Required        |
 | :-----------------------: | :-----------------------------: | :-------------------: |
@@ -74,7 +74,7 @@ A react native style object for styling the `backIcon`. The values will be appen
 
 ### clearIcon
 
-Name of the icon to be showed which appears on the right end of the searchbar to clear the text. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
+Name of the icon to be showed which appears on the right end of the searchbar to clear the text. Only icons from **react-native-vector-icons/Ionicons** are supported.
 
 |           Type            |          Default           |       Required        |
 | :-----------------------: | :------------------------: | :-------------------: |
@@ -114,7 +114,7 @@ A react native style object which takes care of styling the text in the searchba
 
 ### leftIcon
 
-Name of the icon to be showed which appears in the left end of the searchbar. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
+Name of the icon to be showed which appears in the left end of the searchbar. Only icons from **react-native-vector-icons/Ionicons** are supported.
 Note : If `editable` is `true` and `showBackIcon` is `true`, **only the `backIcon` will be rendered in the left end**.
 
 |           Type            |         Default         |       Required        |
@@ -203,7 +203,7 @@ Function to be called when the searchbar with `editable` set as `false` is press
 
 ### rightIcon
 
-Name of the icon to be showed which appears in the right end of the searchbar. Only icons from **react-native-vector-icons/MaterialIcons** are supported.
+Name of the icon to be showed which appears in the right end of the searchbar. Only icons from **react-native-vector-icons/Ionicons** are supported.
 Note : If `editable` is `true` and `showClearIcon` is `true`, **only the `clearIcon` will be rendered in the right end**.
 
 |           Type            |         Default         |       Required        |

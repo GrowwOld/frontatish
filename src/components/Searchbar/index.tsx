@@ -9,7 +9,7 @@ import {
   ImageStyle,
   TextStyle,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons'; // eslint-disable-line import/no-unresolved
+import Icon from 'react-native-vector-icons/Ionicons'; // eslint-disable-line import/no-unresolved
 import { useColors } from '../../themes';
 import { customScaleDimension } from '../../common/utils';
 import { SearchbarProps } from './types';
