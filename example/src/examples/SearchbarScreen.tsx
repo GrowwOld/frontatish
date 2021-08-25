@@ -59,8 +59,9 @@ const SearchbarScreen = () => {
             editable
             placeholder="Search Components"
             value={query}
+            clearIcon="ios-close-circle"
             onChangeText={onChangeText}
-            backIcon="arrow-back"
+            backIcon="ios-arrow-back"
             onBackIconPress={navigation.goBack}
             numberOfLines={1}
           />
