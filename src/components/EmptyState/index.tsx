@@ -26,7 +26,7 @@ const EmptyState = (props: EmptyStatePropsType) => {
     },
     mainView: {
       backgroundColor: middleSection?.backgroundColor,
-      height: Dimensions.get('window').height,
+      height: Dimensions.get('screen').height,
     },
     titleText: {
       fontSize: Fonts.size.h5,
@@ -51,8 +51,8 @@ const EmptyState = (props: EmptyStatePropsType) => {
       fontSize: Fonts.size.mini,
     },
     splashScreen: {
-      width: Dimensions.get('window').width * 0.35,
-      height: Dimensions.get('window').height * 0.25,
+      width: Dimensions.get('screen').width * 0.35,
+      height: Dimensions.get('screen').height * 0.25,
     },
     imageContainer: {
       marginTop: 85,

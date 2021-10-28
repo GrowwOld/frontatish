@@ -1,5 +1,4 @@
 import { Platform } from 'react-native';
-import { scaleDimension } from '../common/utils';
 
 const type = {
   base: 'Avenir-Book',
@@ -22,26 +21,26 @@ const type = {
 };
 
 const size = {
-  h1: scaleDimension(38),
-  h2: scaleDimension(34),
-  h3: scaleDimension(30),
-  h4: scaleDimension(26),
-  h5: scaleDimension(20),
-  h6: scaleDimension(19),
-  input: scaleDimension(18),
-  regular: scaleDimension(15),
-  regular_16: scaleDimension(16),
-  regular_17: scaleDimension(17),
-  medium_15: scaleDimension(15),
-  medium: scaleDimension(14),
-  small_13: scaleDimension(13),
-  small: scaleDimension(12),
-  small_11: scaleDimension(11),
-  mini: scaleDimension(10),
-  tiny: scaleDimension(8.5),
-  large_Heading: scaleDimension(20),
-  section_heading: scaleDimension(18),
-  primary_text: scaleDimension(13),
+  h1: 38,
+  h2: 34,
+  h3: 30,
+  h4: 26,
+  h5: 20,
+  h6: 19,
+  input: 18,
+  regular: 15,
+  regular_16: 16,
+  regular_17: 17,
+  medium_15: 15,
+  medium: 14,
+  small_13: 13,
+  small: 12,
+  small_11: 11,
+  mini: 10,
+  tiny: 8.5,
+  large_Heading: 20,
+  section_heading: 18,
+  primary_text: 13,
 };
 
 const style = {

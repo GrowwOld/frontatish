@@ -82,7 +82,7 @@ export const getCheckDmnsn = (size: DimensionType) => {
 };
 
 export const scaleDimension = (dimension: number, base = 'width') => {
-  const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
+  const { width: screenWidth, height: screenHeight } = Dimensions.get('screen');
   const scale = base === 'width' ? screenWidth / 375 : screenHeight / 667; // viewport of iphone se 2nd gen
   const scaledDim = dimension * scale;
   return Math.round(PixelRatio.roundToNearestPixel(scaledDim));
