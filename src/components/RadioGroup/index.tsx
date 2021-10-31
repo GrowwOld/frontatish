@@ -17,7 +17,7 @@ const RadioGroup = ({
   useEffect(() => onChange(selectedValue!), [selectedValue]);
 
   return (
-    <View style={style}>
+    <View style={style} accessibilityRole="radiogroup">
       {children?.map((radioButton, index) => (
         <RadioButton
           key={index}

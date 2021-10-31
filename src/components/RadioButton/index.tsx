@@ -62,7 +62,12 @@ const RadioButton = (props: RadioButtonProps) => {
     return null;
   };
   return (
-    <TouchableWithoutFeedback onPress={onRadioPress} disabled={disabled}>
+    <TouchableWithoutFeedback
+      onPress={onRadioPress}
+      disabled={disabled}
+      accessibilityRole="radio"
+      accessibilityState={{ selected: selected, disabled }}
+    >
       <View style={[{ flexDirection: 'row' }, containerStyle]}>
         <View
           style={[styles.outerRing, { ...outerDimen, borderColor: radioColor }]}
