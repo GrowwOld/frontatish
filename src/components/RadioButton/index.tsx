@@ -28,6 +28,8 @@ class InsideView extends React.PureComponent<{
     );
   }
 }
+
+// Step to being accessibile passed, next we can have proper props support for better talkbacks on radio checks
 const RadioButton = (props: RadioButtonProps) => {
   const {
     disabled,
@@ -66,7 +68,7 @@ const RadioButton = (props: RadioButtonProps) => {
       onPress={onRadioPress}
       disabled={disabled}
       accessibilityRole="radio"
-      accessibilityState={{ selected: selected, disabled }}
+      accessibilityState={{ selected, disabled }}
     >
       <View style={[{ flexDirection: 'row' }, containerStyle]}>
         <View

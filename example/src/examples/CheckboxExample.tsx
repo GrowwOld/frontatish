@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 // eslint-disable-next-line import/no-unresolved
 import { CheckBox, useColors } from 'frontatish';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 const CheckboxExample = () => {
   const [tick, setTick] = useState(false);
   const Colors = useColors();
+  const onPress = () => {
+    setTick(!tick);
+  };
+  const accessibleState = { checked: tick, disabled: false };
+
   return (
     <SafeAreaView
       style={{
@@ -16,40 +21,74 @@ const CheckboxExample = () => {
         alignItems: 'center',
       }}
     >
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
-        <CheckBox checked={tick} containerStyle={{ marginVertical: 20 }} />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+        accessibilityState={accessibleState}
+      >
+        <CheckBox checked={tick} containerStyle={styles.checkboxContainer} />
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+        accessibilityState={accessibleState}
+      >
         <CheckBox
           checked={tick}
-          containerStyle={{ marginVertical: 20 }}
+          containerStyle={styles.checkboxContainer}
           size="md"
         />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+        accessibilityState={accessibleState}
+      >
         <CheckBox
           checked={tick}
-          containerStyle={{ marginVertical: 20 }}
+          containerStyle={styles.checkboxContainer}
           size="lg"
         />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+        accessibilityState={{ checked: true, disabled: true }}
+      >
         <CheckBox
           checked
           disabled
-          containerStyle={{ marginVertical: 20 }}
+          containerStyle={styles.checkboxContainer}
           size="lg"
         />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+      >
         <CheckBox
           checked={false}
           disabled
-          containerStyle={{ marginVertical: 20 }}
+          containerStyle={styles.checkboxContainer}
           size="lg"
         />
-      </TouchableWithoutFeedback>
-      <TouchableWithoutFeedback onPress={() => setTick(!tick)}>
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.alignCheckBox}
+        accessibilityRole="checkbox"
+        accessibilityState={accessibleState}
+      >
         <CheckBox
           checked={tick}
           checkColor={Colors.primary}
@@ -61,9 +100,17 @@ const CheckboxExample = () => {
           }}
           size="lg"
         />
-      </TouchableWithoutFeedback>
+        <Text>Example Checkbox</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
 
+const styles = StyleSheet.create({
+  alignCheckBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkboxContainer: { marginVertical: 20, marginRight: 10 },
+});
 export default CheckboxExample;
