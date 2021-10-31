@@ -36,6 +36,10 @@ const DropList = (props: DropListProps) => {
   return (
     <View style={styles.listContainer}>
       <FlatList
+        accessibilityRole="scrollbar"
+        // removeClippedSubviews={false} helps us tabs and nav keys detect hiddent flatlist and scroll to every menu items
+        // without this tabs and nav keys won't detect every menu items
+        removeClippedSubviews={false}
         data={items}
         // contentContainerStyle={styles.listContainer}
         renderItem={renderItem}
