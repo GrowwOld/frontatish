@@ -18,16 +18,21 @@ const TableExample = () => {
     const prefix = item.dayChange > 0 ? '+' : '';
     const prefixColor =
       item.dayChange > 0 ? Colors.primary : Colors.semantic_red;
+    const { marketPrice } = item;
+    const dayChange = item.dayChange.toFixed(2);
+    const dayChangePerc = item.dayChangePerc.toFixed(2);
     return (
       <Ripple
         style={{ flex: 1, alignItems: 'flex-end', paddingVertical: 16 }}
         onPress={onPress}
+        accessibilityRole="button"
+        accessibilityLabel={`Last traded price ${marketPrice}, absolute change ${
+          prefix + ' ' + dayChange
+        }, change in percent ${dayChangePerc} `}
       >
         <Text style={{ color: Colors.font_1 }}>{item.marketPrice}</Text>
         <Text style={{ color: prefixColor }}>
-          {`${prefix} ${item.dayChange.toFixed(
-            2,
-          )} (${item.dayChangePerc.toFixed(2)})`}
+          {`${prefix} ${dayChange} (${dayChangePerc})`}
         </Text>
       </Ripple>
     );
