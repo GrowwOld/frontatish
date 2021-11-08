@@ -51,9 +51,12 @@ const Button = (props: ButtonProps) => {
   return (
     <Ripple
       onPress={onPress}
-      disabled={disabled}
+      disabled={disabled || loading}
       style={mainBtnStyles}
       onLayout={measureLayout}
+      accessibilityRole="button"
+      accessibilityState={{ disabled: disabled || loading }}
+      accessibilityLabel={label}
     >
       {loading && renderProgressBar()}
       <Text style={baseLabelStyles}>{label}</Text>

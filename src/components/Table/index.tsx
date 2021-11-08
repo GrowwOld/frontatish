@@ -11,6 +11,12 @@ import { TableProps, TableItemProps } from './types';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
+// This component needs more refactoration for accessibility
+// because customComponents more callbacks props for deciding accessibileLabels
+// In our example we got custom custom component for marketPrice
+// and the callback only says about price, it also needs some more contextual value
+// which will be the adjacent share name but for now we don't have access to it.
+// In summary for every customComponent passed we need to pass more contextual values for deciding accessibileLabels
 const Table = (props: TableProps) => {
   const [active, setActive] = useState(0);
   const {
@@ -34,6 +40,8 @@ const Table = (props: TableProps) => {
     rightOptionIconName,
   } = props;
   const Colors = useColors();
+  const nextOptionLabel = optionLabel[(active + 1) % option.length];
+
   const TableItem = (itemProps: TableItemProps) => {
     const { item } = itemProps;
     return (
@@ -66,6 +74,7 @@ const Table = (props: TableProps) => {
           justifyContent: 'center',
         }}
         onPress={() => onLeftKeyPress(item)}
+        accessibilityRole="button"
       >
         <Text style={mainLeftItemTextStyle} numberOfLines={2}>
           {extractResponseFromApiKey(item, leftKey.split('.'))}
@@ -92,14 +101,21 @@ const Table = (props: TableProps) => {
         <CustomRightItem item={item} onPress={() => onRightKeyPress(item)} />
       );
     }
+
+    const dataToDisplay: string = extractResponseFromApiKey(
+      item,
+      option[active].split('.'),
+    );
+
     return (
       <TouchableOpacity
         onPress={() => onRightKeyPress(item)}
         style={{ flex: 1, paddingVertical: 16 }}
+        accessibilityRole="button"
+        accessibilityLabel={dataToDisplay.toString()}
+        accessibilityHint={`Press to view ${nextOptionLabel} data`}
       >
-        <Text style={mainRightItemTextStyle}>
-          {extractResponseFromApiKey(item, option[active].split('.'))}
-        </Text>
+        <Text style={mainRightItemTextStyle}>{dataToDisplay}</Text>
       </TouchableOpacity>
     );
   };
@@ -159,6 +175,9 @@ const Table = (props: TableProps) => {
             alignItems: 'center',
           }}
           onPress={onRightKeyPress}
+          accessibilityRole="button"
+          accessibilityHint={`Press to view ${nextOptionLabel} data`}
+          accessibilityLabel={optionLabel[active]}
         >
           <Text style={mainOptionTitleTextStyle}>{optionLabel[active]}</Text>
           <Icon

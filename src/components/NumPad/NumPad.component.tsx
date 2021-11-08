@@ -15,23 +15,26 @@ import { NumPadProps } from './NumPad.types';
 import { Fonts } from '../../styles';
 import { useColors } from '../../themes';
 
+// numberRange is an constant which won't be changed throughout renders,
+// keeping inside the component will init it again and again
+const numberRange = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  'X',
+  '0',
+  '.',
+];
+
 const NumPad = (props: NumPadProps) => {
   const { onItemClick, onItemKeyClick, onSubmit, onDeleteItem } = props;
   const [actionId, setActionId] = useState(0);
-  const numberRange = [
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    'X',
-    '0',
-    '.',
-  ];
 
   const onButtonPress = (item: string) => {
     setActionId(actionId + 1);
@@ -63,6 +66,45 @@ const NumPad = (props: NumPadProps) => {
   };
 
   const Colors = useColors();
+
+  // Anonymous function rendering in react-native leads to performance issues, so we need to avoid it as much as possible
+  const RenderItem = ({ item }: { item: string }) => {
+    let accessibilityLabelForNumPadButton: string;
+    switch (item) {
+      case 'X': {
+        accessibilityLabelForNumPadButton = 'backspace';
+        break;
+      }
+      case '.': {
+        accessibilityLabelForNumPadButton = 'Submit';
+        break;
+      }
+      default: {
+        accessibilityLabelForNumPadButton = item;
+        break;
+      }
+    }
+    return (
+      <TouchableOpacity
+        style={styles.rippleContainer}
+        onPress={() => onButtonPress(item)}
+        accessibilityRole="button"
+        accessibilityLabel={accessibilityLabelForNumPadButton}
+      >
+        {item === 'X' || item === '.' ? (
+          <Icon
+            name={item === 'X' ? 'backspace' : 'check'}
+            color={Colors.primary}
+            size={Fonts.size.h3}
+          />
+        ) : (
+          <Text style={[styles.numberText, { color: Colors.primary }]}>
+            {item}
+          </Text>
+        )}
+      </TouchableOpacity>
+    );
+  };
   return (
     <View>
       <FlatList
@@ -71,24 +113,7 @@ const NumPad = (props: NumPadProps) => {
         scrollEnabled={false}
         numColumns={3}
         keyExtractor={(item) => item}
-        renderItem={({ item }) => (
-          <TouchableOpacity
-            style={styles.rippleContainer}
-            onPress={() => onButtonPress(item)}
-          >
-            {item === 'X' || item === '.' ? (
-              <Icon
-                name={item === 'X' ? 'backspace' : 'check'}
-                color={Colors.primary}
-                size={Fonts.size.h3}
-              />
-            ) : (
-              <Text style={[styles.numberText, { color: Colors.primary }]}>
-                {item}
-              </Text>
-            )}
-          </TouchableOpacity>
-        )}
+        renderItem={RenderItem}
       />
     </View>
   );

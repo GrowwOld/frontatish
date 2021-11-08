@@ -17,14 +17,8 @@ import Line from './Line';
 
 const Dropdown = (props: DropdownProps) => {
   const [open, setOpen] = useState(false);
-  const {
-    items,
-    active,
-    onChange,
-    itemStyle,
-    activeItemStyle,
-    iconColor,
-  } = props;
+  const { items, active, onChange, itemStyle, activeItemStyle, iconColor } =
+    props;
   const animateRotate = useRef(new Animated.Value(0)).current;
   const Colors = useColors();
   const styles = getStyles(Colors);
@@ -42,12 +36,20 @@ const Dropdown = (props: DropdownProps) => {
     onChange(index);
     handleList();
   };
+  const itemLabel = items[active]?.label ?? items[active];
   return (
     <View style={styles.container}>
-      <TouchableNativeFeedback onPress={handleList}>
+      <TouchableNativeFeedback
+        onPress={handleList}
+        accessibilityTraits="button"
+        accessibilityComponentType="button"
+        accessibilityRole="button"
+        accessibilityState={{ expanded: open }}
+        accessibilityLabel={itemLabel}
+      >
         <View style={styles.activeItem}>
           <Text style={{ color: Colors.font_2, ...activeItemStyle }}>
-            {items[active]?.label ?? items[active]}
+            {itemLabel}
           </Text>
           <View style={{ flex: 1, alignItems: 'flex-end' }}>
             <Animated.View

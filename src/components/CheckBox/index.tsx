@@ -16,6 +16,9 @@ import { Scale } from '../../animated';
 // styles and themes
 import { useColors } from '../../themes';
 
+// This API is broken is terms of accessible because for now checkbox only shows a box element which in the end will be wrapped inside pressable,
+// resulting into nested element which won't be covered by touches hence resulting into not accessible
+// Refer CheckBox, the api should be similar where labels are passed as props
 const CheckBox = (props: CheckBoxProps) => {
   const { checked, containerStyle, disabled, size, checkColor } = props;
   const [height, width, iconSize] = getCheckDmnsn(size!);
@@ -47,7 +50,11 @@ const CheckBox = (props: CheckBoxProps) => {
     width,
   };
   return (
-    <View style={mainContainerStyle}>
+    <View
+      style={mainContainerStyle}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked, disabled }}
+    >
       {/* <Fade visible={checked!} containerStyle={{ flex: 1 }} duration={300}>
           <Icon name="check" size={iconSize} color={iconColor} />
         </Fade> */}

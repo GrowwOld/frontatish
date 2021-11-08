@@ -81,7 +81,8 @@
     "react-native": "*",
     "react-native-gesture-handler": "*",
     "react-native-reanimated": "*",
-    "react-native-vector-icons": "*"
+    "react-native-vector-icons": "*",
+    "react-native-material-ripple": "*"
   },
   "jest": {
     "preset": "react-native",
