@@ -37,6 +37,10 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
   componentDidUpdate(prevProps: CodeInputProps) {
     if (prevProps?.keyStroke?.actionId !== this.props?.keyStroke?.actionId) {
       this.updateCodeInput();
+    } else if (prevProps?.value !== this.props?.value) {
+      // update codeinput value internally directly from
+      // parent component
+      this.updateCodeInputFromParent(this.props?.value);
     }
 
     if (
@@ -47,6 +51,10 @@ class CodeInput extends React.PureComponent<CodeInputProps, CodeInputState> {
       this.shakeOnError();
     }
   }
+
+  updateCodeInputFromParent = (value: string) => {
+    this.setState({ codeInputValue: value.split('') });
+  };
 
   shakeOnError = () => {
     Animated.sequence([
