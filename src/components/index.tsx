@@ -15,11 +15,13 @@ import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
 import Tag from './Tag';
+import DraggableList from './DraggableList';
 
 export {
   Button,
   CheckBox,
   Calendar,
+  DraggableList,
   EmptyState,
   EmptyView,
   Dropdown,
