@@ -15,6 +15,7 @@ import EmptyView from './EmptyView';
 import Switch from './Switch';
 import Searchbar from './Searchbar';
 import Tag from './Tag';
+import Modal from './Modal';
 
 export {
   Button,
@@ -23,6 +24,7 @@ export {
   EmptyState,
   EmptyView,
   Dropdown,
+  Modal,
   RadioButton,
   RadioGroup,
   Ripple,

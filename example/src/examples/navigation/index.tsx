@@ -8,6 +8,7 @@ import EmptyViewScreen from '../EmptyViewExample';
 import InputScreen from '../InputExample';
 import DropDownScreen from '../DropdownExample';
 import CalendarScreen from '../CalendarExample';
+import ModalScreen from '../ModalExample';
 // import InfoBoxScreen from '../InfoBoxExample';
 
 type objectType = { [index: string]: string };
@@ -16,6 +17,7 @@ export const COMPONENT_SCREENS: objectType = {
   BUTTON: 'Button',
   CHECKBOX: 'Checkbox',
   RADIOBUTTON: 'RadioButton',
+  MODAL: 'Modal',
   NUMPAD: 'Numpad',
   TABLES: 'Tables',
   EMPTYVIEW: 'EmptyView',
@@ -32,6 +34,7 @@ export const SCREEN_MAPPING = [
   { name: COMPONENT_SCREENS.BUTTON, screen: ButtonScreen },
   { name: COMPONENT_SCREENS.CHECKBOX, screen: CheckboxScreen },
   { name: COMPONENT_SCREENS.RADIOBUTTON, screen: RadioButtonScreen },
+  { name: COMPONENT_SCREENS.MODAL, screen: ModalScreen },
   { name: COMPONENT_SCREENS.NUMPAD, screen: NumPadScreen },
   { name: COMPONENT_SCREENS.TABLES, screen: TableScreen },
   { name: COMPONENT_SCREENS.EMPTYVIEW, screen: EmptyViewScreen },

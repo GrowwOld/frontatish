@@ -16,6 +16,7 @@ module.exports = {
       'switch',
       'dropdown',
       'input',
+      'modal',
       'searchbar',
       // 'infobox',
       // 'ticker',
